@@ -1,0 +1,302 @@
+{
+  "sections": {
+    "hero": {
+      "type": "handsome-hero",
+      "settings": {
+        "height": "large",
+        "heading": "Shoes for the way you move.",
+        "button_label": "Shop Men",
+        "button_link": "shopify://collections/all",
+        "second_label": "Shop Women",
+        "second_link": "shopify://collections/all"
+      }
+    },
+    "first_rail": {
+      "type": "handsome-product-rail",
+      "settings": {
+        "heading": "Find your pair",
+        "collection": "all",
+        "limit": 6,
+        "show_view_all": true
+      }
+    },
+    "intro": {
+      "type": "handsome-statement",
+      "settings": {
+        "alignment": "left",
+        "eyebrow": "THE HANDSOME IDEA",
+        "heading": "Good movement starts with a good fit.",
+        "copy": "<p>Explore everyday footwear with considered shapes and a clear, uncomplicated point of view.</p>",
+        "button_label": "Our story",
+        "button_link": "shopify://pages/our-story"
+      }
+    },
+    "benefits": {
+      "type": "handsome-features",
+      "settings": {
+        "heading": "A few things we believe in"
+      },
+      "blocks": {
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "title": "Everyday versatility",
+            "copy": "<p>Styles to consider for the routes and routines that fill your week.</p>"
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "title": "Details in focus",
+            "copy": "<p>See the product photography, options and descriptions before you decide.</p>"
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "title": "Your fit, your choice",
+            "copy": "<p>Select your size on the product page and check live availability.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "shoe_story": {
+      "type": "handsome-editorial",
+      "settings": {
+        "fallback": "shoe",
+        "layout": "right",
+        "eyebrow": "IN THE DETAILS",
+        "heading": "For the daily miles.",
+        "copy": "<p>A closer look at shape, texture and the details that make a shoe your own.</p>",
+        "button_label": "Explore the collection",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "hotspots": {
+      "type": "handsome-hotspots",
+      "settings": {
+        "eyebrow": "THE DETAILS",
+        "heading": "Look closer",
+        "note": "Illustrative concept. Check individual product pages for actual specifications."
+      },
+      "blocks": {
+        "b1": {
+          "type": "point",
+          "settings": {
+            "x": 30,
+            "y": 37,
+            "title": "Upper",
+            "copy": "See each product page for its confirmed material details."
+          }
+        },
+        "b2": {
+          "type": "point",
+          "settings": {
+            "x": 67,
+            "y": 68,
+            "title": "Outsole",
+            "copy": "View actual product media and descriptions before ordering."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "specs": {
+      "type": "handsome-specs",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "spec",
+          "settings": {
+            "label": "Style",
+            "value": "Everyday movement"
+          }
+        },
+        "b2": {
+          "type": "spec",
+          "settings": {
+            "label": "Sizing",
+            "value": "Choose on product page"
+          }
+        },
+        "b3": {
+          "type": "spec",
+          "settings": {
+            "label": "Availability",
+            "value": "Live on Shopify"
+          }
+        },
+        "b4": {
+          "type": "spec",
+          "settings": {
+            "label": "Checkout",
+            "value": "Shopify checkout"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "running": {
+      "type": "handsome-product-rail",
+      "settings": {
+        "eyebrow": "THE EDIT",
+        "heading": "For the running days",
+        "intro": "Explore the current selection.",
+        "collection": "all",
+        "limit": 4,
+        "show_view_all": true
+      }
+    },
+    "notes": {
+      "type": "handsome-notes",
+      "settings": {
+        "eyebrow": "FROM THE STUDIO",
+        "heading": "Notes on movement"
+      },
+      "blocks": {
+        "b1": {
+          "type": "note",
+          "settings": {
+            "title": "Take the long way",
+            "copy": "A little more room to explore, on your own terms."
+          }
+        },
+        "b2": {
+          "type": "note",
+          "settings": {
+            "title": "Make it yours",
+            "copy": "Find a fit, color and pace that feel like you."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "accessories_intro": {
+      "type": "handsome-statement",
+      "settings": {
+        "alignment": "center",
+        "eyebrow": "MORE TO EXPLORE",
+        "heading": "Make every step your own.",
+        "copy": "<p>See the products and accessories currently available in the store.</p>"
+      }
+    },
+    "accessories": {
+      "type": "handsome-product-rail",
+      "settings": {
+        "heading": "The everyday extras",
+        "collection": "all",
+        "limit": 4,
+        "show_view_all": true
+      }
+    },
+    "gym_story": {
+      "type": "handsome-editorial",
+      "settings": {
+        "fallback": "runners",
+        "layout": "left",
+        "eyebrow": "BEYOND THE ROUTE",
+        "heading": "Built around your day.",
+        "copy": "<p>From first light to the last stop, explore styles that match your plans.</p>",
+        "button_label": "Shop all",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "gym": {
+      "type": "handsome-product-rail",
+      "settings": {
+        "heading": "More to discover",
+        "collection": "all",
+        "limit": 4,
+        "show_view_all": true
+      }
+    },
+    "compare": {
+      "type": "handsome-comparison",
+      "settings": {
+        "eyebrow": "IN MOTION",
+        "heading": "From trail to track",
+        "before_label": "Trail",
+        "after_label": "Track",
+        "copy": "Two ways to move. Swipe to explore the imagery."
+      }
+    },
+    "closing": {
+      "type": "handsome-statement",
+      "settings": {
+        "alignment": "center",
+        "eyebrow": "HANDSOME",
+        "heading": "Your next step starts here.",
+        "copy": "<p>Find a pair that fits the moment.</p>",
+        "button_label": "Shop the collection",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      },
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Stay in step",
+            "heading_size": "h1"
+          }
+        },
+        "b2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get updates when new products and stories arrive.</p>"
+          }
+        },
+        "b3": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "first_rail",
+    "intro",
+    "benefits",
+    "shoe_story",
+    "hotspots",
+    "specs",
+    "running",
+    "notes",
+    "accessories_intro",
+    "accessories",
+    "gym_story",
+    "gym",
+    "compare",
+    "closing",
+    "newsletter"
+  ]
+}

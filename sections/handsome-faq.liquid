@@ -1,0 +1,27 @@
+<section class="hs-section hs-faq" id="hs-faq-{{ section.id }}">
+  <div class="page-width">
+    <p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    <h1>{{ section.settings.heading | escape }}</h1>
+    {% if section.settings.intro != blank %}<p class="hs-faq__intro">{{ section.settings.intro | escape }}</p>{% endif %}
+    <div class="hs-faq__items">
+      {% for block in section.blocks %}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question | escape }} <span aria-hidden="true">+</span></summary>
+          <div class="rte">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome FAQ",
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"HELP"},
+    {"type":"text","id":"heading","label":"Heading","default":"Frequently asked questions"},
+    {"type":"text","id":"intro","label":"Introduction","default":"Answers about browsing and shopping. For order-specific questions, contact us."}
+  ],
+  "blocks":[{"type":"question","name":"Question","settings":[{"type":"text","id":"question","label":"Question","default":"How can I contact Handsome?"},{"type":"richtext","id":"answer","label":"Answer","default":"<p>Use the contact form and include your order number if you have one.</p>"}]}],
+  "presets":[{"name":"Handsome FAQ","blocks":[{"type":"question"},{"type":"question"},{"type":"question"}]}]
+}
+{% endschema %}

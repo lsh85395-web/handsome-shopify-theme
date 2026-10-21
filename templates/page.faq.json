@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "faq": {
+      "type": "handsome-faq",
+      "settings": {
+        "eyebrow": "HELP",
+        "heading": "Frequently asked questions",
+        "intro": "For order-specific questions, send us a message through the contact page."
+      },
+      "blocks": {
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I choose a size?",
+            "answer": "<p>Select an available size on the product page. A detailed size guide will be added when final product specifications are confirmed.</p>"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "How can I tell if a product is available?",
+            "answer": "<p>The product page reflects the currently selected variant and its live Shopify availability.</p>"
+          }
+        },
+        "b3": {
+          "type": "question",
+          "settings": {
+            "question": "Where can I review my cart?",
+            "answer": "<p>Open the cart icon or visit the cart page to update quantities before checkout.</p>"
+          }
+        },
+        "b4": {
+          "type": "question",
+          "settings": {
+            "question": "How can I contact Handsome?",
+            "answer": "<p>Use the contact form and include your order number if you already have one.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

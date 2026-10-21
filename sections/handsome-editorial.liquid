@@ -1,0 +1,35 @@
+<section class="hs-section hs-editorial hs-editorial--{{ section.settings.layout }}" id="hs-editorial-{{ section.id }}">
+  <div class="page-width hs-editorial__grid">
+    <div class="hs-editorial__media">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1500 | image_tag: loading: 'lazy', alt: section.settings.image.alt, widths: '600,900,1200,1500' }}
+      {% elsif section.settings.fallback == 'shoe' %}
+        <img src="{{ 'handsome-demo-shoe.png' | asset_url }}" width="1254" height="1254" loading="lazy" alt="Original demonstration sneaker image">
+      {% else %}
+        <img src="{{ 'handsome-runners.png' | asset_url }}" width="1448" height="1086" loading="lazy" alt="Runners on a track">
+      {% endif %}
+    </div>
+    <div class="hs-editorial__content">
+      {% if section.settings.eyebrow != blank %}<p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {% if section.settings.copy != blank %}<div class="rte">{{ section.settings.copy }}</div>{% endif %}
+      {% if section.settings.button_label != blank %}<a class="hs-button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome editorial",
+  "settings":[
+    {"type":"image_picker","id":"image","label":"Image"},
+    {"type":"select","id":"fallback","label":"Default visual","default":"runners","options":[{"value":"runners","label":"Runners"},{"value":"shoe","label":"Shoe"}]},
+    {"type":"select","id":"layout","label":"Image position","default":"left","options":[{"value":"left","label":"Left"},{"value":"right","label":"Right"}]},
+    {"type":"text","id":"eyebrow","label":"Eyebrow"},
+    {"type":"text","id":"heading","label":"Heading","default":"For wherever the day goes."},
+    {"type":"richtext","id":"copy","label":"Body"},
+    {"type":"text","id":"button_label","label":"Button label"},
+    {"type":"url","id":"button_link","label":"Button link"}
+  ],
+  "presets":[{"name":"Handsome editorial"}]
+}
+{% endschema %}

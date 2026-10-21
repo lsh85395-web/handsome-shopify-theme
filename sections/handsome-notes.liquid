@@ -1,0 +1,29 @@
+<section class="hs-section hs-notes" id="hs-notes-{{ section.id }}">
+  <div class="page-width">
+    <div class="hs-section-head"><div><p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2></div></div>
+    <div class="hs-notes__grid">
+      {% for block in section.blocks %}
+        <article class="hs-note" {{ block.shopify_attributes }}>
+          <span class="hs-note__symbol" aria-hidden="true">✳</span>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <p>{{ block.settings.copy | escape }}</p>
+          {% if block.settings.link_label != blank %}<a class="hs-text-link" href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.link_label | escape }} ↗</a>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome editorial notes",
+  "settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"FROM THE STUDIO"},{"type":"text","id":"heading","label":"Heading","default":"Notes on movement"}],
+  "blocks":[{"type":"note","name":"Note","settings":[
+    {"type":"text","id":"title","label":"Title","default":"Move in your own rhythm"},
+    {"type":"text","id":"copy","label":"Body","default":"Explore the collection and find the style that fits your day."},
+    {"type":"text","id":"link_label","label":"Link label"},
+    {"type":"url","id":"link","label":"Link"}
+  ]}],
+  "max_blocks":6,
+  "presets":[{"name":"Handsome editorial notes","blocks":[{"type":"note"},{"type":"note"}]}]
+}
+{% endschema %}

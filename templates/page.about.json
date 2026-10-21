@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "hero": {
+      "type": "handsome-hero",
+      "settings": {
+        "height": "medium",
+        "eyebrow": "OUR STORY",
+        "heading": "Made for every step.",
+        "text": "A new point of view on everyday movement.",
+        "button_label": "Shop the collection",
+        "button_link": "shopify://collections/all",
+        "second_label": ""
+      }
+    },
+    "intro": {
+      "type": "handsome-statement",
+      "settings": {
+        "alignment": "left",
+        "eyebrow": "ABOUT HANDSOME",
+        "heading": "Movement belongs to everyone.",
+        "copy": "<p>Handsome is a developing footwear concept. This demo storefront shows the direction of the brand and the shopping experience we are building.</p>"
+      }
+    },
+    "story": {
+      "type": "handsome-editorial",
+      "settings": {
+        "fallback": "runners",
+        "layout": "left",
+        "eyebrow": "THE IDEA",
+        "heading": "Take your own path.",
+        "copy": "<p>We want choosing your next pair to feel clear and considered. Final product information will be published in each Shopify product record.</p>"
+      }
+    },
+    "values": {
+      "type": "handsome-features",
+      "settings": {
+        "heading": "What guides us"
+      },
+      "blocks": {
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "title": "Clarity",
+            "copy": "<p>Straightforward product information and options.</p>"
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "title": "Choice",
+            "copy": "<p>A range of styles and sizes, maintained in Shopify.</p>"
+          }
+        },
+        "b3": {
+          "type": "feature",
+          "settings": {
+            "title": "Motion",
+            "copy": "<p>A visual language inspired by moving through everyday life.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "rail": {
+      "type": "handsome-product-rail",
+      "settings": {
+        "heading": "Explore Handsome",
+        "collection": "all",
+        "limit": 4,
+        "show_view_all": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "story",
+    "values",
+    "rail"
+  ]
+}

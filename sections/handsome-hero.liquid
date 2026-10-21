@@ -1,0 +1,42 @@
+<section class="hs-hero hs-hero--{{ section.settings.height }}" id="hs-hero-{{ section.id }}">
+  <div class="hs-hero__media">
+    <picture>
+      {% if section.settings.mobile_image != blank %}
+        <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">
+      {% endif %}
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.image.alt, widths: '750,1100,1500,2000,2400' }}
+      {% else %}
+        <img src="{{ 'handsome-hero.png' | asset_url }}" width="1672" height="941" alt="A running shoe on a rocky trail" loading="eager" fetchpriority="high">
+      {% endif %}
+    </picture>
+  </div>
+  <div class="hs-hero__shade"></div>
+  <div class="hs-hero__inner page-width">
+    {% if section.settings.eyebrow != blank %}<p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h1>{{ section.settings.heading | escape }}</h1>
+    {% if section.settings.text != blank %}<p class="hs-hero__copy">{{ section.settings.text | escape }}</p>{% endif %}
+    <div class="hs-actions">
+      {% if section.settings.button_label != blank %}<a class="hs-button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+      {% if section.settings.second_label != blank %}<a class="hs-button" href="{{ section.settings.second_link | default: routes.all_products_collection_url }}">{{ section.settings.second_label | escape }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Handsome hero",
+  "settings": [
+    {"type":"image_picker","id":"image","label":"Desktop image"},
+    {"type":"image_picker","id":"mobile_image","label":"Mobile image"},
+    {"type":"select","id":"height","label":"Height","default":"large","options":[{"value":"large","label":"Large"},{"value":"medium","label":"Medium"}]},
+    {"type":"text","id":"eyebrow","label":"Eyebrow"},
+    {"type":"text","id":"heading","label":"Heading","default":"Move your way."},
+    {"type":"text","id":"text","label":"Supporting text"},
+    {"type":"text","id":"button_label","label":"First button","default":"Shop Men"},
+    {"type":"url","id":"button_link","label":"First button link"},
+    {"type":"text","id":"second_label","label":"Second button","default":"Shop Women"},
+    {"type":"url","id":"second_link","label":"Second button link"}
+  ],
+  "presets":[{"name":"Handsome hero"}]
+}
+{% endschema %}

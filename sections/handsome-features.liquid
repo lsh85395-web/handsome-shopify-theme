@@ -1,0 +1,23 @@
+<section class="hs-section hs-features" id="hs-features-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
+    <div class="hs-features__grid">
+      {% for block in section.blocks %}
+        <article class="hs-feature" {{ block.shopify_attributes }}>
+          <span class="hs-feature__number">0{{ forloop.index }}</span>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <div class="rte">{{ block.settings.copy }}</div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome features",
+  "settings":[{"type":"text","id":"heading","label":"Heading","default":"What matters to us"}],
+  "blocks":[{"type":"feature","name":"Feature","settings":[{"type":"text","id":"title","label":"Title","default":"Considered details"},{"type":"richtext","id":"copy","label":"Description"}]}],
+  "max_blocks":4,
+  "presets":[{"name":"Handsome features","blocks":[{"type":"feature"},{"type":"feature"},{"type":"feature"}]}]
+}
+{% endschema %}

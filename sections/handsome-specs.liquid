@@ -1,0 +1,19 @@
+<section class="hs-specs" id="hs-specs-{{ section.id }}">
+  <div class="page-width hs-specs__grid">
+    {% for block in section.blocks %}
+      <div class="hs-spec" {{ block.shopify_attributes }}>
+        <span>{{ block.settings.label | escape }}</span>
+        <strong>{{ block.settings.value | escape }}</strong>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome spec bar",
+  "settings":[],
+  "blocks":[{"type":"spec","name":"Spec","settings":[{"type":"text","id":"label","label":"Label","default":"Activity"},{"type":"text","id":"value","label":"Value","default":"Everyday movement"}]}],
+  "max_blocks":5,
+  "presets":[{"name":"Handsome spec bar","blocks":[{"type":"spec"},{"type":"spec"},{"type":"spec"}]}]
+}
+{% endschema %}

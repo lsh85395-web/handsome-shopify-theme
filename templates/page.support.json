@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "faq": {
+      "type": "handsome-faq",
+      "settings": {
+        "eyebrow": "HELP",
+        "heading": "Support",
+        "intro": "Useful answers while you browse."
+      },
+      "blocks": {
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "How can I contact Handsome?",
+            "answer": "<p>Use the contact form and include your order number if you already have one.</p>"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "Where are shipping and return details?",
+            "answer": "<p>Please review the policies linked in the store footer once the merchant has finalized them.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

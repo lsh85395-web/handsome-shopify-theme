@@ -1,0 +1,41 @@
+<section class="hs-section hs-comparison" id="hs-comparison-{{ section.id }}">
+  <div class="page-width">
+    <div class="hs-section-head"><div><p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2></div></div>
+    <div class="hs-comparison__frame" data-hs-comparison style="--compare:50%">
+      <div class="hs-comparison__after">
+        {% if section.settings.after_image != blank %}
+          {{ section.settings.after_image | image_url: width: 1800 | image_tag: loading: 'lazy', alt: section.settings.after_image.alt, widths: '750,1100,1500,1800' }}
+        {% else %}
+          <img src="{{ 'handsome-runners.png' | asset_url }}" width="1448" height="1086" loading="lazy" alt="Runners on a track">
+        {% endif %}
+        <span>{{ section.settings.after_label | escape }}</span>
+      </div>
+      <div class="hs-comparison__before">
+        {% if section.settings.before_image != blank %}
+          {{ section.settings.before_image | image_url: width: 1800 | image_tag: loading: 'lazy', alt: section.settings.before_image.alt, widths: '750,1100,1500,1800' }}
+        {% else %}
+          <img src="{{ 'handsome-hero.png' | asset_url }}" width="1672" height="941" loading="lazy" alt="Running shoe on a trail">
+        {% endif %}
+        <span>{{ section.settings.before_label | escape }}</span>
+      </div>
+      <div class="hs-comparison__divider" aria-hidden="true"><b>↔</b></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare the two editorial images">
+    </div>
+    {% if section.settings.copy != blank %}<p class="hs-comparison__copy">{{ section.settings.copy | escape }}</p>{% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome image compare",
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"IN MOTION"},
+    {"type":"text","id":"heading","label":"Heading","default":"From trail to track"},
+    {"type":"image_picker","id":"before_image","label":"First image"},
+    {"type":"image_picker","id":"after_image","label":"Second image"},
+    {"type":"text","id":"before_label","label":"First label","default":"Trail"},
+    {"type":"text","id":"after_label","label":"Second label","default":"Track"},
+    {"type":"text","id":"copy","label":"Caption"}
+  ],
+  "presets":[{"name":"Handsome image compare"}]
+}
+{% endschema %}

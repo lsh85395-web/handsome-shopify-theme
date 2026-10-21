@@ -1,0 +1,22 @@
+<section class="hs-section hs-statement hs-statement--{{ section.settings.alignment }}" id="hs-statement-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.eyebrow != blank %}<p class="hs-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h2>{{ section.settings.heading | escape }}</h2>
+    {% if section.settings.copy != blank %}<div class="hs-statement__copy rte">{{ section.settings.copy }}</div>{% endif %}
+    {% if section.settings.button_label != blank %}<a class="hs-text-link" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">↗</span></a>{% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Handsome statement",
+  "settings":[
+    {"type":"select","id":"alignment","label":"Alignment","default":"left","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"}]},
+    {"type":"text","id":"eyebrow","label":"Eyebrow"},
+    {"type":"text","id":"heading","label":"Heading","default":"Made for motion."},
+    {"type":"richtext","id":"copy","label":"Body"},
+    {"type":"text","id":"button_label","label":"Link label"},
+    {"type":"url","id":"button_link","label":"Link"}
+  ],
+  "presets":[{"name":"Handsome statement"}]
+}
+{% endschema %}

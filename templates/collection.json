@@ -1,0 +1,154 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "categories": {
+      "type": "handsome-category-links",
+      "settings": {
+        "label": "Browse shoe categories"
+      },
+      "blocks": {
+        "b1": {
+          "type": "link",
+          "settings": {
+            "title": "All shoes",
+            "link": "shopify://collections/all"
+          }
+        },
+        "b2": {
+          "type": "link",
+          "settings": {
+            "title": "Men",
+            "link": "shopify://collections/mens-shoes"
+          }
+        },
+        "b3": {
+          "type": "link",
+          "settings": {
+            "title": "Women",
+            "link": "shopify://collections/womens-shoes"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "nx_promo_enable": true,
+        "nx_promo_heading": "Move your way",
+        "nx_promo_copy": "Explore the full collection.",
+        "nx_promo_link": "shopify://collections/all",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 8,
+        "padding_bottom": 45
+      }
+    },
+    "specs": {
+      "type": "handsome-specs",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "spec",
+          "settings": {
+            "label": "Explore",
+            "value": "By style"
+          }
+        },
+        "b2": {
+          "type": "spec",
+          "settings": {
+            "label": "Choose",
+            "value": "Your size"
+          }
+        },
+        "b3": {
+          "type": "spec",
+          "settings": {
+            "label": "Check",
+            "value": "Live availability"
+          }
+        },
+        "b4": {
+          "type": "spec",
+          "settings": {
+            "label": "Order",
+            "value": "Shopify checkout"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "collection_story": {
+      "type": "handsome-statement",
+      "settings": {
+        "alignment": "left",
+        "eyebrow": "THE COLLECTION",
+        "heading": "Find your direction.",
+        "copy": "<p>Every product page shows live pricing, options and availability from the store.</p>"
+      }
+    },
+    "notes": {
+      "type": "handsome-notes",
+      "settings": {
+        "eyebrow": "THE EDIT",
+        "heading": "Ways to explore"
+      },
+      "blocks": {
+        "b1": {
+          "type": "note",
+          "settings": {
+            "title": "Start with the fit",
+            "copy": "Open a product to review its options and current availability."
+          }
+        },
+        "b2": {
+          "type": "note",
+          "settings": {
+            "title": "Find your rhythm",
+            "copy": "Use filters and sorting to narrow the collection."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "banner",
+    "categories",
+    "grid",
+    "specs",
+    "collection_story",
+    "notes"
+  ]
+}
