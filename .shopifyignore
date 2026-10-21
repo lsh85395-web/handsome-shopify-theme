@@ -6,3 +6,6 @@ validate-handsome.mjs
 .gitignore
 .prettierrc.json
 .theme-check.yml
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml

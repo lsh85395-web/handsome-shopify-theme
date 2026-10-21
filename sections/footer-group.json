@@ -41,7 +41,6 @@
         "about"
       ],
       "settings": {
-        "nx_custom_footer_links": false,
         "color_scheme": "scheme-1",
         "newsletter_enable": false,
         "newsletter_heading": "Stay in the loop",

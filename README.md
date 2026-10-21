@@ -30,4 +30,4 @@ Product title, price, images, variants and stock come from **Shopify Products**.
 
 ## Validation and recovery
 
-Run `node validate-handsome.mjs` from this directory for a limited local JSON/reference check. Shopify Theme Check and a real preview are separate required checks; the local check cannot replace either. Restore code with a Git commit checkout/revert on the `codex/handsome-askel` branch. Restore the previous storefront by selecting the prior theme in Shopify **Online Store → Themes**; do not delete it.
+Run `node validate-handsome.mjs` from this directory for a limited local JSON/reference check. Install the pinned official CLI with `npm install`, then run `npm run theme:check` for Shopify Theme Check. A real store preview is a separate required check; the local check cannot replace it. Restore code with a Git commit checkout/revert on the `codex/handsome-askel` branch. Restore the previous storefront by selecting the prior theme in Shopify **Online Store → Themes**; do not delete it.

@@ -87,29 +87,7 @@
                       {{ block.settings.subtext }}
                     </div>
                   {%- when 'link_list' -%}
-                    {%- if section.settings.nx_custom_footer_links and block.settings.heading == 'Shop' -%}
-                      <ul class="footer-block__details-content list-unstyled">
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.all_products_collection_url }}">Shop All</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/collections/mens-shoes">Men</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/collections/womens-shoes">Women</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/collections/shoe-accessories">Accessories</a></li>
-                      </ul>
-                    {%- elsif section.settings.nx_custom_footer_links and block.settings.heading == 'Support' -%}
-                      <ul class="footer-block__details-content list-unstyled">
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.search_url }}">Search</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/pages/contact">Contact</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/policies/privacy-policy">Privacy Policy</a></li>
-                      </ul>
-                    {%- elsif section.settings.nx_custom_footer_links and block.settings.heading == 'About' -%}
-                      <ul class="footer-block__details-content list-unstyled">
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/pages/our-story">Our Story</a></li>
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="{{ routes.all_products_collection_url }}">Explore Handsome</a></li>
-                      </ul>
-                    {%- elsif section.settings.nx_custom_footer_links and block.settings.heading == 'Collaboration' -%}
-                      <ul class="footer-block__details-content list-unstyled">
-                        <li><a class="link link--text list-menu__item list-menu__item--link" href="/pages/contact">Contact us</a></li>
-                      </ul>
-                    {%- elsif block.settings.menu != blank -%}
+                    {%- if block.settings.menu != blank -%}
                       <ul class="footer-block__details-content list-unstyled">
                         {%- for link in block.settings.menu.links -%}
                           <li>
@@ -445,7 +423,6 @@
     }
   ],
   "settings": [
-    { "type": "checkbox", "id": "nx_custom_footer_links", "label": "Use Handsome default footer links", "default": false },
     {
       "type": "color_scheme",
       "id": "color_scheme",
