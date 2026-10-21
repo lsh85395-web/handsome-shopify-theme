@@ -28,8 +28,10 @@ Product title, price, images, variants and stock come from **Shopify Products**.
 - Existing active Nexglee demonstration products remain in this store. Shopify search can surface them even though the Handsome homepage and collection rails show footwear. Archive or unpublish those records only after the owner decides how the previous catalog should be handled.
 - Hero/editorial theme images can be replaced in Customize. Product media belongs in the product record.
 - Do not publish a draft theme until its store preview has passed desktop/mobile checks and the store owner explicitly approves publication.
-- See `REFERENCE-MAP.md` for the inspected reference-to-section mapping and `DEPLOYMENTS.md` for upload records.
+- See `REFERENCE-MAP.md` for the inspected reference-to-section mapping, `QA.md` for the actual preview checks, and `DEPLOYMENTS.md` for upload records.
 
 ## Validation and recovery
 
-Run `node validate-handsome.mjs` from this directory for a limited local JSON/reference check. Install the pinned official CLI with `npm install`, then run `npm run theme:check` for Shopify Theme Check. A real store preview is a separate required check; the local check cannot replace it. Restore code with a Git commit checkout/revert on the `codex/handsome-askel` branch. Restore the previous storefront by selecting the prior theme in Shopify **Online Store → Themes**; do not delete it.
+Run `node validate-handsome.mjs` from this directory for a limited local JSON/reference check. Install the pinned official CLI with `npm install` if dependencies are absent, then run `npm run theme:check` for Shopify Theme Check. A real store preview is a separate required check; the local check cannot replace it.
+
+For a code rollback, use `git log --oneline` and `DEPLOYMENTS.md` to identify the upload commit, then `git revert <commit>` on `codex/handsome-askel` and push the new revert commit. Test that reverted code in an unpublished Shopify theme before any publication. The currently live theme is `Nexglee Stage 1 - e0deecf` (`192658702624`), which has not been replaced. If Handsome is published later and a storefront rollback is required, an authorized store owner can publish the previous theme from **Online Store → Themes → Theme library**. Do not delete it.
