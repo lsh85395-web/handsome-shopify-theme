@@ -8,7 +8,7 @@
         "heading": "Made for every step.",
         "text": "A new point of view on everyday movement.",
         "button_label": "Shop the collection",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify://collections/handsome-demo-shoes",
         "second_label": ""
       }
     },
@@ -69,7 +69,7 @@
       "type": "handsome-product-rail",
       "settings": {
         "heading": "Explore Handsome",
-        "collection": "all",
+        "collection": "handsome-demo-shoes",
         "limit": 4,
         "show_view_all": true
       }

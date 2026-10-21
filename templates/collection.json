@@ -18,21 +18,21 @@
           "type": "link",
           "settings": {
             "title": "All shoes",
-            "link": "shopify://collections/all"
+            "link": "shopify://collections/handsome-demo-shoes"
           }
         },
         "b2": {
           "type": "link",
           "settings": {
-            "title": "Men",
-            "link": "shopify://collections/mens-shoes"
+            "title": "Trail Runner",
+            "link": "shopify://products/demo-handsome-trail-runner-not-for-sale"
           }
         },
         "b3": {
           "type": "link",
           "settings": {
-            "title": "Women",
-            "link": "shopify://collections/womens-shoes"
+            "title": "Everyday Runner",
+            "link": "shopify://products/demo-handsome-everyday-runner-not-for-sale"
           }
         }
       },
@@ -49,7 +49,7 @@
         "nx_promo_enable": true,
         "nx_promo_heading": "Move your way",
         "nx_promo_copy": "Explore the full collection.",
-        "nx_promo_link": "shopify://collections/all",
+        "nx_promo_link": "shopify://collections/handsome-demo-shoes",
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",

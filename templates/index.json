@@ -5,17 +5,17 @@
       "settings": {
         "height": "large",
         "heading": "Shoes for the way you move.",
-        "button_label": "Shop Men",
-        "button_link": "shopify://collections/all",
-        "second_label": "Shop Women",
-        "second_link": "shopify://collections/all"
+        "button_label": "Shop All",
+        "button_link": "shopify://collections/handsome-demo-shoes",
+        "second_label": "Our Story",
+        "second_link": "shopify://pages/handsome-our-story"
       }
     },
     "first_rail": {
       "type": "handsome-product-rail",
       "settings": {
         "heading": "Find your pair",
-        "collection": "all",
+        "collection": "handsome-demo-shoes",
         "limit": 6,
         "show_view_all": true
       }
@@ -28,7 +28,7 @@
         "heading": "Good movement starts with a good fit.",
         "copy": "<p>Explore everyday footwear with considered shapes and a clear, uncomplicated point of view.</p>",
         "button_label": "Our story",
-        "button_link": "shopify://pages/our-story"
+        "button_link": "shopify://pages/handsome-our-story"
       }
     },
     "benefits": {
@@ -74,7 +74,7 @@
         "heading": "For the daily miles.",
         "copy": "<p>A closer look at shape, texture and the details that make a shoe your own.</p>",
         "button_label": "Explore the collection",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/handsome-demo-shoes"
       }
     },
     "hotspots": {
@@ -155,7 +155,7 @@
         "eyebrow": "THE EDIT",
         "heading": "For the running days",
         "intro": "Explore the current selection.",
-        "collection": "all",
+        "collection": "handsome-demo-shoes",
         "limit": 4,
         "show_view_all": true
       }
@@ -199,8 +199,8 @@
     "accessories": {
       "type": "handsome-product-rail",
       "settings": {
-        "heading": "The everyday extras",
-        "collection": "all",
+        "heading": "More to explore",
+        "collection": "handsome-demo-shoes",
         "limit": 4,
         "show_view_all": true
       }
@@ -214,14 +214,14 @@
         "heading": "Built around your day.",
         "copy": "<p>From first light to the last stop, explore styles that match your plans.</p>",
         "button_label": "Shop all",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/handsome-demo-shoes"
       }
     },
     "gym": {
       "type": "handsome-product-rail",
       "settings": {
         "heading": "More to discover",
-        "collection": "all",
+        "collection": "handsome-demo-shoes",
         "limit": 4,
         "show_view_all": true
       }
@@ -244,7 +244,7 @@
         "heading": "Your next step starts here.",
         "copy": "<p>Find a pair that fits the moment.</p>",
         "button_label": "Shop the collection",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/handsome-demo-shoes"
       }
     },
     "newsletter": {

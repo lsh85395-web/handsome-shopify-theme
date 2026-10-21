@@ -1,11 +1,19 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
+      "type": "handsome-page-router",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
+        "about_link": "shopify://collections/handsome-demo-shoes",
+        "contact_link": "shopify://pages/handsome-contact"
+      },
+      "blocks": {
+        "sizing": {"type":"question","settings":{"target":"faq","question":"How do I choose a size?","answer":"<p>Select an available size on the product page. Detailed guidance will be added when final specifications are confirmed.</p>"}},
+        "available": {"type":"question","settings":{"target":"faq","question":"How can I tell if a product is available?","answer":"<p>The product page reflects the selected variant and its current Shopify availability.</p>"}},
+        "cart": {"type":"question","settings":{"target":"faq","question":"Where can I review my cart?","answer":"<p>Open the cart to update quantities before checkout.</p>"}},
+        "contact": {"type":"question","settings":{"target":"both","question":"How can I contact Handsome?","answer":"<p>Use the contact form and include an order number if you already have one.</p>"}},
+        "policies": {"type":"question","settings":{"target":"support","question":"Where are shipping and return details?","answer":"<p>The store owner will publish shipping and return policies before launch.</p>"}}
+      },
+      "block_order": ["sizing","available","cart","contact","policies"]
     }
   },
   "order": [

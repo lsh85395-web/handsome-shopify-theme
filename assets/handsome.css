@@ -115,6 +115,21 @@ body{overflow-x:hidden}
 .footer{background:#181c25}
 .newsletter__wrapper{background:#303644}
 .button,.shopify-challenge__button,.customer button{border-radius:100px}
+.hs-page-hero{position:relative;display:flex;align-items:center;min-height:610px;color:#fff;overflow:hidden}
+.hs-page-hero picture,.hs-page-hero picture img,.hs-page-hero__shade{position:absolute;inset:0;width:100%;height:100%}
+.hs-page-hero picture img{object-fit:cover}
+.hs-page-hero__shade{background:linear-gradient(90deg,rgba(7,10,16,.76),rgba(7,10,16,.08))}
+.hs-page-hero__body{position:relative;z-index:1;width:100%;padding-top:100px;padding-bottom:100px}
+.hs-page-hero h1,.hs-contact h1{font-size:clamp(46px,6vw,88px);line-height:1;letter-spacing:-.05em;max-width:850px;margin:0 0 20px}
+.hs-page-hero__body>p:last-child{font-size:clamp(17px,2vw,24px);max-width:560px;line-height:1.4}
+.hs-page-story .rte{max-width:790px;font-size:clamp(18px,2vw,25px);margin-bottom:30px}
+.hs-ordinary-page{padding-top:70px;padding-bottom:70px}
+.hs-contact>.rte{max-width:690px;color:var(--hs-muted)}
+.hs-contact__form{max-width:900px;margin-top:36px}
+.hs-contact__row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.hs-contact__form label{display:block;font-size:14px;font-weight:700;margin:0 0 8px}
+.hs-contact__form input,.hs-contact__form textarea{width:100%;padding:14px 16px;background:#fff;color:#1b2029;border:1px solid #9ca3af;border-radius:3px;font:inherit;margin-bottom:20px}
+.hs-contact__form :is(input,textarea):focus-visible{outline:3px solid var(--hs-accent);outline-offset:2px}
 @media(max-width:989px){
   .hs-hero{min-height:610px}
   .hs-hero h1{max-width:540px}
@@ -155,5 +170,12 @@ body{overflow-x:hidden}
   .nx-page--index .section-header{margin-bottom:-65px}
   .collection-hero__inner{padding-top:55px!important}
   .nx-collection-promo>a{min-height:260px}
+  .hs-page-hero{min-height:520px}
+  .hs-page-hero picture img{object-position:62% center}
+  .hs-page-hero__shade{background:linear-gradient(0deg,rgba(7,10,16,.78),rgba(7,10,16,.04))}
+  .hs-page-hero__body{padding-top:150px;padding-bottom:55px}
+  .hs-page-hero h1,.hs-contact h1{font-size:clamp(40px,10vw,56px)}
+  .hs-contact__row{grid-template-columns:1fr;gap:0}
+  .hs-ordinary-page{padding-top:45px;padding-bottom:45px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hs-button,.hs-product-card__image img{transition:none}}

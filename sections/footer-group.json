@@ -16,21 +16,21 @@
           "type": "link_list",
           "settings": {
             "heading": "Shop",
-            "menu": "main-menu"
+            "menu": "handsome-main"
           }
         },
         "support": {
           "type": "link_list",
           "settings": {
             "heading": "Help",
-            "menu": "footer"
+            "menu": "handsome-help"
           }
         },
         "about": {
           "type": "link_list",
           "settings": {
             "heading": "Information",
-            "menu": "footer"
+            "menu": "handsome-about"
           }
         }
       },

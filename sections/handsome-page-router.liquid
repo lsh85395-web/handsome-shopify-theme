@@ -1,0 +1,86 @@
+{% assign hs_page = page.handle %}
+{% if hs_page == 'handsome-our-story' %}
+  <section class="hs-page-hero">
+    <picture>
+      {% if section.settings.about_mobile_image != blank %}<source media="(max-width: 749px)" srcset="{{ section.settings.about_mobile_image | image_url: width: 900 }}">{% endif %}
+      {% if section.settings.about_image != blank %}
+        {{ section.settings.about_image | image_url: width: 2200 | image_tag: loading: 'eager', widths: '750,1100,1500,2200', alt: section.settings.about_image.alt }}
+      {% else %}
+        <img src="{{ 'handsome-runners.png' | asset_url }}" width="1536" height="1024" loading="eager" alt="Runners moving together on a track">
+      {% endif %}
+    </picture>
+    <div class="hs-page-hero__shade"></div>
+    <div class="hs-page-hero__body page-width">
+      <p class="hs-eyebrow">{{ section.settings.about_eyebrow | escape }}</p>
+      <h1>{{ section.settings.about_heading | escape }}</h1>
+      <p>{{ section.settings.about_intro | escape }}</p>
+    </div>
+  </section>
+  <section class="hs-section hs-page-story page-width">
+    <p class="hs-eyebrow">ABOUT HANDSOME</p>
+    <h2>{{ page.title | escape }}</h2>
+    <div class="rte">{{ page.content }}</div>
+    <a class="hs-button" href="{{ section.settings.about_link | default: routes.all_products_collection_url }}">{{ section.settings.about_button | escape }}</a>
+  </section>
+{% elsif hs_page == 'handsome-faq' or hs_page == 'handsome-support' %}
+  <section class="hs-section hs-faq page-width">
+    <p class="hs-eyebrow">{% if hs_page == 'handsome-faq' %}HELP{% else %}SUPPORT{% endif %}</p>
+    <h1>{% if hs_page == 'handsome-faq' %}{{ section.settings.faq_heading | escape }}{% else %}{{ section.settings.support_heading | escape }}{% endif %}</h1>
+    <div class="hs-faq__intro rte">{{ page.content }}</div>
+    <div class="hs-faq__items">
+      {% for block in section.blocks %}
+        {% if block.type == 'question' %}
+          {% if block.settings.target == 'both' or block.settings.target == 'faq' and hs_page == 'handsome-faq' or block.settings.target == 'support' and hs_page == 'handsome-support' %}
+            <details {{ block.shopify_attributes }}><summary>{{ block.settings.question | escape }}<span aria-hidden="true">+</span></summary><div class="rte">{{ block.settings.answer }}</div></details>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <a class="hs-text-link" href="{{ section.settings.contact_link | default: '/pages/handsome-contact' }}">Contact Handsome ↗</a>
+  </section>
+{% elsif hs_page == 'handsome-contact' %}
+  <section class="hs-section hs-contact page-width">
+    <p class="hs-eyebrow">CONTACT</p>
+    <h1>{{ section.settings.contact_heading | escape }}</h1>
+    <div class="rte">{{ page.content }}</div>
+    {% form 'contact', id: 'HandsomeContactForm', class: 'hs-contact__form' %}
+      {% if form.posted_successfully? %}<p role="status">Thank you. Your message has been sent.</p>{% endif %}
+      {{ form.errors | default_errors }}
+      <div class="hs-contact__row">
+        <div><label for="HandsomeContactName">Name</label><input id="HandsomeContactName" type="text" name="contact[name]" value="{{ form.name | escape }}" autocomplete="name"></div>
+        <div><label for="HandsomeContactEmail">Email *</label><input id="HandsomeContactEmail" type="email" name="contact[email]" value="{{ form.email | escape }}" autocomplete="email" required></div>
+      </div>
+      <div><label for="HandsomeContactBody">Message *</label><textarea id="HandsomeContactBody" name="contact[body]" rows="7" required>{{ form.body }}</textarea></div>
+      <button class="hs-button" type="submit">Send message</button>
+    {% endform %}
+  </section>
+{% else %}
+  <div class="page-width page-width--narrow hs-ordinary-page">
+    <h1 class="main-page-title page-title h0">{{ page.title | escape }}</h1>
+    <div class="rte">{{ page.content }}</div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name":"Handsome content pages",
+  "settings":[
+    {"type":"image_picker","id":"about_image","label":"About desktop image"},
+    {"type":"image_picker","id":"about_mobile_image","label":"About mobile image"},
+    {"type":"text","id":"about_eyebrow","label":"About eyebrow","default":"OUR STORY"},
+    {"type":"text","id":"about_heading","label":"About hero heading","default":"Made for every step."},
+    {"type":"text","id":"about_intro","label":"About hero introduction","default":"A new point of view on everyday movement."},
+    {"type":"text","id":"about_button","label":"About button","default":"Shop the collection"},
+    {"type":"url","id":"about_link","label":"About button link"},
+    {"type":"text","id":"faq_heading","label":"FAQ heading","default":"Frequently asked questions"},
+    {"type":"text","id":"support_heading","label":"Support heading","default":"How can we help?"},
+    {"type":"text","id":"contact_heading","label":"Contact heading","default":"Get in touch."},
+    {"type":"url","id":"contact_link","label":"Contact page link"}
+  ],
+  "blocks":[{"type":"question","name":"Question","settings":[
+    {"type":"select","id":"target","label":"Show on","default":"faq","options":[{"value":"faq","label":"FAQ"},{"value":"support","label":"Support"},{"value":"both","label":"Both"}]},
+    {"type":"text","id":"question","label":"Question","default":"How can we help?"},
+    {"type":"richtext","id":"answer","label":"Answer","default":"<p>Contact us for help.</p>"}
+  ]}],
+  "presets":[{"name":"Handsome content pages"}]
+}
+{% endschema %}
