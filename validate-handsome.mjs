@@ -41,6 +41,31 @@ for(const name of fs.readdirSync(path.join(root,'sections')).filter(x=>x.endsWit
   const rel='sections/'+name,g=JSON.parse(read(rel));
   for(const s of Object.values(g.sections||{}))if(!file('sections/'+s.type+'.liquid'))errors.push(rel+': missing section '+s.type);
 }
+const inRange=(value,definition)=>typeof value!=='number'||
+  (value>=definition.min&&value<=definition.max&&Math.abs((value-definition.min)/definition.step-Math.round((value-definition.min)/definition.step))<1e-9);
+const checkSettings=(location,values,definitions)=>{
+  for(const definition of definitions||[]){
+    if(definition.type!=='range'||values?.[definition.id]===undefined)continue;
+    if(!inRange(values[definition.id],definition))errors.push(`${location}: ${definition.id}=${values[definition.id]} outside range/step`);
+  }
+};
+for(const dir of ['templates','sections'])for(const name of fs.readdirSync(path.join(root,dir)).filter(x=>x.endsWith('.json'))){
+  const rel=dir+'/'+name,data=JSON.parse(read(rel));
+  for(const [id,section] of Object.entries(data.sections||{})){
+    const sectionPath='sections/'+section.type+'.liquid';
+    if(!file(sectionPath))continue;
+    const match=read(sectionPath).match(/{% schema %}([\s\S]*?){% endschema %}/);
+    if(!match)continue;
+    const schema=JSON.parse(match[1]);
+    checkSettings(`${rel}/${id}`,section.settings,schema.settings);
+    for(const [blockId,block] of Object.entries(section.blocks||{})){
+      const definition=(schema.blocks||[]).find(x=>x.type===block.type);
+      checkSettings(`${rel}/${id}/${blockId}`,block.settings,definition?.settings);
+    }
+  }
+}
+const globalDefinitions=JSON.parse(read('config/settings_schema.json')).flatMap(x=>x.settings||[]);
+for(const [name,preset] of Object.entries(JSON.parse(read('config/settings_data.json')).presets||{}))checkSettings(`config/settings_data.json/${name}`,preset,globalDefinitions);
 const codeDirs=['sections','snippets','layout'];
 for(const dir of codeDirs)for(const name of fs.readdirSync(path.join(root,dir)).filter(x=>x.endsWith('.liquid'))){
   const rel=dir+'/'+name,code=read(rel);

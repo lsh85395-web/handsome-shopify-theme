@@ -15,8 +15,8 @@
         "heading": "Send a message",
         "heading_size": "h1",
         "color_scheme": "scheme-1",
-        "padding_top": 10,
-        "padding_bottom": 70
+        "padding_top": 12,
+        "padding_bottom": 72
       }
     }
   },
