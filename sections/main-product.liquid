@@ -84,10 +84,22 @@
             id="ProductInfo-{{ section.id }}"
             class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
           >
+            {% assign hs_shop_collection = settings.cart_drawer_collection %}
+            {% assign hs_product_in_collection = false %}
+            {% if hs_shop_collection != blank %}
+              {% for hs_product_collection in product.collections %}
+                {% if hs_product_collection.id == hs_shop_collection.id %}
+                  {% assign hs_product_in_collection = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
             <nav class="nx-breadcrumb nx-product-breadcrumb" aria-label="Breadcrumb">
               <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">/</span>
               {% if collection != blank %}
                 <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+              {% elsif hs_product_in_collection %}
+                <a href="{{ hs_shop_collection.url }}">{{ hs_shop_collection.title | escape }}</a>
               {% else %}
                 <a href="{{ routes.all_products_collection_url }}">Products</a>
               {% endif %}

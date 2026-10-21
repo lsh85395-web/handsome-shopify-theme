@@ -30,7 +30,15 @@
     <div class="hs-faq__items">
       {% for block in section.blocks %}
         {% if block.type == 'question' %}
-          {% if block.settings.target == 'both' or block.settings.target == 'faq' and hs_page == 'handsome-faq' or block.settings.target == 'support' and hs_page == 'handsome-support' %}
+          {% assign show_question = false %}
+          {% if block.settings.target == 'both' %}
+            {% assign show_question = true %}
+          {% elsif hs_page == 'handsome-faq' %}
+            {% if block.settings.target == 'faq' %}{% assign show_question = true %}{% endif %}
+          {% elsif hs_page == 'handsome-support' %}
+            {% if block.settings.target == 'support' %}{% assign show_question = true %}{% endif %}
+          {% endif %}
+          {% if show_question %}
             <details {{ block.shopify_attributes }}><summary>{{ block.settings.question | escape }}<span aria-hidden="true">+</span></summary><div class="rte">{{ block.settings.answer }}</div></details>
           {% endif %}
         {% endif %}
