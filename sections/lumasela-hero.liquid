@@ -1,0 +1,260 @@
+{%- liquid
+  case section.settings.fallback_visual
+    when 'lifestyle'
+      assign fallback_desktop = 'lumasela-hero-lifestyle-iphone18pro-lumasela-ultrawide-v1.png'
+      assign fallback_mobile = 'lumasela-hero-lifestyle-mobile-iphone18pro-lumasela-v2.png'
+      assign fallback_width = 1893
+      assign fallback_height = 831
+      assign fallback_mobile_width = 1122
+      assign fallback_mobile_height = 1402
+    when 'gift'
+      assign fallback_desktop = 'lumasela-hero-gift-iphone18pro-silver-clear-ultrawide-v1.png'
+      assign fallback_mobile = 'lumasela-hero-gift-mobile-iphone18pro-silver-clear-v1.png'
+      assign fallback_width = 1891
+      assign fallback_height = 831
+      assign fallback_mobile_width = 1122
+      assign fallback_mobile_height = 1402
+    else
+      assign fallback_desktop = 'lumasela-hero-product-iphone18pro-silver-clear-ultrawide-v1.png'
+      assign fallback_mobile = 'lumasela-hero-product-mobile-iphone18pro-silver-clear-v1.png'
+      assign fallback_width = 1916
+      assign fallback_height = 821
+      assign fallback_mobile_width = 1024
+      assign fallback_mobile_height = 1536
+  endcase
+
+  assign image_loading = 'lazy'
+  assign image_priority = 'auto'
+  if section.index == 1
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  endif
+  assign image_alt = section.settings.image.alt | default: section.settings.heading | strip_html
+
+  case section.settings.height
+    when 'medium'
+      assign hero_height = '64rem'
+      assign hero_height_mobile = '60rem'
+    when 'viewport'
+      assign hero_height = 'max(64rem, calc(100svh - 10rem))'
+      assign hero_height_mobile = 'max(60rem, calc(100svh - 9rem))'
+    else
+      assign hero_height = '78rem'
+      assign hero_height_mobile = '70rem'
+  endcase
+-%}
+
+<section
+  id="LumaselaHero-{{ section.id }}"
+  class="lumasela-hero{% if section.settings.text_tone == 'light' %} lumasela-hero--dark{% endif %}"
+  style="--lumasela-hero-height: {{ hero_height }}; --lumasela-hero-height-mobile: {{ hero_height_mobile }};"
+>
+  <picture class="lumasela-hero__media">
+    {%- if section.settings.mobile_image != blank -%}
+      <source
+        media="(max-width: 749px)"
+        srcset="
+          {{ section.settings.mobile_image | image_url: width: 600 }} 600w,
+          {{ section.settings.mobile_image | image_url: width: 900 }} 900w,
+          {{ section.settings.mobile_image | image_url: width: 1200 }} 1200w
+        "
+        sizes="100vw"
+      >
+    {%- else -%}
+      <source media="(max-width: 749px)" srcset="{{ fallback_mobile | asset_url }}">
+    {%- endif -%}
+
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          class: 'lumasela-hero__image',
+          loading: image_loading,
+          fetchpriority: image_priority,
+          alt: image_alt
+      }}
+    {%- else -%}
+      <img
+        class="lumasela-hero__image"
+        src="{{ fallback_desktop | asset_url }}"
+        width="{{ fallback_width }}"
+        height="{{ fallback_height }}"
+        loading="{{ image_loading }}"
+        fetchpriority="{{ image_priority }}"
+        alt="{{ image_alt | escape }}"
+      >
+    {%- endif -%}
+  </picture>
+
+  <div
+    class="lumasela-hero__shade"
+    style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+    aria-hidden="true"
+  ></div>
+
+  <div class="lumasela-hero__content lumasela-hero__content--{{ section.settings.content_position }} page-width">
+    <div class="lumasela-hero__text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lumasela-kicker">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        {%- if section.settings.heading_tag == 'h1' -%}
+          <h1 class="lumasela-display">{{ section.settings.heading }}</h1>
+        {%- else -%}
+          <h2 class="lumasela-display">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="lumasela-copy rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.primary_label != blank or section.settings.secondary_label != blank -%}
+        <div class="lumasela-actions">
+          {%- if section.settings.primary_label != blank -%}
+            <a class="lumasela-link lumasela-link--solid" href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}">
+              {{ section.settings.primary_label | escape }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank -%}
+            <a class="lumasela-link" href="{{ section.settings.secondary_link | default: routes.root_url }}">
+              {{ section.settings.secondary_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela hero",
+  "tag": "section",
+  "class": "section-lumasela-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "select",
+      "id": "fallback_visual",
+      "label": "Built-in fallback visual",
+      "options": [
+        { "value": "product", "label": "Product" },
+        { "value": "lifestyle", "label": "Lifestyle" },
+        { "value": "gift", "label": "Gift" }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "CLEAR CASE · PERSONAL SIGNATURE"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Keep the phone you chose. Add the signature that is yours."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        { "value": "h1", "label": "Heading 1" },
+        { "value": "h2", "label": "Heading 2" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>A refined clear case that preserves the phone's original finish and adds one personal mark.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Customize yours"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Explore styles"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "viewport", "label": "Full viewport" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_tone",
+      "label": "Text tone",
+      "options": [
+        { "value": "dark", "label": "Dark text" },
+        { "value": "light", "label": "Light text" }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela hero"
+    }
+  ]
+}
+{% endschema %}

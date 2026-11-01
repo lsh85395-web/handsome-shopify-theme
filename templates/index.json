@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "hero_product": {
+      "type": "lumasela-hero",
+      "settings": {
+        "fallback_visual": "product",
+        "eyebrow": "CLEAR CASE · PERSONAL SIGNATURE",
+        "heading": "Keep the phone you chose. Add the signature that is yours.",
+        "heading_tag": "h1",
+        "body": "<p>A refined clear case concept that keeps the phone's original finish visible and adds one personal mark.</p>",
+        "primary_label": "Customize yours",
+        "primary_link": "#lumasela-customizer",
+        "secondary_label": "Explore styles",
+        "secondary_link": "#signature-styles",
+        "height": "viewport",
+        "content_position": "left",
+        "text_tone": "dark",
+        "overlay_opacity": 5
+      }
+    },
+    "signature_styles": {
+      "type": "lumasela-signature-styles",
+      "blocks": {
+        "flow": {"type": "signature", "settings": {"style_label": "FLOW / FLUID HANDWRITING", "title": "A soft, connected mark", "text": "<p>Fluid and relaxed for an effortless everyday signature.</p>", "preview_name": "Avery", "style": "flow", "position": "lower-right", "signature_color": "#151515", "signature_scale": 100}},
+        "line": {"type": "signature", "settings": {"style_label": "LINE / REFINED SCRIPT", "title": "A considered fine line", "text": "<p>Light and precise with a calm, refined rhythm.</p>", "preview_name": "Avery", "style": "line", "position": "lower-center", "signature_color": "#151515", "signature_scale": 95}},
+        "note": {"type": "signature", "settings": {"style_label": "NOTE / NATURAL NOTE", "title": "Simple and direct", "text": "<p>A natural handwritten form with quiet character.</p>", "preview_name": "Avery", "style": "note", "position": "lower-left", "signature_color": "#151515", "signature_scale": 95}},
+        "mark": {"type": "signature", "settings": {"style_label": "MARK / EXPRESSIVE MARK", "title": "A bolder personal gesture", "text": "<p>More contrast and movement for a confident finish.</p>", "preview_name": "Avery", "style": "mark", "position": "lower-right", "signature_color": "#151515", "signature_scale": 100}}
+      },
+      "block_order": ["flow", "line", "note", "mark"],
+      "settings": {
+        "eyebrow": "02 / FOUR EXPRESSIONS",
+        "heading": "One clear case. Four ways to make it yours.",
+        "text": "<p>Compare the rhythm, weight and personality of each signature before you customize.</p>",
+        "product_alt_text": "Silver concept phone with a clear personalized case",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "customizer": {
+      "type": "lumasela-customizer",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "preview_alt": "Silver concept phone with a clear personalized case",
+        "eyebrow": "03 / CREATE AND COMPARE",
+        "heading": "Write your name. Make it yours.",
+        "intro": "<p>Choose a signature style, color and position. The design preview updates as you type.</p>",
+        "default_name": "Alexandria Rose",
+        "demo_message": "Design preview only. Connect a verified Shopify phone-case product in the theme editor before accepting orders.",
+        "demo_label": "View current catalog",
+        "demo_link": "shopify://collections/all",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "media_grid": {
+      "type": "lumasela-media-grid",
+      "blocks": {
+        "mirror": {"type": "media", "settings": {"fallback_asset": "mirror", "image_alt": "Person taking a mirror selfie with a silver concept phone in a clear signature case", "image_ratio": "portrait", "kicker": "MIRROR", "title": "Personal, without trying too hard.", "text": "<p>A transparent finish designed to stay part of your own style.</p>", "link_label": "", "link": ""}},
+        "city": {"type": "media", "settings": {"fallback_asset": "city", "image_alt": "Person holding a silver concept phone in a clear signature case in the city", "image_ratio": "landscape", "kicker": "CITY", "title": "Made for everyday movement.", "text": "<p>The phone's original color stays visible wherever the day goes.</p>", "link_label": "", "link": ""}},
+        "desk": {"type": "media", "settings": {"fallback_asset": "desk", "image_alt": "Silver concept phone in a clear signature case on a calm desk", "image_ratio": "landscape", "kicker": "DESK", "title": "A name that stays close.", "text": "<p>A quiet personal detail for familiar daily places.</p>", "link_label": "", "link": ""}}
+      },
+      "block_order": ["mirror", "city", "desk"],
+      "settings": {"eyebrow": "04 / EVERYDAY STYLE", "heading": "Made to move through every day.", "text": "<p>Natural light, familiar places and one personal detail that stays close.</p>", "columns_desktop": "three", "color_scheme": "scheme-1"}
+    },
+    "detail": {
+      "type": "lumasela-detail-banner",
+      "settings": {"fallback_visual": "detail", "eyebrow": "05 / PRODUCT DETAIL", "heading": "Clear edges, the phone's original finish, and your signature in one frame.", "body": "<p>Concept imagery only. Final material, fit, camera protection, print method and production specifications still require product confirmation.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "large", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
+    },
+    "vision": {
+      "type": "lumasela-editorial-split",
+      "settings": {"fallback_visual": "vision", "eyebrow": "06 / LUMASELA", "heading": "A little clearer. A little more yours.", "body": "<p>We keep the phone's original color visible and leave one considered place for your handwriting. It can be your own name or a meaningful gift for someone important.</p>", "button_label": "Create a signature", "button_link": "#lumasela-customizer", "media_position": "right", "color_scheme": "scheme-2"}
+    },
+    "hero_gift": {
+      "type": "lumasela-hero",
+      "settings": {"fallback_visual": "gift", "eyebrow": "A NAME FOR YOU. A NAME FOR SOMEONE IMPORTANT.", "heading": "Two names. One thoughtful way to remember.", "heading_tag": "h2", "body": "<p>Personalize a familiar everyday object with a mark that means something.</p>", "primary_label": "Start customizing", "primary_link": "#lumasela-customizer", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
+    }
+  },
+  "order": ["hero_product", "signature_styles", "customizer", "media_grid", "detail", "vision", "hero_gift"]
+}

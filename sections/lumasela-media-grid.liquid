@@ -1,0 +1,269 @@
+<section
+  class="lumasela-section lumasela-media-grid color-{{ section.settings.color_scheme }} gradient"
+  aria-labelledby="LumaselaMediaGrid-{{ section.id }}"
+>
+  <div class="page-width lumasela-media-grid__inner">
+    <header class="lumasela-section-heading lumasela-section-heading--split">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 id="LumaselaMediaGrid-{{ section.id }}" class="lumasela-display lumasela-display--section">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.text != blank -%}
+        <div class="lumasela-section-heading__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </header>
+
+    <div
+      class="lumasela-media-grid__items lumasela-media-grid__items--{{ section.settings.columns_desktop }}"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign fallback_file = blank
+          assign fallback_width = 1672
+          assign fallback_height = 941
+          case block.settings.fallback_asset
+            when 'mirror'
+              assign fallback_file = 'lumasela-mirror-selfie-iphone18pro-lumasela-v2.png'
+              assign fallback_width = 1122
+              assign fallback_height = 1402
+            when 'city'
+              assign fallback_file = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.png'
+            when 'desk'
+              assign fallback_file = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.png'
+          endcase
+          assign image_alt = block.settings.image.alt | default: block.settings.image_alt | default: block.settings.title
+        -%}
+        <article
+          class="lumasela-media-card lumasela-media-card--{{ block.settings.image_ratio }}"
+          role="listitem"
+          {{ block.shopify_attributes }}
+        >
+          <div class="lumasela-media-card__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1800
+                | image_tag:
+                  widths: '480, 720, 960, 1200, 1600, 1800',
+                  sizes: '(min-width: 990px) 50vw, 100vw',
+                  loading: 'lazy',
+                  alt: image_alt,
+                  class: 'lumasela-media-card__image'
+              }}
+            {%- elsif fallback_file != blank -%}
+              <img
+                class="lumasela-media-card__image"
+                src="{{ fallback_file | asset_url }}"
+                alt="{{ image_alt | escape }}"
+                width="{{ fallback_width }}"
+                height="{{ fallback_height }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg lumasela-media-card__placeholder' }}
+            {%- endif -%}
+          </div>
+          <div class="lumasela-media-card__content">
+            {%- if block.settings.kicker != blank -%}
+              <p class="lumasela-media-card__kicker">{{ block.settings.kicker | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="lumasela-media-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="lumasela-media-card__text rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+            {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+              <a class="lumasela-text-link" href="{{ block.settings.link }}">
+                {{ block.settings.link_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela media grid",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "04 / Everyday style"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Made to move through every day."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Natural light, familiar places and one personal detail that stays close.</p>"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "options": [
+        {
+          "value": "two",
+          "label": "Two"
+        },
+        {
+          "value": "three",
+          "label": "Three"
+        }
+      ],
+      "default": "three"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media",
+      "name": "Media card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "fallback_asset",
+          "label": "Included fallback image",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "mirror",
+              "label": "Mirror selfie"
+            },
+            {
+              "value": "city",
+              "label": "City"
+            },
+            {
+              "value": "desk",
+              "label": "Desk"
+            }
+          ],
+          "default": "city"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "Clear personalized phone case in an everyday setting"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "options": [
+            {
+              "value": "portrait",
+              "label": "Portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "Landscape"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            }
+          ],
+          "default": "landscape"
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker",
+          "default": "In your own rhythm"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "A personal detail, naturally placed."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>The clear case keeps the phone color visible while the signature adds a quiet point of recognition.</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela media grid",
+      "blocks": [
+        {
+          "type": "media",
+          "settings": {
+            "fallback_asset": "mirror",
+            "image_ratio": "portrait",
+            "kicker": "Mirror",
+            "title": "Made personal, seen naturally."
+          }
+        },
+        {
+          "type": "media",
+          "settings": {
+            "fallback_asset": "city",
+            "image_ratio": "landscape",
+            "kicker": "City",
+            "title": "A clear case for everyday movement."
+          }
+        },
+        {
+          "type": "media",
+          "settings": {
+            "fallback_asset": "desk",
+            "image_ratio": "landscape",
+            "kicker": "Desk",
+            "title": "Your name, always within reach."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

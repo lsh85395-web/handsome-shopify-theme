@@ -1,0 +1,59 @@
+<div class="lumasela-customizer-fields">
+  <div class="lumasela-customizer__field">
+    <div class="lumasela-field__meta">
+      <label for="CustomizerName-{{ section.id }}">Signature name</label>
+      <span data-customizer-count>{{ initial_name.size }} / 18</span>
+    </div>
+    <input
+      id="CustomizerName-{{ section.id }}"
+      type="text"
+      value="{{ initial_name | escape }}"
+      maxlength="18"
+      autocomplete="off"
+      data-customizer-name
+      {% unless demo %}name="properties[Signature name]" required{% endunless %}
+    >
+  </div>
+
+  <div class="lumasela-control-row">
+    <div class="lumasela-customizer__field">
+      <label for="CustomizerStyle-{{ section.id }}">Signature style</label>
+      <select
+        id="CustomizerStyle-{{ section.id }}"
+        data-customizer-style
+        {% unless demo %}name="properties[Signature style]"{% endunless %}
+      >
+        <option value="flow">Flow</option>
+        <option value="line">Line</option>
+        <option value="note">Note</option>
+        <option value="mark">Mark</option>
+      </select>
+    </div>
+
+    <div class="lumasela-customizer__field">
+      <label for="CustomizerColor-{{ section.id }}">Signature color</label>
+      <select
+        id="CustomizerColor-{{ section.id }}"
+        data-customizer-color
+        {% unless demo %}name="properties[Signature color]"{% endunless %}
+      >
+        <option value="#111111">Ink black</option>
+        <option value="#F4F2EC">Soft white</option>
+        <option value="#B9A88F">Warm taupe</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="lumasela-customizer__field">
+    <label for="CustomizerPosition-{{ section.id }}">Signature position</label>
+    <select
+      id="CustomizerPosition-{{ section.id }}"
+      data-customizer-position
+      {% unless demo %}name="properties[Signature position]"{% endunless %}
+    >
+      <option value="lower_right">Lower right</option>
+      <option value="lower_center">Lower center</option>
+      <option value="lower_left">Lower left</option>
+    </select>
+  </div>
+</div>

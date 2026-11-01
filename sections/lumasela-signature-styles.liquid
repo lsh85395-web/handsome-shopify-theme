@@ -1,0 +1,267 @@
+{%- liquid
+  assign section_alt = section.settings.product_alt_text | default: section.settings.heading
+-%}
+
+<section
+  id="signature-styles"
+  class="lumasela-section lumasela-signature-styles color-{{ section.settings.color_scheme }} gradient"
+  aria-labelledby="LumaselaSignatureStyles-{{ section.id }}"
+>
+  <div class="page-width lumasela-signature-styles__inner">
+    <header class="lumasela-section-heading lumasela-section-heading--split">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 id="LumaselaSignatureStyles-{{ section.id }}" class="lumasela-display lumasela-display--section">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.text != blank -%}
+        <div class="lumasela-section-heading__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </header>
+
+    <div class="lumasela-signature-styles__grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign preview_alt = section.settings.product_image.alt | default: section_alt
+          assign signature_label = block.settings.style_label | append: ': ' | append: block.settings.preview_name
+        -%}
+        <article
+          class="lumasela-signature-card"
+          role="listitem"
+          style="--lumasela-signature-color: {{ block.settings.signature_color }}; --lumasela-signature-scale: {{ block.settings.signature_scale | divided_by: 100.0 }};"
+          {{ block.shopify_attributes }}
+        >
+          <div class="lumasela-signature-card__visual">
+            {%- if section.settings.product_image != blank -%}
+              {{
+                section.settings.product_image
+                | image_url: width: 1200
+                | image_tag:
+                  widths: '360, 540, 720, 960, 1200',
+                  sizes: '(min-width: 990px) 25vw, (min-width: 750px) 50vw, 100vw',
+                  loading: 'lazy',
+                  alt: preview_alt,
+                  class: 'lumasela-signature-card__image'
+              }}
+            {%- else -%}
+              <img
+                class="lumasela-signature-card__image"
+                src="{{ 'lumasela-iphone18pro-silver-clear-standard-v1.png' | asset_url }}"
+                alt="{{ preview_alt | escape }}"
+                width="1024"
+                height="1024"
+                loading="lazy"
+              >
+            {%- endif -%}
+            <span
+              class="lumasela-signature-card__signature lumasela-signature-card__signature--{{ block.settings.style }}"
+              data-position="{{ block.settings.position }}"
+              aria-hidden="true"
+            >
+              {{ block.settings.preview_name | escape }}
+            </span>
+            <span class="visually-hidden">{{ signature_label | escape }}</span>
+          </div>
+          <div class="lumasela-signature-card__content">
+            <p class="lumasela-signature-card__index">{{ forloop.index | prepend: '0' }}</p>
+            <p class="lumasela-signature-card__meta">{{ block.settings.style_label | escape }}</p>
+            <h3 class="lumasela-signature-card__title">{{ block.settings.title | escape }}</h3>
+            {%- if block.settings.text != blank -%}
+              <div class="lumasela-signature-card__text rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela signature styles",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "02 / Four expressions"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One clear case. Four ways to make it yours."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Compare the rhythm, weight and personality of every signature before you customize.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "product_alt_text",
+      "label": "Product image alt text",
+      "default": "Silver phone in a clear personalized case"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "signature",
+      "name": "Signature style",
+      "settings": [
+        {
+          "type": "text",
+          "id": "style_label",
+          "label": "Style label",
+          "default": "Flow"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fluid handwriting"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>Connected and soft, designed for an effortless everyday mark.</p>"
+        },
+        {
+          "type": "text",
+          "id": "preview_name",
+          "label": "Preview name",
+          "default": "Avery"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Signature form",
+          "options": [
+            {
+              "value": "flow",
+              "label": "Flow"
+            },
+            {
+              "value": "line",
+              "label": "Line"
+            },
+            {
+              "value": "note",
+              "label": "Note"
+            },
+            {
+              "value": "mark",
+              "label": "Mark"
+            }
+          ],
+          "default": "flow"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            {
+              "value": "lower-left",
+              "label": "Lower left"
+            },
+            {
+              "value": "lower-center",
+              "label": "Lower center"
+            },
+            {
+              "value": "lower-right",
+              "label": "Lower right"
+            }
+          ],
+          "default": "lower-right"
+        },
+        {
+          "type": "color",
+          "id": "signature_color",
+          "label": "Signature color",
+          "default": "#151515"
+        },
+        {
+          "type": "range",
+          "id": "signature_scale",
+          "label": "Signature scale",
+          "min": 70,
+          "max": 120,
+          "step": 5,
+          "unit": "%",
+          "default": 100
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela signature styles",
+      "blocks": [
+        {
+          "type": "signature",
+          "settings": {
+            "style_label": "Flow",
+            "title": "Fluid handwriting",
+            "preview_name": "Avery",
+            "style": "flow",
+            "position": "lower-right"
+          }
+        },
+        {
+          "type": "signature",
+          "settings": {
+            "style_label": "Line",
+            "title": "Refined line",
+            "preview_name": "Avery",
+            "style": "line",
+            "position": "lower-center"
+          }
+        },
+        {
+          "type": "signature",
+          "settings": {
+            "style_label": "Note",
+            "title": "Natural note",
+            "preview_name": "Avery",
+            "style": "note",
+            "position": "lower-left"
+          }
+        },
+        {
+          "type": "signature",
+          "settings": {
+            "style_label": "Mark",
+            "title": "Expressive mark",
+            "preview_name": "Avery",
+            "style": "mark",
+            "position": "lower-right"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,237 @@
+{%- liquid
+  assign customizer_product = product
+  if customizer_product == blank and section.settings.product != blank
+    assign customizer_product = section.settings.product
+  endif
+  assign selected_variant = customizer_product.selected_or_first_available_variant
+  assign product_form_id = 'lumasela-product-form-' | append: section.id
+  assign initial_name = section.settings.default_name | truncate: 18, ''
+-%}
+
+<lumasela-customizer
+  id="lumasela-customizer"
+  class="lumasela-customizer color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+  data-tone="light"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="lumasela-customizer__inner page-width">
+    <div class="lumasela-customizer__preview" data-customizer-preview>
+      <div class="lumasela-customizer__media">
+        {%- if section.settings.preview_image != blank -%}
+          {{
+            section.settings.preview_image
+            | image_url: width: 1400
+            | image_tag:
+              widths: '480, 720, 960, 1200, 1400',
+              sizes: '(min-width: 990px) 48vw, 92vw',
+              loading: 'lazy',
+              class: 'lumasela-customizer__image',
+              alt: section.settings.preview_alt
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'lumasela-iphone18pro-silver-clear-standard-v1.png' | asset_url }}"
+            alt="{{ section.settings.preview_alt | escape }}"
+            class="lumasela-customizer__image"
+            width="1536"
+            height="2048"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <span
+          class="lumasela-customizer__signature"
+          data-customizer-signature
+          data-style="flow"
+          data-position="lower_right"
+          aria-live="polite"
+        >{{ initial_name | escape }}</span>
+      </div>
+      <div class="lumasela-customizer__tone-controls" aria-label="Preview background">
+        <button
+          class="lumasela-customizer__tone is-active"
+          type="button"
+          data-customizer-tone="light"
+          aria-pressed="true"
+        >
+          <span class="visually-hidden">Light preview background</span>
+        </button>
+        <button
+          class="lumasela-customizer__tone lumasela-customizer__tone--dark"
+          type="button"
+          data-customizer-tone="dark"
+          aria-pressed="false"
+        >
+          <span class="visually-hidden">Dark preview background</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="lumasela-customizer__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lumasela-customizer__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lumasela-customizer__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <div class="lumasela-customizer__intro rte">{{ section.settings.intro }}</div>
+      {%- endif -%}
+
+      {%- if customizer_product != blank -%}
+        <div class="lumasela-customizer__product-meta">
+          <p class="lumasela-customizer__product-title">{{ customizer_product.title | escape }}</p>
+          <p class="lumasela-customizer__price" data-customizer-price>
+            {{ selected_variant.price | money }}
+          </p>
+        </div>
+        {%- form 'product', customizer_product, id: product_form_id, class: 'lumasela-customizer__form' -%}
+          <div class="lumasela-customizer__field">
+            <label for="CustomizerVariant-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+            <select id="CustomizerVariant-{{ section.id }}" name="id" data-customizer-variant>
+              {%- for variant in customizer_product.variants -%}
+                <option
+                  value="{{ variant.id }}"
+                  data-price="{{ variant.price | money | escape }}"
+                  data-available="{{ variant.available }}"
+                  {% if variant.id == selected_variant.id %}selected{% endif %}
+                >
+                  {{ variant.title | escape }} — {{ variant.price | money }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+          {% render 'lumasela-customizer-fields', section: section, initial_name: initial_name %}
+          <div class="lumasela-customizer__field lumasela-customizer__field--quantity">
+            <label for="CustomizerQuantity-{{ section.id }}">{{ 'products.product.quantity.label' | t }}</label>
+            <input id="CustomizerQuantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
+          </div>
+          <button
+            type="submit"
+            name="add"
+            class="button button--primary lumasela-customizer__submit"
+            data-customizer-submit
+            data-add-label="{{ 'products.product.add_to_cart' | t | escape }}"
+            data-sold-label="{{ 'products.product.sold_out' | t | escape }}"
+            {% unless selected_variant.available %}disabled{% endunless %}
+          >
+            {%- if selected_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+      {%- else -%}
+        <div class="lumasela-customizer__form lumasela-customizer__form--demo">
+          {% render 'lumasela-customizer-fields', section: section, initial_name: initial_name, demo: true %}
+          <p class="lumasela-customizer__setup">{{ section.settings.demo_message | escape }}</p>
+          {%- if section.settings.demo_link != blank and section.settings.demo_label != blank -%}
+            <a class="button button--primary" href="{{ section.settings.demo_link }}">
+              {{ section.settings.demo_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</lumasela-customizer>
+
+{% schema %}
+{
+  "name": "Lumasela customizer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select a Shopify product to enable cart and checkout from the homepage. Product templates use the current product automatically."
+    },
+    {
+      "type": "image_picker",
+      "id": "preview_image",
+      "label": "Preview image"
+    },
+    {
+      "type": "text",
+      "id": "preview_alt",
+      "label": "Preview image alt text",
+      "default": "Silver phone with a clear personalized case"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "03 / Create and compare"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Write your name. Make it yours."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>Choose a signature style, color and position. The preview updates as you type.</p>"
+    },
+    {
+      "type": "text",
+      "id": "default_name",
+      "label": "Default preview name",
+      "default": "Alexandria Rose"
+    },
+    {
+      "type": "textarea",
+      "id": "demo_message",
+      "label": "Demo message",
+      "default": "Preview mode. Select a Shopify product in the theme editor to connect cart and checkout."
+    },
+    {
+      "type": "text",
+      "id": "demo_label",
+      "label": "Demo button label",
+      "default": "Browse products"
+    },
+    {
+      "type": "url",
+      "id": "demo_link",
+      "label": "Demo button link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela customizer"
+    }
+  ]
+}
+{% endschema %}

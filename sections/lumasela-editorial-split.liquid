@@ -1,0 +1,141 @@
+{%- liquid
+  case section.settings.fallback_visual
+    when 'mirror'
+      assign fallback_image = 'lumasela-mirror-selfie-iphone18pro-lumasela-v2.png'
+      assign fallback_width = 1122
+      assign fallback_height = 1402
+    when 'desk'
+      assign fallback_image = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.png'
+      assign fallback_width = 1672
+      assign fallback_height = 941
+    else
+      assign fallback_image = 'lumasela-brand-vision-iphone18pro-lumasela-v3.png'
+      assign fallback_width = 1672
+      assign fallback_height = 941
+  endcase
+  assign image_alt = section.settings.image.alt | default: section.settings.heading | strip_html
+-%}
+
+<section
+  id="LumaselaEditorial-{{ section.id }}"
+  class="lumasela-editorial color-{{ section.settings.color_scheme }} gradient lumasela-editorial--{{ section.settings.media_position }}"
+>
+  <div class="lumasela-editorial__inner page-width">
+    <div class="lumasela-editorial__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '550, 750, 1100, 1500, 1800',
+            sizes: '(min-width: 990px) 55vw, 100vw',
+            loading: 'lazy',
+            class: 'lumasela-editorial__image',
+            alt: image_alt
+        }}
+      {%- else -%}
+        <img
+          class="lumasela-editorial__image"
+          src="{{ fallback_image | asset_url }}"
+          width="{{ fallback_width }}"
+          height="{{ fallback_height }}"
+          loading="lazy"
+          alt="{{ image_alt | escape }}"
+        >
+      {%- endif -%}
+    </div>
+
+    <div class="lumasela-editorial__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lumasela-kicker">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lumasela-display">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="lumasela-editorial__body rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a class="button button--primary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela editorial split",
+  "tag": "section",
+  "class": "section-lumasela-editorial",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "fallback_visual",
+      "label": "Built-in fallback visual",
+      "options": [
+        { "value": "vision", "label": "Brand vision" },
+        { "value": "mirror", "label": "Mirror" },
+        { "value": "desk", "label": "Desk" }
+      ],
+      "default": "vision"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LUMASELA"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A little clearer. A little more yours."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>We keep the phone's original color visible and leave one considered place for your handwriting. It can be your own name or a meaningful gift for someone important.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Create a signature"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela editorial split"
+    }
+  ]
+}
+{% endschema %}
