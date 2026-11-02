@@ -1,0 +1,51 @@
+<nav class="lumasela-product-nav" aria-label="{{ section.settings.navigation_label | escape }}">
+  <div class="lumasela-product-nav__inner page-width">
+    <a class="lumasela-product-nav__brand" href="{{ routes.root_url }}" aria-label="Lumasela home">LUMASELA</a>
+    <div class="lumasela-product-nav__links">
+      <a href="#lumasela-product-overview">{{ section.settings.overview_label | escape }}</a>
+      <a href="#lumasela-customizer">{{ section.settings.personalize_label | escape }}</a>
+      <a href="#lumasela-product-details">{{ section.settings.details_label | escape }}</a>
+    </div>
+    <a class="lumasela-product-nav__cta" href="#lumasela-product-overview">{{ section.settings.cta_label | escape }}</a>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Product navigation",
+  "tag": "section",
+  "class": "section-lumasela-product-nav",
+  "settings": [
+    {
+      "type": "text",
+      "id": "navigation_label",
+      "label": "Navigation accessibility label",
+      "default": "Product sections"
+    },
+    {
+      "type": "text",
+      "id": "overview_label",
+      "label": "Overview link label",
+      "default": "Overview"
+    },
+    {
+      "type": "text",
+      "id": "personalize_label",
+      "label": "Personalization link label",
+      "default": "Personalize"
+    },
+    {
+      "type": "text",
+      "id": "details_label",
+      "label": "Details link label",
+      "default": "Details"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Call to action label",
+      "default": "Shop now"
+    }
+  ]
+}
+{% endschema %}

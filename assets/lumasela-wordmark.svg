@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 180" width="780" height="180" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 80" role="img" aria-labelledby="title">
   <title id="title">Lumasela</title>
-  <text x="24" y="126" fill="currentColor" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="500" letter-spacing="8">Lumasela</text>
+  <g fill="none" stroke="#111311" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M21 11v54h43" stroke-width="4" />
+    <path d="M21 65c14-.5 17-6.3 22-17.2S52.1 28.7 64 27" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <circle cx="64" cy="27" r="3.5" fill="#111311" />
+  <text x="92" y="56" fill="#111311" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="600" letter-spacing="7">LUMASELA</text>
 </svg>

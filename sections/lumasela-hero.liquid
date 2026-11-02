@@ -1,22 +1,29 @@
 {%- liquid
   case section.settings.fallback_visual
+    when 'malaysia'
+      assign fallback_desktop = 'lumasela-kl-hero-v1.jpg'
+      assign fallback_mobile = 'lumasela-kl-hero-mobile-v1.jpg'
+      assign fallback_width = 1774
+      assign fallback_height = 887
+      assign fallback_mobile_width = 1122
+      assign fallback_mobile_height = 1402
     when 'lifestyle'
-      assign fallback_desktop = 'lumasela-hero-lifestyle-iphone18pro-lumasela-ultrawide-v1.png'
-      assign fallback_mobile = 'lumasela-hero-lifestyle-mobile-iphone18pro-lumasela-v2.png'
+      assign fallback_desktop = 'lumasela-hero-lifestyle-iphone18pro-lumasela-ultrawide-v1.jpg'
+      assign fallback_mobile = 'lumasela-hero-lifestyle-mobile-iphone18pro-lumasela-v2.jpg'
       assign fallback_width = 1893
       assign fallback_height = 831
       assign fallback_mobile_width = 1122
       assign fallback_mobile_height = 1402
     when 'gift'
-      assign fallback_desktop = 'lumasela-hero-gift-iphone18pro-silver-clear-ultrawide-v1.png'
-      assign fallback_mobile = 'lumasela-hero-gift-mobile-iphone18pro-silver-clear-v1.png'
-      assign fallback_width = 1891
-      assign fallback_height = 831
+      assign fallback_desktop = 'lumasela-gift-kuala-lumpur-v1.jpg'
+      assign fallback_mobile = 'lumasela-gift-kuala-lumpur-mobile-v1.jpg'
+      assign fallback_width = 1672
+      assign fallback_height = 941
       assign fallback_mobile_width = 1122
       assign fallback_mobile_height = 1402
     else
-      assign fallback_desktop = 'lumasela-hero-product-iphone18pro-silver-clear-ultrawide-v1.png'
-      assign fallback_mobile = 'lumasela-hero-product-mobile-iphone18pro-silver-clear-v1.png'
+      assign fallback_desktop = 'lumasela-hero-product-iphone18pro-silver-clear-ultrawide-v1.jpg'
+      assign fallback_mobile = 'lumasela-hero-product-mobile-iphone18pro-silver-clear-v1.jpg'
       assign fallback_width = 1916
       assign fallback_height = 821
       assign fallback_mobile_width = 1024
@@ -29,7 +36,7 @@
     assign image_loading = 'eager'
     assign image_priority = 'high'
   endif
-  assign image_alt = section.settings.image.alt | default: section.settings.heading | strip_html
+  assign image_alt = section.settings.image.alt | default: section.settings.image_alt_text | default: section.settings.heading | strip_html
 
   case section.settings.height
     when 'medium'
@@ -152,11 +159,18 @@
       "id": "fallback_visual",
       "label": "Built-in fallback visual",
       "options": [
+        { "value": "malaysia", "label": "Kuala Lumpur lifestyle" },
         { "value": "product", "label": "Product" },
         { "value": "lifestyle", "label": "Lifestyle" },
         { "value": "gift", "label": "Gift" }
       ],
       "default": "product"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image alt text",
+      "default": "A clear personalized phone case in a Kuala Lumpur café"
     },
     {
       "type": "text",

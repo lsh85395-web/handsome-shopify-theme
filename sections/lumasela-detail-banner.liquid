@@ -1,13 +1,13 @@
 {%- liquid
   case section.settings.fallback_visual
     when 'desk'
-      assign fallback_image = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.png'
+      assign fallback_image = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.jpg'
     when 'city'
-      assign fallback_image = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.png'
+      assign fallback_image = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.jpg'
     else
-      assign fallback_image = 'lumasela-hand-detail-iphone18pro-lumasela-v2.png'
+      assign fallback_image = 'lumasela-detail-macro-v1.jpg'
   endcase
-  assign image_alt = section.settings.image.alt | default: section.settings.heading | strip_html
+  assign image_alt = section.settings.image.alt | default: section.settings.image_alt_text | default: section.settings.heading | strip_html
 
   if section.settings.height == 'medium'
     assign detail_height = '68rem'
@@ -29,7 +29,7 @@
 -%}
 
 <section
-  id="LumaselaDetail-{{ section.id }}"
+  id="lumasela-product-details"
   class="lumasela-detail-banner"
   style="min-height: {{ detail_height }}; color: {{ detail_color }};"
 >
@@ -112,6 +112,12 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image alt text",
+      "default": "Close-up of a clear case around a silver phone's camera corner"
     },
     {
       "type": "select",

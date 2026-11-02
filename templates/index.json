@@ -3,12 +3,13 @@
     "hero_product": {
       "type": "lumasela-hero",
       "settings": {
-        "fallback_visual": "product",
+        "fallback_visual": "malaysia",
+        "image_alt_text": "A woman holding a clear personalized phone case in a Kuala Lumpur café",
         "eyebrow": "CLEAR CASE · PERSONAL SIGNATURE",
-        "heading": "Keep the phone you chose. Add the signature that is yours.",
+        "heading": "A clear case. A signature that is yours.",
         "heading_tag": "h1",
-        "body": "<p>A refined clear case concept that keeps the phone's original finish visible and adds one personal mark.</p>",
-        "primary_label": "Customize yours",
+        "body": "<p>Keep the phone you love visible and add a personal mark of your own.</p>",
+        "primary_label": "Design yours",
         "primary_link": "#lumasela-customizer",
         "secondary_label": "Explore styles",
         "secondary_link": "#signature-styles",
@@ -43,7 +44,7 @@
         "eyebrow": "03 / CREATE AND COMPARE",
         "heading": "Write your name. Make it yours.",
         "intro": "<p>Choose a signature style, color and position. The design preview updates as you type.</p>",
-        "default_name": "Alexandria Rose",
+        "default_name": "Aina",
         "demo_message": "Design preview only. Connect a verified Shopify phone-case product in the theme editor before accepting orders.",
         "demo_label": "View current catalog",
         "demo_link": "shopify://collections/all",
@@ -63,15 +64,15 @@
     },
     "detail": {
       "type": "lumasela-detail-banner",
-      "settings": {"fallback_visual": "detail", "eyebrow": "05 / PRODUCT DETAIL", "heading": "Clear edges, the phone's original finish, and your signature in one frame.", "body": "<p>Concept imagery only. Final material, fit, camera protection, print method and production specifications still require product confirmation.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "large", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
+      "settings": {"fallback_visual": "detail", "image_alt_text": "Close-up of a clear case around a silver phone's camera corner", "eyebrow": "05 / PRODUCT DETAIL", "heading": "A considered fit for the phone you choose.", "body": "<p>Concept imagery shown. Final device fit, materials and printing details will match the confirmed product listing.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "large", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
     },
     "vision": {
       "type": "lumasela-editorial-split",
-      "settings": {"fallback_visual": "vision", "eyebrow": "06 / LUMASELA", "heading": "A little clearer. A little more yours.", "body": "<p>We keep the phone's original color visible and leave one considered place for your handwriting. It can be your own name or a meaningful gift for someone important.</p>", "button_label": "Create a signature", "button_link": "#lumasela-customizer", "media_position": "right", "color_scheme": "scheme-2"}
+      "settings": {"fallback_visual": "vision", "eyebrow": "06 / LUMASELA", "heading": "A little clearer. A little more yours.", "body": "<p>Keep the phone's original color visible and add a personal detail that feels like you.</p>", "button_label": "Create a signature", "button_link": "#lumasela-customizer", "media_position": "right", "color_scheme": "scheme-2"}
     },
     "hero_gift": {
       "type": "lumasela-hero",
-      "settings": {"fallback_visual": "gift", "eyebrow": "A NAME FOR YOU. A NAME FOR SOMEONE IMPORTANT.", "heading": "Two names. One thoughtful way to remember.", "heading_tag": "h2", "body": "<p>Personalize a familiar everyday object with a mark that means something.</p>", "primary_label": "Start customizing", "primary_link": "#lumasela-customizer", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
+      "settings": {"fallback_visual": "gift", "image_alt_text": "Two friends exchanging a gift beside a clear personalized phone case", "eyebrow": "A THOUGHTFUL PERSONAL DETAIL", "heading": "A name to keep close.", "heading_tag": "h2", "body": "<p>Create a personal everyday piece for yourself or someone important.</p>", "primary_label": "Start customizing", "primary_link": "#lumasela-customizer", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
     }
   },
   "order": ["hero_product", "signature_styles", "customizer", "media_grid", "detail", "vision", "hero_gift"]

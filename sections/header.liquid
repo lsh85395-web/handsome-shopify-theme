@@ -205,7 +205,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ settings.lumasela_brand_name | default: shop.name }}</span>
+          {% render 'lumasela-wordmark' %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +248,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ settings.lumasela_brand_name | default: shop.name }}</span>
+          {% render 'lumasela-wordmark' %}
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}

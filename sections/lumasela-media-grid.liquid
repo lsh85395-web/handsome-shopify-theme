@@ -30,13 +30,13 @@
           assign fallback_height = 941
           case block.settings.fallback_asset
             when 'mirror'
-              assign fallback_file = 'lumasela-mirror-selfie-iphone18pro-lumasela-v2.png'
+              assign fallback_file = 'lumasela-mirror-selfie-iphone18pro-lumasela-v2.jpg'
               assign fallback_width = 1122
               assign fallback_height = 1402
             when 'city'
-              assign fallback_file = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.png'
+              assign fallback_file = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.jpg'
             when 'desk'
-              assign fallback_file = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.png'
+              assign fallback_file = 'lumasela-desk-lifestyle-iphone18pro-silver-clear-v1.jpg'
           endcase
           assign image_alt = block.settings.image.alt | default: block.settings.image_alt | default: block.settings.title
         -%}

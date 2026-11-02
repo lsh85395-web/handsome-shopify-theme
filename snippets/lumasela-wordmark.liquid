@@ -1,0 +1,12 @@
+{% doc %}
+  Renders the Lumasela logo lockup with a signature-inspired monogram.
+{% enddoc %}
+
+<span class="lumasela-wordmark" role="img" aria-label="{{ settings.lumasela_brand_name | default: 'Lumasela' | escape }}">
+  <svg class="lumasela-wordmark__mark" viewBox="0 0 44 44" fill="none" aria-hidden="true" focusable="false">
+    <path d="M12 6v29h24" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" />
+    <path d="M12 35c7.6-.3 9.2-3.4 12-9.2 2.4-5 5.1-10.2 12-10.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+    <circle cx="36" cy="15" r="2" fill="currentColor" />
+  </svg>
+  <span class="lumasela-wordmark__name">{{ settings.lumasela_brand_name | default: 'Lumasela' | escape }}</span>
+</span>

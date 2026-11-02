@@ -1,6 +1,6 @@
 # Reference and originality map
 
-The public PITAKA storefront was inspected for high-level ecommerce rhythm only: full-width product-led heroes, restrained typography, editorial lifestyle transitions, clear collection grids, product galleries and purchase controls.
+The public PITAKA storefront was inspected for high-level ecommerce rhythm only: product-led heroes, category and product discovery, restrained typography, editorial lifestyle transitions, clear collection grids and purchase controls. Apple's iPhone product page informed the product-page anchor navigation, clear purchase area and long-form visual storytelling rhythm. These are structural references, not a request to copy source code, exact assets, trademarked design details or copy.
 
 | Lumasela area | Reference principle | Lumasela implementation |
 | --- | --- | --- |
@@ -9,6 +9,6 @@ The public PITAKA storefront was inspected for high-level ecommerce rhythm only:
 | Customizer | Clear option-to-purchase path | Original form controls and live preview; Shopify line-item properties when connected to a product |
 | Lifestyle grid | Alternating editorial pacing | Original mirror, city and desk scenes with independent HTML copy |
 | Collection | Native commerce grid and filters | Dawn/Shopify collection data, filters, sorting and responsive cards |
-| Product | Gallery plus purchase controls and story sections | Dawn product form plus optional Lumasela customizer and editorial detail section |
+| Product | Product sub-navigation, clear purchase controls and visual feature storytelling | Dawn product form plus Lumasela anchor navigation, customizer, a distinct lifestyle story image, detail image and related products |
 
 No PITAKA source code, logo, copy, proprietary product imagery or product texture is included. The included device/case visuals remain concept artwork until the merchant provides verified production assets.

@@ -2,9 +2,9 @@
 
 ## Brand and global styling
 
-1. Open **Online Store → Themes → Lumasela Preview → Customize**.
+1. Open the confirmed unpublished Lumasela theme in **Online Store → Themes → Customize**. Check the theme ID before editing because an older preview ID in the repository records is stale.
 2. Open **Theme settings → Lumasela brand** to change the brand name and tagline.
-3. Use **Theme settings → Logo** to upload a logo and adjust its width. If no image logo is selected, the editable brand name is shown as text.
+3. Use **Theme settings → Logo** to upload a logo and adjust its width. If no image logo is selected, the theme uses the built-in Lumasela wordmark; edit its brand name in the Lumasela brand settings.
 4. Use **Theme settings → Colors**, **Typography**, **Buttons**, and **Layout** for global visual changes.
 
 ## Homepage copy, images, and section order
@@ -21,7 +21,7 @@
 2. For a phone-case product, choose theme template **product.lumasela** in the product's Theme template field.
 3. The Lumasela customizer adds `Signature name`, `Signature style`, `Signature color`, and `Signature position` as line-item properties. Check these values in the cart and in a Shopify test order before selling.
 4. Edit collection membership and collection images in **Products → Collections**. The collection page reads this Shopify data automatically.
-5. The current store catalog is unrelated to Lumasela. Do not relabel those products as phone cases.
+5. The current store has draft demo phone-case listings under VAULTA and unrelated demo listings. Do not relabel them as production Lumasela products without confirming brand, product details and fulfillment.
 
 ## Navigation and footer
 
