@@ -9,7 +9,7 @@
 ## Shopify theme
 
 1. Go to **Online Store → Themes** in the currently connected `lumasela.com` store.
-2. No Shopify theme upload was performed for the current local changes.
-3. If an older preview needs removal, confirm its theme ID in the current store first. The previous record for `195715891565` is stale and must not be assumed to identify a current theme.
+2. The current preview target is **Lumasela Malaysia Preview - Codex**, theme ID `193230930208`, role **UNPUBLISHED**. The live theme is **Handsome Askel Preview**, theme ID `192777158944`.
+3. A theme upload changes files only in the named unpublished theme. It does not publish that theme. Confirm both the name and ID before every upload.
 4. If a future version is published, use the confirmed prior theme in Shopify Admin to restore it. Shopify moves the displaced theme back into the theme library.
 5. Theme content and product/catalog data are separate. Reverting theme code does not revert product, collection, order, payment, shipping or navigation changes.

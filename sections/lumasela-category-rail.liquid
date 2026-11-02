@@ -1,0 +1,143 @@
+<section
+  class="lumasela-category-rail color-{{ section.settings.color_scheme }} gradient"
+  aria-labelledby="LumaselaCategories-{{ section.id }}"
+>
+  <div class="page-width">
+    <header class="lumasela-section-heading lumasela-section-heading--split">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 id="LumaselaCategories-{{ section.id }}" class="lumasela-display lumasela-display--section">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.text != blank -%}
+        <div class="lumasela-section-heading__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </header>
+
+    <div class="lumasela-category-rail__track" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign fallback_file = 'lumasela-iphone18pro-silver-clear-standard-v1.jpg'
+          assign fallback_width = 1024
+          assign fallback_height = 1536
+          case block.settings.fallback_asset
+            when 'mirror'
+              assign fallback_file = 'lumasela-mirror-selfie-iphone18pro-lumasela-v2.jpg'
+              assign fallback_width = 1122
+              assign fallback_height = 1402
+            when 'city'
+              assign fallback_file = 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.jpg'
+              assign fallback_width = 1672
+              assign fallback_height = 941
+            when 'gift'
+              assign fallback_file = 'lumasela-gift-kuala-lumpur-v1.jpg'
+              assign fallback_width = 1672
+              assign fallback_height = 941
+            when 'detail'
+              assign fallback_file = 'lumasela-detail-macro-v1.jpg'
+              assign fallback_width = 1672
+              assign fallback_height = 941
+          endcase
+          assign card_link = block.settings.link | default: routes.all_products_collection_url
+          assign image_alt = block.settings.image.alt | default: block.settings.image_alt | default: block.settings.title
+        -%}
+        <article class="lumasela-category-card" role="listitem" {{ block.shopify_attributes }}>
+          <a class="lumasela-category-card__link" href="{{ card_link }}">
+            <div class="lumasela-category-card__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: '360, 540, 720, 900, 1200',
+                    sizes: '(min-width: 990px) 25vw, 78vw',
+                    loading: 'lazy',
+                    class: 'lumasela-category-card__image',
+                    alt: image_alt
+                }}
+              {%- else -%}
+                <img
+                  class="lumasela-category-card__image"
+                  src="{{ fallback_file | asset_url }}"
+                  alt="{{ image_alt | escape }}"
+                  width="{{ fallback_width }}"
+                  height="{{ fallback_height }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </div>
+            <div class="lumasela-category-card__content">
+              {%- if block.settings.kicker != blank -%}
+                <span class="lumasela-category-card__kicker">{{ block.settings.kicker | escape }}</span>
+              {%- endif -%}
+              <h3>{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.text != blank -%}
+                <p>{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+              <span class="lumasela-category-card__cta">{{ block.settings.link_label | default: 'Explore' | escape }} →</span>
+            </div>
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela category rail",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "SHOP BY STYLE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find the case that feels like you." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Start with a clear finish, a personal signature, or a gift-ready detail.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "fallback_asset",
+          "label": "Included fallback image",
+          "options": [
+            { "value": "product", "label": "Product" },
+            { "value": "mirror", "label": "Mirror selfie" },
+            { "value": "city", "label": "City" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "detail", "label": "Detail" }
+          ],
+          "default": "product"
+        },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Lumasela phone case style" },
+        { "type": "text", "id": "kicker", "label": "Kicker", "default": "SIGNATURE" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Signature Clear" },
+        { "type": "text", "id": "text", "label": "Short description", "default": "A clear case finished with your personal mark." },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela category rail",
+      "blocks": [
+        { "type": "category", "settings": { "fallback_asset": "product", "kicker": "PERSONAL", "title": "Signature Clear", "text": "Add a name or mark to a clear everyday case." } },
+        { "type": "category", "settings": { "fallback_asset": "detail", "kicker": "MINIMAL", "title": "Pure Clear", "text": "Keep the phone colour and details in view." } },
+        { "type": "category", "settings": { "fallback_asset": "city", "kicker": "EVERYDAY", "title": "City Carry", "text": "A personal detail made for daily movement." } },
+        { "type": "category", "settings": { "fallback_asset": "gift", "kicker": "GIFT", "title": "Made for Someone", "text": "A thoughtful name to keep close." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

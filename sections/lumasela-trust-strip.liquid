@@ -1,0 +1,72 @@
+<section class="lumasela-trust color-{{ section.settings.color_scheme }} gradient" aria-label="{{ section.settings.aria_label | escape }}">
+  <div class="page-width">
+    <div class="lumasela-trust__grid" role="list">
+      {%- for block in section.blocks -%}
+        <div class="lumasela-trust__item" role="listitem" {{ block.shopify_attributes }}>
+          <span class="lumasela-trust__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'currency' -%}
+                MYR
+              {%- when 'lock' -%}
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v11H5z" stroke="currentColor" stroke-width="1.5"/></svg>
+              {%- when 'check' -%}
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="m8 12 2.7 2.7L16.5 9" stroke="currentColor" stroke-width="1.5"/></svg>
+              {%- when 'chat' -%}
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.5"/></svg>
+            {%- endcase -%}
+          </span>
+          <div>
+            <h2>{{ block.settings.title | escape }}</h2>
+            <p>{{ block.settings.text | escape }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela trust strip",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "aria_label", "label": "Accessibility label", "default": "Shopping information" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "currency", "label": "MYR" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "check", "label": "Check" },
+            { "value": "chat", "label": "Chat" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Compatibility first" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Review your exact device option before checkout." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela trust strip",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit." } },
+        { "type": "item", "settings": { "icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify." } },
+        { "type": "item", "settings": { "icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering." } },
+        { "type": "item", "settings": { "icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -2,15 +2,17 @@
 
 | Date (Asia/Shanghai) | Store | Theme | Status | Git commit | Notes |
 | --- | --- | --- | --- | --- | --- |
-| 2026-11-02 | `cfrzux-ne` / `lumasela.com` | None confirmed | **Local changes only** | Branch `codex/lumasela-shopify-20261101` | No Shopify theme files were uploaded in this work session. |
+| 2026-11-02 | `cfrzux-ne` / `lumasela.com` | `Lumasela Malaysia Preview - Codex`, ID `193230930208` | **Confirmed UNPUBLISHED target; current additions not uploaded yet** | Branch `codex/lumasela-pitaka-operational-20261102` | Theme inventory re-read through Shopify Admin API. The current code is prepared and validated before upload. |
+| 2026-11-02 | `cfrzux-ne` / `lumasela.com` | ID `193230930208` | **Historical preview content uploaded; remains UNPUBLISHED** | Branch `codex/lumasela-shopify-20261101` | Existing preview used for baseline desktop/mobile screenshots before the current operational additions. |
 | 2026-11-01 | `cfrzux-ne` | ID `195715891565` | **Historical; not currently listed** | Branch `codex/lumasela-shopify-20261101` | An earlier note claimed an upload; the ID is absent from the current theme list and its preview URL used `tumzaro.com`. Treat the old target as unverified. |
 
 ## Current connection
 
-- The connected store is `lumasela.com` (`cfrzux-ne`). Its current theme list does not include the preview ID recorded below.
-- No preview theme has been selected for this local update. The previously requested ID `194944106861` and the older recorded ID `195715891565` do not appear in the current theme list; confirm the exact unpublished theme in Shopify Admin before any upload.
+- The connected store is `lumasela.com` (`cfrzux-ne`).
+- Confirmed preview target: `Lumasela Malaysia Preview - Codex`, theme ID `193230930208`, role `UNPUBLISHED`.
+- Current live theme: `Handsome Askel Preview`, theme ID `192777158944`, role `MAIN`. Do not upload to or publish over it without a separate explicit approval.
 - The store uses MYR, while its configured country is Hong Kong. Confirm the Malaysia market settings separately before taking orders there.
-- GitHub branch: <https://github.com/lsh85395-web/handsome-shopify-theme/tree/codex/lumasela-shopify-20261101>
+- GitHub work branch: `codex/lumasela-pitaka-operational-20261102`.
 
 ## Historical record to treat as stale
 

@@ -1,20 +1,23 @@
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "hero": {
+      "type": "lumasela-collection-hero",
       "settings": {
+        "eyebrow": "LUMASELA CASES",
         "show_collection_description": true,
-        "show_collection_image": true,
-        "color_scheme": "scheme-2"
+        "fallback_description": "<p>Explore clear cases and personal signature styles. Product compatibility and specifications come from each Shopify product.</p>",
+        "cta_label": "Browse products",
+        "use_collection_image": true,
+        "color_scheme": "scheme-1"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "products_per_page": 12,
+        "products_per_page": 16,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -24,13 +27,36 @@
         "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 48,
+        "padding_top": 56,
         "padding_bottom": 72
       }
+    },
+    "principles": {
+      "type": "lumasela-feature-specs",
+      "blocks": {
+        "device": {"type": "feature", "settings": {"title": "Choose the exact device", "text": "<p>Select the exact phone model shown in each product's options.</p>"}},
+        "personal": {"type": "feature", "settings": {"title": "Make it personal", "text": "<p>Use the signature preview where personalization is offered.</p>"}},
+        "details": {"type": "feature", "settings": {"title": "Read verified details", "text": "<p>Materials, compatibility and care information belong in the Shopify product record.</p>"}}
+      },
+      "block_order": ["device", "personal", "details"],
+      "settings": {
+        "eyebrow": "BEFORE YOU ORDER",
+        "heading": "Choose with clarity.",
+        "text": "<p>Each product page should carry the confirmed information for that exact case and device.</p>",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "trust": {
+      "type": "lumasela-trust-strip",
+      "blocks": {
+        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
+        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
+        "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
+        "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
+      },
+      "block_order": ["currency", "checkout", "compatibility", "support"],
+      "settings": {"aria_label": "Shopping information", "color_scheme": "scheme-1"}
     }
   },
-  "order": [
-    "banner",
-    "product-grid"
-  ]
+  "order": ["hero", "product-grid", "principles", "trust"]
 }

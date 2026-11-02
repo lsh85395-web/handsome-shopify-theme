@@ -4,8 +4,34 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "brand_note": {
+          "type": "text",
+          "settings": {
+            "heading": "LUMASELA",
+            "subtext": "<p>Clear phone cases with a personal signature, designed for everyday life in Malaysia.</p>"
+          }
+        },
+        "explore_menu": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore",
+            "menu": "main-menu"
+          }
+        },
+        "help_menu": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "brand_note",
+        "explore_menu",
+        "help_menu"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,

@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {"type": "caption", "settings": {"text": "LUMASELA HELP", "text_style": "caption-with-letter-spacing", "text_size": "medium"}},
+        "heading": {"type": "heading", "settings": {"heading": "Questions, answered clearly.", "heading_size": "h0"}},
+        "text": {"type": "text", "settings": {"text": "<p>Product-specific information belongs on each product page. Store policies should be reviewed before ordering.</p>"}}
+      },
+      "block_order": ["caption", "heading", "text"],
+      "settings": {"desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-1", "full_width": true, "padding_top": 72, "padding_bottom": 40}
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "device": {"type": "collapsible_row", "settings": {"heading": "How do I choose the right device case?", "icon": "none", "row_content": "<p>Select the exact phone model shown in the product options. Similar device names do not guarantee the same fit.</p>", "page": ""}},
+        "personalization": {"type": "collapsible_row", "settings": {"heading": "How does personalization work?", "icon": "none", "row_content": "<p>Where available, enter a name and choose the style, colour and placement in the product customizer. Review the preview before adding the item to cart.</p>", "page": ""}},
+        "shipping": {"type": "collapsible_row", "settings": {"heading": "Where can I find delivery timing?", "icon": "none", "row_content": "<p>Use the delivery information shown at checkout and the store's current shipping policy.</p>", "page": ""}},
+        "returns": {"type": "collapsible_row", "settings": {"heading": "What is the return policy?", "icon": "none", "row_content": "<p>Return eligibility follows the store's published refund policy. Personalized products may have different eligibility, so review the policy before ordering.</p>", "page": ""}},
+        "contact": {"type": "collapsible_row", "settings": {"heading": "How can I contact Lumasela?", "icon": "none", "row_content": "<p>Use the contact form and include your device model and the product you are considering.</p>", "page": ""}}
+      },
+      "block_order": ["device", "personalization", "shipping", "returns", "contact"],
+      "settings": {"caption": "", "heading": "Frequently asked questions", "heading_size": "h1", "heading_alignment": "left", "layout": "none", "container_color_scheme": "scheme-1", "color_scheme": "scheme-2", "open_first_collapsible_row": true, "image_ratio": "adapt", "desktop_layout": "image_second", "padding_top": 40, "padding_bottom": 80}
+    },
+    "trust": {
+      "type": "lumasela-trust-strip",
+      "blocks": {
+        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
+        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
+        "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
+        "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
+      },
+      "block_order": ["currency", "checkout", "compatibility", "support"],
+      "settings": {"aria_label": "Shopping information", "color_scheme": "scheme-1"}
+    }
+  },
+  "order": ["intro", "faq", "trust"]
+}

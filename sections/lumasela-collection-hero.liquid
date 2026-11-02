@@ -1,0 +1,70 @@
+{%- liquid
+  assign hero_image = section.settings.image
+  if hero_image == blank and section.settings.use_collection_image
+    assign hero_image = collection.image
+  endif
+  assign image_alt = hero_image.alt | default: collection.title
+-%}
+
+<section class="lumasela-collection-hero color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width lumasela-collection-hero__inner">
+    <div class="lumasela-collection-hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h1 class="lumasela-display">{{ collection.title | escape }}</h1>
+      {%- if section.settings.show_collection_description and collection.description != blank -%}
+        <div class="lumasela-collection-hero__description rte">{{ collection.description }}</div>
+      {%- elsif section.settings.fallback_description != blank -%}
+        <div class="lumasela-collection-hero__description rte">{{ section.settings.fallback_description }}</div>
+      {%- endif -%}
+      <a class="lumasela-text-link" href="#ProductGridContainer">{{ section.settings.cta_label | escape }} ↓</a>
+    </div>
+
+    <div class="lumasela-collection-hero__media">
+      {%- if hero_image != blank -%}
+        {{
+          hero_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '550, 750, 1100, 1500, 1800',
+            sizes: '(min-width: 990px) 58vw, 100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'lumasela-collection-hero__image',
+            alt: image_alt
+        }}
+      {%- else -%}
+        <img
+          class="lumasela-collection-hero__image"
+          src="{{ 'lumasela-city-lifestyle-iphone18pro-lumasela-v3.jpg' | asset_url }}"
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchpriority="high"
+          alt="{{ collection.title | escape }}"
+        >
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela collection hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "LUMASELA CASES" },
+    { "type": "checkbox", "id": "show_collection_description", "label": "Show collection description", "default": true },
+    { "type": "richtext", "id": "fallback_description", "label": "Fallback description", "default": "<p>Explore clear cases and personal signature styles. Product compatibility and specifications come from each Shopify product.</p>" },
+    { "type": "text", "id": "cta_label", "label": "Product grid link", "default": "Browse products" },
+    { "type": "checkbox", "id": "use_collection_image", "label": "Use collection image", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Optional image override" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "presets": [
+    { "name": "Lumasela collection hero" }
+  ]
+}
+{% endschema %}

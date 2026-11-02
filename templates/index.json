@@ -19,6 +19,17 @@
         "overlay_opacity": 5
       }
     },
+    "category_rail": {
+      "type": "lumasela-category-rail",
+      "blocks": {
+        "signature": {"type": "category", "settings": {"fallback_asset": "product", "image_alt": "Clear Lumasela phone case with a personal signature", "kicker": "PERSONAL", "title": "Signature Clear", "text": "Add a name or mark to a clear everyday case.", "link_label": "Explore", "link": "#lumasela-customizer"}},
+        "pure": {"type": "category", "settings": {"fallback_asset": "detail", "image_alt": "Close-up of a clear Lumasela phone case", "kicker": "MINIMAL", "title": "Pure Clear", "text": "Keep the phone colour and details in view.", "link_label": "See the details", "link": "#lumasela-product-details"}},
+        "city": {"type": "category", "settings": {"fallback_asset": "city", "image_alt": "Lumasela clear phone case in Kuala Lumpur", "kicker": "EVERYDAY", "title": "City Carry", "text": "A personal detail made for daily movement.", "link_label": "See the story", "link": "#lumasela-everyday"}},
+        "gift": {"type": "category", "settings": {"fallback_asset": "gift", "image_alt": "A Lumasela personalized phone case given as a gift", "kicker": "GIFT", "title": "Made for Someone", "text": "A thoughtful name to keep close.", "link_label": "Create a gift", "link": "#lumasela-customizer"}}
+      },
+      "block_order": ["signature", "pure", "city", "gift"],
+      "settings": {"eyebrow": "SHOP BY STYLE", "heading": "Find the case that feels like you.", "text": "<p>Start with a clear finish, a personal signature, or a gift-ready detail.</p>", "color_scheme": "scheme-1"}
+    },
     "signature_styles": {
       "type": "lumasela-signature-styles",
       "blocks": {
@@ -52,6 +63,17 @@
         "padding_bottom": 96
       }
     },
+    "featured": {
+      "type": "lumasela-featured-showcase",
+      "blocks": {
+        "demo_signature": {"type": "demo_product", "settings": {"fallback_asset": "product", "image_alt": "Demo personalized clear case", "meta": "DEMO · PERSONALIZED", "title": "Signature Clear Case", "text": "Replace with verified product data before launch."}},
+        "demo_pure": {"type": "demo_product", "settings": {"fallback_asset": "customizer", "image_alt": "Demo minimal clear case", "meta": "DEMO · MINIMAL", "title": "Pure Clear Case", "text": "Replace with verified product data before launch."}},
+        "demo_detail": {"type": "demo_product", "settings": {"fallback_asset": "detail", "image_alt": "Demo phone case detail", "meta": "DEMO · DETAIL", "title": "Camera Detail Case", "text": "Replace with verified product data before launch."}},
+        "demo_gift": {"type": "demo_product", "settings": {"fallback_asset": "desk", "image_alt": "Demo gift phone case", "meta": "DEMO · GIFT", "title": "Personal Gift Case", "text": "Replace with verified product data before launch."}}
+      },
+      "block_order": ["demo_signature", "demo_pure", "demo_detail", "demo_gift"],
+      "settings": {"eyebrow": "SHOP THE EDIT", "heading": "Designed to become yours.", "collection": "", "products_to_show": 4, "view_all_label": "Shop all cases", "setup_note": "Demo cards are shown until a published Shopify collection is selected in the theme editor.", "color_scheme": "scheme-1"}
+    },
     "media_grid": {
       "type": "lumasela-media-grid",
       "blocks": {
@@ -64,7 +86,7 @@
     },
     "detail": {
       "type": "lumasela-detail-banner",
-      "settings": {"fallback_visual": "detail", "image_alt_text": "Close-up of a clear case around a silver phone's camera corner", "eyebrow": "05 / PRODUCT DETAIL", "heading": "A considered fit for the phone you choose.", "body": "<p>Concept imagery shown. Final device fit, materials and printing details will match the confirmed product listing.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "large", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
+      "settings": {"fallback_visual": "detail", "image_alt_text": "Close-up of a clear case around a silver phone's camera corner", "eyebrow": "05 / PRODUCT DETAIL", "heading": "A considered fit for the phone you choose.", "body": "<p>Concept imagery shown. Final device fit, materials and printing details will match the confirmed product listing.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "medium", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
     },
     "vision": {
       "type": "lumasela-editorial-split",
@@ -73,7 +95,18 @@
     "hero_gift": {
       "type": "lumasela-hero",
       "settings": {"fallback_visual": "gift", "image_alt_text": "Two friends exchanging a gift beside a clear personalized phone case", "eyebrow": "A THOUGHTFUL PERSONAL DETAIL", "heading": "A name to keep close.", "heading_tag": "h2", "body": "<p>Create a personal everyday piece for yourself or someone important.</p>", "primary_label": "Start customizing", "primary_link": "#lumasela-customizer", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
+    },
+    "trust": {
+      "type": "lumasela-trust-strip",
+      "blocks": {
+        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
+        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
+        "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
+        "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
+      },
+      "block_order": ["currency", "checkout", "compatibility", "support"],
+      "settings": {"aria_label": "Shopping information", "color_scheme": "scheme-2"}
     }
   },
-  "order": ["hero_product", "signature_styles", "customizer", "media_grid", "detail", "vision", "hero_gift"]
+  "order": ["hero_product", "category_rail", "signature_styles", "customizer", "featured", "media_grid", "detail", "vision", "hero_gift", "trust"]
 }
