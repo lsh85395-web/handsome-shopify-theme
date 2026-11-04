@@ -10,13 +10,13 @@
         "heading_tag": "h1",
         "body": "<p>Lumasela is a Malaysia-focused phone case concept built around clear design and personal signatures.</p>",
         "primary_label": "Explore the collection",
-        "primary_link": "shopify://collections/all",
+        "primary_link": "shopify://collections/phone-cases",
         "secondary_label": "Contact us",
-        "secondary_link": "shopify://pages/contact",
+        "secondary_link": "shopify://pages/contact-us",
         "height": "large",
         "content_position": "left",
-        "text_tone": "dark",
-        "overlay_opacity": 10
+        "text_tone": "light",
+        "overlay_opacity": 70
       }
     },
     "vision": {
@@ -27,7 +27,7 @@
         "heading": "Keep the phone visible. Add one detail that is yours.",
         "body": "<p>We start with the familiar object already in your hand and create space for one personal mark. Final product materials, compatibility and production details must always come from verified product data.</p>",
         "button_label": "Create a signature",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify://collections/phone-cases",
         "media_position": "right",
         "color_scheme": "scheme-1"
       }

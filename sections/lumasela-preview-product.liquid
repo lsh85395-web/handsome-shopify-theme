@@ -1,6 +1,10 @@
 {{ 'lumasela-preview-styles.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'lumasela-preview-product.js' | asset_url }}" defer></script>
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign preview_main_image = 'lumasela-preview-phone-silver-base.webp' | asset_url -%}
+{%- if product.featured_media.preview_image != blank -%}
+  {%- assign preview_main_image = product.featured_media.preview_image | image_url: width: 1400 -%}
+{%- endif -%}
 <section class="lumasela-preview-product" data-lumasela-product id="overview">
   <div class="product-subnav">
     <div class="page-width">
@@ -11,12 +15,12 @@
   <div class="product-main page-width">
     <div class="product-gallery" data-product-gallery>
       <div class="product-gallery-main is-personalisation-preview" data-gallery-main-wrap>
-        {%- if product == blank -%}<span class="demo-chip">Demo product</span>{%- endif -%}
-        <img data-gallery-main data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone beneath a transparent clear case" width="1024" height="1024">
+        {%- if product == blank or product.tags contains 'demo-product' -%}<span class="demo-chip">Demo product</span>{%- endif -%}
+        <img data-gallery-main data-phone-finish-preview src="{{ preview_main_image }}" alt="Silver phone beneath a transparent clear case" width="1024" height="1024">
         <div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>
       </div>
       <div class="product-thumbs" aria-label="Product images">
-        <button type="button" class="is-active" data-gallery-src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" data-personalisation-preview><img src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone preview" width="120" height="120"></button>
+        <button type="button" class="is-active" data-gallery-src="{{ preview_main_image }}" data-personalisation-preview><img src="{{ preview_main_image }}" alt="Silver phone preview" width="120" height="120"></button>
         <button type="button" data-gallery-src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}"><img src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}" alt="Clear case detail" width="120" height="120"></button>
         <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}" alt="Black phone preview" width="120" height="120"></button>
         <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}" alt="Burgundy phone preview" width="120" height="120"></button>
@@ -25,13 +29,13 @@
     <div class="product-info">
       <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
       <h1>{{ product.title | default: section.settings.demo_title | escape }}</h1>
-      <p class="product-price" data-product-price>{%- if product != blank -%}{{ selected_variant.price | money }}{%- else -%}RM 29.99 <small>visual preview</small>{%- endif -%}</p>
+      <p class="product-price" data-product-price>{%- if product != blank -%}RM {{ selected_variant.price | money_without_currency }}{%- else -%}RM 29.99 <small>visual preview</small>{%- endif -%}</p>
       <p class="product-lead">{{ section.settings.intro | escape }}</p>
       {%- if product != blank -%}
         {%- form 'product', product, id: 'LumaselaPreviewProductForm', class: 'lumasela-preview-product__form' -%}
           <select data-variant-data hidden aria-hidden="true" tabindex="-1">
             {%- for variant in product.variants -%}
-              <option value="{{ variant.id }}" data-available="{{ variant.available }}" data-price="{{ variant.price | money | escape }}" data-option1="{{ variant.option1 | escape }}" data-option2="{{ variant.option2 | escape }}" data-option3="{{ variant.option3 | escape }}">{{ variant.title | escape }}</option>
+              <option value="{{ variant.id }}" data-available="{{ variant.available }}" data-price="RM {{ variant.price | money_without_currency | escape }}" data-option1="{{ variant.option1 | escape }}" data-option2="{{ variant.option2 | escape }}" data-option3="{{ variant.option3 | escape }}">{{ variant.title | escape }}</option>
             {%- endfor -%}
           </select>
           <input type="hidden" name="id" value="{{ selected_variant.id }}" data-variant-id>

@@ -58,7 +58,7 @@
         "default_name": "Aina",
         "demo_message": "Design preview only. Connect a verified Shopify phone-case product in the theme editor before accepting orders.",
         "demo_label": "View current catalog",
-        "demo_link": "shopify://collections/all",
+        "demo_link": "shopify://collections/phone-cases",
         "padding_top": 96,
         "padding_bottom": 96
       }

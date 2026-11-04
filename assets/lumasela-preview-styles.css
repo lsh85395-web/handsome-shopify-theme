@@ -311,6 +311,7 @@ button { color: inherit; }
 .collection-editorial p:not(.eyebrow) { color: var(--muted); }
 .collection-editorial img { height: 620px; object-fit: cover; }
 
+.lumasela-preview-product { background: #fff; }
 .product-subnav { position: sticky; z-index: 10; top: 0; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
 .product-subnav > div { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .product-subnav nav { display: flex; gap: 28px; color: var(--muted); font-size: 12px; }

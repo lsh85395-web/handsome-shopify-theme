@@ -16,14 +16,14 @@
           "type": "link_list",
           "settings": {
             "heading": "Explore",
-            "menu": "main-menu"
+            "menu": "lumasela-explore"
           }
         },
         "help_menu": {
           "type": "link_list",
           "settings": {
             "heading": "Help",
-            "menu": "footer"
+            "menu": "lumasela-help"
           }
         }
       },
@@ -33,6 +33,7 @@
         "help_menu"
       ],
       "settings": {
+        "copyright_name": "LUMASELA",
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
         "newsletter_heading": "Notes worth keeping",

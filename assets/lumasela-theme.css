@@ -667,6 +667,12 @@ body.gradient {
     color: #fff;
   }
 
+  .lumasela-hero--dark .lumasela-display,
+  .lumasela-hero--dark .lumasela-kicker,
+  .lumasela-hero--dark .lumasela-copy {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  }
+
   .lumasela-hero .lumasela-copy {
     color: rgba(255, 255, 255, 0.78);
   }
