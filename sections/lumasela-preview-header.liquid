@@ -1,0 +1,75 @@
+{%- liquid
+  assign home_header = false
+  if request.page_type == 'index' and section.settings.overlay_home
+    assign home_header = true
+  endif
+-%}
+<header class="lumasela-site-header{% if home_header %} lumasela-site-header--home{% endif %}" role="banner">
+  <div class="lumasela-site-header__inner">
+    <a class="lumasela-site-header__wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">{{ section.settings.wordmark | escape }}</a>
+    <nav class="lumasela-site-header__nav" aria-label="Main navigation">
+      <a href="{{ section.settings.cases_link | default: routes.collections_url }}">{{ section.settings.cases_label | escape }}</a>
+      <a href="{{ section.settings.personalise_link | default: '#lumasela-customizer' }}">{{ section.settings.personalise_label | escape }}</a>
+      <a href="{{ section.settings.everyday_link | default: '#lumasela-everyday' }}">{{ section.settings.everyday_label | escape }}</a>
+      <a href="{{ section.settings.story_link | default: '/pages/about' }}">{{ section.settings.story_label | escape }}</a>
+      <a href="{{ section.settings.help_link | default: '/pages/support' }}">{{ section.settings.help_label | escape }}</a>
+    </nav>
+    <div class="lumasela-site-header__actions">
+      <a href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></a>
+      <a href="{{ routes.cart_url }}" aria-label="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2 10h10l2-7H6"/><circle cx="9" cy="19" r="1"/><circle cx="17" cy="19" r="1"/></svg>{% if cart.item_count > 0 %}<span class="lumasela-site-header__count">{{ cart.item_count }}</span>{% endif %}</a>
+      <details class="lumasela-site-header__mobile-menu"><summary aria-label="Open menu"><span></span><span></span></summary><nav aria-label="Mobile navigation">
+        <a href="{{ section.settings.cases_link | default: routes.collections_url }}">{{ section.settings.cases_label | escape }}</a>
+        <a href="{{ section.settings.personalise_link | default: '#lumasela-customizer' }}">{{ section.settings.personalise_label | escape }}</a>
+        <a href="{{ section.settings.everyday_link | default: '#lumasela-everyday' }}">{{ section.settings.everyday_label | escape }}</a>
+        <a href="{{ section.settings.story_link | default: '/pages/about' }}">{{ section.settings.story_label | escape }}</a>
+        <a href="{{ section.settings.help_link | default: '/pages/support' }}">{{ section.settings.help_label | escape }}</a>
+      </nav></details>
+    </div>
+  </div>
+</header>
+<style>
+  .lumasela-site-header{position:relative;z-index:50;background:#fff;color:#111;border-bottom:1px solid #ddd;font-family:Arial,sans-serif}
+  .lumasela-site-header--home{position:absolute;top:0;left:0;width:100%;background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
+  .lumasela-site-header__inner{width:100%;max-width:none;min-height:82px;padding:0 4.4vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+  .lumasela-site-header a{color:inherit;text-decoration:none}
+  .lumasela-site-header__wordmark{font-size:21px;font-weight:800;letter-spacing:.18em;white-space:nowrap}
+  .lumasela-site-header__nav{display:flex;gap:clamp(24px,3vw,52px);align-items:center;font-size:14px;font-weight:600}
+  .lumasela-site-header__nav a:hover,.lumasela-site-header__actions a:hover{opacity:.65}
+  .lumasela-site-header__actions{display:flex;justify-content:flex-end;align-items:center;gap:28px}
+  .lumasela-site-header__actions>a{position:relative;width:22px;height:22px;display:block}
+  .lumasela-site-header__actions svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .lumasela-site-header__count{position:absolute;right:-9px;top:-9px;min-width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#a63c31;color:#fff;font-size:10px}
+  .lumasela-site-header__mobile-menu{display:none}
+  @media(max-width:750px){
+    .lumasela-site-header__inner{min-height:64px;padding:0 20px;grid-template-columns:1fr auto}
+    .lumasela-site-header__wordmark{font-size:16px}
+    .lumasela-site-header__nav{display:none}
+    .lumasela-site-header__actions{gap:18px}
+    .lumasela-site-header__mobile-menu{display:block;order:-1}
+    .lumasela-site-header__mobile-menu summary{width:25px;height:25px;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;list-style:none}
+    .lumasela-site-header__mobile-menu summary::-webkit-details-marker{display:none}
+    .lumasela-site-header__mobile-menu summary span{display:block;width:20px;height:1px;background:currentColor}
+    .lumasela-site-header__mobile-menu nav{position:absolute;top:100%;left:0;right:0;padding:16px 20px 24px;display:flex;flex-direction:column;background:#fff;color:#111;border-bottom:1px solid #ddd}
+    .lumasela-site-header__mobile-menu nav a{padding:11px 0;font-size:16px}
+  }
+</style>
+{% schema %}
+{
+  "name":"Lumasela preview header",
+  "settings":[
+    {"type":"text","id":"wordmark","label":"Wordmark","default":"LUMASELA"},
+    {"type":"checkbox","id":"overlay_home","label":"Overlay homepage hero","default":true},
+    {"type":"text","id":"cases_label","label":"Cases label","default":"Cases"},
+    {"type":"url","id":"cases_link","label":"Cases link"},
+    {"type":"text","id":"personalise_label","label":"Personalise label","default":"Personalise"},
+    {"type":"url","id":"personalise_link","label":"Personalise link"},
+    {"type":"text","id":"everyday_label","label":"Everyday label","default":"Everyday"},
+    {"type":"url","id":"everyday_link","label":"Everyday link"},
+    {"type":"text","id":"story_label","label":"Story label","default":"Story"},
+    {"type":"url","id":"story_link","label":"Story link"},
+    {"type":"text","id":"help_label","label":"Help label","default":"Help"},
+    {"type":"url","id":"help_link","label":"Help link"}
+  ],
+  "presets":[{"name":"Lumasela preview header"}]
+}
+{% endschema %}

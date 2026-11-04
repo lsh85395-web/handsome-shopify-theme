@@ -15,8 +15,8 @@
         "secondary_link": "#signature-styles",
         "height": "viewport",
         "content_position": "left",
-        "text_tone": "dark",
-        "overlay_opacity": 5
+        "text_tone": "light",
+        "overlay_opacity": 70
       }
     },
     "category_rail": {

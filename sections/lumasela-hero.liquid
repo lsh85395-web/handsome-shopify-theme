@@ -45,7 +45,7 @@
 
 <section
   id="LumaselaHero-{{ section.id }}"
-  class="lumasela-hero{% if section.settings.text_tone == 'light' %} lumasela-hero--dark{% endif %}"
+  class="lumasela-hero{% if section.settings.text_tone == 'light' %} lumasela-hero--dark{% endif %}{% if request.page_type == 'index' and section.settings.heading_tag == 'h1' %} lumasela-hero--primary{% endif %}"
   style="--lumasela-hero-height: {{ hero_height }}; --lumasela-hero-height-mobile: {{ hero_height_mobile }};"
 >
   <picture class="lumasela-hero__media">

@@ -166,6 +166,20 @@ body.gradient {
   color: #fff;
 }
 
+.lumasela-hero--dark .lumasela-display,
+.lumasela-hero--dark .lumasela-kicker {
+  color: #fff;
+}
+
+.lumasela-hero--primary,
+.lumasela-hero--primary .lumasela-hero__content {
+  min-height: 100svh;
+}
+
+.lumasela-hero--primary .lumasela-display {
+  font-weight: 700;
+}
+
 .lumasela-hero--dark .lumasela-copy {
   color: rgba(255, 255, 255, 0.76);
 }
