@@ -5,7 +5,7 @@
   endif
   assign selected_variant = customizer_product.selected_or_first_available_variant
   assign product_form_id = 'lumasela-product-form-' | append: section.id
-  assign initial_name = section.settings.default_name | truncate: 18, ''
+  assign initial_name = section.settings.default_name | truncate: 20, ''
 -%}
 
 <lumasela-customizer

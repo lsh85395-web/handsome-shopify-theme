@@ -2,13 +2,13 @@
   <div class="lumasela-customizer__field">
     <div class="lumasela-field__meta">
       <label for="CustomizerName-{{ section.id }}">Signature name</label>
-      <span data-customizer-count>{{ initial_name.size }} / 18</span>
+      <span data-customizer-count>{{ initial_name.size }} / 20</span>
     </div>
     <input
       id="CustomizerName-{{ section.id }}"
       type="text"
       value="{{ initial_name | escape }}"
-      maxlength="18"
+      maxlength="20"
       autocomplete="off"
       data-customizer-name
       {% unless demo %}name="properties[Signature name]" required{% endunless %}

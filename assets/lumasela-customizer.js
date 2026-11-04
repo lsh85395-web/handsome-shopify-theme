@@ -37,12 +37,12 @@ class LumaselaCustomizer extends HTMLElement {
 
   updatePreview() {
     if (!this.signature) return;
-    const name = this.nameInput?.value.trim().slice(0, 18) || this.nameInput?.placeholder || '';
+    const name = this.nameInput?.value.trim().slice(0, 20) || this.nameInput?.placeholder || '';
     this.signature.textContent = name;
     this.signature.dataset.style = this.styleSelect?.value || 'flow';
     this.signature.dataset.position = this.positionSelect?.value || 'lower_right';
     this.signature.style.setProperty('--signature-color', this.colorSelect?.value || '#111111');
-    if (this.count) this.count.textContent = `${this.nameInput?.value.length || 0} / 18`;
+    if (this.count) this.count.textContent = `${this.nameInput?.value.length || 0} / 20`;
   }
 
   updateVariant() {
