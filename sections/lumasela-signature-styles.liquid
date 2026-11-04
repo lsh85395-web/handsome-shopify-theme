@@ -37,7 +37,16 @@
           {{ block.shopify_attributes }}
         >
           <div class="lumasela-signature-card__visual">
-            {%- if section.settings.product_image != blank -%}
+            {%- if block.settings.preview_asset != blank -%}
+              <img
+                class="lumasela-signature-card__image"
+                src="{{ block.settings.preview_asset | asset_url }}"
+                alt="{{ block.settings.style_label | escape }} signature shown on a burgundy phone"
+                width="1024"
+                height="1024"
+                loading="lazy"
+              >
+            {%- elsif section.settings.product_image != blank -%}
               {{
                 section.settings.product_image
                 | image_url: width: 1200
@@ -58,13 +67,13 @@
                 loading="lazy"
               >
             {%- endif -%}
-            <span
+            {%- if block.settings.preview_asset == blank -%}<span
               class="lumasela-signature-card__signature lumasela-signature-card__signature--{{ block.settings.style }}"
               data-position="{{ block.settings.position }}"
               aria-hidden="true"
             >
               {{ block.settings.preview_name | escape }}
-            </span>
+            </span>{%- endif -%}
             <span class="visually-hidden">{{ signature_label | escape }}</span>
           </div>
           <div class="lumasela-signature-card__content">
@@ -86,7 +95,7 @@
   "name": "Lumasela signature styles",
   "tag": "section",
   "class": "section",
-  "max_blocks": 4,
+  "max_blocks": 6,
   "settings": [
     {
       "type": "text",
@@ -129,6 +138,19 @@
       "type": "signature",
       "name": "Signature style",
       "settings": [
+        {
+          "type": "select",
+          "id": "preview_asset",
+          "label": "Approved signature mockup",
+          "options": [
+            {"value": "font-allura-burgundy-horizontal.jpg", "label": "Allura"},
+            {"value": "font-dancing-script-burgundy-horizontal.jpg", "label": "Dancing Script"},
+            {"value": "font-great-vibes-burgundy-horizontal.jpg", "label": "Great Vibes"},
+            {"value": "font-sacramento-burgundy-horizontal.jpg", "label": "Sacramento"},
+            {"value": "font-kaushan-script-burgundy-horizontal.jpg", "label": "Kaushan Script"},
+            {"value": "font-knewave-burgundy-horizontal.jpg", "label": "Knewave"}
+          ]
+        },
         {
           "type": "text",
           "id": "style_label",

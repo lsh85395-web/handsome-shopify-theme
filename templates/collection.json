@@ -4,9 +4,10 @@
       "type": "lumasela-collection-hero",
       "settings": {
         "eyebrow": "LUMASELA CASES",
-        "show_collection_description": true,
-        "fallback_description": "<p>Explore clear cases and personal signature styles. Product compatibility and specifications come from each Shopify product.</p>",
-        "cta_label": "Browse products",
+        "display_heading": "Clear, personal,\nmade to be carried.",
+        "show_collection_description": false,
+        "fallback_description": "<p>A considered way to show the phone you chose—and the name that makes it yours.</p>",
+        "cta_label": "",
         "use_collection_image": true,
         "color_scheme": "scheme-1"
       }

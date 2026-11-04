@@ -1600,6 +1600,52 @@ body.gradient {
   line-height: 1.7;
 }
 
+/* Approved six-font edit, matching the supplied horizontal case mockups. */
+@font-face { font-family: "Lumasela Allura"; src: url("lumasela-preview-Allura-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Lumasela Dancing Script"; src: url("lumasela-preview-DancingScript-Variable.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Lumasela Great Vibes"; src: url("lumasela-preview-GreatVibes-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Lumasela Sacramento"; src: url("lumasela-preview-Sacramento-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Lumasela Kaushan Script"; src: url("lumasela-preview-KaushanScript-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Lumasela Knewave"; src: url("lumasela-preview-Knewave-Regular.ttf") format("truetype"); font-display: swap; }
+
+.lumasela-signature-styles__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  border: 0;
+}
+.lumasela-signature-card { background: transparent; border: 0; }
+.lumasela-signature-card__visual { aspect-ratio: 1; background: #f7f6f4; }
+.lumasela-signature-card__image { object-fit: contain; }
+.lumasela-signature-card__content { min-height: 0; padding: 1.6rem 0 2.2rem; border-bottom: 1px solid var(--lumasela-line); }
+.lumasela-signature-card__index,
+.lumasela-signature-card__meta { display: none; }
+.lumasela-signature-card__title { margin: 0 0 .4rem; font-size: 1.8rem; font-weight: 650; }
+.lumasela-signature-card__text { font-size: 1.3rem; }
+.lumasela-customizer__signature[data-style="allura"] { font-family: "Lumasela Allura", cursive; }
+.lumasela-customizer__signature[data-style="dancing-script"] { font-family: "Lumasela Dancing Script", cursive; }
+.lumasela-customizer__signature[data-style="great-vibes"] { font-family: "Lumasela Great Vibes", cursive; }
+.lumasela-customizer__signature[data-style="sacramento"] { font-family: "Lumasela Sacramento", cursive; }
+.lumasela-customizer__signature[data-style="kaushan-script"] { font-family: "Lumasela Kaushan Script", cursive; }
+.lumasela-customizer__signature[data-style="knewave"] { font-family: "Lumasela Knewave", cursive; }
+
+@media screen and (max-width: 989px) {
+  .lumasela-signature-styles__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 749px) {
+  .lumasela-signature-styles__grid {
+    display: flex;
+    width: calc(100vw - 1.8rem);
+    gap: 1.2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-right: 18vw;
+  }
+  .lumasela-signature-styles__grid::-webkit-scrollbar { display: none; }
+  .lumasela-signature-card { flex: 0 0 76vw; scroll-snap-align: start; }
+  .lumasela-signature-card__visual { aspect-ratio: 1; }
+}
+
 .lumasela-collection-hero__media {
   overflow: hidden;
   min-height: 54rem;
@@ -1775,5 +1821,105 @@ body.gradient {
 
   .template-product .product__info-container .price--large {
     font-size: 2.8rem;
+  }
+}
+
+/* Keep the collection opening aligned with the approved full-image preview. */
+.lumasela-collection-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 66rem;
+  color: #fff;
+  background: #111;
+}
+
+.lumasela-collection-hero__inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: none;
+  min-height: 66rem;
+  margin: 0;
+  padding: 8rem max(2rem, 2.25vw);
+}
+
+.lumasela-collection-hero__inner::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .66), rgba(0, 0, 0, .08) 70%);
+  content: '';
+  pointer-events: none;
+}
+
+.lumasela-collection-hero__media {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  min-height: 0;
+}
+
+.lumasela-collection-hero__image {
+  object-position: 54% center;
+}
+
+.lumasela-collection-hero__content {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 84rem;
+  padding: 0;
+}
+
+.lumasela-collection-hero .lumasela-display {
+  max-width: 84rem;
+  margin: 1rem 0 2.2rem;
+  color: #fff;
+  font-size: clamp(5.2rem, 6vw, 9.6rem);
+  font-weight: 620;
+}
+
+.lumasela-collection-hero .lumasela-eyebrow {
+  color: #fff;
+}
+
+.lumasela-collection-hero__description {
+  max-width: 52rem;
+  margin: 0;
+  color: rgba(255, 255, 255, .82);
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 749px) {
+  .lumasela-collection-hero,
+  .lumasela-collection-hero__inner {
+    min-height: 59rem;
+  }
+
+  .lumasela-collection-hero__inner {
+    padding: 0 2rem 4.4rem;
+  }
+
+  .lumasela-collection-hero__inner::after {
+    background: linear-gradient(0deg, rgba(0, 0, 0, .76), rgba(0, 0, 0, .04) 70%);
+  }
+
+  .lumasela-collection-hero__media {
+    aspect-ratio: auto;
+  }
+
+  .lumasela-collection-hero__image {
+    object-position: 63% center;
+  }
+
+  .lumasela-collection-hero .lumasela-display {
+    font-size: clamp(4.4rem, 13vw, 6.2rem);
+  }
+
+  .lumasela-collection-hero__description {
+    font-size: 1.4rem;
   }
 }

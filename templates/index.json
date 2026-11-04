@@ -10,7 +10,7 @@
         "heading_tag": "h1",
         "body": "<p>Keep the phone you love visible and add a personal mark of your own.</p>",
         "primary_label": "Design yours",
-        "primary_link": "#lumasela-customizer",
+        "primary_link": "/products/signature-clear#personalise",
         "secondary_label": "Explore styles",
         "secondary_link": "#signature-styles",
         "height": "viewport",
@@ -22,10 +22,10 @@
     "category_rail": {
       "type": "lumasela-category-rail",
       "blocks": {
-        "signature": {"type": "category", "settings": {"fallback_asset": "product", "image_alt": "Clear Lumasela phone case with a personal signature", "kicker": "PERSONAL", "title": "Signature Clear", "text": "Add a name or mark to a clear everyday case.", "link_label": "Explore", "link": "#lumasela-customizer"}},
+        "signature": {"type": "category", "settings": {"fallback_asset": "product", "image_alt": "Clear Lumasela phone case with a personal signature", "kicker": "PERSONAL", "title": "Signature Clear", "text": "Add a name or mark to a clear everyday case.", "link_label": "Explore", "link": "/products/signature-clear#personalise"}},
         "pure": {"type": "category", "settings": {"fallback_asset": "detail", "image_alt": "Close-up of a clear Lumasela phone case", "kicker": "MINIMAL", "title": "Pure Clear", "text": "Keep the phone colour and details in view.", "link_label": "See the details", "link": "#lumasela-product-details"}},
         "city": {"type": "category", "settings": {"fallback_asset": "city", "image_alt": "Lumasela clear phone case in Kuala Lumpur", "kicker": "EVERYDAY", "title": "City Carry", "text": "A personal detail made for daily movement.", "link_label": "See the story", "link": "#lumasela-everyday"}},
-        "gift": {"type": "category", "settings": {"fallback_asset": "gift", "image_alt": "A Lumasela personalized phone case given as a gift", "kicker": "GIFT", "title": "Made for Someone", "text": "A thoughtful name to keep close.", "link_label": "Create a gift", "link": "#lumasela-customizer"}}
+        "gift": {"type": "category", "settings": {"fallback_asset": "gift", "image_alt": "A Lumasela personalized phone case given as a gift", "kicker": "GIFT", "title": "Made for Someone", "text": "A thoughtful name to keep close.", "link_label": "Create a gift", "link": "/products/signature-clear#personalise"}}
       },
       "block_order": ["signature", "pure", "city", "gift"],
       "settings": {"eyebrow": "SHOP BY STYLE", "heading": "Find the case that feels like you.", "text": "<p>Start with a clear finish, a personal signature, or a gift-ready detail.</p>", "color_scheme": "scheme-1"}
@@ -33,16 +33,18 @@
     "signature_styles": {
       "type": "lumasela-signature-styles",
       "blocks": {
-        "flow": {"type": "signature", "settings": {"style_label": "FLOW / FLUID HANDWRITING", "title": "A soft, connected mark", "text": "<p>Fluid and relaxed for an effortless everyday signature.</p>", "preview_name": "Avery", "style": "flow", "position": "lower-right", "signature_color": "#151515", "signature_scale": 100}},
-        "line": {"type": "signature", "settings": {"style_label": "LINE / REFINED SCRIPT", "title": "A considered fine line", "text": "<p>Light and precise with a calm, refined rhythm.</p>", "preview_name": "Avery", "style": "line", "position": "lower-center", "signature_color": "#151515", "signature_scale": 95}},
-        "note": {"type": "signature", "settings": {"style_label": "NOTE / NATURAL NOTE", "title": "Simple and direct", "text": "<p>A natural handwritten form with quiet character.</p>", "preview_name": "Avery", "style": "note", "position": "lower-left", "signature_color": "#151515", "signature_scale": 95}},
-        "mark": {"type": "signature", "settings": {"style_label": "MARK / EXPRESSIVE MARK", "title": "A bolder personal gesture", "text": "<p>More contrast and movement for a confident finish.</p>", "preview_name": "Avery", "style": "mark", "position": "lower-right", "signature_color": "#151515", "signature_scale": 100}}
+        "allura": {"type": "signature", "settings": {"preview_asset": "font-allura-burgundy-horizontal.jpg", "style_label": "Allura", "title": "Allura", "text": "<p>Airy calligraphic.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
+        "dancing": {"type": "signature", "settings": {"preview_asset": "font-dancing-script-burgundy-horizontal.jpg", "style_label": "Dancing Script", "title": "Dancing Script", "text": "<p>Friendly handwritten.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
+        "great_vibes": {"type": "signature", "settings": {"preview_asset": "font-great-vibes-burgundy-horizontal.jpg", "style_label": "Great Vibes", "title": "Great Vibes", "text": "<p>Formal flourish.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
+        "sacramento": {"type": "signature", "settings": {"preview_asset": "font-sacramento-burgundy-horizontal.jpg", "style_label": "Sacramento", "title": "Sacramento", "text": "<p>Fine monoline.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
+        "kaushan": {"type": "signature", "settings": {"preview_asset": "font-kaushan-script-burgundy-horizontal.jpg", "style_label": "Kaushan Script", "title": "Kaushan Script", "text": "<p>Confident brush.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
+        "knewave": {"type": "signature", "settings": {"preview_asset": "font-knewave-burgundy-horizontal.jpg", "style_label": "Knewave", "title": "Knewave", "text": "<p>Bold expressive.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}}
       },
-      "block_order": ["flow", "line", "note", "mark"],
+      "block_order": ["allura", "dancing", "great_vibes", "sacramento", "kaushan", "knewave"],
       "settings": {
-        "eyebrow": "02 / FOUR EXPRESSIONS",
-        "heading": "One clear case. Four ways to make it yours.",
-        "text": "<p>Compare the rhythm, weight and personality of each signature before you customize.</p>",
+        "eyebrow": "THE SIGNATURE EDIT",
+        "heading": "Six ways to make it yours.",
+        "text": "<p>Licensed signature fonts, shown with the supplied horizontal production mockups.</p>",
         "product_alt_text": "Silver concept phone with a clear personalized case",
         "color_scheme": "scheme-2"
       }
@@ -56,9 +58,9 @@
         "heading": "Write your name. Make it yours.",
         "intro": "<p>Choose a signature style, color and position. The design preview updates as you type.</p>",
         "default_name": "Aina",
-        "demo_message": "Design preview only. Connect a verified Shopify phone-case product in the theme editor before accepting orders.",
-        "demo_label": "View current catalog",
-        "demo_link": "shopify://collections/phone-cases",
+        "demo_message": "Try a quick preview here, then choose your phone and final signature on the product page.",
+        "demo_label": "Continue to product studio",
+        "demo_link": "/products/signature-clear#personalise",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -86,15 +88,15 @@
     },
     "detail": {
       "type": "lumasela-detail-banner",
-      "settings": {"fallback_visual": "detail", "image_alt_text": "Close-up of a clear case around a silver phone's camera corner", "eyebrow": "05 / PRODUCT DETAIL", "heading": "A considered fit for the phone you choose.", "body": "<p>Concept imagery shown. Final device fit, materials and printing details will match the confirmed product listing.</p>", "button_label": "See the design preview", "button_link": "#lumasela-customizer", "height": "medium", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
+      "settings": {"fallback_visual": "detail", "image_alt_text": "Close-up of a clear case around a silver phone's camera corner", "eyebrow": "05 / PRODUCT DETAIL", "heading": "A considered fit for the phone you choose.", "body": "<p>Concept imagery shown. Final device fit, materials and printing details will match the confirmed product listing.</p>", "button_label": "See the design preview", "button_link": "/products/signature-clear#personalise", "height": "medium", "content_position": "left", "text_tone": "light", "overlay_opacity": 40}
     },
     "vision": {
       "type": "lumasela-editorial-split",
-      "settings": {"fallback_visual": "vision", "eyebrow": "06 / LUMASELA", "heading": "A little clearer. A little more yours.", "body": "<p>Keep the phone's original color visible and add a personal detail that feels like you.</p>", "button_label": "Create a signature", "button_link": "#lumasela-customizer", "media_position": "right", "color_scheme": "scheme-2"}
+      "settings": {"fallback_visual": "vision", "eyebrow": "06 / LUMASELA", "heading": "A little clearer. A little more yours.", "body": "<p>Keep the phone's original color visible and add a personal detail that feels like you.</p>", "button_label": "Create a signature", "button_link": "/products/signature-clear#personalise", "media_position": "right", "color_scheme": "scheme-2"}
     },
     "hero_gift": {
       "type": "lumasela-hero",
-      "settings": {"fallback_visual": "gift", "image_alt_text": "Two friends exchanging a gift beside a clear personalized phone case", "eyebrow": "A THOUGHTFUL PERSONAL DETAIL", "heading": "A name to keep close.", "heading_tag": "h2", "body": "<p>Create a personal everyday piece for yourself or someone important.</p>", "primary_label": "Start customizing", "primary_link": "#lumasela-customizer", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
+      "settings": {"fallback_visual": "gift", "image_alt_text": "Two friends exchanging a gift beside a clear personalized phone case", "eyebrow": "A THOUGHTFUL PERSONAL DETAIL", "heading": "A name to keep close.", "heading_tag": "h2", "body": "<p>Create a personal everyday piece for yourself or someone important.</p>", "primary_label": "Start customizing", "primary_link": "/products/signature-clear#personalise", "secondary_label": "Browse the catalog", "secondary_link": "shopify://collections/all", "height": "large", "content_position": "left", "text_tone": "dark", "overlay_opacity": 5}
     },
     "trust": {
       "type": "lumasela-trust-strip",

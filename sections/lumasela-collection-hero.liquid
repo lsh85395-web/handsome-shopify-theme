@@ -12,13 +12,15 @@
       {%- if section.settings.eyebrow != blank -%}
         <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
-      <h1 class="lumasela-display">{{ collection.title | escape }}</h1>
+      <h1 class="lumasela-display">{{ section.settings.display_heading | default: collection.title | escape | newline_to_br }}</h1>
       {%- if section.settings.show_collection_description and collection.description != blank -%}
         <div class="lumasela-collection-hero__description rte">{{ collection.description }}</div>
       {%- elsif section.settings.fallback_description != blank -%}
         <div class="lumasela-collection-hero__description rte">{{ section.settings.fallback_description }}</div>
       {%- endif -%}
-      <a class="lumasela-text-link" href="#ProductGridContainer">{{ section.settings.cta_label | escape }} ↓</a>
+      {%- if section.settings.cta_label != blank -%}
+        <a class="lumasela-text-link" href="#ProductGridContainer">{{ section.settings.cta_label | escape }} ↓</a>
+      {%- endif -%}
     </div>
 
     <div class="lumasela-collection-hero__media">
@@ -56,6 +58,7 @@
   "class": "section",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "LUMASELA CASES" },
+    { "type": "textarea", "id": "display_heading", "label": "Display heading (optional; blank uses collection title)" },
     { "type": "checkbox", "id": "show_collection_description", "label": "Show collection description", "default": true },
     { "type": "richtext", "id": "fallback_description", "label": "Fallback description", "default": "<p>Explore clear cases and personal signature styles. Product compatibility and specifications come from each Shopify product.</p>" },
     { "type": "text", "id": "cta_label", "label": "Product grid link", "default": "Browse products" },
