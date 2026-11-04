@@ -11,7 +11,7 @@
   const previewWrap = one('[data-gallery-main-wrap]');
   const nameInput = one('[data-inline-name-input]');
   const styleNames = ['allura', 'dancing-script', 'great-vibes', 'sacramento', 'kaushan-script', 'knewave'];
-  const positions = ['bottom-right-vertical', 'bottom-center', 'below-logo', 'bottom-right-diagonal', 'horizontal-line', 'diagonal-line'];
+  const positions = ['bottom-right-vertical', 'bottom-center', 'below-logo', 'bottom-right-diagonal'];
   const sizes = ['small', 'medium', 'large'];
   const active = (group) => group?.querySelector('.is-active');
   const activate = (group, button) => {
@@ -38,24 +38,42 @@
   const showPreview = () => { if (previewThumb && !previewThumb.classList.contains('is-active')) selectGallery(previewThumb); };
   const fitSignature = () => {
     const position = active(one('[data-inline-position-options]'))?.dataset.position || 'bottom-center';
-    const rotation = position === 'bottom-right-vertical' ? 90 : ['bottom-right-diagonal', 'diagonal-line'].includes(position) ? 18 : 0;
-    const angle = rotation * Math.PI / 180;
+    const size = Number(active(one('[data-signature-size-options]'))?.dataset.sizeMm) || 50;
+    const rotation = position === 'bottom-right-vertical' ? -90 : position === 'bottom-right-diagonal' ? -22 : 0;
+    const angle = Math.abs(rotation) * Math.PI / 180;
     liveText.forEach((node) => {
       node.style.setProperty('--signature-fit', '1');
       const zone = node.closest('.signature-safe-zone');
       if (!zone || !zone.clientWidth || !zone.clientHeight) return;
-      const style = getComputedStyle(node);
-      const coordinate = (raw, length) => raw.endsWith('%') ? parseFloat(raw) * length / 100 : parseFloat(raw);
-      const x = coordinate(style.left, zone.clientWidth);
-      const y = coordinate(style.top, zone.clientHeight);
-      const width = node.offsetWidth;
-      const height = node.offsetHeight;
-      const rotatedWidth = Math.abs(width * Math.cos(angle)) + Math.abs(height * Math.sin(angle));
-      const rotatedHeight = Math.abs(width * Math.sin(angle)) + Math.abs(height * Math.cos(angle));
-      const availableWidth = Math.max(0, 2 * Math.min(x, zone.clientWidth - x) - 8);
-      const availableHeight = Math.max(0, 2 * Math.min(y, zone.clientHeight - y) - 8);
-      const scale = Math.min(1, availableWidth / Math.max(1, rotatedWidth), availableHeight / Math.max(1, rotatedHeight));
-      node.style.setProperty('--signature-fit', Math.max(.08, scale).toFixed(3));
+      // The four placement anchors stay fixed on the phone image. The 68 mm
+      // reference is a visual estimate until a supplier print template exists.
+      const width = zone.clientWidth;
+      const height = zone.clientHeight;
+      node.style.fontSize = `${width * .25}px`;
+      const naturalWidth = Math.max(1, node.offsetWidth);
+      const naturalHeight = Math.max(1, node.offsetHeight);
+      const targetWidth = width * size / 68;
+      let scale = targetWidth / naturalWidth;
+      const rotatedWidth = naturalWidth * Math.cos(angle) + naturalHeight * Math.sin(angle);
+      const rotatedHeight = naturalWidth * Math.sin(angle) + naturalHeight * Math.cos(angle);
+      const maxWidth = position === 'bottom-right-diagonal' ? width * .97 : width * .98;
+      const maxHeight = position === 'bottom-right-vertical' ? height * .68 : position === 'below-logo' ? height * .46 : height * .53;
+      scale = Math.min(scale, maxWidth / rotatedWidth, maxHeight / rotatedHeight);
+      const shownWidth = rotatedWidth * scale;
+      const shownHeight = rotatedHeight * scale;
+      let x = width * .5;
+      let y = height * .98 - shownHeight / 2;
+      if (position === 'bottom-right-vertical') {
+        x = width * .97 - shownWidth / 2;
+      } else if (position === 'below-logo') {
+        y = height * .46 + shownHeight / 2;
+      } else if (position === 'bottom-right-diagonal') {
+        x = width * .985 - shownWidth / 2;
+        y = height * .96 - shownHeight / 2;
+      }
+      node.style.left = `${x}px`;
+      node.style.top = `${y}px`;
+      node.style.setProperty('--signature-fit', Math.max(.001, scale).toFixed(4));
     });
   };
   const syncName = () => {
@@ -93,7 +111,7 @@
     if (!button) return;
     activate(event.currentTarget, button);
     positioned.forEach((node) => { node.classList.remove(...sizes.map((item) => `signature-size-${item}`)); node.classList.add(`signature-size-${button.dataset.signatureSize}`); });
-    setProperty('[data-property-size]', button.querySelector('strong')?.textContent?.trim() || button.dataset.signatureSize);
+    setProperty('[data-property-size]', `${button.querySelector('strong')?.textContent?.trim() || button.dataset.signatureSize} (${button.dataset.sizeMm} mm)`);
     requestAnimationFrame(fitSignature);
   });
   one('[data-inline-color-options]')?.addEventListener('click', (event) => {

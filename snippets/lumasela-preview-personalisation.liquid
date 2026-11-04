@@ -19,19 +19,17 @@
     <button class="signature-kaushan-script" type="button" data-style="kaushan-script"><span>Aina</span><small>Kaushan Script</small></button>
     <button class="signature-knewave" type="button" data-style="knewave"><span>Aina</span><small>Knewave</small></button>
   </div></fieldset>
-  <fieldset class="inline-choice"><legend>03 / Select placement</legend><div class="placement-grid placement-grid-six" data-inline-position-options>
+  <fieldset class="inline-choice"><legend>03 / Select placement</legend><div class="placement-grid placement-grid-four" data-inline-position-options>
     <button type="button" data-position="bottom-right-vertical"><span class="placement-demo placement-demo-bottom-right-vertical"></span><small>Bottom right vertical</small></button>
     <button class="is-active" type="button" data-position="bottom-center"><span class="placement-demo placement-demo-bottom-center"></span><small>Bottom center</small></button>
     <button type="button" data-position="below-logo"><span class="placement-demo placement-demo-below-logo"></span><small>Below logo</small></button>
     <button type="button" data-position="bottom-right-diagonal"><span class="placement-demo placement-demo-bottom-right-diagonal"></span><small>Bottom right diagonal</small></button>
-    <button type="button" data-position="horizontal-line"><span class="placement-demo placement-demo-horizontal-line"></span><small>Horizontal signature line</small></button>
-    <button type="button" data-position="diagonal-line"><span class="placement-demo placement-demo-diagonal-line"></span><small>Diagonal signature line</small></button>
   </div></fieldset>
   <fieldset class="inline-choice"><legend>04 / Select signature size</legend><div class="signature-size-grid" data-signature-size-options>
-    <button type="button" data-signature-size="small"><strong>Small</strong><small>30–42 mm</small></button>
-    <button class="is-active" type="button" data-signature-size="medium"><strong>Medium</strong><small>43–58 mm</small></button>
-    <button type="button" data-signature-size="large"><strong>Large</strong><small>59–72 mm</small></button>
-  </div><p class="size-guidance">The preview scales long names down to stay inside the shown area. Final print dimensions require production confirmation.</p></fieldset>
+    <button type="button" data-signature-size="small" data-size-mm="35"><strong>Small</strong><small>35 mm</small></button>
+    <button class="is-active" type="button" data-signature-size="medium" data-size-mm="50"><strong>Medium</strong><small>50 mm</small></button>
+    <button type="button" data-signature-size="large" data-size-mm="65"><strong>Large</strong><small>65 mm</small></button>
+  </div><p class="size-guidance">Each size has a fixed design width. Longer names fit within the selected area.</p></fieldset>
   <fieldset class="inline-choice"><legend>Text colour</legend><div class="inline-swatches" data-inline-color-options>
     <button class="inline-swatch inline-swatch-white is-active" type="button" data-color="#ffffff" aria-label="White"></button>
     <button class="inline-swatch inline-swatch-black" type="button" data-color="#111111" aria-label="Black"></button>
@@ -49,7 +47,7 @@
   {% unless demo %}
     <input type="hidden" name="properties[Signature style]" value="Allura" data-property-style>
     <input type="hidden" name="properties[Signature position]" value="Bottom center" data-property-position>
-    <input type="hidden" name="properties[Signature size]" value="Medium" data-property-size>
+    <input type="hidden" name="properties[Signature size]" value="Medium (50 mm)" data-property-size>
     <input type="hidden" name="properties[Text colour]" value="White" data-property-colour>
     <input type="hidden" name="properties[Preview phone colour]" value="Silver" data-property-phone>
   {% endunless %}

@@ -319,18 +319,16 @@ button { color: inherit; }
 .product-gallery { position: sticky; top: 74px; min-width: 0; display: grid; grid-template-columns: 82px 1fr; gap: 14px; align-self: start; }
 .product-gallery-main { position: relative; grid-column: 2; grid-row: 1; aspect-ratio: 1; overflow: hidden; background: #fff; }
 .product-gallery-main > img[data-gallery-main] { width: 100%; height: 100%; object-fit: contain; }
-.signature-safe-zone { position: absolute; z-index: 2; left: 31%; top: 29%; width: 38%; height: 61%; overflow: hidden; pointer-events: none; }
-.product-inline-signature { --signature-fit: 1; --signature-rotation: 0deg; position: absolute; z-index: 2; left: 50%; top: 82%; transform: translate(-50%, -50%) rotate(var(--signature-rotation)) scale(var(--signature-fit)); color: #fff; font-size: var(--signature-base, clamp(23px, 2.4vw, 38px)); text-shadow: 0 1px 8px rgba(0,0,0,.32); white-space: nowrap; pointer-events: none; opacity: 0; visibility: hidden; transform-origin: center; transition: left .2s ease, top .2s ease, color .2s ease, opacity .2s ease, transform .18s ease; }
+.signature-safe-zone { position: absolute; z-index: 2; left: 31%; top: 29%; width: 38%; height: 61%; overflow: hidden; pointer-events: none; container-type: inline-size; }
+.product-inline-signature { --signature-fit: 1; --signature-rotation: 0deg; position: absolute; z-index: 2; left: 50%; top: 90%; transform: translate(-50%, -50%) rotate(var(--signature-rotation)) scale(var(--signature-fit)); color: #fff; font-size: var(--signature-base, 25cqw); line-height: 1; text-shadow: 0 1px 8px rgba(0,0,0,.32); white-space: nowrap; pointer-events: none; opacity: 0; visibility: hidden; transform-origin: center; transition: color .2s ease, opacity .2s ease; }
 .product-gallery-main.is-personalisation-preview .product-inline-signature { opacity: 1; visibility: visible; }
-.position-bottom-right-vertical { --signature-rotation: -90deg; left: 76%; top: 72%; }
-.position-bottom-center { --signature-rotation: 0deg; left: 50%; top: 82%; }
-.position-below-logo { --signature-rotation: 0deg; left: 50%; top: 58%; }
-.position-bottom-right-diagonal { --signature-rotation: -18deg; left: 70%; top: 78%; }
-.position-horizontal-line { --signature-rotation: 0deg; left: 50%; top: 80%; }
-.position-diagonal-line { --signature-rotation: -18deg; left: 52%; top: 72%; }
-.signature-size-small { --signature-base: clamp(18px, 1.7vw, 27px); }
-.signature-size-medium { --signature-base: clamp(23px, 2.3vw, 37px); }
-.signature-size-large { --signature-base: clamp(28px, 2.8vw, 45px); }
+.position-bottom-right-vertical { --signature-rotation: -90deg; left: 91%; top: 76%; }
+.position-bottom-center { --signature-rotation: 0deg; left: 50%; top: 90%; }
+.position-below-logo { --signature-rotation: 0deg; left: 50%; top: 54%; }
+.position-bottom-right-diagonal { --signature-rotation: -22deg; left: 70%; top: 82%; }
+.signature-size-small { --signature-base: 18cqw; }
+.signature-size-medium { --signature-base: 25cqw; }
+.signature-size-large { --signature-base: 32cqw; }
 .product-uploaded-signature, .comparison-uploaded-signature { --signature-rotation: 0deg; position: absolute; z-index: 3; left: 50%; top: 82%; width: auto; max-width: 70%; height: auto; max-height: 28%; object-fit: contain; transform: translate(-50%, -50%) rotate(var(--signature-rotation)); transform-origin: center; pointer-events: none; filter: drop-shadow(0 1px 5px rgba(0,0,0,.25)); }
 .product-uploaded-signature { opacity: 0; visibility: hidden; transition: opacity .2s ease; }
 .product-gallery-main.is-personalisation-preview .product-uploaded-signature:not([hidden]) { opacity: 1; visibility: visible; }
@@ -338,8 +336,6 @@ button { color: inherit; }
 .product-uploaded-signature.position-bottom-center, .comparison-uploaded-signature.position-bottom-center { --signature-rotation: 0deg; left: 50%; top: 82%; }
 .product-uploaded-signature.position-below-logo, .comparison-uploaded-signature.position-below-logo { --signature-rotation: 0deg; left: 50%; top: 58%; }
 .product-uploaded-signature.position-bottom-right-diagonal, .comparison-uploaded-signature.position-bottom-right-diagonal { --signature-rotation: -18deg; left: 70%; top: 78%; }
-.product-uploaded-signature.position-horizontal-line, .comparison-uploaded-signature.position-horizontal-line { --signature-rotation: 0deg; left: 50%; top: 80%; }
-.product-uploaded-signature.position-diagonal-line, .comparison-uploaded-signature.position-diagonal-line { --signature-rotation: -18deg; left: 52%; top: 72%; }
 .product-uploaded-signature.signature-size-small, .comparison-uploaded-signature.signature-size-small { max-width: 50%; max-height: 22%; }
 .product-uploaded-signature.signature-size-medium, .comparison-uploaded-signature.signature-size-medium { max-width: 70%; max-height: 28%; }
 .product-uploaded-signature.signature-size-large, .comparison-uploaded-signature.signature-size-large { max-width: 88%; max-height: 34%; }
@@ -390,16 +386,7 @@ button { color: inherit; }
 .compare-grid figure { margin: 0; border: 1px solid var(--line); background: #fff; }
 .compare-visual { position: relative; aspect-ratio: 1; overflow: hidden; background: #fff; }
 .compare-visual > img:first-child { width: 100%; height: 100%; object-fit: contain; }
-.comparison-signature { --signature-fit: 1; --signature-rotation: 0deg; position: absolute; z-index: 2; left: 50%; top: 82%; transform: translate(-50%, -50%) rotate(var(--signature-rotation)) scale(var(--signature-fit)); color: #fff; font-size: var(--signature-base, clamp(13px, 1.35vw, 21px)); text-shadow: 0 1px 7px rgba(0,0,0,.3); white-space: nowrap; transform-origin: center; }
-.compare-visual .signature-size-small { --signature-base: clamp(10px, .9vw, 14px); }
-.compare-visual .signature-size-medium { --signature-base: clamp(13px, 1.25vw, 20px); }
-.compare-visual .signature-size-large { --signature-base: clamp(16px, 1.55vw, 24px); }
-.comparison-signature.position-bottom-right-vertical { --signature-rotation: -90deg; left: 76%; top: 72%; }
-.comparison-signature.position-bottom-center { --signature-rotation: 0deg; left: 50%; top: 82%; }
-.comparison-signature.position-below-logo { --signature-rotation: 0deg; left: 50%; top: 58%; }
-.comparison-signature.position-bottom-right-diagonal { --signature-rotation: -18deg; left: 70%; top: 78%; }
-.comparison-signature.position-horizontal-line { --signature-rotation: 0deg; left: 50%; top: 80%; }
-.comparison-signature.position-diagonal-line { --signature-rotation: -18deg; left: 52%; top: 72%; }
+.comparison-signature { --signature-fit: 1; --signature-rotation: 0deg; position: absolute; z-index: 2; left: 50%; top: 90%; transform: translate(-50%, -50%) rotate(var(--signature-rotation)) scale(var(--signature-fit)); color: #fff; font-size: var(--signature-base, 25cqw); line-height: 1; text-shadow: 0 1px 7px rgba(0,0,0,.3); white-space: nowrap; transform-origin: center; }
 .compare-grid figcaption { padding: 12px; display: flex; justify-content: space-between; gap: 10px; font-size: 11px; }
 .compare-grid figcaption span { color: var(--muted); }
 .signature-style-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
@@ -408,17 +395,16 @@ button { color: inherit; }
 .signature-style-grid button span { font-size: 18px; }
 .signature-style-grid button small { font-family: Arial, sans-serif; font-size: 8px; font-style: normal; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .placement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.placement-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .placement-grid button { min-width: 0; padding: 8px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
 .placement-grid button.is-active { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 .placement-grid small { display: block; margin-top: 7px; font-size: 9px; }
 .placement-demo { position: relative; height: 68px; display: block; overflow: hidden; color: #fff; background: linear-gradient(145deg, #c6c1b8, #77746f); font-family: "Lumasela Allura", cursive; font-size: 19px; }
 .placement-demo::after { content: "Aina"; position: absolute; left: 50%; top: 50%; white-space: nowrap; transform: translate(-50%, -50%); transform-origin: center; }
-.placement-demo-bottom-right-vertical::after { left: 74%; top: 65%; transform: translate(-50%, -50%) rotate(-90deg); }
-.placement-demo-bottom-center::after { top: 78%; }
+.placement-demo-bottom-right-vertical::after { left: 82%; top: 70%; transform: translate(-50%, -50%) rotate(-90deg); }
+.placement-demo-bottom-center::after { top: 83%; }
 .placement-demo-below-logo::after { top: 58%; }
-.placement-demo-bottom-right-diagonal::after { left: 69%; top: 72%; transform: translate(-50%, -50%) rotate(-18deg); }
-.placement-demo-horizontal-line::after { top: 76%; }
-.placement-demo-diagonal-line::after { top: 65%; transform: translate(-50%, -50%) rotate(-18deg); }
+.placement-demo-bottom-right-diagonal::after { left: 70%; top: 76%; transform: translate(-50%, -50%) rotate(-22deg); }
 .signature-size-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
 .signature-size-grid button { min-width: 0; min-height: 64px; padding: 9px 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
 .signature-size-grid button.is-active { color: #fff; background: var(--ink); border-color: var(--ink); }
@@ -631,7 +617,7 @@ button { color: inherit; }
   .inline-personaliser { padding: 20px 16px; }
   .inline-personaliser-row { grid-template-columns: 1fr; gap: 0; }
   .signature-style-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .placement-grid-six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .placement-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .phone-tone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .font-reference-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .font-reference-grid article > div:not(.font-reference-preview) { padding: 12px; align-items: flex-start; flex-direction: column; gap: 3px; }
