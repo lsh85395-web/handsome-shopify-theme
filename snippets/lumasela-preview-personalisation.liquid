@@ -1,0 +1,56 @@
+{% doc %}
+  @param {boolean} demo - Whether the product form is unavailable.
+{% enddoc %}
+<section class="product-compare" aria-label="Before and after personalisation">
+  <div class="product-step-heading"><span>01</span><div><p class="eyebrow">Before &amp; after</p><h2>See the difference immediately.</h2></div></div>
+  <div class="compare-grid">
+    <figure><div class="compare-visual"><img data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone before personalisation" width="512" height="512"></div><figcaption><strong>Before</strong><span data-phone-colour-label>Silver phone</span></figcaption></figure>
+    <figure><div class="compare-visual"><img data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone after personalisation" width="512" height="512"><div class="signature-safe-zone"><span class="comparison-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned>Aina</span></div></div><figcaption><strong>After</strong><span>Your signature</span></figcaption></figure>
+  </div>
+</section>
+<section class="inline-personaliser" id="personalise" aria-label="Personalisation studio">
+  <div class="inline-personaliser-heading"><div><p class="eyebrow">Personalisation studio</p><h2>Make it unmistakably yours.</h2></div><span>Live preview</span></div>
+  <label class="inline-field" for="lumasela-preview-name"><span>Name or initials <em data-name-count>4 / 20</em></span><input id="lumasela-preview-name" type="text" value="Aina" maxlength="20" autocomplete="off" required data-inline-name-input {% unless demo %}name="properties[Signature name]"{% endunless %}><small>Maximum 20 characters.</small></label>
+  <fieldset class="inline-choice"><legend>02 / Choose a signature style</legend><div class="signature-style-grid" data-inline-style-options>
+    <button class="signature-allura is-active" type="button" data-style="allura"><span>Aina</span><small>Allura</small></button>
+    <button class="signature-dancing-script" type="button" data-style="dancing-script"><span>Aina</span><small>Dancing Script</small></button>
+    <button class="signature-great-vibes" type="button" data-style="great-vibes"><span>Aina</span><small>Great Vibes</small></button>
+    <button class="signature-sacramento" type="button" data-style="sacramento"><span>Aina</span><small>Sacramento</small></button>
+    <button class="signature-kaushan-script" type="button" data-style="kaushan-script"><span>Aina</span><small>Kaushan Script</small></button>
+    <button class="signature-knewave" type="button" data-style="knewave"><span>Aina</span><small>Knewave</small></button>
+  </div></fieldset>
+  <fieldset class="inline-choice"><legend>03 / Select placement</legend><div class="placement-grid placement-grid-six" data-inline-position-options>
+    <button type="button" data-position="bottom-right-vertical"><span class="placement-demo placement-demo-bottom-right-vertical"></span><small>Bottom right vertical</small></button>
+    <button class="is-active" type="button" data-position="bottom-center"><span class="placement-demo placement-demo-bottom-center"></span><small>Bottom center</small></button>
+    <button type="button" data-position="below-logo"><span class="placement-demo placement-demo-below-logo"></span><small>Below logo</small></button>
+    <button type="button" data-position="bottom-right-diagonal"><span class="placement-demo placement-demo-bottom-right-diagonal"></span><small>Bottom right diagonal</small></button>
+    <button type="button" data-position="horizontal-line"><span class="placement-demo placement-demo-horizontal-line"></span><small>Horizontal signature line</small></button>
+    <button type="button" data-position="diagonal-line"><span class="placement-demo placement-demo-diagonal-line"></span><small>Diagonal signature line</small></button>
+  </div></fieldset>
+  <fieldset class="inline-choice"><legend>04 / Select signature size</legend><div class="signature-size-grid" data-signature-size-options>
+    <button type="button" data-signature-size="small"><strong>Small</strong><small>30–42 mm</small></button>
+    <button class="is-active" type="button" data-signature-size="medium"><strong>Medium</strong><small>43–58 mm</small></button>
+    <button type="button" data-signature-size="large"><strong>Large</strong><small>59–72 mm</small></button>
+  </div><p class="size-guidance">The preview scales long names down to stay inside the shown area. Final print dimensions require production confirmation.</p></fieldset>
+  <fieldset class="inline-choice"><legend>Text colour</legend><div class="inline-swatches" data-inline-color-options>
+    <button class="inline-swatch inline-swatch-white is-active" type="button" data-color="#ffffff" aria-label="White"></button>
+    <button class="inline-swatch inline-swatch-black" type="button" data-color="#111111" aria-label="Black"></button>
+    <button class="inline-swatch inline-swatch-blue" type="button" data-color="#3e5d8d" aria-label="Blue"></button>
+    <button class="inline-swatch inline-swatch-coral" type="button" data-color="#a63b32" aria-label="Coral"></button>
+  </div></fieldset>
+  <fieldset class="inline-choice"><legend>05 / Preview phone colour</legend><div class="phone-tone-grid" data-phone-colour-options>
+    <button type="button" data-phone-label="Black" data-phone-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}"><span class="tone-dot tone-black"></span><small>Black</small></button>
+    <button class="is-active" type="button" data-phone-label="Silver" data-phone-src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}"><span class="tone-dot tone-silver"></span><small>Silver</small></button>
+    <button type="button" data-phone-label="Ice Blue" data-phone-src="{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url }}"><span class="tone-dot tone-ice-blue"></span><small>Ice Blue</small></button>
+    <button type="button" data-phone-label="Burgundy" data-phone-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"><span class="tone-dot tone-burgundy"></span><small>Burgundy</small></button>
+    <button type="button" data-phone-label="Midnight Blue" data-phone-src="{{ 'lumasela-preview-phone-midnight-blue-base.webp' | asset_url }}"><span class="tone-dot tone-midnight-blue"></span><small>Midnight Blue</small></button>
+    <button type="button" data-phone-label="Orange" data-phone-src="{{ 'lumasela-preview-phone-orange-base.webp' | asset_url }}"><span class="tone-dot tone-orange"></span><small>Orange</small></button>
+  </div><p class="size-guidance">This changes only the phone colour beneath the transparent case.</p></fieldset>
+  {% unless demo %}
+    <input type="hidden" name="properties[Signature style]" value="Allura" data-property-style>
+    <input type="hidden" name="properties[Signature position]" value="Bottom center" data-property-position>
+    <input type="hidden" name="properties[Signature size]" value="Medium" data-property-size>
+    <input type="hidden" name="properties[Text colour]" value="White" data-property-colour>
+    <input type="hidden" name="properties[Preview phone colour]" value="Silver" data-property-phone>
+  {% endunless %}
+</section>

@@ -1,0 +1,81 @@
+{{ 'lumasela-preview-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lumasela-preview-product.js' | asset_url }}" defer></script>
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+<section class="lumasela-preview-product" data-lumasela-product id="overview">
+  <div class="product-subnav">
+    <div class="page-width">
+      <strong>{{ product.title | default: section.settings.demo_title | escape }}</strong>
+      <nav aria-label="Product sections"><a href="#overview">Overview</a><a href="#personalise">Personalise</a><a href="#details">Details</a></nav>
+    </div>
+  </div>
+  <div class="product-main page-width">
+    <div class="product-gallery" data-product-gallery>
+      <div class="product-gallery-main is-personalisation-preview" data-gallery-main-wrap>
+        {%- if product == blank -%}<span class="demo-chip">Demo product</span>{%- endif -%}
+        <img data-gallery-main data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone beneath a transparent clear case" width="1024" height="1024">
+        <div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>
+      </div>
+      <div class="product-thumbs" aria-label="Product images">
+        <button type="button" class="is-active" data-gallery-src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" data-personalisation-preview><img src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone preview" width="120" height="120"></button>
+        <button type="button" data-gallery-src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}"><img src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}" alt="Clear case detail" width="120" height="120"></button>
+        <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}" alt="Black phone preview" width="120" height="120"></button>
+        <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}" alt="Burgundy phone preview" width="120" height="120"></button>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1>{{ product.title | default: section.settings.demo_title | escape }}</h1>
+      <p class="product-price" data-product-price>{%- if product != blank -%}{{ selected_variant.price | money }}{%- else -%}RM 29.99 <small>visual preview</small>{%- endif -%}</p>
+      <p class="product-lead">{{ section.settings.intro | escape }}</p>
+      {%- if product != blank -%}
+        {%- form 'product', product, id: 'LumaselaPreviewProductForm', class: 'lumasela-preview-product__form' -%}
+          <select data-variant-data hidden aria-hidden="true" tabindex="-1">
+            {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}" data-available="{{ variant.available }}" data-price="{{ variant.price | money | escape }}" data-option1="{{ variant.option1 | escape }}" data-option2="{{ variant.option2 | escape }}" data-option3="{{ variant.option3 | escape }}">{{ variant.title | escape }}</option>
+            {%- endfor -%}
+          </select>
+          <input type="hidden" name="id" value="{{ selected_variant.id }}" data-variant-id>
+          {%- for option in product.options_with_values -%}
+            <fieldset class="product-option" data-variant-option data-option-position="{{ option.position }}">
+              <legend>{{ option.name | escape }}</legend>
+              <div class="option-buttons">
+                {%- for value in option.values -%}
+                  <button type="button" data-option-value="{{ value | escape }}" {% if option.selected_value == value %}class="is-active" aria-pressed="true"{% else %}aria-pressed="false"{% endif %}>{{ value | escape }}</button>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+          {%- if product.options_with_values.size == 0 -%}<p>Product options will appear here when they are configured in Shopify.</p>{%- endif -%}
+          {% render 'lumasela-preview-personalisation', demo: false %}
+          <div class="product-purchase-row">
+            <div class="quantity-control" data-quantity-control><button type="button" aria-label="Decrease quantity" data-qty-minus>−</button><input type="number" name="quantity" min="1" value="1" aria-label="Quantity" data-qty-input><button type="button" aria-label="Increase quantity" data-qty-plus>+</button></div>
+            <button class="button button-dark add-button" type="submit" data-add-to-cart {% unless selected_variant.available %}disabled{% endunless %}>{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</button>
+          </div>
+        {%- endform -%}
+      {%- else -%}
+        <fieldset class="product-option"><legend>Case Type</legend><div class="option-buttons"><button class="is-active" type="button">Hard PC</button><button type="button">Soft TPU</button><button type="button">Magnetic</button></div></fieldset>
+        <fieldset class="product-option"><legend>Phone Model</legend><div class="option-buttons option-buttons-models"><button class="is-active" type="button">iPhone 18 Pro</button><button type="button">iPhone 18 Pro Max</button><button type="button">iPhone 17</button><button type="button">iPhone 17 Pro</button><button type="button">iPhone 17 Pro Max</button><button type="button">iPhone Air</button></div></fieldset>
+        <fieldset class="product-option"><legend>Case Color</legend><div class="option-buttons"><button class="is-active" type="button">Clear</button></div></fieldset>
+        {% render 'lumasela-preview-personalisation', demo: true %}
+        <div class="product-purchase-row"><button class="button button-dark add-button" type="button" disabled>Product not available for purchase</button></div>
+      {%- endif -%}
+      <div class="product-accordions" id="details">
+        <details open><summary>Product details</summary><div class="rte">{{ product.description | default: section.settings.demo_details }}</div></details>
+        {%- if section.settings.shipping_note != blank -%}<details><summary>Shipping &amp; returns</summary><p>{{ section.settings.shipping_note | escape }}</p></details>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Lumasela product studio",
+  "settings": [
+    {"type":"text","id":"demo_title","label":"Preview title when no product is assigned","default":"Signature Clear"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PERSONALISED CLEAR CASE"},
+    {"type":"textarea","id":"intro","label":"Introduction","default":"A clear case with your chosen name set in a quiet, considered typographic style."},
+    {"type":"richtext","id":"demo_details","label":"Preview details","default":"<p>Visual concept. Confirm materials and compatible devices before accepting orders.</p>"},
+    {"type":"textarea","id":"shipping_note","label":"Shipping and returns note","default":"Review the current shipping and refund policies before ordering."}
+  ],
+  "presets": [{"name":"Lumasela product studio"}]
+}
+{% endschema %}
