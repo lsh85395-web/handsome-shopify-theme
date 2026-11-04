@@ -13,8 +13,8 @@ class LumaselaCustomizer extends HTMLElement {
     this.submit = this.querySelector('[data-customizer-submit]');
     this.addEventListener('input', this.onControlChange.bind(this));
     this.addEventListener('change', this.onControlChange.bind(this));
-    this.querySelectorAll('[data-customizer-tone]').forEach((button) => {
-      button.addEventListener('click', () => this.setTone(button.dataset.customizerTone));
+    this.querySelectorAll('[data-customizer-style-choices], [data-customizer-color-choices], [data-customizer-position-choices]').forEach((group) => {
+      group.addEventListener('click', (event) => this.chooseOption(event, group));
     });
     this.updatePreview();
     this.updateVariant();
@@ -35,14 +35,40 @@ class LumaselaCustomizer extends HTMLElement {
     }
   }
 
+  chooseOption(event, group) {
+    const button = event.target.closest('button[data-style-value], button[data-color-value], button[data-position-value]');
+    if (!button || !group.contains(button)) return;
+    group.querySelectorAll('button').forEach((choice) => {
+      const selected = choice === button;
+      choice.classList.toggle('is-active', selected);
+      choice.setAttribute('aria-pressed', String(selected));
+    });
+    const field = group.querySelector('input[type="hidden"]');
+    if (field) field.value = button.dataset.styleLabel || button.dataset.colorLabel || button.dataset.positionLabel || '';
+    this.updatePreview();
+  }
+
   updatePreview() {
     if (!this.signature) return;
     const name = this.nameInput?.value.trim().slice(0, 20) || this.nameInput?.placeholder || '';
     this.signature.textContent = name;
-    this.signature.dataset.style = this.styleSelect?.value || 'allura';
-    this.signature.dataset.position = this.positionSelect?.value || 'lower_right';
-    this.signature.style.setProperty('--signature-color', this.colorSelect?.value || '#111111');
+    this.signature.dataset.style = this.querySelector('[data-customizer-style-choices] .is-active')?.dataset.styleValue || 'allura';
+    this.signature.dataset.position = this.querySelector('[data-customizer-position-choices] .is-active')?.dataset.positionValue || 'center';
+    this.signature.style.setProperty('--signature-color', this.querySelector('[data-customizer-color-choices] .is-active')?.dataset.colorValue || '#ffffff');
     if (this.count) this.count.textContent = `${this.nameInput?.value.length || 0} / 20`;
+    this.fitSignature();
+  }
+
+  fitSignature() {
+    const media = this.signature.closest('.lumasela-customizer__media');
+    if (!media) return;
+    this.signature.style.fontSize = '';
+    const availableWidth = media.clientWidth * 0.30;
+    const naturalWidth = this.signature.scrollWidth;
+    if (naturalWidth > availableWidth) {
+      const fontSize = parseFloat(getComputedStyle(this.signature).fontSize);
+      this.signature.style.fontSize = `${Math.max(8, fontSize * availableWidth / naturalWidth)}px`;
+    }
   }
 
   updateVariant() {
@@ -55,14 +81,6 @@ class LumaselaCustomizer extends HTMLElement {
     this.submit.textContent = available ? this.submit.dataset.addLabel : this.submit.dataset.soldLabel;
   }
 
-  setTone(tone) {
-    this.dataset.tone = tone;
-    this.querySelectorAll('[data-customizer-tone]').forEach((button) => {
-      const active = button.dataset.customizerTone === tone;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
-  }
 }
 
 if (!customElements.get('lumasela-customizer')) {

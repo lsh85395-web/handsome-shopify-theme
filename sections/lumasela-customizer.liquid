@@ -12,7 +12,6 @@
   id="lumasela-customizer"
   class="lumasela-customizer color-{{ section.settings.color_scheme }} gradient"
   data-section-id="{{ section.id }}"
-  data-tone="light"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="lumasela-customizer__inner page-width">
@@ -43,27 +42,9 @@
           class="lumasela-customizer__signature"
           data-customizer-signature
           data-style="allura"
-          data-position="lower_right"
+          data-position="center"
           aria-live="polite"
         >{{ initial_name | escape }}</span>
-      </div>
-      <div class="lumasela-customizer__tone-controls" aria-label="Preview background">
-        <button
-          class="lumasela-customizer__tone is-active"
-          type="button"
-          data-customizer-tone="light"
-          aria-pressed="true"
-        >
-          <span class="visually-hidden">Light preview background</span>
-        </button>
-        <button
-          class="lumasela-customizer__tone lumasela-customizer__tone--dark"
-          type="button"
-          data-customizer-tone="dark"
-          aria-pressed="false"
-        >
-          <span class="visually-hidden">Dark preview background</span>
-        </button>
       </div>
     </div>
 
@@ -125,7 +106,9 @@
       {%- else -%}
         <div class="lumasela-customizer__form lumasela-customizer__form--demo">
           {% render 'lumasela-customizer-fields', section: section, initial_name: initial_name, demo: true %}
-          <p class="lumasela-customizer__setup">{{ section.settings.demo_message | escape }}</p>
+          {%- if section.settings.demo_message != blank -%}
+            <p class="lumasela-customizer__setup">{{ section.settings.demo_message | escape }}</p>
+          {%- endif -%}
           {%- if section.settings.demo_link != blank and section.settings.demo_label != blank -%}
             <a class="button button--primary" href="{{ section.settings.demo_link }}">
               {{ section.settings.demo_label | escape }}

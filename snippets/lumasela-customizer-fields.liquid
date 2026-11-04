@@ -1,7 +1,7 @@
 <div class="lumasela-customizer-fields">
   <div class="lumasela-customizer__field">
     <div class="lumasela-field__meta">
-      <label for="CustomizerName-{{ section.id }}">Signature name</label>
+      <label for="CustomizerName-{{ section.id }}">Name or short phrase</label>
       <span data-customizer-count>{{ initial_name.size }} / 20</span>
     </div>
     <input
@@ -15,47 +15,37 @@
     >
   </div>
 
-  <div class="lumasela-control-row">
-    <div class="lumasela-customizer__field">
-      <label for="CustomizerStyle-{{ section.id }}">Signature style</label>
-      <select
-        id="CustomizerStyle-{{ section.id }}"
-        data-customizer-style
-        {% unless demo %}name="properties[Signature style]"{% endunless %}
-      >
-        <option value="allura">Allura</option>
-        <option value="dancing-script">Dancing Script</option>
-        <option value="great-vibes">Great Vibes</option>
-        <option value="sacramento">Sacramento</option>
-        <option value="kaushan-script">Kaushan Script</option>
-        <option value="knewave">Knewave</option>
-      </select>
+  <fieldset class="lumasela-customizer__choices" data-customizer-style-choices>
+    <legend>Style</legend>
+    <input type="hidden" value="Allura" data-customizer-style {% unless demo %}name="properties[Signature style]"{% endunless %}>
+    <div class="lumasela-customizer__style-grid">
+      <button type="button" class="is-active" data-style-value="allura" data-style-label="Allura" aria-pressed="true"><span class="lumasela-style-allura">Allura</span></button>
+      <button type="button" data-style-value="dancing-script" data-style-label="Dancing Script" aria-pressed="false"><span class="lumasela-style-dancing-script">Dancing Script</span></button>
+      <button type="button" data-style-value="great-vibes" data-style-label="Great Vibes" aria-pressed="false"><span class="lumasela-style-great-vibes">Great Vibes</span></button>
+      <button type="button" data-style-value="sacramento" data-style-label="Sacramento" aria-pressed="false"><span class="lumasela-style-sacramento">Sacramento</span></button>
+      <button type="button" data-style-value="kaushan-script" data-style-label="Kaushan Script" aria-pressed="false"><span class="lumasela-style-kaushan-script">Kaushan Script</span></button>
+      <button type="button" data-style-value="knewave" data-style-label="Knewave" aria-pressed="false"><span class="lumasela-style-knewave">Knewave</span></button>
     </div>
+  </fieldset>
 
-    <div class="lumasela-customizer__field">
-      <label for="CustomizerColor-{{ section.id }}">Signature color</label>
-      <select
-        id="CustomizerColor-{{ section.id }}"
-        data-customizer-color
-        {% unless demo %}name="properties[Signature color]"{% endunless %}
-      >
-        <option value="#111111">Ink black</option>
-        <option value="#F4F2EC">Soft white</option>
-        <option value="#B9A88F">Warm taupe</option>
-      </select>
+  <fieldset class="lumasela-customizer__choices" data-customizer-color-choices>
+    <legend>Colour</legend>
+    <input type="hidden" value="White" data-customizer-color {% unless demo %}name="properties[Signature colour]"{% endunless %}>
+    <div class="lumasela-customizer__swatches">
+      <button type="button" class="is-active" data-color-value="#ffffff" data-color-label="White" aria-label="White signature" aria-pressed="true" style="--swatch:#ffffff"></button>
+      <button type="button" data-color-value="#111111" data-color-label="Black" aria-label="Black signature" aria-pressed="false" style="--swatch:#111111"></button>
+      <button type="button" data-color-value="#3a5b89" data-color-label="Blue" aria-label="Blue signature" aria-pressed="false" style="--swatch:#3a5b89"></button>
+      <button type="button" data-color-value="#a83d36" data-color-label="Red" aria-label="Red signature" aria-pressed="false" style="--swatch:#a83d36"></button>
     </div>
-  </div>
+  </fieldset>
 
-  <div class="lumasela-customizer__field">
-    <label for="CustomizerPosition-{{ section.id }}">Signature position</label>
-    <select
-      id="CustomizerPosition-{{ section.id }}"
-      data-customizer-position
-      {% unless demo %}name="properties[Signature position]"{% endunless %}
-    >
-      <option value="lower_right">Lower right</option>
-      <option value="lower_center">Lower center</option>
-      <option value="lower_left">Lower left</option>
-    </select>
-  </div>
+  <fieldset class="lumasela-customizer__choices" data-customizer-position-choices>
+    <legend>Position</legend>
+    <input type="hidden" value="Centre" data-customizer-position {% unless demo %}name="properties[Signature position]"{% endunless %}>
+    <div class="lumasela-customizer__position-grid">
+      <button type="button" data-position-value="top" data-position-label="Top" aria-pressed="false">Top</button>
+      <button type="button" class="is-active" data-position-value="center" data-position-label="Centre" aria-pressed="true">Centre</button>
+      <button type="button" data-position-value="bottom" data-position-label="Bottom" aria-pressed="false">Bottom</button>
+    </div>
+  </fieldset>
 </div>

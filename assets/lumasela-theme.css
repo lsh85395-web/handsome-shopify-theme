@@ -1923,3 +1923,52 @@ body.gradient {
     font-size: 1.4rem;
   }
 }
+
+/* Visible homepage studio controls follow the accepted prototype. */
+.lumasela-customizer.gradient { background: #fff; color: #111; }
+.lumasela-customizer__preview { padding: 0; background: #f8f7f5; }
+.lumasela-customizer__media { width: 100%; }
+.lumasela-customizer__image { aspect-ratio: 4 / 5; object-fit: cover; }
+.lumasela-customizer__heading { max-width: 12ch; font-size: clamp(4.2rem, 4.8vw, 7rem); font-weight: 650; }
+.lumasela-customizer__signature { top: 68%; color: var(--signature-color, #fff); font-size: clamp(1.8rem, 2.7vw, 4rem); }
+.lumasela-customizer__signature[data-position="top"] { top: 63%; }
+.lumasela-customizer__signature[data-position="bottom"] { top: 79%; }
+.lumasela-customizer__choices { min-width: 0; margin: 0; padding: 0; border: 0; }
+.lumasela-customizer__choices legend { padding: 0 0 1rem; color: #111; font-size: 1.1rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.lumasela-customizer__style-grid,
+.lumasela-customizer__position-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.lumasela-customizer__style-grid button,
+.lumasela-customizer__position-grid button {
+  min-height: 4.8rem;
+  padding: .5rem;
+  border: 1px solid #d5d5d5;
+  background: #fff;
+  color: #111;
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+.lumasela-customizer__style-grid button.is-active,
+.lumasela-customizer__position-grid button.is-active { border-color: #111; background: #111; color: #fff; }
+.lumasela-style-allura { font-family: "Lumasela Allura", cursive; }
+.lumasela-style-dancing-script { font-family: "Lumasela Dancing Script", cursive; }
+.lumasela-style-great-vibes { font-family: "Lumasela Great Vibes", cursive; }
+.lumasela-style-sacramento { font-family: "Lumasela Sacramento", cursive; }
+.lumasela-style-kaushan-script { font-family: "Lumasela Kaushan Script", cursive; }
+.lumasela-style-knewave { font-family: "Lumasela Knewave", cursive; }
+.lumasela-customizer__swatches { display: flex; gap: 1rem; padding: .2rem 0; }
+.lumasela-customizer__swatches button {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px #ccc;
+  cursor: pointer;
+}
+.lumasela-customizer__swatches button.is-active { box-shadow: 0 0 0 2px #111; }
+@media screen and (max-width: 749px) {
+  .lumasela-customizer__preview { padding: 0; }
+  .lumasela-customizer__style-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lumasela-customizer__heading { font-size: clamp(3.8rem, 11vw, 5.5rem); }
+}
