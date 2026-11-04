@@ -312,7 +312,9 @@ button { color: inherit; }
 .collection-editorial img { height: 620px; object-fit: cover; }
 
 .lumasela-preview-product { background: #fff; }
-.product-subnav { position: sticky; z-index: 10; top: 0; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+.product-subnav { position: fixed; z-index: 45; inset: 0 0 auto; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-100%); transition: opacity .22s ease, transform .22s ease, visibility .22s ease; }
+.product-subnav.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .product-subnav { transition: none; } }
 .product-subnav > div { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .product-subnav nav { display: flex; gap: 28px; color: var(--muted); font-size: 12px; }
 .product-main { padding-block: clamp(44px, 6vw, 90px); display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(400px, .88fr); align-items: start; gap: clamp(44px, 7vw, 110px); }

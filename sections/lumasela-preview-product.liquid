@@ -6,13 +6,13 @@
   {%- assign preview_main_image = product.featured_media.preview_image | image_url: width: 1400 -%}
 {%- endif -%}
 <section class="lumasela-preview-product" data-lumasela-product id="overview">
-  <div class="product-subnav">
+  <div class="product-subnav" data-product-subnav aria-hidden="true" inert>
     <div class="page-width">
       <strong>{{ product.title | default: section.settings.demo_title | escape }}</strong>
       <nav aria-label="Product sections"><a href="#overview">Overview</a><a href="#personalise">Personalise</a><a href="#details">Details</a></nav>
     </div>
   </div>
-  <div class="product-main page-width">
+  <div class="product-main page-width" data-product-main>
     <div class="product-gallery" data-product-gallery>
       <div class="product-gallery-main is-personalisation-preview" data-gallery-main-wrap>
         {%- if product == blank or product.tags contains 'demo-product' -%}<span class="demo-chip">Demo product</span>{%- endif -%}

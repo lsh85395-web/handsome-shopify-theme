@@ -10,6 +10,15 @@
   const previewThumb = one('[data-personalisation-preview]');
   const previewWrap = one('[data-gallery-main-wrap]');
   const nameInput = one('[data-inline-name-input]');
+  const subnav = one('[data-product-subnav]');
+  const productMain = one('[data-product-main]');
+  const updateSubnav = () => {
+    if (!subnav || !productMain) return;
+    const visible = productMain.getBoundingClientRect().bottom <= 0;
+    subnav.classList.toggle('is-visible', visible);
+    subnav.inert = !visible;
+    subnav.setAttribute('aria-hidden', String(!visible));
+  };
   const styleNames = ['allura', 'dancing-script', 'great-vibes', 'sacramento', 'kaushan-script', 'knewave'];
   const positions = ['bottom-right-vertical', 'bottom-center', 'below-logo', 'bottom-right-diagonal'];
   const sizes = ['small', 'medium', 'large'];
@@ -159,6 +168,9 @@
     if (!one('[data-variant-id]')?.value || !nameInput?.value.trim()) event.preventDefault();
   });
   window.addEventListener('resize', () => requestAnimationFrame(fitSignature));
+  window.addEventListener('scroll', updateSubnav, { passive: true });
+  window.addEventListener('resize', updateSubnav);
+  updateSubnav();
   syncName();
   updateVariant();
   document.fonts?.ready.then(() => requestAnimationFrame(fitSignature));
