@@ -1,19 +1,9 @@
-# Deployment log
+# Theme deployment record
 
-| Date (Asia/Shanghai) | Store | Theme | Status | Git commit | Notes |
+| Date (Asia/Shanghai) | Git commit | Store | Theme ID | Status | Scope |
 | --- | --- | --- | --- | --- | --- |
-| 2026-11-02 | `cfrzux-ne` / `lumasela.com` | `Lumasela Malaysia Preview - Codex`, ID `193230930208` | **Confirmed UNPUBLISHED target; current additions not uploaded yet** | Branch `codex/lumasela-pitaka-operational-20261102` | Theme inventory re-read through Shopify Admin API. The current code is prepared and validated before upload. |
-| 2026-11-02 | `cfrzux-ne` / `lumasela.com` | ID `193230930208` | **Historical preview content uploaded; remains UNPUBLISHED** | Branch `codex/lumasela-shopify-20261101` | Existing preview used for baseline desktop/mobile screenshots before the current operational additions. |
-| 2026-11-01 | `cfrzux-ne` | ID `195715891565` | **Historical; not currently listed** | Branch `codex/lumasela-shopify-20261101` | An earlier note claimed an upload; the ID is absent from the current theme list and its preview URL used `tumzaro.com`. Treat the old target as unverified. |
+| 2026-11-04 13:25 | `8e28215723402dda54c326698cfc6619a27a80d7` | `cfrzux-ne.myshopify.com` | `193306427680` | Unpublished draft | Product studio, home and collection links, About hero, footer menus and brand label. Uploaded by selective `shopify theme push --only ... --nodelete --strict`; the final uploads returned `Theme upload complete`. |
 
-## Current connection
+The draft preview is `https://cfrzux-ne.myshopify.com?preview_theme_id=193306427680`. The previously published theme `192777158944` was not changed. Its pre-change backup is at `C:\Users\mokwh\Documents\项目管理\shopify-theme-backups\cfrzux-ne-live-192777158944-20261104-pre-aina`.
 
-- The connected store is `lumasela.com` (`cfrzux-ne`).
-- Confirmed preview target: `Lumasela Malaysia Preview - Codex`, theme ID `193230930208`, role `UNPUBLISHED`.
-- Current live theme: `Handsome Askel Preview`, theme ID `192777158944`, role `MAIN`. Do not upload to or publish over it without a separate explicit approval.
-- The store uses MYR, while its configured country is Hong Kong. Confirm the Malaysia market settings separately before taking orders there.
-- GitHub work branch: `codex/lumasela-pitaka-operational-20261102`.
-
-## Historical record to treat as stale
-
-An earlier preview link used the `tumzaro.com` storefront URL. That is a different brand domain. Do not use the old URL or theme IDs above as a deployment target.
+The staging product is a zero-inventory demo. Publishing this theme would change the visible design but would not make the demo product purchasable.
