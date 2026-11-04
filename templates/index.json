@@ -33,18 +33,18 @@
     "signature_styles": {
       "type": "lumasela-signature-styles",
       "blocks": {
-        "allura": {"type": "signature", "settings": {"preview_asset": "font-allura-burgundy-horizontal.jpg", "style_label": "Allura", "title": "Allura", "text": "<p>Airy calligraphic.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
-        "dancing": {"type": "signature", "settings": {"preview_asset": "font-dancing-script-burgundy-horizontal.jpg", "style_label": "Dancing Script", "title": "Dancing Script", "text": "<p>Friendly handwritten.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
-        "great_vibes": {"type": "signature", "settings": {"preview_asset": "font-great-vibes-burgundy-horizontal.jpg", "style_label": "Great Vibes", "title": "Great Vibes", "text": "<p>Formal flourish.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
-        "sacramento": {"type": "signature", "settings": {"preview_asset": "font-sacramento-burgundy-horizontal.jpg", "style_label": "Sacramento", "title": "Sacramento", "text": "<p>Fine monoline.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
-        "kaushan": {"type": "signature", "settings": {"preview_asset": "font-kaushan-script-burgundy-horizontal.jpg", "style_label": "Kaushan Script", "title": "Kaushan Script", "text": "<p>Confident brush.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}},
-        "knewave": {"type": "signature", "settings": {"preview_asset": "font-knewave-burgundy-horizontal.jpg", "style_label": "Knewave", "title": "Knewave", "text": "<p>Bold expressive.</p>", "preview_name": "Aina", "style": "flow", "position": "lower-center"}}
+        "allura": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Allura", "title": "Allura", "text": "<p>Airy calligraphic.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}},
+        "dancing": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Dancing Script", "title": "Dancing Script", "text": "<p>Friendly handwritten.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}},
+        "great_vibes": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Great Vibes", "title": "Great Vibes", "text": "<p>Formal flourish.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}},
+        "sacramento": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Sacramento", "title": "Sacramento", "text": "<p>Fine monoline.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}},
+        "kaushan": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Kaushan Script", "title": "Kaushan Script", "text": "<p>Confident brush.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}},
+        "knewave": {"type": "signature", "settings": {"preview_asset": "editable", "style_label": "Knewave", "title": "Knewave", "text": "<p>Bold expressive.</p>", "preview_name": "Aina", "signature_color": "#ffffff", "position": "lower-center"}}
       },
       "block_order": ["allura", "dancing", "great_vibes", "sacramento", "kaushan", "knewave"],
       "settings": {
         "eyebrow": "THE SIGNATURE EDIT",
         "heading": "Six ways to make it yours.",
-        "text": "<p>Licensed signature fonts, shown with the supplied horizontal production mockups.</p>",
+        "text": "<p>Six licensed signature styles previewed on the same clear case.</p>",
         "product_alt_text": "Silver concept phone with a clear personalized case",
         "color_scheme": "scheme-2"
       }

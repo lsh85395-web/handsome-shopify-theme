@@ -36,8 +36,17 @@
           style="--lumasela-signature-color: {{ block.settings.signature_color }}; --lumasela-signature-scale: {{ block.settings.signature_scale | divided_by: 100.0 }};"
           {{ block.shopify_attributes }}
         >
-          <div class="lumasela-signature-card__visual">
-            {%- if block.settings.preview_asset != blank -%}
+          <div class="lumasela-signature-card__visual{% if block.settings.preview_asset == 'editable' %} lumasela-signature-card__visual--editable{% endif %}">
+            {%- if block.settings.preview_asset == 'editable' -%}
+              <img
+                class="lumasela-signature-card__image"
+                src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"
+                alt="Burgundy phone beneath a transparent clear case"
+                width="1254"
+                height="1254"
+                loading="lazy"
+              >
+            {%- elsif block.settings.preview_asset != blank -%}
               <img
                 class="lumasela-signature-card__image"
                 src="{{ block.settings.preview_asset | asset_url }}"
@@ -67,8 +76,8 @@
                 loading="lazy"
               >
             {%- endif -%}
-            {%- if block.settings.preview_asset == blank -%}<span
-              class="lumasela-signature-card__signature lumasela-signature-card__signature--{{ block.settings.style }}"
+            {%- if block.settings.preview_asset == blank or block.settings.preview_asset == 'editable' -%}<span
+              class="lumasela-signature-card__signature lumasela-signature-card__signature--{{ block.settings.style_label | handleize }}"
               data-position="{{ block.settings.position }}"
               aria-hidden="true"
             >
@@ -141,8 +150,9 @@
         {
           "type": "select",
           "id": "preview_asset",
-          "label": "Approved signature mockup",
+          "label": "Signature preview image",
           "options": [
+            {"value": "editable", "label": "Editable name on burgundy phone"},
             {"value": "font-allura-burgundy-horizontal.jpg", "label": "Allura"},
             {"value": "font-dancing-script-burgundy-horizontal.jpg", "label": "Dancing Script"},
             {"value": "font-great-vibes-burgundy-horizontal.jpg", "label": "Great Vibes"},

@@ -1621,6 +1621,19 @@ body.gradient {
 .lumasela-signature-card__meta { display: none; }
 .lumasela-signature-card__title { margin: 0 0 .4rem; font-size: 1.8rem; font-weight: 650; }
 .lumasela-signature-card__text { font-size: 1.3rem; }
+.lumasela-signature-card__visual--editable .lumasela-signature-card__signature {
+  top: 82%;
+  color: var(--lumasela-signature-color, #fff);
+  font-size: calc(clamp(2.2rem, 2.5vw, 3.6rem) * var(--lumasela-signature-scale, 1));
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
+  transform: translate(-50%, -50%);
+}
+.lumasela-signature-card__signature--allura { font-family: "Lumasela Allura", cursive; }
+.lumasela-signature-card__signature--dancing-script { font-family: "Lumasela Dancing Script", cursive; }
+.lumasela-signature-card__signature--great-vibes { font-family: "Lumasela Great Vibes", cursive; }
+.lumasela-signature-card__signature--sacramento { font-family: "Lumasela Sacramento", cursive; }
+.lumasela-signature-card__signature--kaushan-script { font-family: "Lumasela Kaushan Script", cursive; }
+.lumasela-signature-card__signature--knewave { font-family: "Lumasela Knewave", cursive; }
 .lumasela-customizer__signature[data-style="allura"] { font-family: "Lumasela Allura", cursive; }
 .lumasela-customizer__signature[data-style="dancing-script"] { font-family: "Lumasela Dancing Script", cursive; }
 .lumasela-customizer__signature[data-style="great-vibes"] { font-family: "Lumasela Great Vibes", cursive; }
