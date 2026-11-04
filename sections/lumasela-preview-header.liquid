@@ -6,7 +6,13 @@
 -%}
 <header class="lumasela-site-header{% if home_header %} lumasela-site-header--home{% endif %}" role="banner">
   <div class="lumasela-site-header__inner">
-    <a class="lumasela-site-header__wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">{{ section.settings.wordmark | escape }}</a>
+    <a class="lumasela-site-header__wordmark" href="{{ routes.root_url }}" aria-label="{{ settings.lumasela_brand_name | default: shop.name | escape }} home">
+      {%- if section.settings.logo_image != blank -%}
+        <img src="{{ section.settings.logo_image | image_url: width: 600 }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="40" loading="eager">
+      {%- else -%}
+        <img src="{{ 'lumasela-logo-horizontal.png' | asset_url }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="40" loading="eager">
+      {%- endif -%}
+    </a>
     <nav class="lumasela-site-header__nav" aria-label="Main navigation">
       <a href="{{ section.settings.cases_link | default: routes.collections_url }}">{{ section.settings.cases_label | escape }}</a>
       <a href="{{ section.settings.personalise_link | default: '#lumasela-customizer' }}">{{ section.settings.personalise_label | escape }}</a>
@@ -32,7 +38,9 @@
   .lumasela-site-header--home{position:absolute;top:0;left:0;width:100%;background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
   .lumasela-site-header__inner{width:100%;max-width:none;min-height:82px;padding:0 4.4vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
   .lumasela-site-header a{color:inherit;text-decoration:none}
-  .lumasela-site-header__wordmark{font-size:21px;font-weight:800;letter-spacing:.18em;white-space:nowrap}
+  .lumasela-site-header__wordmark{display:block;width:200px;line-height:0}
+  .lumasela-site-header__wordmark img{display:block;width:100%;height:40px;object-fit:cover;object-position:center}
+  .lumasela-site-header--home .lumasela-site-header__wordmark img{filter:invert(1)}
   .lumasela-site-header__nav{display:flex;gap:clamp(24px,3vw,52px);align-items:center;font-size:14px;font-weight:600}
   .lumasela-site-header__nav a:hover,.lumasela-site-header__actions a:hover{opacity:.65}
   .lumasela-site-header__actions{display:flex;justify-content:flex-end;align-items:center;gap:28px}
@@ -42,7 +50,8 @@
   .lumasela-site-header__mobile-menu{display:none}
   @media(max-width:750px){
     .lumasela-site-header__inner{min-height:64px;padding:0 20px;grid-template-columns:1fr auto}
-    .lumasela-site-header__wordmark{font-size:16px}
+    .lumasela-site-header__wordmark{width:156px}
+    .lumasela-site-header__wordmark img{height:32px}
     .lumasela-site-header__nav{display:none}
     .lumasela-site-header__actions{gap:18px}
     .lumasela-site-header__mobile-menu{display:block;order:-1}
@@ -58,6 +67,7 @@
   "name":"Lumasela preview header",
   "settings":[
     {"type":"text","id":"wordmark","label":"Wordmark","default":"LUMASELA"},
+    {"type":"image_picker","id":"logo_image","label":"Custom logo image (optional)"},
     {"type":"checkbox","id":"overlay_home","label":"Overlay homepage hero","default":true},
     {"type":"text","id":"cases_label","label":"Cases label","default":"Cases"},
     {"type":"url","id":"cases_link","label":"Cases link"},
