@@ -907,7 +907,20 @@
       "view_image": "View {label}",
       "comparison_percent": "{percent}% without signature",
       "live_image": "{color} phone beneath a transparent clear case with your {font} signature",
-      "zoom_image": "{color} phone with your personalised signature"
+      "zoom_image": "{color} phone with your personalised signature",
+      "add_to_bag": "Add to bag",
+      "buy_now": "Buy now",
+      "confirm_add": "Confirm & add to bag",
+      "confirm_checkout": "Confirm & checkout",
+      "purchase_review_note": "Your design is reviewed before adding.",
+      "purchase_available": "Ready when you are. Confirm your design before adding to bag or checkout.",
+      "purchase_sold_out": "Sold out · This selection is still available to preview.",
+      "purchase_unavailable": "This combination is unavailable. Choose another option to purchase.",
+      "summary_bag_intent": "Confirm your design below to add this item to your bag.",
+      "summary_checkout_intent": "Confirm your design to add this item and continue to Shopify checkout. Checkout includes any items already in your bag.",
+      "continue_checkout": "Continue to checkout",
+      "added_to_bag": "Added to bag",
+      "checkout_ready": "Added to your bag. Continue to checkout when you are ready."
     }
   }
 }

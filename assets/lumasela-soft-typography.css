@@ -122,3 +122,10 @@ body,body.home-page,body.product-page{font-family:var(--font-ui);font-weight:400
   .live-indicator,
   .comparison-control>div{font-size:12px;line-height:1.5}
 }
+/* Purchase-area copy follows the same desktop reading scale. */
+@media(min-width:900px){
+  .product-page .purchase-status,
+  .product-page .review-auxiliary>span{font-size:13px;line-height:1.65;color:#566f7a}
+  .product-page .review-design-link{font-size:14px!important;line-height:1.5}
+  .product-page .summary-intent{font-size:14px;line-height:1.7}
+}

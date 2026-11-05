@@ -11,8 +11,15 @@
   const storageKey = `lumasela:shopify:product:${config.productId}:design:v2`;
   const designForm = root.querySelector('.soft-design-form');
   let submitting = false;
+  let purchaseIntent = 'bag';
+  let summaryAdded = false;
   const fonts = [ ['allura', 'Allura'], ['dancing-script', 'Dancing Script'], ['great-vibes', 'Great Vibes'], ['sacramento', 'Sacramento'], ['kaushan-script', 'Kaushan Script'], ['knewave', 'Knewave'] ];
   const phoneColors = [ ['black',t('black'),'#282a2b'], ['silver',t('silver'),'#c9ccce'], ['ice-blue',t('ice_blue'),'#bdcfda'], ['burgundy',t('burgundy'),'#743e49'], ['midnight-blue',t('midnight_blue'),'#3a475e'], ['orange',t('orange'),'#dc8d4f'] ];
+  // Align visible casing height and center while preserving each source image's proportions.
+  const phonePreviewGeometry = {
+    'midnight-blue': { scale:1.004, x:'-0.05%', y:'-1.55%' },
+    orange: { scale:1.011, x:'-0.09%', y:'-1.91%' }
+  };
   const textColors = [ ['#ffffff',t('white')], ['#111111',t('black')], ['#3e5d8d',t('blue')], ['#a63b32',t('coral')] ];
   const positions = [ ['bottom-right-vertical',t('bottom_vertical')], ['bottom-center',t('bottom_center')], ['below-logo',t('below_logo')], ['bottom-right-diagonal',t('bottom_diagonal')] ];
   const sizes = [ ['small',t('small'),35], ['medium',t('medium'),50], ['large',t('large'),65] ];
@@ -33,6 +40,12 @@
   let renderFrame = 0;
   const labelFor = (items, value) => items.find(item => item[0] === value)?.[1] || '';
   const phoneImage = () => config.phoneImages[state.phoneColor];
+  function updatePhonePreviewGeometry() {
+    const geometry = phonePreviewGeometry[state.phoneColor] || { scale:1, x:'0%', y:'0%' };
+    root.style.setProperty('--phone-preview-scale',String(geometry.scale));
+    root.style.setProperty('--phone-preview-x',geometry.x);
+    root.style.setProperty('--phone-preview-y',geometry.y);
+  }
   const formatMoney = value => new Intl.NumberFormat(config.locale, { style:'currency', currency:config.currency }).format(Number(value) / 100);
   function readSaved() {
     let saved;
@@ -103,7 +116,12 @@
   });
   gallery.forEach((item,index) => {
     const thumb = document.createElement('button'); thumb.type = 'button'; thumb.dataset.galleryIndex = index; thumb.title = item.label; thumb.setAttribute('aria-label',item.label);
-    const img = document.createElement('img'); img.src = index === 0 ? phoneImage() : item.src; img.alt = ''; img.width = 100; img.height = 100; img.loading = 'lazy'; thumb.append(img); $('[data-gallery-thumbs]').append(thumb);
+    const img = document.createElement('img'); img.src = index === 0 ? phoneImage() : item.src; img.alt = ''; img.width = 100; img.height = 100; img.loading = 'lazy';
+    if (index === 0) {
+      const art = document.createElement('div'); art.className = 'phone-thumb-art';
+      const plane = document.createElement('div'); plane.className = 'phone-render-plane'; plane.append(img); art.append(plane); thumb.append(art);
+    } else thumb.append(img);
+    $('[data-gallery-thumbs]').append(thumb);
     const dot = document.createElement('button'); dot.type = 'button'; dot.dataset.galleryIndex = index; dot.setAttribute('aria-label',t('view_image', {label:item.label})); $('[data-gallery-dots]').append(dot);
   });
   function buildVariantOptions() {
@@ -143,8 +161,11 @@
     $('[data-quantity-plus]').disabled = state.quantity >= 99 || submitting;
     $$('[data-review], [data-mobile-review-button]').forEach(node => { node.disabled = !ready || !variant || submitting; });
     const variantInput = $('[data-variant-id]'); variantInput.value = variant ? String(variant.id) : ''; variantInput.disabled = !available;
-    $('[data-add-to-cart]').disabled = !available || submitting;
-    $('[data-add-to-cart]').textContent = submitting ? t('adding') : available ? t('add_to_cart') : variant ? t('sold_out') : t('unavailable');
+    $$('[data-purchase-intent]').forEach(node => { node.disabled = !available || submitting; });
+    $('[data-purchase-status]').textContent = available ? t('purchase_available') : variant ? t('purchase_sold_out') : t('purchase_unavailable');
+    $('[data-purchase-status]').classList.toggle('is-unavailable', !available);
+    $('[data-add-to-cart]').disabled = !available || submitting || summaryAdded;
+    $('[data-add-to-cart]').textContent = submitting ? t('adding') : summaryAdded ? t('added_to_bag') : available ? t(purchaseIntent === 'checkout' ? 'confirm_checkout' : 'confirm_add') : variant ? t('sold_out') : t('unavailable');
     const size = sizes.find(item => item[0] === state.size);
     $('[data-property-font]').value = labelFor(fonts, state.style);
     $('[data-property-color]').value = labelFor(textColors, state.textColor);
@@ -203,6 +224,7 @@
     $('[data-compare-toggle]').setAttribute('aria-pressed',String(state.compare));
   }
   function updateGallery() {
+    updatePhonePreviewGeometry();
     const item = gallery[state.gallery], live = state.gallery === 0;
     const img = $('[data-gallery-image]'); const src = live ? phoneImage() : item.src;
     if (img.getAttribute('src') !== src) img.src = src;
@@ -292,12 +314,15 @@
   function createPreview(liveOnly = false) {
     const live = liveOnly || state.gallery === 0;
     const art = document.createElement('div'); art.className = `zoom-art${live ? ' is-live' : ''}`;
-    const img = document.createElement('img'); img.src = live ? phoneImage() : gallery[state.gallery].src; img.alt = live ? t('zoom_image', {color:labelFor(phoneColors,state.phoneColor)}) : gallery[state.gallery].alt; img.width = 1254; img.height = 1254; art.append(img);
-    if (live) { const zone = document.createElement('div'); zone.className = 'signature-safe-zone'; const signature = document.createElement('span'); signature.dataset.signatureLive = ''; zone.append(signature); art.append(zone); paintSignatures(art); }
+    const plane = live ? document.createElement('div') : art;
+    if (live) { plane.className = 'phone-render-plane'; art.append(plane); }
+    const img = document.createElement('img'); img.src = live ? phoneImage() : gallery[state.gallery].src; img.alt = live ? t('zoom_image', {color:labelFor(phoneColors,state.phoneColor)}) : gallery[state.gallery].alt; img.width = 1254; img.height = 1254; plane.append(img);
+    if (live) { const zone = document.createElement('div'); zone.className = 'signature-safe-zone'; const signature = document.createElement('span'); signature.dataset.signatureLive = ''; zone.append(signature); plane.append(zone); paintSignatures(art); }
     if (live && !liveOnly && state.compare) {
       const before = document.createElement('div'); before.className = 'gallery-before'; before.setAttribute('aria-hidden','true');
       before.style.clipPath = `inset(0 ${100-state.comparison}% 0 0)`;
-      const beforeImage = document.createElement('img'); beforeImage.src = phoneImage(); beforeImage.alt = ''; beforeImage.width = 1254; beforeImage.height = 1254; before.append(beforeImage);
+      const beforePlane = document.createElement('div'); beforePlane.className = 'phone-render-plane';
+      const beforeImage = document.createElement('img'); beforeImage.src = phoneImage(); beforeImage.alt = ''; beforeImage.width = 1254; beforeImage.height = 1254; beforePlane.append(beforeImage); before.append(beforePlane);
       const divider = document.createElement('div'); divider.className = 'comparison-divider'; divider.setAttribute('aria-hidden','true'); divider.style.left = `${state.comparison}%`;
       const handle = $('[data-comparison-divider] span').cloneNode(true); divider.append(handle); art.append(before,divider);
     }
@@ -329,7 +354,11 @@
       updateMobileReview();
     });
   });
-  function review(trigger) {
+  function review(trigger, intent = 'bag') {
+    if (submitting) return;
+    purchaseIntent = intent;
+    summaryAdded = false;
+    $('[data-checkout-form]').hidden = true;
     if (!state.name.trim()) {
       const input = $('[data-name]'); input.setAttribute('aria-invalid','true'); input.setCustomValidity(t('name_required'));
       $('[data-name-error]').textContent = t('name_error'); $('[data-name-error]').hidden = false;
@@ -342,6 +371,7 @@
     if (!variant) { $('[data-product-error]').textContent = t('product_unavailable'); $('[data-product-error]').hidden = false; return; }
     state.quantity = Number($('[data-quantity]').value); save();
     $('[data-summary-name]').textContent = state.name;
+    $('[data-summary-intent]').textContent = t(variant.available ? purchaseIntent === 'checkout' ? 'summary_checkout_intent' : 'summary_bag_intent' : 'purchase_sold_out');
     const size = sizes.find(item => item[0] === state.size);
     const rows = [ ...productData.options.map((option,index) => [option.name,state.options[index]]), [t('phone_visualization'),labelFor(phoneColors,state.phoneColor)], [t('font'),labelFor(fonts,state.style)], [t('placement'),labelFor(positions,state.position)], [t('signature_size'),`${size[1]} · ${size[2]} mm`], [t('signature_colour'),labelFor(textColors,state.textColor)], [t('quantity'),String(state.quantity)], [t('unit_price'),formatMoney(variant.price)], [t('availability'),variant.available ? t('in_stock') : t('sold_out')] ];
     $('[data-design-summary]').replaceChildren(...rows.map(([title,value]) => { const row = document.createElement('div'); const term = document.createElement('dt'), detail = document.createElement('dd'); term.textContent = title; detail.textContent = value; row.append(term,detail); return row; }));
@@ -356,6 +386,10 @@
   }
   designForm.addEventListener('submit',event => { event.preventDefault(); review(event.submitter || $('[data-review]')); });
   $('[data-mobile-review-button]').addEventListener('click',event => review(event.currentTarget));
+  $$('[data-purchase-intent]').forEach(node => node.addEventListener('click', event => {
+    if (!variant?.available || submitting) return;
+    review(event.currentTarget, node.dataset.purchaseIntent);
+  }));
   function updateMobileReview() {
     const editing = Boolean(document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'));
     const keyboard = window.visualViewport && window.innerHeight-window.visualViewport.height>150;
@@ -374,23 +408,35 @@
   document.fonts?.ready.then(scheduleFit);
   if (window.ResizeObserver) new ResizeObserver(scheduleFit).observe($('[data-gallery-stage]'));
   $('[data-add-to-cart]').addEventListener('click', async () => {
-    if (submitting || !variant?.available) return;
-    if (!state.name.trim() || !quantityValid()) { $('[data-review-dialog]').close(); review($('[data-review]')); return; }
+    if (submitting || summaryAdded || !variant?.available) return;
+    if (!state.name.trim() || !quantityValid()) { $('[data-review-dialog]').close(); review($('[data-review]'), purchaseIntent); return; }
     submitting = true;
     $('[data-cart-error]').hidden = true;
     $('[data-cart-check]').hidden = true;
     $('[data-cart-success]').hidden = true;
     updateVariant();
     const payload = new FormData(designForm);
+    const submittedVariantId = String(variant.id);
+    const checkoutAfterAdd = purchaseIntent === 'checkout';
     $$('[data-choice], [data-name], [data-quantity]').forEach(node => { node.disabled = true; });
     try {
       const response = await fetch(config.cartAddUrl, {method:'POST', credentials:'same-origin', headers:{Accept:'application/json'}, body:payload});
       let result;
       try { result = await response.json(); } catch (_) { throw new Error(t('cart_uncertain')); }
       if (!response.ok) throw new Error(typeof result.description === 'string' ? result.description : typeof result.message === 'string' ? result.message : t('cart_error'));
-      if (!result || !result.id) throw new Error(t('cart_uncertain'));
+      if (!result || String(result.variant_id || result.id) !== submittedVariantId) throw new Error(t('cart_uncertain'));
+      summaryAdded = true;
+      $('[data-checkout-form]').hidden = false;
       $('[data-cart-success]').hidden = false;
       root.dispatchEvent(new CustomEvent('lumasela:cartchange', {bubbles:true, detail:{item:result}}));
+      if (checkoutAfterAdd) {
+        try {
+          $('[data-checkout-form]').requestSubmit($('[data-checkout-submit]'));
+        } catch (_) {
+          $('[data-cart-error]').textContent = t('checkout_ready');
+          $('[data-cart-error]').hidden = false;
+        }
+      }
     } catch (error) {
       $('[data-cart-error]').textContent = error instanceof TypeError ? t('cart_uncertain') : error.message || t('cart_error');
       $('[data-cart-error]').hidden = false;
