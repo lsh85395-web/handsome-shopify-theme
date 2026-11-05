@@ -142,3 +142,6 @@ body.product-page{background:radial-gradient(ellipse at 5% 12%,#eaf5f9 0,transpa
 .product-shell .availability,.product-shell .purchase-status{color:#446553}
 .product-shell :is(.availability.is-unavailable,.purchase-status.is-unavailable,.choice-grid button small,.model-grid button.is-active small){color:#79575e}
 .product-shell--refined :is(.gallery-phone-choice .field-note,.purchase-panel .review-heading,.option-section-title>span){color:#526b77}
+
+/* Readable font labels and preview disclosure on small screens. */
+@media(max-width:760px){.product-shell .font-grid button{height:92px}.product-shell .font-grid button small{font-size:12px;line-height:1.35;white-space:normal;text-align:center}.product-shell .gallery-disclaimer{font-size:12.5px;line-height:1.7}}

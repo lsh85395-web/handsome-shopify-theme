@@ -2,6 +2,12 @@
 {%- liquid
   assign selected_variant = product.selected_or_first_available_variant
   assign product_form_id = 'LumaselaSoftProductForm-' | append: section.id
+  assign displayed_description = product.description
+  if product.id == 15562989830432
+    assign old_model_sentence = 'Select your exact model at checkout — including popular iPhone 17 / 17 Pro / 17 Pro Max / iPhone Air fits listed in the store, plus additional sizes as inventory expands.'
+    assign current_model_sentence = 'lumasela_soft.product.current_model_guidance' | t
+    assign displayed_description = displayed_description | replace: old_model_sentence, current_model_sentence
+  endif
 -%}
 <section id="lumasela-product-main" class="product-shell product-shell--refined" data-lumasela-product data-product-id="{{ product.id }}">
 <script type="application/json" data-product-config>
@@ -273,7 +279,7 @@
 <details><summary>{{ 'lumasela_soft.product.faq_preview_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_preview_a' | t }}</p></details>
 <details><summary>{{ 'lumasela_soft.product.faq_sample_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_sample_a' | t }}</p></details>
 <details><summary>{{ 'lumasela_soft.product.faq_order_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_order_a' | t }}</p></details>
-</div><details class="ls-original product-description-disclosure"><summary>{{ 'lumasela_soft.product.faq_original' | t }}</summary><div class="product-description rte">{{ product.description }}</div></details></section>
+</div><details class="ls-original product-description-disclosure"><summary>{{ 'lumasela_soft.product.faq_original' | t }}</summary><div class="product-description rte">{{ displayed_description }}</div></details></section>
 <section class="ls-section ls-closing"><p class="ls-kicker">{{ 'lumasela_soft.product.closing_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.closing_heading' | t }}</h2><p>{{ 'lumasela_soft.product.closing_body' | t }}</p><a class="product-primary" href="#personalise" data-ls-return>{{ 'lumasela_soft.product.closing_action' | t }} <span aria-hidden="true">↑</span></a></section></div>
     <div class="mobile-review" data-mobile-review><div class="mobile-review-top"><div><span data-mobile-price>{{ product.title | escape }}</span><small data-mobile-status>{{ 'lumasela_soft.product.preview' | t }}</small></div><button type="button" class="review-design-link" data-mobile-review-button disabled>{{ 'lumasela_soft.product.review' | t }}</button></div><div class="mobile-purchase-actions"><button type="button" class="product-primary" data-purchase-intent="bag" disabled>{{ 'lumasela_soft.product.add_to_bag' | t }}</button><button type="button" class="product-primary purchase-secondary" data-purchase-intent="checkout" disabled>{{ 'lumasela_soft.product.buy_now' | t }}</button></div></div>
     <dialog class="product-dialog zoom-dialog" data-zoom-dialog aria-labelledby="zoom-title"><div class="dialog-heading"><h2 id="zoom-title">{{ 'lumasela_soft.product.closer_look' | t }}</h2><button type="button" class="round-control dialog-close" data-close-dialog aria-label="{{ 'lumasela_soft.product.close_zoom' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div data-zoom-content></div><p class="dialog-note">{{ 'lumasela_soft.product.zoom_note' | t }}</p></dialog>

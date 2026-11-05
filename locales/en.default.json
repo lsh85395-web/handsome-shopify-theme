@@ -999,12 +999,13 @@
       "faq_sample_a": "No. The sample styling panel, detail markers and step guide are separate from your designer. Return to the top to continue with your selected name and configuration.",
       "faq_order_q": "What happens when I select Add to bag or Buy now?",
       "faq_order_a": "You will first see a design summary to check. Confirm & add to bag adds the selected item. Confirm & checkout adds it and continues to checkout, including any items already in your bag. Sold-out combinations cannot be purchased.",
-      "faq_original": "Full original product details",
+      "faq_original": "Full product details",
       "closing_kicker": "MAKE IT YOURS",
       "closing_heading": "Back to your own design.",
       "closing_body": "Your name and selections are still waiting above.",
       "closing_action": "Return to your design",
-      "purchase_added": "Added to your bag. View your bag to adjust quantity or check out."
+      "purchase_added": "Added to your bag. View your bag to adjust quantity or check out.",
+      "current_model_guidance": "Choose your phone model from the available options above before reviewing your design."
     }
   }
 }
