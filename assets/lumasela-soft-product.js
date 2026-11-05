@@ -40,7 +40,7 @@
     if (!saved || saved.version !== 2) return;
     if (typeof saved.name === 'string') state.name = [...saved.name].slice(0,20).join('');
     if (Number.isInteger(Number(saved.quantity)) && Number(saved.quantity) >= 1 && Number(saved.quantity) <= 99) state.quantity = Number(saved.quantity);
-    if (Array.isArray(saved.options) && productData.variants.some(item => item.options.every((value, index) => value === saved.options[index]))) state.options = saved.options.slice();
+    if (Array.isArray(saved.options) && productData.variants.some(item => item.options.length === saved.options.length && item.options.every((value, index) => value === saved.options[index]))) state.options = saved.options.slice();
     const allowed = { style: fonts, phoneColor: phoneColors, position: positions, size: sizes, textColor: textColors };
     for (const [key, values] of Object.entries(allowed)) if (values.some(item => item[0] === saved[key])) state[key] = saved[key];
     if (Number.isInteger(saved.gallery) && saved.gallery >= 0 && saved.gallery < gallery.length) state.gallery = saved.gallery;
@@ -52,17 +52,22 @@
     $('[data-saved-notice]').hidden = true;
     root.dispatchEvent(new CustomEvent('lumasela:designchange', { bubbles:true, detail:{ name:state.name, style:state.style, quantity:state.quantity } }));
   }
-  try { const saved = JSON.parse(sessionStorage.getItem(storageKey)); $('[data-saved-notice]').hidden = !saved || saved.version !== 2; } catch (_) {}
-  $('[data-restore-design]').addEventListener('click', () => { readSaved(); buildVariantOptions(); render({syncInputs:true}); save(); });
-  $('[data-dismiss-saved]').addEventListener('click', () => { save(); });
+  readSaved();
+  $('[data-saved-notice]').hidden = true;
   const url = new URL(location.href);
+  const queryVariant = url.searchParams.get('variant');
+  if (url.searchParams.has('variant')) {
+    const explicitVariant = config.variants.find(item => String(item.id) === queryVariant) || initialVariant;
+    state.options = explicitVariant?.options.slice() || [];
+  }
   const queryStyle = url.searchParams.get('style');
-  if (fonts.some(item => item[0] === queryStyle)) {
+  const hasQueryStyle = fonts.some(item => item[0] === queryStyle);
+  if (hasQueryStyle) {
     state.style = queryStyle;
     url.searchParams.delete('style');
     history.replaceState(history.state, '', url.pathname + url.search + url.hash);
-    save();
   }
+  if (hasQueryStyle || url.searchParams.has('variant')) save();
   function button(value, text, key, className = '') {
     const node = document.createElement('button');
     node.type = 'button'; node.dataset.choice = key; node.dataset.value = value; node.className = className; node.textContent = text;
@@ -362,6 +367,7 @@
   window.addEventListener('resize',() => { scheduleFit(); updateMobileReview(); });
   window.addEventListener('pageshow',event => {
     if (!event.persisted) return;
+    readSaved();
     buildVariantOptions();
     render({syncInputs:true});
   });

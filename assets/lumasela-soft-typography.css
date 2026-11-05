@@ -40,3 +40,85 @@ body,body.home-page,body.product-page{font-family:var(--font-ui);font-weight:400
 @media(max-width:760px){.choice-grid button{font-size:12px}.placement-grid button{font-size:11px}.font-grid button small{font-size:10px}.product-primary,.mobile-review .product-primary{font-size:12px!important}.design-summary{font-size:12px}.product-faq summary{font-size:13px}}
 @media(max-width:620px){.home-hero-subtitle{font-size:13px}.home-font-caption{font-size:11px}.home-step-tab{font-size:11px;white-space:normal}.home-step-panel p{font-size:12px}.home-faq-list summary{font-size:13px}.home-faq-list details p{font-size:13px}.home-how-copy>.home-text-link{font-size:12px}}
 @media(max-width:365px){.font-grid button small{font-size:9px}.home-step-tab{font-size:10px}.placement-grid button{font-size:10px}.size-grid strong{font-size:10px}}
+
+/* Desktop reading scale. Component selectors keep signature artwork, headings,
+   prices and hidden metadata unchanged; mobile retains its existing scale.
+   Home-page qualifiers also win over the later home-completion stylesheet. */
+@media(min-width:900px){
+  .home-page .home-hero-cafe .home-hero-subtitle,
+  .home-page .home-hero-subtitle,
+  .home-page .hc-section .hc-body,
+  .home-page .hc-philosophy-points p,
+  .home-page .hc-full-story-copy p:not(.hc-story-proposal-note),
+  .home-faq-list details p,
+  .home-step-panel p,
+  .product-story-copy>p:not(.product-eyebrow),
+  .product-faq p,
+  .product-description,
+  .site-bag p{font-size:16px;line-height:1.75}
+  .home-page .hc-detail-copy p{font-size:14px;line-height:1.75}
+
+  .home-page .home-button,
+  .home-page .home-text-link,
+  .home-page .home-step-tab,
+  .home-page .hc-section .hc-link,
+  .home-page .hc-full-story>summary,
+  .home-page .hc-control-group legend,
+  .home-page .hc-builder-steps li,
+  .home-page .hc-builder .hc-font-select,
+  .product-choice legend,
+  .name-field label,
+  .choice-grid button,
+  .size-grid strong,
+  .product-text-link,
+  .review-heading,
+  .review-heading strong,
+  .design-summary,
+  .quantity-control input,
+  .summary-total,
+  .cart-check-link,
+  .cart-success,
+  .site-bag .bag-action,
+  .site-footer-links,
+  .site-footer-columns a,
+  .site-footer-brand p{font-size:14px;line-height:1.5}
+  .home-faq-list summary,
+  .product-faq summary{font-size:16px;line-height:1.5}
+  .product-primary,
+  .text-control{font-size:14px!important;line-height:1.5}
+  .home-page .hc-color-choice,
+  .home-page .hc-placement-choice{font-size:14px!important;line-height:1.45!important}
+
+  .home-page .hc-control-note,
+  .home-page .hc-builder .hc-control-note,
+  .home-page .hc-builder .hc-inspiration-caption,
+  .home-page .hc-inspiration-caption>span+span,
+  .home-page .hc-details-disclosure,
+  .home-page .hc-story-proposal-note,
+  .field-note,
+  .field-error,
+  .gallery-disclaimer,
+  .gallery-small-note,
+  .design-disclosure,
+  .selected-value,
+  .name-field label span,
+  .availability,
+  .product-breadcrumb,
+  .product-concept-note,
+  .saved-design-notice p,
+  .dialog-note,
+  .summary-disclosure,
+  .summary-total small,
+  .site-preview-note,
+  .site-policy-pending{font-size:13px;line-height:1.65}
+
+  .home-font-caption,
+  .home-page .hc-section .hc-image-note,
+  .home-page .hc-art-label,
+  .font-grid button small,
+  .choice-grid button small,
+  .gallery-top,
+  .gallery-bottom,
+  .live-indicator,
+  .comparison-control>div{font-size:12px;line-height:1.5}
+}
