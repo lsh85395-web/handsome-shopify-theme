@@ -7,6 +7,10 @@
   if (root.dataset.initialized === 'true') return;
   root.dataset.initialized = 'true';
   const config = JSON.parse(root.querySelector('[data-product-config]').textContent);
+  if (String(config.productId) === '15562989830432') {
+    config.variants = config.variants.filter(item => !item.options.includes('iPhone Air'));
+    config.options = config.options.map(option => ({ ...option, values:option.values.filter(value => value !== 'iPhone Air') }));
+  }
   const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replaceAll(`{${name}}`, String(value)), config.strings[key] || key);
   const storageKey = `lumasela:shopify:product:${config.productId}:design:v2`;
   const designForm = root.querySelector('.soft-design-form');
@@ -162,7 +166,8 @@
     $$('[data-review], [data-mobile-review-button]').forEach(node => { node.disabled = !ready || !variant || submitting; });
     const variantInput = $('[data-variant-id]'); variantInput.value = variant ? String(variant.id) : ''; variantInput.disabled = !available;
     $$('[data-purchase-intent]').forEach(node => { node.disabled = !available || submitting; });
-    $('[data-purchase-status]').textContent = available ? t('purchase_available') : variant ? t('purchase_sold_out') : t('purchase_unavailable');
+     $('[data-purchase-status]').textContent = submitting ? t('adding') : summaryAdded ? t('purchase_added') : available ? t('purchase_available') : variant ? t('purchase_sold_out') : t('purchase_unavailable');
+    $('[data-purchase-cart]').hidden = !summaryAdded;
     $('[data-purchase-status]').classList.toggle('is-unavailable', !available);
     $('[data-add-to-cart]').disabled = !available || submitting || summaryAdded;
     $('[data-add-to-cart]').textContent = submitting ? t('adding') : summaryAdded ? t('added_to_bag') : available ? t(purchaseIntent === 'checkout' ? 'confirm_checkout' : 'confirm_add') : variant ? t('sold_out') : t('unavailable');
@@ -259,6 +264,8 @@
     $('[data-cart-success]').hidden = true;
     $('[data-cart-error]').hidden = true;
     $('[data-cart-check]').hidden = true;
+    const previousValue = key.startsWith('option') ? state.options[Number(key.slice(6))] : state[key];
+    if (previousValue !== value) summaryAdded = false;
     if (key.startsWith('option')) { state.options[Number(key.slice(6))] = value; } else { state[key] = value; }
     if (['phoneColor','style','position','size','textColor','name'].includes(key)) state.gallery = 0;
     render(); save();
@@ -296,7 +303,7 @@
     clearNameError(); change('name',value);
   });
   function quantityValid() { const value = Number($('[data-quantity]').value); return Number.isInteger(value) && value>=1 && value<=99; }
-  function updateQuantity(value) { state.quantity = Math.max(1,Math.min(99,Number(value)||1)); $('[data-quantity]').value = state.quantity; $('[data-quantity]').removeAttribute('aria-invalid'); $('[data-product-error]').hidden = true; render(); save(); }
+  function updateQuantity(value) { if (submitting) return; if (Number(value) !== state.quantity) summaryAdded = false; state.quantity = Math.max(1,Math.min(99,Number(value)||1)); $('[data-quantity]').value = state.quantity; $('[data-quantity]').removeAttribute('aria-invalid'); $('[data-product-error]').hidden = true; render(); save(); }
   $('[data-quantity-minus]').addEventListener('click',() => updateQuantity(state.quantity-1));
   $('[data-quantity-plus]').addEventListener('click',() => updateQuantity(state.quantity+1));
   $('[data-quantity]').addEventListener('input',() => { if (quantityValid()) updateQuantity(Number($('[data-quantity]').value)); });
@@ -361,8 +368,7 @@
   function review(trigger, intent = 'bag') {
     if (submitting) return;
     purchaseIntent = intent;
-    summaryAdded = false;
-    $('[data-checkout-form]').hidden = true;
+    $('[data-checkout-form]').hidden = !summaryAdded;
     if (!state.name.trim()) {
       const input = $('[data-name]'); input.setAttribute('aria-invalid','true'); input.setCustomValidity(t('name_required'));
       $('[data-name-error]').textContent = t('name_error'); $('[data-name-error]').hidden = false;
@@ -384,7 +390,7 @@
     $('[data-summary-preview]').replaceChildren(createPreview(true));
     $('[data-cart-error]').hidden = true;
     $('[data-cart-check]').hidden = true;
-    $('[data-cart-success]').hidden = true;
+    $('[data-cart-success]').hidden = !summaryAdded;
     updateVariant();
     openDialog($('[data-review-dialog]'),trigger);
   }

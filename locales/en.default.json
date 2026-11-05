@@ -789,7 +789,7 @@
       "previous": "Previous image",
       "next": "Next image",
       "live_caption": "Your name. Your everyday.",
-      "live_note": "Made personal, in real time.",
+      "live_note": "Live design preview · reference phone",
       "choose_gallery": "Choose gallery image",
       "gallery_thumbnails": "Gallery thumbnails",
       "compare": "Before & after",
@@ -798,7 +798,7 @@
       "your_signature": "Your signature",
       "compare_range": "Compare before and after",
       "initial_comparison": "50% without signature",
-      "placement_note": "Placement preview only. Camera layout varies by model.",
+      "placement_note": "Reference image, not an exact view of your selected model. Camera layout and case details vary by model.",
       "eyebrow": "THE SIGNATURE COLLECTION",
       "subtitle_html": "A little more <em>you.</em>",
       "loading_price": "Loading price…",
@@ -933,7 +933,7 @@
       "clear_kicker": "01 / SIMPLE BY DESIGN",
       "clear_heading": "The phone you love. A detail that is yours.",
       "clear_body": "Start with a clear silhouette, then make room for your name. Explore the look here and choose your case type and phone model in the designer above.",
-      "clear_note": "Gallery images are visual references. Camera layout and case details vary by model.",
+      "clear_note": "Reference imagery, not a model-specific product photograph. Camera layout and case details vary by model.",
       "clear_story_alt": "Clear case shown from the back",
       "sample_kicker": "02 / A SIGNATURE OF YOUR OWN",
       "sample_heading": "One name. More than one expression.",
@@ -1003,7 +1003,8 @@
       "closing_kicker": "MAKE IT YOURS",
       "closing_heading": "Back to your own design.",
       "closing_body": "Your name and selections are still waiting above.",
-      "closing_action": "Return to your design"
+      "closing_action": "Return to your design",
+      "purchase_added": "Added to your bag. View your bag to adjust quantity or check out."
     }
   }
 }

@@ -135,3 +135,10 @@ body.product-page{background:radial-gradient(ellipse at 5% 12%,#eaf5f9 0,transpa
 
 /* Bring the 45-degree layout toward the lower-right edge; preserve font size and angle. */
 .signature-safe-zone[data-position="bottom-right-diagonal"]{left:33.5%;top:31.5%}
+
+.product-shell{--muted:#526b77}
+.product-shell :is(.product-eyebrow,.selected-value,.name-field label span,.field-note,.gallery-small-note,.gallery-disclaimer,.gallery-bottom,.live-indicator,.font-grid button small,.size-grid small,.design-disclosure,.dialog-note,.design-summary dt,.summary-total small,.summary-disclosure,.review-auxiliary>span,.mobile-review small){color:#526b77}
+.product-shell .product-subtitle,.product-shell .product-subtitle em{color:#5b7581}
+.product-shell .availability,.product-shell .purchase-status{color:#446553}
+.product-shell :is(.availability.is-unavailable,.purchase-status.is-unavailable,.choice-grid button small,.model-grid button.is-active small){color:#79575e}
+.product-shell--refined :is(.gallery-phone-choice .field-note,.purchase-panel .review-heading,.option-section-title>span){color:#526b77}
