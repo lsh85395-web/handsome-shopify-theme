@@ -18,3 +18,5 @@
 The live site is `https://lumasela.com/`. The previously published theme `192777158944` is retained as unpublished and was not changed. Its pre-change backup is at `C:\Users\mokwh\Documents\项目管理\shopify-theme-backups\cfrzux-ne-live-192777158944-20261104-pre-aina`.
 
 The product is a zero-inventory demo. Publishing the theme changed the visible design but did not make the demo product purchasable.
+
+| 2026-11-05 11:48 (read-back verified) | `c9e3a7d48c1f38413708166c3c646ac9485c1c67` | `cfrzux-ne.myshopify.com` | `193315438880` | Unpublished QA | Version 8 structure, capsule navigation, independent support views, product gallery/state/form safeguards. 103 initial files plus two subsequent CSS updates uploaded through Admin API; every write matched read-back MD5. MAIN `193306427680` and its 2026-11-04T14:08:05Z modification time remained unchanged. HTTP 7-page and 35-resource checks passed. Real product hotspots remain incomplete; no confirmed physical close-up imagery. |

@@ -1,4 +1,5 @@
 lumasela-home-steps,lumasela-home-rail{display:block}
+lumasela-home-rail{min-width:0;max-width:100%}
 .lumasela-home-heading{text-align:center;margin-bottom:4rem}
 .lumasela-home-steps{background:rgb(var(--color-background));color:rgb(var(--color-foreground))}
 .lumasela-home-steps__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;max-width:100rem;margin:auto}
@@ -37,7 +38,7 @@ lumasela-home-steps,lumasela-home-rail{display:block}
  .lumasela-home-steps__panel{grid-template-columns:1fr;gap:1.2rem;margin-bottom:1.6rem}
  .lumasela-home-steps__example{padding:1rem;text-align:left}
  .lumasela-home-faq__inner{grid-template-columns:1fr;gap:3.2rem}
- .lumasela-signature-styles .lumasela-signature-styles__grid,.lumasela-media-grid .lumasela-media-grid__items{display:flex;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:1.6rem}
+ .lumasela-signature-styles .lumasela-signature-styles__grid,.lumasela-media-grid .lumasela-media-grid__items{display:flex;box-sizing:border-box;width:100%;max-width:100%;min-width:0;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-right:0;padding-bottom:1.6rem}
  .lumasela-signature-styles .lumasela-signature-card,.lumasela-media-grid .lumasela-media-card{flex:0 0 84%;scroll-snap-align:start;min-width:0}
  .lumasela-home-rail__feedback{display:flex;justify-content:space-between;gap:2rem;font-size:1.2rem;margin-top:1.6rem;color:var(--lumasela-muted)}
  .lumasela-home-rail__feedback output{white-space:nowrap;font-variant-numeric:tabular-nums}

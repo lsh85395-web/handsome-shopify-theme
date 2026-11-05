@@ -38,7 +38,9 @@ Prepared 2026-11-05 from branch `codex/lumasela-asset-integration-20261105`, bas
 - Official Shopify Theme Check validates the complete changed theme-file set using bundled fallback schema/docs because the environment cannot write its normal cache directory.
 - Navigation: 12 simulated DOM checks passed. Homepage: 11 simulated DOM checks passed.
 - Product: 11 simulated DOM regression groups passed, including full session restore, variant and property integrity, gallery/zoom, repeated phone-colour changes and invalid submissions. Reproducible test: `NODE_PATH=<directory containing liquidjs and jsdom> node scripts/test-product-interactions.cjs`. Final upload/read-back results are recorded in the deployment entry.
-- Real Chromium rendering is blocked by the execution environment (socket restriction and an independent environment-mount failure on escalated launch). No desktop/mobile screenshot, real phone, cross-browser, payment or end-to-end order test is claimed.
+- This execution environment cannot launch Chromium (socket restriction and an independent mount failure). Independent browser review found 500px signature-rail overflow and low-contrast hero secondary text; scoped fixes were prepared for retest. No real-phone, cross-browser, payment or end-to-end order test is claimed.
+- Actual QA storefront HTTP checks passed for home, product, guide, FAQ, tracking, contact and cart: all seven HTTP 200, expected QA theme ID/unpublished role, no Liquid errors. All 35 discovered Lumasela resources returned HTTP 200 with nonempty bodies. The native contact form was inspected but not submitted.
+- Actual product HTML confirms the original /cart/add form, six personalization properties, six gallery thumbnails, six fonts, four placements, 18 variants and zero available variants.
 - No real test order, notification, payment or contact submission was made.
 
 ## Rollback

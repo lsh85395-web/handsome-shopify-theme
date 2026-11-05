@@ -28,3 +28,9 @@ Base: a99e171. Existing Shopify sections, product route and checkout are retaine
 - Official Shopify full-theme validator: all nine changed homepage code files PASS. Bundled fallback schemas were used because the normal cache directory was unavailable.
 - LiquidJS + jsdom: ten checks PASS, including keyboard tabs, mobile sequential steps, six Aina card links, FAQ structure and absence of storage/network mutation. This is DOM testing, not real-browser or real-device testing.
 - Parent coordinates actual desktop/mobile runtime and screenshot QA. No live order, payment or production publish performed.
+
+## Narrow-screen QA correction
+
+Actual-browser review found 12px homepage overflow at viewport 500px with a 485px client width. The inherited signature rail used `calc(100vw - 1.8rem)` plus a 15px parent inset, giving a 497px right edge. Its new scoped rule uses the containing block's 100% border-box width and removes inherited 18vw trailing padding. Horizontal scrolling stays inside the rail; no page-level overflow masking is added. Width arithmetic passes at 320/390/500/749px with both 0px and 15px scrollbars; the existing ten DOM checks still pass. Browser retesting remains the final geometry check.
+
+The mobile hero inherited white copy and link colors regardless of the merchant's dark-text setting. An explicit dark-text class now keeps heading, subtitle, disclosure and secondary CTA in the existing ink color; the primary solid CTA and light-text hero option remain unchanged. Both corrected files pass the official Shopify validator (revision 2).

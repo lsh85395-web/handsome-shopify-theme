@@ -1,5 +1,6 @@
 """Read-only Shopify QA checks; never submits a cart, contact form or order."""
 import argparse
+import concurrent.futures
 import http.cookiejar
 import json
 import re
@@ -21,9 +22,9 @@ checks = [
  ('home', '/', ['lumasela-capsule', 'lumasela-home-steps', 'lumasela-home-faq']),
  ('product', '/products/signature-clear', ['data-lumasela-product', 'data-gallery-dialog', 'data-mobile-review']),
  ('guide', '/pages/support?view=customize', ['lumasela-help', '20 characters']),
- ('faq', '/pages/support?view=faq', ['<details', 'Frequently']),
+ ('faq', '/pages/support?view=faq', ['<details', 'Questions, answered clearly']),
  ('track', '/pages/support?view=track', ['account.lumasela.com/orders']),
- ('contact', '/pages/contact-us', ['contact_form']),
+ ('contact', '/pages/contact-us', ['/contact#ContactForm']),
  ('cart', '/cart', ['cart']),
 ]
 report = {'theme_id': args.theme_id, 'pages': [], 'assets': []}
@@ -40,13 +41,15 @@ for name, path, expected in checks:
  for attr in re.findall(r'(?:src|href)=["\']([^"\']+)["\']', html):
   if '/assets/lumasela-' in attr and not attr.endswith('.js.map'):
    assets.add(urllib.parse.urljoin(args.domain, attr.replace('&amp;', '&')))
-for url in sorted(assets):
+def check_asset(url):
  try:
   response = urllib.request.urlopen(url, timeout=30)
   payload = response.read()
-  report['assets'].append({'url':url, 'status': response.status, 'bytes':len(payload), 'pass': response.status == 200 and len(payload)>0})
+  return {'url':url, 'status': response.status, 'bytes':len(payload), 'pass': response.status == 200 and len(payload)>0}
  except Exception as e:
-  report['assets'].append({'url':url, 'pass':False, 'error':str(e)})
+  return {'url':url, 'pass':False, 'error':str(e)}
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+ report['assets'] = list(pool.map(check_asset, sorted(assets)))
 report['pass'] = all(row['pass'] for row in report['pages'] + report['assets'])
 (output/'report.json').write_text(json.dumps(report, indent=2))
 print(json.dumps({'pass':report['pass'], 'pages':report['pages'], 'assets_checked':len(report['assets']), 'asset_failures':[x for x in report['assets'] if not x['pass']]}))

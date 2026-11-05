@@ -13,16 +13,16 @@
 2. Select a section in the left panel. Every headline, paragraph, label, button and link is editable independently from its image.
 3. For each hero, choose separate desktop and mobile images. Leaving them empty uses the packaged no-marketing-text fallback visual.
 4. Drag sections in the left panel to change their order. Use the eye icon to hide a section without deleting its settings.
-5. The `Lumasela customizer` section has a **Product** picker. Leave it empty for design-preview mode. Select a verified phone-case product only when its variants, price, media and fulfillment details are ready.
-6. The `Lumasela featured showcase` section has a **Collection** picker. When a published collection is selected, the cards use real Shopify product data and quick add. Without one, the section shows clearly marked preview cards.
+5. The full homepage `Lumasela customizer` is retained disabled. The home buttons now lead to the existing product studio. Do not enable purchasing before product data and fulfillment details are verified.
+6. The previous `Lumasela featured showcase` is retained disabled so its configuration remains recoverable; the approved home layout does not add a category or demo-product shelf.
 
 ## Products, collections, and personalized order data
 
 1. Product title, description, images, variants, price, inventory and status are edited in **Products**.
 2. The default product template is already Lumasela-branded. Use **product.lumasela** only when a separate template assignment is useful for migration or testing.
-3. The Lumasela customizer adds `Signature name`, `Signature style`, `Signature color`, and `Signature position` as line-item properties. Check these values in the cart and in a Shopify test order before selling.
+3. The active Lumasela product studio submits `Signature name`, `Signature style`, `Signature position`, `Signature size`, `Text colour`, and `Preview phone colour` as line-item properties. Review these with the variant and quantity before selling. A real test order requires separate authorization.
 4. Edit collection membership and collection images in **Products → Collections**. The collection page reads this Shopify data automatically.
-5. The current store has three draft demo phone-case listings under VAULTA. Do not relabel or publish them as Lumasela products without confirming product ownership, specifications, compatibility, imagery, inventory and fulfillment.
+5. The `signature-clear` listing is ACTIVE but explicitly a demo. All 18 variants have zero inventory and DENY policy. Confirm real product ownership, specifications, compatibility, media, inventory and fulfillment before accepting orders.
 
 ## Navigation and footer
 
@@ -43,6 +43,6 @@
 
 ## Before accepting orders
 
-Verify a real phone-case product, variants, SKU, price, inventory, shipping weight, tax category, product media, customization safe area, production time and returns policy. Then place a test order and confirm the four personalization fields appear on the cart item and order line item.
+Verify a real phone-case product, variants, SKU, price, inventory, shipping weight, tax category, product media, customization safe area, production time and returns policy. With explicit authorization, place a safe test order and confirm all six studio properties, the variant and quantity appear on the cart and order line item.
 
 Also confirm **Settings → Markets**, **Payments**, **Shipping and delivery**, **Taxes and duties**, **Policies**, customer contact details and the Malaysia domain experience. Displaying MYR in the theme is not evidence that these store-level settings are complete.
