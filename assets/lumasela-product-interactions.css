@@ -129,3 +129,54 @@ body:has([data-lumasela-product]) .lumasela-navigation{background:transparent;he
 .lumasela-preview-product .signature-style-grid .signature-sacramento{font-family:"Lumasela Sacramento",cursive}
 .lumasela-preview-product .signature-style-grid .signature-kaushan-script{font-family:"Lumasela Kaushan Script",cursive}
 .lumasela-preview-product .signature-style-grid .signature-knewave{font-family:"Lumasela Knewave",cursive}
+.is-personalisation-preview .lumasela-gallery-art{background:#f4f3ef}
+#MainContent:has([data-lumasela-product])>.shopify-section.section{padding-block:0}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story,.lumasela-feature-specs,.lumasela-home-steps,.collapsible-content,.lumasela-home-closing){font-family:Arial,"PingFang SC","Microsoft Yahei",sans-serif;color:#222;letter-spacing:0}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story,.lumasela-feature-specs,.lumasela-home-steps){padding-block:85px}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story,.lumasela-feature-specs,.lumasela-home-steps,.lumasela-home-closing)>.page-width{width:min(1312px,82vw);max-width:none;padding-inline:0}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story__eyebrow,.lumasela-eyebrow,.caption-with-letter-spacing){font:400 9px/1.5 Arial,sans-serif;letter-spacing:2px;color:#9c735d;margin:3px 0 18px}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story h2,.lumasela-display--section,.collapsible-content__heading){font:400 32px/1.6 Arial,sans-serif;letter-spacing:-.6px;max-width:none;margin:16px 0 20px}
+#MainContent:has([data-lumasela-product]) :is(.lumasela-image-story .rte,.lumasela-feature-specs .rte,.lumasela-home-steps .rte,.lumasela-home-closing .rte){font-size:12px;line-height:2;color:#888}
+#MainContent:has([data-lumasela-product]) .lumasela-image-story__inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8%}
+#MainContent:has([data-lumasela-product]) .lumasela-image-story__media{border-radius:14px;overflow:hidden;background:#f1efea}
+#MainContent:has([data-lumasela-product]) .lumasela-image-story__link{font-size:11px;font-weight:400;margin-top:20px}
+#MainContent:has([data-lumasela-product]) .lumasela-feature-specs__item h3{font-size:18px;font-weight:400;line-height:1.5;margin:20px 0 10px}
+#MainContent:has([data-lumasela-product]) .lumasela-feature-specs__item{min-height:0;padding:24px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-heading{text-align:center;margin:0 auto 45px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs{max-width:800px;gap:14px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs button{font:400 15px/1.5 Arial,sans-serif;padding:20px;gap:10px;min-height:0;color:#888;border-bottom-color:#e7e2db}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs button span{font-size:11px;letter-spacing:0}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs button[aria-selected=true]{color:#4c4438;border-bottom-color:#9d8b70;background:#faf9f6}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__panels{max-width:800px;margin:20px auto}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__panel{min-height:260px;padding:35px;gap:25px;background:#f6f4ef;border-radius:0 0 14px 14px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__panel h3{font-size:24px;font-weight:400;line-height:1.5;margin:20px 0}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__example{padding:14px;background:#fff;border-radius:6px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__sample:not(.lumasela-home-steps__sample--signature){font-size:12px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps__example p{font-size:10px;line-height:1.8}
+#MainContent:has([data-lumasela-product]) .lumasela-text-link{font-size:11px;font-weight:400}
+#MainContent:has([data-lumasela-product]) .collapsible-content__wrapper{padding-block:90px;background:#fff}
+#MainContent:has([data-lumasela-product]) .collapsible-content-wrapper-narrow{width:min(1312px,82vw);max-width:none;padding:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:10%;margin:auto}
+#MainContent:has([data-lumasela-product]) .collapsible-content__grid{margin:0}
+#MainContent:has([data-lumasela-product]) .collapsible-content__grid>.grid__item{width:100%;max-width:none}
+#MainContent:has([data-lumasela-product]) .collapsible-content .accordion__title{font:400 12px/1.7 Arial,sans-serif}
+#MainContent:has([data-lumasela-product]) .collapsible-content .accordion__content{font-size:11px;line-height:2;color:#888;padding:0}
+#MainContent:has([data-lumasela-product]) .lumasela-home-closing{padding:70px 20px 85px;background:#eae7e0}
+#MainContent:has([data-lumasela-product]) .lumasela-home-closing .rte{max-width:420px;margin:0 auto 24px}
+#MainContent:has([data-lumasela-product]) .lumasela-home-closing .lumasela-link{padding:15px 35px;border-radius:6px;background:#292926;color:#fff;font:400 12px/1.5 Arial,sans-serif;letter-spacing:0}
+@media(max-width:760px){
+ #MainContent:has([data-lumasela-product]) :is(.lumasela-image-story,.lumasela-feature-specs,.lumasela-home-steps){padding:45px 22px}
+ #MainContent:has([data-lumasela-product]) :is(.lumasela-image-story,.lumasela-feature-specs,.lumasela-home-steps,.lumasela-home-closing)>.page-width{width:100%}
+ #MainContent:has([data-lumasela-product]) :is(.lumasela-image-story h2,.lumasela-display--section,.collapsible-content__heading){font-size:25px}
+ #MainContent:has([data-lumasela-product]) .lumasela-image-story__inner{grid-template-columns:1fr;gap:28px}
+ #MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs{gap:5px}
+ #MainContent:has([data-lumasela-product]) .lumasela-home-steps__tabs button{font-size:12px;padding:14px 8px}
+ #MainContent:has([data-lumasela-product]) .lumasela-home-steps__panel{padding:22px;grid-template-columns:1fr;min-height:300px}
+ #MainContent:has([data-lumasela-product]) .collapsible-content__wrapper{padding:45px 22px}
+ #MainContent:has([data-lumasela-product]) .collapsible-content-wrapper-narrow{width:100%;display:block}
+ #MainContent:has([data-lumasela-product]) .collapsible-content__grid{margin-top:30px}
+ #MainContent:has([data-lumasela-product]) .lumasela-home-closing{padding:45px 22px}
+}
+
+.lumasela-mobile-review a{display:inline-flex;align-items:center;gap:8px}
+.lumasela-mobile-review a svg{flex:none}
+#MainContent:has([data-lumasela-product]) .lumasela-home-steps .lumasela-text-link svg{display:inline-block;vertical-align:middle;margin-left:6px}

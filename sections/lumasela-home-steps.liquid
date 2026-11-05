@@ -19,7 +19,7 @@
         </div>
       {%- endfor -%}
     </div>
-    {%- if section.settings.guide_link != blank -%}<a class="lumasela-text-link" href="{{ section.settings.guide_link }}">{{ section.settings.guide_label | escape }} <span aria-hidden="true">↗</span></a>{%- endif -%}
+    {%- if section.settings.guide_link != blank -%}<a class="lumasela-text-link" href="{{ section.settings.guide_link }}">{{ section.settings.guide_label | escape }} <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></a>{%- endif -%}
   </div>
 </lumasela-home-steps>
 
