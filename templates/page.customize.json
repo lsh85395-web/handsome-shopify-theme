@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "main": {
+      "type": "lumasela-help-guide",
+      "settings": {
+        "eyebrow": "LUMASELA / HOW TO CUSTOMIZE",
+        "heading": "How to customize",
+        "introduction": "<p>From choosing your case to reviewing your personal design. Start with the options on the product page, and check what is confirmed before ordering.</p>"
+      },
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "label": "01 / CHOOSE YOUR CASE",
+            "heading": "Choose your exact phone model",
+            "text": "<p>Open the product page and select the case type and exact phone model shown in its options. Check the selected combination, price and availability before continuing. Similar model names do not mean the same fit.</p>",
+            "note": "<p>The current Signature Clear listing is a demonstration product. Its material, fit and production details have not been verified. A preview is not confirmation of compatibility or stock.</p>",
+            "illustration": "01-select"
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "label": "02 / MAKE IT PERSONAL",
+            "heading": "Enter your name and explore the styles",
+            "text": "<p>The existing customizer accepts a name of up to 20 characters. Choose from the six existing fonts, then adjust the available colour, placement and size controls. Review how your spelling looks in the selected font.</p>",
+            "note": "<p>Placement and size controls show a design preview, not a verified print area or physical measurement. Supported production characters and final print limits still need confirmation. Ask us before ordering if your name includes characters that do not display correctly.</p>",
+            "illustration": "02-personalize"
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "label": "03 / REVIEW YOUR DESIGN",
+            "heading": "Check the details before continuing",
+            "text": "<p>Review your phone model, case type, spelling, font, colour, position and size together. Product availability controls whether you can add the item to your bag. If an option is unavailable, do not substitute a different model just to continue.</p>",
+            "note": "<p>The design preview is illustrative. Final print placement and production requirements are not yet verified for this demonstration listing. Contact us if you need clarification.</p>",
+            "illustration": "03-review"
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

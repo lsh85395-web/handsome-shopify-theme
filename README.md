@@ -16,9 +16,13 @@ An editable Shopify Online Store 2.0 theme for Lumasela's clear phone case and s
 
 - The included iPhone 18 Pro imagery is a **concept design**, not a claim of official Apple hardware or production-verified case fit.
 - No material, drop-test, anti-yellowing, magnetic, manufacturing-time, delivery or warranty claims are asserted.
-- The connected Shopify store currently has three `VAULTA` demonstration phone-case products in **Draft** status. They are not verified Lumasela products and cannot provide a production-ready public Lumasela catalog. This theme does not modify or publish product records.
-- The homepage customizer therefore starts in clearly labelled design-preview mode. Connect a verified phone-case product in the theme editor before using it for orders.
+- The current `signature-clear` listing is ACTIVE but explicitly a **demo product**: all 18 variants have zero inventory and DENY inventory policy. Its materials, device fit and production details are not verified. This theme does not modify or publish product records.
+- The homepage links to the existing product design studio rather than duplicating its full form. Connect verified product data and production capabilities before accepting orders.
 - Shipping rates, taxes, markets, payment providers, legal policies and domain settings are store-level configuration and are intentionally not changed by the theme.
 - Do not publish the preview theme without the store owner's explicit approval.
 
 See [EDITING-GUIDE.md](EDITING-GUIDE.md), [REFERENCE-MAP.md](REFERENCE-MAP.md), [ROLLBACK.md](ROLLBACK.md), and [DEPLOYMENTS.md](DEPLOYMENTS.md).
+
+## Current review version
+
+See [version 8 integration review](docs/V8_INTEGRATION_REVIEW.md) for preserved data, changes, tests and outstanding verification. Target: unpublished QA theme `193315438880`; MAIN `193306427680` is not changed.

@@ -3,83 +3,74 @@
   if request.page_type == 'index' and section.settings.overlay_home
     assign home_header = true
   endif
+  assign product_url = section.settings.shop_link | default: '/products/signature-clear'
 -%}
-<header class="lumasela-site-header{% if home_header %} lumasela-site-header--home{% endif %}" role="banner">
-  <div class="lumasela-site-header__inner">
-    <a class="lumasela-site-header__wordmark" href="{{ routes.root_url }}" aria-label="{{ settings.lumasela_brand_name | default: shop.name | escape }} home">
+{{ 'lumasela-navigation.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lumasela-navigation.js' | asset_url }}" defer="defer"></script>
+<div class="lumasela-navigation{% if home_header %} lumasela-navigation--overlay{% endif %}" data-lumasela-navigation>
+  <header class="lumasela-capsule">
+    <button type="button" class="lumasela-capsule__menu" aria-label="{{ 'sections.header.menu' | t }}" aria-expanded="false" aria-controls="LumaselaMenu-{{ section.id }}" data-lumasela-menu-open>
+      <span class="lumasela-capsule__bars" aria-hidden="true"></span><span class="lumasela-capsule__menu-label">{{ 'sections.header.menu' | t }}</span>
+    </button>
+    <a class="lumasela-capsule__brand" href="{{ routes.root_url }}">
       {%- if section.settings.logo_image != blank -%}
-        <img src="{{ section.settings.logo_image | image_url: width: 600 }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="40" loading="eager">
+        {{ section.settings.logo_image | image_url: width: 600 | image_tag: width: 200, class: 'lumasela-capsule__logo', loading: 'eager', alt: section.settings.wordmark }}
       {%- else -%}
-        <img src="{{ 'lumasela-logo-horizontal.png' | asset_url }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="40" loading="eager">
+        <img class="lumasela-capsule__logo" src="{{ 'lumasela-logo-horizontal.png' | asset_url }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="67" loading="eager">
       {%- endif -%}
     </a>
-    <nav class="lumasela-site-header__nav" aria-label="Main navigation">
-      <a href="{{ section.settings.cases_link | default: routes.collections_url }}">{{ section.settings.cases_label | escape }}</a>
-      <a href="{{ section.settings.personalise_link | default: '#lumasela-customizer' }}">{{ section.settings.personalise_label | escape }}</a>
-      <a href="{{ section.settings.everyday_link | default: '#lumasela-everyday' }}">{{ section.settings.everyday_label | escape }}</a>
-      <a href="{{ section.settings.story_link | default: '/pages/about' }}">{{ section.settings.story_label | escape }}</a>
-      <a href="{{ section.settings.help_link | default: '/pages/support' }}">{{ section.settings.help_label | escape }}</a>
-    </nav>
-    <div class="lumasela-site-header__actions">
-      <a href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></a>
-      <a href="{{ routes.cart_url }}" aria-label="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2 10h10l2-7H6"/><circle cx="9" cy="19" r="1"/><circle cx="17" cy="19" r="1"/></svg>{% if cart.item_count > 0 %}<span class="lumasela-site-header__count">{{ cart.item_count }}</span>{% endif %}</a>
-      <details class="lumasela-site-header__mobile-menu"><summary aria-label="Open menu"><span></span><span></span></summary><nav aria-label="Mobile navigation">
-        <a href="{{ section.settings.cases_link | default: routes.collections_url }}">{{ section.settings.cases_label | escape }}</a>
-        <a href="{{ section.settings.personalise_link | default: '#lumasela-customizer' }}">{{ section.settings.personalise_label | escape }}</a>
-        <a href="{{ section.settings.everyday_link | default: '#lumasela-everyday' }}">{{ section.settings.everyday_label | escape }}</a>
-        <a href="{{ section.settings.story_link | default: '/pages/about' }}">{{ section.settings.story_label | escape }}</a>
-        <a href="{{ section.settings.help_link | default: '/pages/support' }}">{{ section.settings.help_label | escape }}</a>
-      </nav></details>
+    <div class="lumasela-capsule__right">
+      <a class="lumasela-capsule__customize" href="{{ product_url }}">{{ section.settings.customize_label | escape }}</a>
+      <a class="lumasela-capsule__bag" href="{{ routes.cart_url }}" aria-label="{{ 'general.cart.view' | t: count: cart.item_count }}">
+        <svg viewBox="0 0 24 26" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 8h16l1 16H3L4 8ZM8 9V6a4 4 0 0 1 8 0v3"/></svg><span>{{ cart.item_count }}</span>
+      </a>
     </div>
-  </div>
-</header>
-<style>
-  .lumasela-site-header{position:relative;z-index:50;background:#fff;color:#111;border-bottom:1px solid #ddd;font-family:Arial,sans-serif}
-  .lumasela-site-header--home{position:absolute;top:0;left:0;width:100%;background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
-  .lumasela-site-header__inner{width:100%;max-width:none;min-height:82px;padding:0 4.4vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
-  .lumasela-site-header a{color:inherit;text-decoration:none}
-  .lumasela-site-header__wordmark{display:block;width:200px;line-height:0}
-  .lumasela-site-header__wordmark img{display:block;width:100%;height:40px;object-fit:cover;object-position:center}
-  .lumasela-site-header--home .lumasela-site-header__wordmark img{filter:invert(1)}
-  .lumasela-site-header__nav{display:flex;gap:clamp(24px,3vw,52px);align-items:center;font-size:14px;font-weight:600}
-  .lumasela-site-header__nav a:hover,.lumasela-site-header__actions a:hover{opacity:.65}
-  .lumasela-site-header__actions{display:flex;justify-content:flex-end;align-items:center;gap:28px}
-  .lumasela-site-header__actions>a{position:relative;width:22px;height:22px;display:block}
-  .lumasela-site-header__actions svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .lumasela-site-header__count{position:absolute;right:-9px;top:-9px;min-width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#a63c31;color:#fff;font-size:10px}
-  .lumasela-site-header__mobile-menu{display:none}
-  @media(max-width:750px){
-    .lumasela-site-header__inner{min-height:64px;padding:0 20px;grid-template-columns:1fr auto}
-    .lumasela-site-header__wordmark{width:156px}
-    .lumasela-site-header__wordmark img{height:32px}
-    .lumasela-site-header__nav{display:none}
-    .lumasela-site-header__actions{gap:18px}
-    .lumasela-site-header__mobile-menu{display:block;order:-1}
-    .lumasela-site-header__mobile-menu summary{width:25px;height:25px;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;list-style:none}
-    .lumasela-site-header__mobile-menu summary::-webkit-details-marker{display:none}
-    .lumasela-site-header__mobile-menu summary span{display:block;width:20px;height:1px;background:currentColor}
-    .lumasela-site-header__mobile-menu nav{position:absolute;top:100%;left:0;right:0;padding:16px 20px 24px;display:flex;flex-direction:column;background:#fff;color:#111;border-bottom:1px solid #ddd}
-    .lumasela-site-header__mobile-menu nav a{padding:11px 0;font-size:16px}
-  }
-</style>
+  </header>
+  <dialog id="LumaselaMenu-{{ section.id }}" class="lumasela-menu" aria-label="{{ 'sections.header.menu' | t }}">
+    <div class="lumasela-menu__head">
+      <button type="button" class="lumasela-menu__close" data-lumasela-menu-close aria-label="{{ 'accessibility.close' | t }}" autofocus><span aria-hidden="true">×</span><small>{{ 'accessibility.close' | t }}</small></button>
+      <a class="lumasela-capsule__brand" href="{{ routes.root_url }}">
+        {%- if section.settings.logo_image != blank -%}
+          {{ section.settings.logo_image | image_url: width: 600 | image_tag: width: 200, class: 'lumasela-capsule__logo', loading: 'lazy', alt: section.settings.wordmark }}
+        {%- else -%}
+          <img class="lumasela-capsule__logo" src="{{ 'lumasela-logo-horizontal.png' | asset_url }}" alt="{{ section.settings.wordmark | escape }}" width="200" height="67" loading="lazy">
+        {%- endif -%}
+      </a>
+    </div>
+    <div class="lumasela-menu__body">
+      <nav class="lumasela-menu__links" aria-label="{{ 'sections.header.menu' | t }}">
+        <svg class="lumasela-menu__signature" viewBox="0 0 140 50" aria-hidden="true"><path d="M2 35C25 34 60-4 49 6S26 55 44 39 74 4 67 16 55 43 73 32 92 12 86 25 103 32 114 21M5 45C45 29 100 44 139 27"/></svg>
+        <a href="{{ product_url }}"><span aria-hidden="true">01</span>{{ section.settings.shop_label | escape }}</a>
+        <a href="{{ section.settings.guide_link | default: '/pages/support?view=customize' }}"><span aria-hidden="true">02</span>{{ section.settings.guide_label | escape }}</a>
+        <a href="{{ section.settings.track_link | default: '/pages/support?view=track' }}"><span aria-hidden="true">03</span>{{ section.settings.track_label | escape }}</a>
+        <a href="{{ section.settings.faq_link | default: '/pages/support?view=faq' }}"><span aria-hidden="true">04</span>{{ section.settings.faq_label | escape }}</a>
+        <a href="{{ section.settings.contact_link | default: '/pages/contact-us' }}"><span aria-hidden="true">05</span>{{ section.settings.contact_label | escape }}</a>
+      </nav>
+      <div class="lumasela-menu__art"><img src="{{ 'lumasela-n01-navigation-panel.webp' | asset_url }}" alt="" width="1448" height="1086" loading="lazy"></div>
+    </div>
+    <div class="lumasela-menu__foot"><a href="{{ routes.search_url }}">{{ 'general.search.search' | t }}</a><a href="{{ routes.cart_url }}">{{ 'general.cart.view' | t: count: cart.item_count }}</a></div>
+  </dialog>
+  <noscript><nav class="lumasela-menu-fallback" aria-label="{{ 'sections.header.menu' | t }}"><a href="{{ product_url }}">{{ section.settings.shop_label | escape }}</a><a href="{{ section.settings.guide_link | default: '/pages/support?view=customize' }}">{{ section.settings.guide_label | escape }}</a><a href="{{ section.settings.track_link | default: '/pages/support?view=track' }}">{{ section.settings.track_label | escape }}</a><a href="{{ section.settings.faq_link | default: '/pages/support?view=faq' }}">{{ section.settings.faq_label | escape }}</a><a href="{{ section.settings.contact_link | default: '/pages/contact-us' }}">{{ section.settings.contact_label | escape }}</a><a href="{{ routes.search_url }}">{{ 'general.search.search' | t }}</a></nav></noscript>
+</div>
 {% schema %}
 {
-  "name":"Lumasela preview header",
-  "settings":[
-    {"type":"text","id":"wordmark","label":"Wordmark","default":"LUMASELA"},
+  "name": "Lumasela preview header",
+  "settings": [
+    {"type":"text","id":"wordmark","label":"Brand image description","default":"LUMASELA"},
     {"type":"image_picker","id":"logo_image","label":"Custom logo image (optional)"},
     {"type":"checkbox","id":"overlay_home","label":"Overlay homepage hero","default":true},
-    {"type":"text","id":"cases_label","label":"Cases label","default":"Cases"},
-    {"type":"url","id":"cases_link","label":"Cases link"},
-    {"type":"text","id":"personalise_label","label":"Personalise label","default":"Personalise"},
-    {"type":"url","id":"personalise_link","label":"Personalise link"},
-    {"type":"text","id":"everyday_label","label":"Everyday label","default":"Everyday"},
-    {"type":"url","id":"everyday_link","label":"Everyday link"},
-    {"type":"text","id":"story_label","label":"Story label","default":"Story"},
-    {"type":"url","id":"story_link","label":"Story link"},
-    {"type":"text","id":"help_label","label":"Help label","default":"Help"},
-    {"type":"url","id":"help_link","label":"Help link"}
+    {"type":"text","id":"customize_label","label":"Customize button label","default":"Customize yours"},
+    {"type":"text","id":"shop_label","label":"Shop label","default":"Shop"},
+    {"type":"url","id":"shop_link","label":"Product destination"},
+    {"type":"text","id":"guide_label","label":"Guide label","default":"How to Customize"},
+    {"type":"url","id":"guide_link","label":"Guide destination"},
+    {"type":"text","id":"track_label","label":"Order tracking label","default":"Track Your Order"},
+    {"type":"url","id":"track_link","label":"Order tracking destination"},
+    {"type":"text","id":"faq_label","label":"FAQ label","default":"FAQ"},
+    {"type":"url","id":"faq_link","label":"FAQ destination"},
+    {"type":"text","id":"contact_label","label":"Contact label","default":"Contact Us"},
+    {"type":"url","id":"contact_link","label":"Contact destination"}
   ],
-  "presets":[{"name":"Lumasela preview header"}]
+  "presets": [{"name":"Lumasela preview header"}]
 }
 {% endschema %}

@@ -1,0 +1,45 @@
+lumasela-home-steps,lumasela-home-rail{display:block}
+.lumasela-home-heading{text-align:center;margin-bottom:4rem}
+.lumasela-home-steps{background:rgb(var(--color-background));color:rgb(var(--color-foreground))}
+.lumasela-home-steps__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;max-width:100rem;margin:auto}
+.lumasela-home-steps__tabs[hidden],.lumasela-home-steps__panel[hidden]{display:none}
+.lumasela-home-steps__tabs button{display:flex;flex-direction:column;gap:1.2rem;align-items:flex-start;text-align:left;border:0;border-bottom:2px solid var(--lumasela-line,#ddd);padding:2rem;background:transparent;color:inherit;font:inherit;cursor:pointer;min-height:8rem}
+.lumasela-home-steps__tabs button span{font-size:1.2rem;letter-spacing:.14em}
+.lumasela-home-steps__tabs button[aria-selected=true]{border-bottom-color:currentColor;background:rgba(var(--color-foreground),.04)}
+.lumasela-home-steps__panels{max-width:100rem;margin:2rem auto 3rem}
+.lumasela-home-steps__panel{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:clamp(2.4rem,4vw,5rem);border-radius:1.2rem;background:rgba(var(--color-foreground),.035)}
+.lumasela-home-steps__panel h3{font-size:clamp(2.2rem,2.6vw,3.4rem);line-height:1.25;margin:0 0 1.6rem}
+.lumasela-home-steps__panel .rte{max-width:48rem;color:var(--lumasela-muted);font-size:1.5rem;line-height:1.7}
+.lumasela-home-steps__example{text-align:center;padding:2.4rem}
+.lumasela-home-steps__sample{display:block;font-size:clamp(2rem,2.5vw,3.4rem);line-height:1.3}
+.lumasela-home-steps__sample--signature{font-family:"Lumasela Allura",cursive;font-size:7rem}
+.lumasela-home-steps__example p{font-size:1.2rem;color:var(--lumasela-muted)}
+.lumasela-home-steps .lumasela-text-link{display:table;margin:auto}
+.lumasela-home-faq__inner{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(3rem,7vw,10rem)}
+.lumasela-home-faq__inner h2{margin-bottom:2.4rem}
+.lumasela-home-faq__item{border-top:1px solid var(--lumasela-line,#ddd)}
+.lumasela-home-faq__item:last-child{border-bottom:1px solid var(--lumasela-line,#ddd)}
+.lumasela-home-faq__item summary{display:flex;justify-content:space-between;align-items:center;gap:2rem;cursor:pointer;list-style:none;min-height:6rem;padding:2rem 0;font-size:1.6rem}
+.lumasela-home-faq__item summary::-webkit-details-marker{display:none}
+.lumasela-home-faq__item summary span{font-size:2.2rem;flex:none;transition:transform .15s}
+.lumasela-home-faq__item[open] summary span{transform:rotate(45deg)}
+.lumasela-home-faq__item .rte{padding:0 2rem 2rem 0;font-size:1.5rem;line-height:1.7;color:var(--lumasela-muted)}
+.lumasela-home-closing{text-align:center;padding:clamp(6rem,9vw,13rem) 0;background:rgb(var(--color-background));color:rgb(var(--color-foreground))}
+.lumasela-home-closing h2{max-width:80rem;margin:0 auto 2.4rem}
+.lumasela-home-closing .rte{max-width:60rem;margin:0 auto 3rem}
+.lumasela-signature-card__link{display:block;color:inherit;text-decoration:none}
+.lumasela-signature-card__link:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.lumasela-signature-card__cta{display:block;margin-top:1.6rem;font-size:1.3rem;text-decoration:underline;text-underline-offset:.4rem}
+.lumasela-home-rail__feedback{display:none}
+.lumasela-home-concept-note{font-size:1.2rem;color:var(--lumasela-muted);margin-top:2rem}
+@media(max-width:749px){
+ .lumasela-home-heading{text-align:left;margin-bottom:2.8rem}
+ .lumasela-home-steps__panel{grid-template-columns:1fr;gap:1.2rem;margin-bottom:1.6rem}
+ .lumasela-home-steps__example{padding:1rem;text-align:left}
+ .lumasela-home-faq__inner{grid-template-columns:1fr;gap:3.2rem}
+ .lumasela-signature-styles .lumasela-signature-styles__grid,.lumasela-media-grid .lumasela-media-grid__items{display:flex;gap:1.6rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:1.6rem}
+ .lumasela-signature-styles .lumasela-signature-card,.lumasela-media-grid .lumasela-media-card{flex:0 0 84%;scroll-snap-align:start;min-width:0}
+ .lumasela-home-rail__feedback{display:flex;justify-content:space-between;gap:2rem;font-size:1.2rem;margin-top:1.6rem;color:var(--lumasela-muted)}
+ .lumasela-home-rail__feedback output{white-space:nowrap;font-variant-numeric:tabular-nums}
+}
+@media(prefers-reduced-motion:reduce){.lumasela-home-faq__item summary span{transition:none}.lumasela-home-steps *,lumasela-home-rail *{scroll-behavior:auto!important}}

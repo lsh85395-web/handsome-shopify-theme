@@ -2,7 +2,7 @@
   @param {boolean} demo - Whether the product form is unavailable.
 {% enddoc %}
 <section class="product-compare" aria-label="Before and after personalisation">
-  <div class="product-step-heading"><span>01</span><div><p class="eyebrow">Before &amp; after</p><h2>See the difference immediately.</h2></div></div>
+  <div class="product-step-heading"><span>01</span><div><p class="eyebrow">Before &amp; after</p><h2>See the difference immediately.</h2><p class="size-guidance">{{ 'lumasela_product.preview_note' | t }}</p></div></div>
   <div class="compare-grid">
     <figure><div class="compare-visual"><img data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone before personalisation" width="512" height="512"></div><figcaption><strong>Before</strong><span data-phone-colour-label>Silver phone</span></figcaption></figure>
     <figure><div class="compare-visual"><img data-phone-finish-preview src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="Silver phone after personalisation" width="512" height="512"><div class="signature-safe-zone"><span class="comparison-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned>Aina</span></div></div><figcaption><strong>After</strong><span>Your signature</span></figcaption></figure>
@@ -10,39 +10,39 @@
 </section>
 <section class="inline-personaliser" id="personalise" aria-label="Personalisation studio">
   <div class="inline-personaliser-heading"><div><p class="eyebrow">Personalisation studio</p><h2>Make it unmistakably yours.</h2></div><span>Live preview</span></div>
-  <label class="inline-field" for="lumasela-preview-name"><span>Name or initials <em data-name-count>4 / 20</em></span><input id="lumasela-preview-name" type="text" value="Aina" maxlength="20" autocomplete="off" required data-inline-name-input {% unless demo %}name="properties[Signature name]"{% endunless %}><small>Maximum 20 characters.</small></label>
+  <label class="inline-field" for="lumasela-preview-name"><span>Name or initials <em data-name-count>4 / 20</em></span><input id="lumasela-preview-name" type="text" value="Aina" maxlength="20" autocomplete="off" required data-inline-name-input aria-describedby="lumasela-name-help" data-empty-message="{{ 'lumasela_product.name_required' | t }}" {% unless demo %}name="properties[Signature name]"{% endunless %}><small id="lumasela-name-help">Maximum 20 characters.</small></label>
   <fieldset class="inline-choice"><legend>02 / Choose a signature style</legend><div class="signature-style-grid" data-inline-style-options>
-    <button class="signature-allura is-active" type="button" data-style="allura"><span>Aina</span><small>Allura</small></button>
-    <button class="signature-dancing-script" type="button" data-style="dancing-script"><span>Aina</span><small>Dancing Script</small></button>
-    <button class="signature-great-vibes" type="button" data-style="great-vibes"><span>Aina</span><small>Great Vibes</small></button>
-    <button class="signature-sacramento" type="button" data-style="sacramento"><span>Aina</span><small>Sacramento</small></button>
-    <button class="signature-kaushan-script" type="button" data-style="kaushan-script"><span>Aina</span><small>Kaushan Script</small></button>
-    <button class="signature-knewave" type="button" data-style="knewave"><span>Aina</span><small>Knewave</small></button>
+    <button class="signature-allura is-active" type="button" data-style="allura" aria-pressed="true"><span>Aina</span><small>Allura</small></button>
+    <button class="signature-dancing-script" type="button" data-style="dancing-script" aria-pressed="false"><span>Aina</span><small>Dancing Script</small></button>
+    <button class="signature-great-vibes" type="button" data-style="great-vibes" aria-pressed="false"><span>Aina</span><small>Great Vibes</small></button>
+    <button class="signature-sacramento" type="button" data-style="sacramento" aria-pressed="false"><span>Aina</span><small>Sacramento</small></button>
+    <button class="signature-kaushan-script" type="button" data-style="kaushan-script" aria-pressed="false"><span>Aina</span><small>Kaushan Script</small></button>
+    <button class="signature-knewave" type="button" data-style="knewave" aria-pressed="false"><span>Aina</span><small>Knewave</small></button>
   </div></fieldset>
   <fieldset class="inline-choice"><legend>03 / Select placement</legend><div class="placement-grid placement-grid-four" data-inline-position-options>
-    <button type="button" data-position="bottom-right-vertical"><span class="placement-demo placement-demo-bottom-right-vertical"></span><small>Bottom right vertical</small></button>
-    <button class="is-active" type="button" data-position="bottom-center"><span class="placement-demo placement-demo-bottom-center"></span><small>Bottom center</small></button>
-    <button type="button" data-position="below-logo"><span class="placement-demo placement-demo-below-logo"></span><small>Below logo</small></button>
-    <button type="button" data-position="bottom-right-diagonal"><span class="placement-demo placement-demo-bottom-right-diagonal"></span><small>Bottom right diagonal</small></button>
+    <button type="button" data-position="bottom-right-vertical" aria-pressed="false"><span class="placement-demo placement-demo-bottom-right-vertical"></span><small>Bottom right vertical</small></button>
+    <button class="is-active" type="button" data-position="bottom-center" aria-pressed="true"><span class="placement-demo placement-demo-bottom-center"></span><small>Bottom center</small></button>
+    <button type="button" data-position="below-logo" aria-pressed="false"><span class="placement-demo placement-demo-below-logo"></span><small>Below logo</small></button>
+    <button type="button" data-position="bottom-right-diagonal" aria-pressed="false"><span class="placement-demo placement-demo-bottom-right-diagonal"></span><small>Bottom right diagonal</small></button>
   </div></fieldset>
   <fieldset class="inline-choice"><legend>04 / Select signature size</legend><div class="signature-size-grid" data-signature-size-options>
-    <button type="button" data-signature-size="small" data-size-mm="35"><strong>Small</strong><small>35 mm</small></button>
-    <button class="is-active" type="button" data-signature-size="medium" data-size-mm="50"><strong>Medium</strong><small>50 mm</small></button>
-    <button type="button" data-signature-size="large" data-size-mm="65"><strong>Large</strong><small>65 mm</small></button>
+    <button type="button" data-signature-size="small" data-size-mm="35" aria-pressed="false"><strong>Small</strong><small>35 mm</small></button>
+    <button class="is-active" type="button" data-signature-size="medium" data-size-mm="50" aria-pressed="true"><strong>Medium</strong><small>50 mm</small></button>
+    <button type="button" data-signature-size="large" data-size-mm="65" aria-pressed="false"><strong>Large</strong><small>65 mm</small></button>
   </div><p class="size-guidance">Each size has a fixed design width. Longer names fit within the selected area.</p></fieldset>
   <fieldset class="inline-choice"><legend>Text colour</legend><div class="inline-swatches" data-inline-color-options>
-    <button class="inline-swatch inline-swatch-white is-active" type="button" data-color="#ffffff" aria-label="White"></button>
-    <button class="inline-swatch inline-swatch-black" type="button" data-color="#111111" aria-label="Black"></button>
-    <button class="inline-swatch inline-swatch-blue" type="button" data-color="#3e5d8d" aria-label="Blue"></button>
-    <button class="inline-swatch inline-swatch-coral" type="button" data-color="#a63b32" aria-label="Coral"></button>
+    <button class="inline-swatch inline-swatch-white is-active" type="button" data-color="#ffffff" aria-label="White" aria-pressed="true"></button>
+    <button class="inline-swatch inline-swatch-black" type="button" data-color="#111111" aria-label="Black" aria-pressed="false"></button>
+    <button class="inline-swatch inline-swatch-blue" type="button" data-color="#3e5d8d" aria-label="Blue" aria-pressed="false"></button>
+    <button class="inline-swatch inline-swatch-coral" type="button" data-color="#a63b32" aria-label="Coral" aria-pressed="false"></button>
   </div></fieldset>
   <fieldset class="inline-choice"><legend>05 / Preview phone colour</legend><div class="phone-tone-grid" data-phone-colour-options>
-    <button type="button" data-phone-label="Black" data-phone-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}"><span class="tone-dot tone-black"></span><small>Black</small></button>
-    <button class="is-active" type="button" data-phone-label="Silver" data-phone-src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}"><span class="tone-dot tone-silver"></span><small>Silver</small></button>
-    <button type="button" data-phone-label="Ice Blue" data-phone-src="{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url }}"><span class="tone-dot tone-ice-blue"></span><small>Ice Blue</small></button>
-    <button type="button" data-phone-label="Burgundy" data-phone-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"><span class="tone-dot tone-burgundy"></span><small>Burgundy</small></button>
-    <button type="button" data-phone-label="Midnight Blue" data-phone-src="{{ 'lumasela-preview-phone-midnight-blue-base.webp' | asset_url }}"><span class="tone-dot tone-midnight-blue"></span><small>Midnight Blue</small></button>
-    <button type="button" data-phone-label="Orange" data-phone-src="{{ 'lumasela-preview-phone-orange-base.webp' | asset_url }}"><span class="tone-dot tone-orange"></span><small>Orange</small></button>
+    <button type="button" data-phone-label="Black" data-phone-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}" aria-pressed="false"><span class="tone-dot tone-black"></span><small>Black</small></button>
+    <button class="is-active" type="button" data-phone-label="Silver" data-phone-src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" aria-pressed="true"><span class="tone-dot tone-silver"></span><small>Silver</small></button>
+    <button type="button" data-phone-label="Ice Blue" data-phone-src="{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url }}" aria-pressed="false"><span class="tone-dot tone-ice-blue"></span><small>Ice Blue</small></button>
+    <button type="button" data-phone-label="Burgundy" data-phone-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}" aria-pressed="false"><span class="tone-dot tone-burgundy"></span><small>Burgundy</small></button>
+    <button type="button" data-phone-label="Midnight Blue" data-phone-src="{{ 'lumasela-preview-phone-midnight-blue-base.webp' | asset_url }}" aria-pressed="false"><span class="tone-dot tone-midnight-blue"></span><small>Midnight Blue</small></button>
+    <button type="button" data-phone-label="Orange" data-phone-src="{{ 'lumasela-preview-phone-orange-base.webp' | asset_url }}" aria-pressed="false"><span class="tone-dot tone-orange"></span><small>Orange</small></button>
   </div><p class="size-guidance">This changes only the phone colour beneath the transparent case.</p></fieldset>
   {% unless demo %}
     <input type="hidden" name="properties[Signature style]" value="Allura" data-property-style>

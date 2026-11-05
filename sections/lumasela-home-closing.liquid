@@ -1,0 +1,51 @@
+{{ 'lumasela-home-sections.css' | asset_url | stylesheet_tag }}
+<section class="lumasela-home-closing color-{{ section.settings.color_scheme }}" aria-labelledby="HomeClosing-{{ section.id }}">
+  <div class="page-width"><p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p><h2 id="HomeClosing-{{ section.id }}" class="lumasela-display lumasela-display--section">{{ section.settings.heading | escape }}</h2><div class="rte">{{ section.settings.text }}</div>
+  {%- if section.settings.link != blank -%}<a class="lumasela-link lumasela-link--solid" href="{{ section.settings.link }}">{{ section.settings.link_label | escape }}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lumasela closing CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Start customizing"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela closing CTA"
+    }
+  ]
+}
+{% endschema %}

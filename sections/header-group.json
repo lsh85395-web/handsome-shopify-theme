@@ -7,16 +7,17 @@
       "settings": {
         "wordmark": "LUMASELA",
         "overlay_home": true,
-        "cases_label": "Cases",
-        "cases_link": "/collections/phone-cases",
-        "personalise_label": "Personalise",
-        "personalise_link": "/products/signature-clear#personalise",
-        "everyday_label": "Everyday",
-        "everyday_link": "/#lumasela-everyday",
-        "story_label": "Story",
-        "story_link": "/pages/about",
-        "help_label": "Help",
-        "help_link": "/pages/support"
+        "customize_label": "Customize yours",
+        "shop_label": "Shop",
+        "shop_link": "/products/signature-clear",
+        "guide_label": "How to Customize",
+        "guide_link": "/pages/support?view=customize",
+        "track_label": "Track Your Order",
+        "track_link": "/pages/support?view=track",
+        "faq_label": "FAQ",
+        "faq_link": "/pages/support?view=faq",
+        "contact_label": "Contact Us",
+        "contact_link": "/pages/contact-us"
       }
     }
   },

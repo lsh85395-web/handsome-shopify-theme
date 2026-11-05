@@ -2,7 +2,7 @@
 
 ## Brand and global styling
 
-1. Open **Lumasela Malaysia Preview - Codex** in **Online Store → Themes → Customize**. Confirm theme ID `193230930208` before editing; it is an unpublished theme.
+1. Open **Lumasela QA 2026-11-04** in **Online Store → Themes → Customize**. Confirm theme ID `193315438880` before editing; it is an unpublished theme.
 2. Open **Theme settings → Lumasela brand** to change the brand name and tagline.
 3. Use **Theme settings → Logo** to upload a logo and adjust its width. If no image logo is selected, the theme uses the built-in Lumasela wordmark; edit its brand name in the Lumasela brand settings.
 4. Use **Theme settings → Colors**, **Typography**, **Buttons**, and **Layout** for global visual changes.

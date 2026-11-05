@@ -1,0 +1,65 @@
+{{ 'lumasela-help.css' | asset_url | stylesheet_tag }}
+<div class="lumasela-help">
+  <div class="lumasela-help__inner">
+    <header class="lumasela-help__intro">
+      <p class="lumasela-help__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1>{{ section.settings.heading | escape }}</h1>
+      <div class="lumasela-help__lead rte">{{ section.settings.introduction }}</div>
+    </header>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'step' %}
+          <section class="lumasela-help__step" {{ block.shopify_attributes }}>
+            <div>
+              <p class="lumasela-help__eyebrow">{{ block.settings.label | escape }}</p>
+              <h2>{{ block.settings.heading | escape }}</h2>
+              <div class="rte">{{ block.settings.text }}</div>
+              {% if block.settings.note != blank %}<div class="lumasela-help__note rte">{{ block.settings.note }}</div>{% endif %}
+            </div>
+            {% if block.settings.illustration != 'none' %}
+              {% assign illustration = 'lumasela-guide-step-' | append: block.settings.illustration | append: '.svg' %}
+              <figure class="lumasela-help__illustration">
+                <img src="{{ illustration | asset_url }}" width="500" height="340" alt="" loading="lazy">
+                <figcaption>{{ 'lumasela_help.guide.illustration' | t }}</figcaption>
+              </figure>
+            {% endif %}
+          </section>
+        {% when 'category' %}
+          <h2 class="lumasela-help__category" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+        {% when 'question' %}
+          <details class="lumasela-help__question" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.heading | escape }}<span aria-hidden="true">+</span></summary>
+            <div class="rte">{{ block.settings.text }}</div>
+          </details>
+      {% endcase %}
+    {% endfor %}
+    <nav class="lumasela-help__links" aria-label="{{ 'lumasela_help.links.label' | t }}">
+      <a class="lumasela-help__button" href="{{ routes.root_url }}products/signature-clear">{{ 'lumasela_help.links.product' | t }}</a>
+      <a href="{{ pages['contact-us'].url }}">{{ 'lumasela_help.links.contact' | t }}</a>
+      {% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">{{ 'lumasela_help.links.shipping' | t }}</a>{% endif %}
+      {% if shop.refund_policy.body != blank %}<a href="{{ shop.refund_policy.url }}">{{ 'lumasela_help.links.refunds' | t }}</a>{% endif %}
+    </nav>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Lumasela help guide",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"LUMASELA / HELP"},
+    {"type":"text","id":"heading","label":"Heading","default":"How to customize"},
+    {"type":"richtext","id":"introduction","label":"Introduction"}
+  ],
+  "blocks": [
+    {"type":"step","name":"Guide step","settings":[
+      {"type":"text","id":"label","label":"Step label"},
+      {"type":"text","id":"heading","label":"Heading"},
+      {"type":"richtext","id":"text","label":"Explanation"},
+      {"type":"richtext","id":"note","label":"Important note"},
+      {"type":"select","id":"illustration","label":"Concept illustration","options":[{"value":"none","label":"None"},{"value":"01-select","label":"Select"},{"value":"02-personalize","label":"Personalize"},{"value":"03-review","label":"Review"}],"default":"none"}
+    ]},
+    {"type":"category","name":"FAQ category","settings":[{"type":"text","id":"heading","label":"Heading"}]},
+    {"type":"question","name":"FAQ question","settings":[{"type":"text","id":"heading","label":"Question"},{"type":"richtext","id":"text","label":"Answer"}]}
+  ],
+  "presets":[{"name":"Lumasela help guide"}]
+}
+{% endschema %}

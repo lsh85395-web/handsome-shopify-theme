@@ -274,7 +274,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -528,5 +527,46 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "lumasela_help": {
+    "guide": {
+      "illustration": "Concept illustration, not a product photograph."
+    },
+    "links": {
+      "label": "More help",
+      "product": "View the product",
+      "contact": "Contact us",
+      "shipping": "Shipping policy",
+      "refunds": "Refund policy",
+      "faq": "Read the FAQ"
+    },
+    "track": {
+      "eyebrow": "LUMASELA / ORDER HELP",
+      "heading": "Track your order",
+      "introduction": "Use the existing order information sent to you by Lumasela.",
+      "email_heading": "Start with your confirmation email",
+      "email_step": "Find the confirmation email for your order. Check your spam or junk folder if you cannot find it.",
+      "status_step": "Open the order-status link in that email to view the information available for your order.",
+      "shipping_step": "If a shipping update includes a tracking link, use that link for the carrier’s latest information.",
+      "no_lookup": "This page does not look up orders or display live delivery status. It does not collect an order number or email address.",
+      "orders_label": "Existing customer order access",
+      "orders": "Open account order history",
+      "help_heading": "Cannot find your order?",
+      "help_text": "Use our existing contact form and include your order number, if you have it, along with your question. Do not include payment-card details."
+    }
+  },
+  "lumasela_product": {
+    "concept": "Design concept",
+    "zoom": "Zoom image",
+    "images": "Product images",
+    "concept_image": "Illustrative case concept {{ number }}",
+    "concept_note": "Concept imagery for design review. Images do not verify device fit, materials or manufacturing details.",
+    "close": "Close image",
+    "price_pending": "Price to be confirmed",
+    "review": "Review your design",
+    "demo_note": "This is a demo product. Its inventory is zero and it is not available to order. Product fit, materials and production details still need verification.",
+    "name_required": "Enter a name or initials before adding this design to your bag.",
+    "preview_note": "Illustrative preview only. The phone colour does not change the selected product variant.",
+    "saved_options": "Some saved product options have changed. Review the available options before continuing."
   }
 }

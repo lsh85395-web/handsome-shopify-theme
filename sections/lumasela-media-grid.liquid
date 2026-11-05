@@ -1,3 +1,5 @@
+{{ 'lumasela-home-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lumasela-home-sections.js' | asset_url }}" defer="defer"></script>
 <section
   id="lumasela-everyday"
   class="lumasela-section lumasela-media-grid color-{{ section.settings.color_scheme }} gradient"
@@ -20,7 +22,9 @@
       {%- endif -%}
     </header>
 
+    <lumasela-home-rail>
     <div
+      data-home-track
       class="lumasela-media-grid__items lumasela-media-grid__items--{{ section.settings.columns_desktop }}"
       role="list"
     >
@@ -90,6 +94,9 @@
         </article>
       {%- endfor -%}
     </div>
+    <div class="lumasela-home-rail__feedback"><span>{{ section.settings.swipe_label | escape }}</span><output data-home-position>1 / {{ section.blocks.size }}</output></div>
+    </lumasela-home-rail>
+    {%- if section.settings.concept_note != blank -%}<p class="lumasela-home-concept-note">{{ section.settings.concept_note | escape }}</p>{%- endif -%}
   </div>
 </section>
 
@@ -139,6 +146,17 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "swipe_label",
+      "label": "Mobile swipe hint",
+      "default": "Swipe through the scenes"
+    },
+    {
+      "type": "text",
+      "id": "concept_note",
+      "label": "Image disclosure"
     }
   ],
   "blocks": [

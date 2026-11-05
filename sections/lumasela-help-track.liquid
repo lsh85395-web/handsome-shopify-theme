@@ -1,0 +1,42 @@
+{{ 'lumasela-help.css' | asset_url | stylesheet_tag }}
+<div class="lumasela-help">
+  <div class="lumasela-help__inner">
+    <header class="lumasela-help__intro">
+      <p class="lumasela-help__eyebrow">{{ 'lumasela_help.track.eyebrow' | t }}</p>
+      <h1>{{ 'lumasela_help.track.heading' | t }}</h1>
+      <p class="lumasela-help__lead">{{ 'lumasela_help.track.introduction' | t }}</p>
+    </header>
+    <section class="lumasela-help__step">
+      <div>
+        <h2>{{ 'lumasela_help.track.email_heading' | t }}</h2>
+        <ol class="lumasela-help__list">
+          <li>{{ 'lumasela_help.track.email_step' | t }}</li>
+          <li>{{ 'lumasela_help.track.status_step' | t }}</li>
+          <li>{{ 'lumasela_help.track.shipping_step' | t }}</li>
+        </ol>
+        <p class="lumasela-help__note">{{ 'lumasela_help.track.no_lookup' | t }}</p>
+        <nav class="lumasela-help__links" aria-label="{{ 'lumasela_help.track.orders_label' | t }}">
+          <a class="lumasela-help__button" href="https://account.lumasela.com/orders">{{ 'lumasela_help.track.orders' | t }}</a>
+        </nav>
+      </div>
+    </section>
+    <section class="lumasela-help__step">
+      <div>
+        <h2>{{ 'lumasela_help.track.help_heading' | t }}</h2>
+        <p>{{ 'lumasela_help.track.help_text' | t }}</p>
+        <nav class="lumasela-help__links" aria-label="{{ 'lumasela_help.links.label' | t }}">
+          <a class="lumasela-help__button" href="{{ pages['contact-us'].url }}">{{ 'lumasela_help.links.contact' | t }}</a>
+          <a href="{{ pages.support.url }}?view=faq">{{ 'lumasela_help.links.faq' | t }}</a>
+          {% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">{{ 'lumasela_help.links.shipping' | t }}</a>{% endif %}
+        </nav>
+      </div>
+    </section>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Lumasela order help",
+  "settings": [],
+  "presets": [{"name": "Lumasela order help"}]
+}
+{% endschema %}

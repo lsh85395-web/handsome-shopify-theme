@@ -1,38 +1,119 @@
 {
   "sections": {
-    "intro": {
-      "type": "rich-text",
-      "blocks": {
-        "caption": {"type": "caption", "settings": {"text": "LUMASELA HELP", "text_style": "caption-with-letter-spacing", "text_size": "medium"}},
-        "heading": {"type": "heading", "settings": {"heading": "Questions, answered clearly.", "heading_size": "h0"}},
-        "text": {"type": "text", "settings": {"text": "<p>Product-specific information belongs on each product page. Store policies should be reviewed before ordering.</p>"}}
+    "main": {
+      "type": "lumasela-help-guide",
+      "settings": {
+        "eyebrow": "LUMASELA / FAQ",
+        "heading": "Questions, answered clearly.",
+        "introduction": "<p>Product choices, customization and order help, with the details that still need confirmation made clear.</p>"
       },
-      "block_order": ["caption", "heading", "text"],
-      "settings": {"desktop_content_position": "center", "content_alignment": "center", "color_scheme": "scheme-1", "full_width": true, "padding_top": 72, "padding_bottom": 40}
-    },
-    "faq": {
-      "type": "collapsible-content",
       "blocks": {
-        "device": {"type": "collapsible_row", "settings": {"heading": "How do I choose the right device case?", "icon": "none", "row_content": "<p>Select the exact phone model shown in the product options. Similar device names do not guarantee the same fit.</p>", "page": ""}},
-        "personalization": {"type": "collapsible_row", "settings": {"heading": "How does personalization work?", "icon": "none", "row_content": "<p>Where available, enter a name and choose the style, colour and placement in the product customizer. Review the preview before adding the item to cart.</p>", "page": ""}},
-        "shipping": {"type": "collapsible_row", "settings": {"heading": "Where can I find delivery timing?", "icon": "none", "row_content": "<p>Use the delivery information shown at checkout and the store's current shipping policy.</p>", "page": ""}},
-        "returns": {"type": "collapsible_row", "settings": {"heading": "What is the return policy?", "icon": "none", "row_content": "<p>Return eligibility follows the store's published refund policy. Personalized products may have different eligibility, so review the policy before ordering.</p>", "page": ""}},
-        "contact": {"type": "collapsible_row", "settings": {"heading": "How can I contact Lumasela?", "icon": "none", "row_content": "<p>Use the contact form and include your device model and the product you are considering.</p>", "page": ""}}
+        "models": {
+          "type": "category",
+          "settings": {
+            "heading": "Phone models & materials"
+          }
+        },
+        "model": {
+          "type": "question",
+          "settings": {
+            "heading": "How do I choose the right phone model?",
+            "text": "<p>Select the exact phone model on the product page and check its availability. Similar device names do not guarantee the same fit. Contact us if you are unsure.</p>"
+          }
+        },
+        "materials": {
+          "type": "question",
+          "settings": {
+            "heading": "Are the listed case materials and features verified?",
+            "text": "<p>The current Signature Clear listing is a demonstration product. Its configured case-type names are not proof of tested material, magnetic compatibility, protection or fit. These details still require confirmation.</p>"
+          }
+        },
+        "customization": {
+          "type": "category",
+          "settings": {
+            "heading": "Customization"
+          }
+        },
+        "start": {
+          "type": "question",
+          "settings": {
+            "heading": "How do I personalize a design?",
+            "text": "<p>Choose the available case and model options, enter a name, then explore the font, colour, position and size controls. Review the complete design before continuing. <a href=\"/pages/support?view=customize\">Read the customization guide.</a></p>"
+          }
+        },
+        "name": {
+          "type": "question",
+          "settings": {
+            "heading": "What name length does the current customizer accept?",
+            "text": "<p>The existing name field allows up to 20 characters. It offers six fonts. Check the preview for your exact spelling; character support and final production limits are not yet verified.</p>"
+          }
+        },
+        "print": {
+          "type": "question",
+          "settings": {
+            "heading": "Does the preview show an exact print size?",
+            "text": "<p>No. The placement and size controls are existing design-preview settings, not verified physical print dimensions. Contact us to clarify production requirements before ordering.</p>"
+          }
+        },
+        "shipping": {
+          "type": "category",
+          "settings": {
+            "heading": "Production & delivery"
+          }
+        },
+        "timing": {
+          "type": "question",
+          "settings": {
+            "heading": "Where can I confirm production and delivery details?",
+            "text": "<p>Read the current shipping information and any delivery information shown at checkout. If the production time, destination or delivery timing you need is not stated, <a href=\"/pages/contact-us\">contact us</a> before ordering. No delivery date is promised by this preview.</p>"
+          }
+        },
+        "tracking": {
+          "type": "question",
+          "settings": {
+            "heading": "How can I check an existing order?",
+            "text": "<p>Use the order-status link in your order confirmation email or the existing account order history. <a href=\"/pages/support?view=track\">See the order help page.</a></p>"
+          }
+        },
+        "aftercare": {
+          "type": "category",
+          "settings": {
+            "heading": "Returns & support"
+          }
+        },
+        "returns": {
+          "type": "question",
+          "settings": {
+            "heading": "Where can I check return eligibility?",
+            "text": "<p>Review the store\u2019s published refund policy before ordering. If it does not answer your question about a personalized item, contact us for clarification. This guide does not add or change return conditions.</p>"
+          }
+        },
+        "help": {
+          "type": "question",
+          "settings": {
+            "heading": "How do I contact Lumasela?",
+            "text": "<p>Use the <a href=\"/pages/contact-us\">existing contact form</a>. For an order question, include your order number and describe the issue. For a product question, include your phone model and the product you are considering.</p>"
+          }
+        }
       },
-      "block_order": ["device", "personalization", "shipping", "returns", "contact"],
-      "settings": {"caption": "", "heading": "Frequently asked questions", "heading_size": "h1", "heading_alignment": "left", "layout": "none", "container_color_scheme": "scheme-1", "color_scheme": "scheme-2", "open_first_collapsible_row": true, "image_ratio": "adapt", "desktop_layout": "image_second", "padding_top": 40, "padding_bottom": 80}
-    },
-    "trust": {
-      "type": "lumasela-trust-strip",
-      "blocks": {
-        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
-        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
-        "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
-        "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
-      },
-      "block_order": ["currency", "checkout", "compatibility", "support"],
-      "settings": {"aria_label": "Shopping information", "color_scheme": "scheme-1"}
+      "block_order": [
+        "models",
+        "model",
+        "materials",
+        "customization",
+        "start",
+        "name",
+        "print",
+        "shipping",
+        "timing",
+        "tracking",
+        "aftercare",
+        "returns",
+        "help"
+      ]
     }
   },
-  "order": ["intro", "faq", "trust"]
+  "order": [
+    "main"
+  ]
 }

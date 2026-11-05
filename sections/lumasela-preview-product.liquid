@@ -1,11 +1,18 @@
 {{ 'lumasela-preview-styles.css' | asset_url | stylesheet_tag }}
+{{ 'lumasela-product-interactions.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'lumasela-preview-product.js' | asset_url }}" defer></script>
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- liquid
+  assign concept_product = false
+  if product == blank or product.tags contains 'demo-product'
+    assign concept_product = true
+  endif
+-%}
 {%- assign preview_main_image = 'lumasela-preview-phone-silver-base.webp' | asset_url -%}
 {%- if product.featured_media.preview_image != blank -%}
   {%- assign preview_main_image = product.featured_media.preview_image | image_url: width: 1400 -%}
 {%- endif -%}
-<section class="lumasela-preview-product" data-lumasela-product id="overview">
+<section class="lumasela-preview-product" data-lumasela-product data-product-id="{{ product.id | default: 'preview' }}" data-concept-product="{{ concept_product }}" data-saved-options-message="{{ 'lumasela_product.saved_options' | t }}" id="overview">
   <div class="product-subnav" data-product-subnav aria-hidden="true" inert>
     <div class="page-width">
       <strong>{{ product.title | default: section.settings.demo_title | escape }}</strong>
@@ -14,28 +21,42 @@
   </div>
   <div class="product-main page-width" data-product-main>
     <div class="product-gallery" data-product-gallery>
-      <div class="product-gallery-main is-personalisation-preview" data-gallery-main-wrap>
-        {%- if product == blank or product.tags contains 'demo-product' -%}<span class="demo-chip">Demo product</span>{%- endif -%}
-        <img data-gallery-main data-phone-finish-preview src="{{ preview_main_image }}" alt="Silver phone beneath a transparent clear case" width="1024" height="1024">
-        <div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>
+      <div class="product-gallery-main{% if concept_product %} is-personalisation-preview{% endif %}" data-gallery-main-wrap>
+        {%- if concept_product -%}<span class="demo-chip">{{ 'lumasela_product.concept' | t }}</span>{%- endif -%}
+        <img data-gallery-main src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="1024" height="1024" fetchpriority="high">
+        {%- if concept_product -%}<div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>{%- endif -%}
+        <button class="lumasela-gallery-zoom" type="button" data-gallery-zoom aria-label="{{ 'lumasela_product.zoom' | t }}">{{ 'lumasela_product.zoom' | t }} ↗</button>
       </div>
-      <div class="product-thumbs" aria-label="Product images">
-        <button type="button" class="is-active" data-gallery-src="{{ preview_main_image }}" data-personalisation-preview><img src="{{ preview_main_image }}" alt="Silver phone preview" width="120" height="120"></button>
-        <button type="button" data-gallery-src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}"><img src="{{ 'lumasela-detail-macro-v1.jpg' | asset_url }}" alt="Clear case detail" width="120" height="120"></button>
-        <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-black-base.webp' | asset_url }}" alt="Black phone preview" width="120" height="120"></button>
-        <button type="button" data-gallery-src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}"><img src="{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url }}" alt="Burgundy phone preview" width="120" height="120"></button>
+      <div class="product-thumbs" aria-label="{{ 'lumasela_product.images' | t }}">
+        <button type="button" class="is-active" aria-pressed="true" data-gallery-src="{{ preview_main_image }}" {% if concept_product %}data-personalisation-preview{% endif %}><img src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="120" height="120"></button>
+        {%- for media in product.media -%}
+          {%- unless media.id == product.featured_media.id -%}
+            <button type="button" aria-pressed="false" data-gallery-src="{{ media.preview_image | image_url: width: 1600 }}" data-gallery-alt="{{ media.alt | default: product.title | escape }}"><img src="{{ media.preview_image | image_url: width: 160 }}" alt="{{ media.alt | default: product.title | escape }}" width="120" height="120" loading="lazy"></button>
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- if concept_product -%}
+          {%- assign concept_assets = 'lumasela-p02-gallery-clear-overview.webp,lumasela-p03-gallery-signature-closeup.webp,lumasela-p04-gallery-camera-overview.webp,lumasela-p05-gallery-customization.webp,lumasela-p06-gallery-everyday.webp' | split: ',' -%}
+          {%- for asset in concept_assets -%}
+            <button type="button" aria-pressed="false" data-gallery-src="{{ asset | asset_url }}" data-gallery-alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}"><img src="{{ asset | asset_url }}" alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}" width="120" height="120" loading="lazy"></button>
+          {%- endfor -%}
+        {%- endif -%}
       </div>
+      {%- if concept_product -%}<p class="lumasela-gallery-note">{{ 'lumasela_product.concept_note' | t }}</p>{%- endif -%}
+      <dialog class="lumasela-gallery-dialog" data-gallery-dialog aria-label="{{ 'lumasela_product.zoom' | t }}">
+        <button type="button" data-gallery-close aria-label="{{ 'lumasela_product.close' | t }}">×</button>
+        <div data-gallery-zoom-content></div>
+      </dialog>
     </div>
     <div class="product-info">
       <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
       <h1>{{ product.title | default: section.settings.demo_title | escape }}</h1>
-      <p class="product-price" data-product-price>{%- if product != blank -%}RM {{ selected_variant.price | money_without_currency }}{%- else -%}RM 29.99 <small>visual preview</small>{%- endif -%}</p>
+      <p class="product-price" data-product-price>{%- if product != blank -%}{{ selected_variant.price | money_with_currency }}{%- else -%}{{ 'lumasela_product.price_pending' | t }}{%- endif -%}</p>
       <p class="product-lead">{{ section.settings.intro | escape }}</p>
       {%- if product != blank -%}
         {%- form 'product', product, id: 'LumaselaPreviewProductForm', class: 'lumasela-preview-product__form' -%}
           <select data-variant-data hidden aria-hidden="true" tabindex="-1">
             {%- for variant in product.variants -%}
-              <option value="{{ variant.id }}" data-available="{{ variant.available }}" data-price="RM {{ variant.price | money_without_currency | escape }}" data-option1="{{ variant.option1 | escape }}" data-option2="{{ variant.option2 | escape }}" data-option3="{{ variant.option3 | escape }}">{{ variant.title | escape }}</option>
+              <option value="{{ variant.id }}" data-available="{{ variant.available }}" data-price="{{ variant.price | money_with_currency | escape }}" data-image="{% if variant.featured_media.preview_image != blank %}{{ variant.featured_media.preview_image | image_url: width: 1600 }}{% endif %}" data-option1="{{ variant.option1 | escape }}" data-option2="{{ variant.option2 | escape }}" data-option3="{{ variant.option3 | escape }}">{{ variant.title | escape }}</option>
             {%- endfor -%}
           </select>
           <input type="hidden" name="id" value="{{ selected_variant.id }}" data-variant-id>
@@ -51,9 +72,10 @@
           {%- endfor -%}
           {%- if product.options_with_values.size == 0 -%}<p>Product options will appear here when they are configured in Shopify.</p>{%- endif -%}
           {% render 'lumasela-preview-personalisation', demo: false %}
+          <p class="lumasela-product-error" data-product-error role="alert" hidden></p>
           <div class="product-purchase-row">
             <div class="quantity-control" data-quantity-control><button type="button" aria-label="Decrease quantity" data-qty-minus>−</button><input type="number" name="quantity" min="1" value="1" aria-label="Quantity" data-qty-input><button type="button" aria-label="Increase quantity" data-qty-plus>+</button></div>
-            <button class="button button-dark add-button" type="submit" data-add-to-cart {% unless selected_variant.available %}disabled{% endunless %}>{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</button>
+            <button class="button button-dark add-button" type="submit" data-add-to-cart data-label-add="{{ 'products.product.add_to_cart' | t }}" data-label-sold-out="{{ 'products.product.sold_out' | t }}" data-label-unavailable="{{ 'products.product.unavailable' | t }}" {% unless selected_variant.available %}disabled{% endunless %}>{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</button>
           </div>
         {%- endform -%}
       {%- else -%}
@@ -63,12 +85,14 @@
         {% render 'lumasela-preview-personalisation', demo: true %}
         <div class="product-purchase-row"><button class="button button-dark add-button" type="button" disabled>Product not available for purchase</button></div>
       {%- endif -%}
+      {%- if concept_product -%}<p class="lumasela-product-disclosure">{{ 'lumasela_product.demo_note' | t }}</p>{%- endif -%}
       <div class="product-accordions" id="details">
         <details open><summary>Product details</summary><div class="rte">{{ product.description | default: section.settings.demo_details }}</div></details>
         {%- if section.settings.shipping_note != blank -%}<details><summary>Shipping &amp; returns</summary><p>{{ section.settings.shipping_note | escape }}</p></details>{%- endif -%}
       </div>
     </div>
   </div>
+  <div class="lumasela-mobile-review" data-mobile-review><span data-mobile-price>{{ selected_variant.price | money_with_currency }}</span><a href="#personalise">{{ 'lumasela_product.review' | t }} ↗</a></div>
 </section>
 {% schema %}
 {

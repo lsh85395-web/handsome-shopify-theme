@@ -136,6 +136,7 @@
           {%- endif -%}
         </div>
       {%- endif -%}
+      {%- if section.settings.concept_note != blank -%}<p class="lumasela-home-concept-note">{{ section.settings.concept_note | escape }}</p>{%- endif -%}
     </div>
   </div>
 </section>
@@ -161,12 +162,30 @@
       "id": "fallback_visual",
       "label": "Built-in fallback visual",
       "options": [
-        { "value": "malaysia", "label": "Kuala Lumpur lifestyle" },
-        { "value": "product", "label": "Product" },
-        { "value": "lifestyle", "label": "Lifestyle" },
-        { "value": "gift", "label": "Gift" },
-        { "value": "supplied_hero", "label": "Supplied homepage hero H01/H02" },
-        { "value": "supplied_cta", "label": "Supplied closing CTA H12" }
+        {
+          "value": "malaysia",
+          "label": "Kuala Lumpur lifestyle"
+        },
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "lifestyle",
+          "label": "Lifestyle"
+        },
+        {
+          "value": "gift",
+          "label": "Gift"
+        },
+        {
+          "value": "supplied_hero",
+          "label": "Supplied homepage hero H01/H02"
+        },
+        {
+          "value": "supplied_cta",
+          "label": "Supplied closing CTA H12"
+        }
       ],
       "default": "product"
     },
@@ -174,13 +193,13 @@
       "type": "text",
       "id": "image_alt_text",
       "label": "Image alt text",
-      "default": "A clear personalized phone case in a Kuala Lumpur café"
+      "default": "A clear personalized phone case in a Kuala Lumpur caf\u00e9"
     },
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "CLEAR CASE · PERSONAL SIGNATURE"
+      "default": "CLEAR CASE \u00b7 PERSONAL SIGNATURE"
     },
     {
       "type": "inline_richtext",
@@ -193,8 +212,14 @@
       "id": "heading_tag",
       "label": "Heading level",
       "options": [
-        { "value": "h1", "label": "Heading 1" },
-        { "value": "h2", "label": "Heading 2" }
+        {
+          "value": "h1",
+          "label": "Heading 1"
+        },
+        {
+          "value": "h2",
+          "label": "Heading 2"
+        }
       ],
       "default": "h1"
     },
@@ -231,9 +256,18 @@
       "id": "height",
       "label": "Section height",
       "options": [
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" },
-        { "value": "viewport", "label": "Full viewport" }
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "viewport",
+          "label": "Full viewport"
+        }
       ],
       "default": "large"
     },
@@ -242,9 +276,18 @@
       "id": "content_position",
       "label": "Content position",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
@@ -253,8 +296,14 @@
       "id": "text_tone",
       "label": "Text tone",
       "options": [
-        { "value": "dark", "label": "Dark text" },
-        { "value": "light", "label": "Light text" }
+        {
+          "value": "dark",
+          "label": "Dark text"
+        },
+        {
+          "value": "light",
+          "label": "Light text"
+        }
       ],
       "default": "dark"
     },
@@ -267,6 +316,11 @@
       "unit": "%",
       "label": "Overlay opacity",
       "default": 10
+    },
+    {
+      "type": "text",
+      "id": "concept_note",
+      "label": "Image disclosure"
     }
   ],
   "presets": [

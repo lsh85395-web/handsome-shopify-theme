@@ -4,6 +4,13 @@
   const one = (selector) => root.querySelector(selector);
   const all = (selector) => [...root.querySelectorAll(selector)];
   const form = one('#LumaselaPreviewProductForm');
+  const errorMessage = one('[data-product-error]');
+  const mobileReview = one('[data-mobile-review]');
+  const storageKey = `lumasela:design:v1:${root.dataset.productId}`;
+  let restoring = false;
+  const reportError = (message = '') => {
+    if (errorMessage) { errorMessage.textContent = message; errorMessage.hidden = !message; }
+  };
   const liveText = all('[data-signature-live]');
   const positioned = all('[data-signature-positioned]');
   const galleryMain = one('[data-gallery-main]');
@@ -35,7 +42,7 @@
   };
   const selectGallery = (button) => {
     if (!button || !galleryMain) return;
-    all('[data-gallery-src]').forEach((item) => item.classList.toggle('is-active', item === button));
+    all('[data-gallery-src]').forEach((item) => { item.classList.toggle('is-active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
     galleryMain.src = button.dataset.gallerySrc;
     galleryMain.alt = button.dataset.galleryAlt || button.querySelector('img')?.alt || '';
     previewWrap?.classList.toggle('is-personalisation-preview', button === previewThumb);
@@ -96,7 +103,7 @@
     if (count) count.textContent = `${[...limited].length} / 20`;
     requestAnimationFrame(fitSignature);
   };
-  nameInput?.addEventListener('input', () => { showPreview(); syncName(); });
+  nameInput?.addEventListener('input', () => { nameInput.setCustomValidity(''); nameInput.removeAttribute('aria-invalid'); reportError(); showPreview(); syncName(); });
   one('[data-inline-style-options]')?.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-style]');
     if (!button) return;
@@ -140,7 +147,8 @@
     all('[data-phone-colour-label]').forEach((node) => { node.textContent = `${label} phone`; });
     if (previewThumb) { previewThumb.dataset.gallerySrc = button.dataset.phoneSrc; previewThumb.dataset.galleryAlt = `${label} phone beneath a transparent clear case`; const image = previewThumb.querySelector('img'); if (image) image.src = button.dataset.phoneSrc; }
     setProperty('[data-property-phone]', label);
-    showPreview();
+    // Refresh even when this thumbnail was already selected.
+    if (previewThumb) selectGallery(previewThumb);
   });
   one('[data-quantity-control]')?.addEventListener('click', (event) => {
     const input = one('[data-qty-input]');
@@ -149,29 +157,132 @@
     if (event.target.closest('[data-qty-minus]')) input.value = String(Math.max(1, value - 1));
     if (event.target.closest('[data-qty-plus]')) input.value = String(value + 1);
   });
-  const updateVariant = () => {
+  const updateVariant = (showVariantImage = false) => {
     const selected = all('[data-variant-option]').map((group) => active(group)?.dataset.optionValue || '');
     const variant = all('[data-variant-data] option').find((item) => selected.every((value, index) => item.dataset[`option${index + 1}`] === value));
     const input = one('[data-variant-id]');
     const button = one('[data-add-to-cart]');
     if (input) input.value = variant?.value || '';
     const available = variant?.dataset.available === 'true';
-    if (button) { button.disabled = !available; button.textContent = !variant ? 'Unavailable' : available ? 'Add to cart' : 'Sold out'; }
-    if (variant) { const price = one('[data-product-price]'); if (price) price.textContent = variant.dataset.price; }
+    if (button) { button.disabled = !available; button.textContent = !variant ? button.dataset.labelUnavailable : available ? button.dataset.labelAdd : button.dataset.labelSoldOut; }
+    if (variant) {
+      const price = one('[data-product-price]'); if (price) price.textContent = variant.dataset.price;
+      const mobilePrice = one('[data-mobile-price]'); if (mobilePrice) mobilePrice.textContent = variant.dataset.price;
+      if (showVariantImage && variant.dataset.image && galleryMain && root.dataset.conceptProduct !== 'true') {
+        galleryMain.src = variant.dataset.image;
+        previewWrap?.classList.remove('is-personalisation-preview');
+        all('[data-gallery-src]').forEach((item) => { const selectedImage = item.dataset.gallerySrc === variant.dataset.image; item.classList.toggle('is-active', selectedImage); item.setAttribute('aria-pressed', String(selectedImage)); });
+      }
+    }
+    return { variant, available };
   };
   all('[data-variant-option]').forEach((group) => group.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-option-value]');
-    if (button) { activate(group, button); updateVariant(); }
+    if (button) { activate(group, button); updateVariant(true); reportError(); }
   }));
+  const groups = [
+    ['[data-inline-style-options]', 'style'],
+    ['[data-inline-position-options]', 'position'],
+    ['[data-signature-size-options]', 'signatureSize'],
+    ['[data-inline-color-options]', 'color'],
+    ['[data-phone-colour-options]', 'phoneLabel']
+  ];
+  const saveDesign = () => {
+    if (restoring) return;
+    const state = { version: 1, name: nameInput?.value || '', quantity: one('[data-qty-input]')?.value || '1', choices: {}, variants: all('[data-variant-option]').map((group) => active(group)?.dataset.optionValue) };
+    groups.forEach(([selector, key]) => { state.choices[key] = active(one(selector))?.dataset[key]; });
+    try { sessionStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+  };
+  const restoreDesign = () => {
+    let saved;
+    try { saved = JSON.parse(sessionStorage.getItem(storageKey)); } catch (_) { return; }
+    if (!saved || saved.version !== 1 || typeof saved.name !== 'string') return;
+    restoring = true;
+    if (nameInput) nameInput.value = [...saved.name].slice(0, 20).join('');
+    groups.forEach(([selector, key]) => {
+      const group = one(selector);
+      const button = [...(group?.querySelectorAll('button') || [])].find((item) => item.dataset[key] === saved.choices?.[key]);
+      button?.click();
+    });
+    let staleVariant = false;
+    all('[data-variant-option]').forEach((group, index) => {
+      const value = saved.variants?.[index];
+      if (typeof value !== 'string') return;
+      const button = [...group.querySelectorAll('button')].find((item) => item.dataset.optionValue === value);
+      if (button) activate(group, button); else staleVariant = true;
+    });
+    const quantity = one('[data-qty-input]');
+    if (quantity) quantity.value = String(Math.max(1, parseInt(saved.quantity, 10) || 1));
+    if (staleVariant) reportError(root.dataset.savedOptionsMessage || 'Some saved product options have changed. Review the available options before continuing.');
+    restoring = false;
+  };
+  root.addEventListener('input', saveDesign);
+  root.addEventListener('change', saveDesign);
+  root.addEventListener('click', (event) => { if (event.target.closest('button')) saveDesign(); });
   form?.addEventListener('submit', (event) => {
-    updateVariant();
-    if (!one('[data-variant-id]')?.value || !nameInput?.value.trim()) event.preventDefault();
+    const { variant, available } = updateVariant();
+    if (!variant || !available) {
+      event.preventDefault();
+      reportError(one('[data-add-to-cart]')?.textContent || 'Unavailable');
+      one('[data-variant-option] button')?.focus();
+      return;
+    }
+    if (!nameInput?.value.trim()) {
+      event.preventDefault();
+      const message = nameInput?.dataset.emptyMessage || 'Enter your name or initials.';
+      reportError(message);
+      nameInput?.setAttribute('aria-invalid', 'true');
+      nameInput?.setCustomValidity(message);
+      nameInput?.focus();
+      nameInput?.reportValidity();
+      return;
+    }
+    const quantity = one('[data-qty-input]');
+    if (quantity && (!Number.isInteger(Number(quantity.value)) || Number(quantity.value) < 1)) {
+      event.preventDefault(); quantity.focus(); quantity.reportValidity(); return;
+    }
+    saveDesign();
   });
+  const dialog = one('[data-gallery-dialog]');
+  const zoomButton = one('[data-gallery-zoom]');
+  let oldOverflow = '';
+  zoomButton?.addEventListener('click', () => {
+    if (!dialog || !previewWrap) return;
+    const clone = previewWrap.cloneNode(true);
+    clone.querySelector('[data-gallery-zoom]')?.remove();
+    clone.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+    clone.querySelectorAll('[aria-live]').forEach((node) => node.removeAttribute('aria-live'));
+    one('[data-gallery-zoom-content]').replaceChildren(clone);
+    oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    const sourceZone = previewWrap.querySelector('.signature-safe-zone');
+    const cloneZone = clone.querySelector('.signature-safe-zone');
+    const signature = cloneZone?.querySelector('[data-signature-live]');
+    if (sourceZone && cloneZone && signature) {
+      const ratio = cloneZone.clientWidth / sourceZone.clientWidth;
+      ['left', 'top', 'fontSize'].forEach((key) => { signature.style[key] = `${parseFloat(signature.style[key]) * ratio}px`; });
+    }
+  });
+  one('[data-gallery-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('click', (event) => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } });
+  dialog?.addEventListener('close', () => { document.body.style.overflow = oldOverflow; zoomButton?.focus(); });
+  const updateMobileReview = () => {
+    if (!mobileReview) return;
+    const editing = document.activeElement?.matches('input, textarea, select, [contenteditable="true"]');
+    const keyboard = window.visualViewport && window.innerHeight - window.visualViewport.height > 150;
+    mobileReview.hidden = Boolean(editing || keyboard);
+  };
+  document.addEventListener('focusin', updateMobileReview);
+  document.addEventListener('focusout', () => requestAnimationFrame(updateMobileReview));
+  window.visualViewport?.addEventListener('resize', updateMobileReview);
+  restoreDesign();
   window.addEventListener('resize', () => requestAnimationFrame(fitSignature));
   window.addEventListener('scroll', updateSubnav, { passive: true });
   window.addEventListener('resize', updateSubnav);
   updateSubnav();
   syncName();
   updateVariant();
+  updateMobileReview();
   document.fonts?.ready.then(() => requestAnimationFrame(fitSignature));
 })();

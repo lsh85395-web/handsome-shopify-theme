@@ -1,0 +1,98 @@
+{{ 'lumasela-home-sections.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lumasela-home-sections.js' | asset_url }}" defer="defer"></script>
+<lumasela-home-steps class="lumasela-home-steps lumasela-section color-{{ section.settings.color_scheme }}" aria-labelledby="HomeSteps-{{ section.id }}">
+  <div class="page-width">
+    <header class="lumasela-home-heading">
+      <p class="lumasela-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 id="HomeSteps-{{ section.id }}" class="lumasela-display lumasela-display--section">{{ section.settings.heading | escape }}</h2>
+    </header>
+    <div class="lumasela-home-steps__tabs" aria-label="{{ section.settings.heading | escape }}" hidden>
+      {%- for block in section.blocks -%}
+        <button type="button" id="HomeStepTab-{{ section.id }}-{{ block.id }}" data-step-tab aria-controls="HomeStepPanel-{{ section.id }}-{{ block.id }}"><span aria-hidden="true">0{{ forloop.index }}</span>{{ block.settings.tab_label | escape }}</button>
+      {%- endfor -%}
+    </div>
+    <div class="lumasela-home-steps__panels">
+      {%- for block in section.blocks -%}
+        <div id="HomeStepPanel-{{ section.id }}-{{ block.id }}" class="lumasela-home-steps__panel" data-step-panel {{ block.shopify_attributes }}>
+          <div><p class="lumasela-eyebrow">0{{ forloop.index }}</p><h3>{{ block.settings.heading | escape }}</h3><div class="rte">{{ block.settings.text }}</div></div>
+          <div class="lumasela-home-steps__example"><span class="lumasela-home-steps__sample{% if forloop.index == 2 %} lumasela-home-steps__sample--signature{% endif %}">{{ block.settings.example | escape }}</span><p>{{ block.settings.example_note | escape }}</p></div>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.guide_link != blank -%}<a class="lumasela-text-link" href="{{ section.settings.guide_link }}">{{ section.settings.guide_label | escape }} <span aria-hidden="true">↗</span></a>{%- endif -%}
+  </div>
+</lumasela-home-steps>
+
+{% schema %}
+{
+  "name": "Lumasela home steps",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "guide_label",
+      "label": "Guide link label",
+      "default": "Read the customization guide"
+    },
+    {
+      "type": "url",
+      "id": "guide_link",
+      "label": "Guide link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Explanation"
+        },
+        {
+          "type": "text",
+          "id": "example",
+          "label": "Demonstration text"
+        },
+        {
+          "type": "text",
+          "id": "example_note",
+          "label": "Demonstration caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lumasela home steps"
+    }
+  ]
+}
+{% endschema %}
