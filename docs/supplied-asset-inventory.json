@@ -1,0 +1,618 @@
+[
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H01-hero-desktop.png",
+    "source_sha256": "17c7dc2cab2312544b415d5f7a85214459264d8dd695dd35553fd03a6a12eb14",
+    "theme_asset": "lumasela-h01-hero-desktop.webp",
+    "theme_bytes": 54188,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H02-hero-mobile.png",
+    "source_sha256": "214f2ff519d9eeac3886c397ac100a068a65f7ac960f5ff8980267e256334515",
+    "theme_asset": "lumasela-h02-hero-mobile.webp",
+    "theme_bytes": 105414,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H03-clear-philosophy.png",
+    "source_sha256": "f28c3866eee064c58c6cabe4c9c85c0208724e5b28f2e79ccf3c0bc9dce36ef5",
+    "theme_asset": "lumasela-h03-clear-philosophy.webp",
+    "theme_bytes": 42384,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H04-signature-black.png",
+    "source_sha256": "45fb6d6449c0179430c55d5b819c770de6f245d9825d82a56f11b8c21a9d18ef",
+    "theme_asset": "lumasela-h04-signature-black.webp",
+    "theme_bytes": 51642,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H05-signature-blue.png",
+    "source_sha256": "b47848295192da82aa260faa5772824a54dc5a4c195f3d5c945a90136e0f3236",
+    "theme_asset": "lumasela-h05-signature-blue.webp",
+    "theme_bytes": 44514,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part1_H01-H06.zip",
+    "source_entry": "final/H06-signature-burgundy.png",
+    "source_sha256": "417037e4208a97f10c96e491617db15ae3fda2427bf0e82f7e4dcf6e30d1c430",
+    "theme_asset": "lumasela-h06-signature-burgundy.webp",
+    "theme_bytes": 110622,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H07-customization-intro.png",
+    "source_sha256": "e141aadfef6de2a3d9832fe5662f991dbb5b15f980d12cf62079d7b45b73c705",
+    "theme_asset": "lumasela-h07-customization-intro.webp",
+    "theme_bytes": 150894,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H08-clear-edge-detail.png",
+    "source_sha256": "fb87ceee3f17de7f17eb96cf3e003b900438324d0a3bed35fb26925e79a824c7",
+    "theme_asset": "lumasela-h08-clear-edge-detail.webp",
+    "theme_bytes": 38410,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H09-lifestyle-walk.png",
+    "source_sha256": "c027bd54781a89b77e2bd8e353f66f847102c6c93a6539b7416cb269d0d7a601",
+    "theme_asset": "lumasela-h09-lifestyle-walk.webp",
+    "theme_bytes": 122928,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H10-lifestyle-home.png",
+    "source_sha256": "de9853aa2bf748bd6370a71b394d00fb31899d49b58c7e9846730831c5b0fdb0",
+    "theme_asset": "lumasela-h10-lifestyle-home.webp",
+    "theme_bytes": 110944,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H11-brand-story.png",
+    "source_sha256": "7b426f1af28414bb2cde73916e55a591daaf0706b4ca99a391d169d28c01479e",
+    "theme_asset": "lumasela-h11-brand-story.webp",
+    "theme_bytes": 112488,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Homepage_Part2_H07-H12.zip",
+    "source_entry": "final/H12-closing-cta.png",
+    "source_sha256": "f173701b70064f5e0513ca694eb6b5b173d8cb364ef51babc5f1c2b0eab478ba",
+    "theme_asset": "lumasela-h12-closing-cta.webp",
+    "theme_bytes": 31932,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P02-gallery-clear-overview.png",
+    "source_sha256": "4dc26eebfd173f131cedb45b9468065c9b36c78becece866ef8b8e05226a70a1",
+    "theme_asset": "lumasela-p02-gallery-clear-overview.webp",
+    "theme_bytes": 62686,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P04-gallery-camera-overview.png",
+    "source_sha256": "576ec34435cef56f61d011df421b03b8987dd10957b683a1655968b2e4c23841",
+    "theme_asset": "lumasela-p04-gallery-camera-overview.webp",
+    "theme_bytes": 45390,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P06-gallery-everyday.png",
+    "source_sha256": "40474be03e60044c5e363a271e95031858ef4dbcfd38abedc5c9a86b010c5585",
+    "theme_asset": "lumasela-p06-gallery-everyday.webp",
+    "theme_bytes": 207004,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P03-gallery-signature-closeup.png",
+    "source_sha256": "f8b8c8a8a8a37aeba8706fbd2bcbbf3b3284db6f4dc32d06d57cb48b16bf71d6",
+    "theme_asset": "lumasela-p03-gallery-signature-closeup.webp",
+    "theme_bytes": 61942,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P05-gallery-customization.png",
+    "source_sha256": "7567fdc58ddc36db04b17cadf7429bdcb7dd761a10a8856c0a7a35df999a323e",
+    "theme_asset": "lumasela-p05-gallery-customization.webp",
+    "theme_bytes": 78096,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情图库_P01-P06.zip",
+    "source_entry": "P01-gallery-main.png",
+    "source_sha256": "27ad1e435ac6a00d887460861cde1844094e7ba6edd8519a326d21608640975c",
+    "theme_asset": "lumasela-p01-gallery-main.webp",
+    "theme_bytes": 29476,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P14-lifestyle-work.png",
+    "source_sha256": "ab5a2e95020b38ba3d36ef4db228408f797d74a3d7314dbedeab92618f88091e",
+    "theme_asset": "lumasela-p14-lifestyle-work.webp",
+    "theme_bytes": 145848,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P11-step-select.png",
+    "source_sha256": "4df814f526a24a27ce71e854f247f392ea35c71f89b98338b8de775156be0610",
+    "theme_asset": "lumasela-p11-step-select.webp",
+    "theme_bytes": 95936,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P10-hotspot-corner.png",
+    "source_sha256": "bb64ac750df18e4e8e740eb745102c3aa13f3db8729cd5886b14279710d82449",
+    "theme_asset": "lumasela-p10-hotspot-corner.webp",
+    "theme_bytes": 38678,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P07-signature-section.png",
+    "source_sha256": "adf35093cc00cbe037ac6f2f7075e842019ba74429663b1bbf94264edec9d40d",
+    "theme_asset": "lumasela-p07-signature-section.webp",
+    "theme_bytes": 25794,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P09-hotspot-button.png",
+    "source_sha256": "93225f9df412f4728552d4d05464605357ee3cec02cb85735b68836de3d07a7d",
+    "theme_asset": "lumasela-p09-hotspot-button.webp",
+    "theme_bytes": 32516,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P12-step-personalize.png",
+    "source_sha256": "4015bf42d46352e79acbe390e16468009988650dd7de4f21670d406611c1c6d1",
+    "theme_asset": "lumasela-p12-step-personalize.webp",
+    "theme_bytes": 63792,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P13-step-confirm.png",
+    "source_sha256": "1573b9576180f408e0a36cd8d35be4a29e625b683a3460e9293c3217e96eea6c",
+    "theme_asset": "lumasela-p13-step-confirm.webp",
+    "theme_bytes": 120178,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P15-lifestyle-weekend.png",
+    "source_sha256": "d5093bc9c581fd2585bfb932664b11beed902f4b028daac55aa767729f40569b",
+    "theme_asset": "lumasela-p15-lifestyle-weekend.webp",
+    "theme_bytes": 289000,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_详情模块_P07-P15.zip",
+    "source_entry": "P08-hotspot-camera.png",
+    "source_sha256": "805d2aa230cf3ed3d7d20139400e10b907e355d7ed1d055032a7dccfbbc070d0",
+    "theme_asset": "lumasela-p08-hotspot-camera.webp",
+    "theme_bytes": 129674,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Navigation_Asset.zip",
+    "source_entry": "lumasela-nav-asset/N01-navigation-panel.png",
+    "source_sha256": "9307cea48fe6aed46906332e6582d34b2e78a73050cae30ed5b7e3c1e9bbdf27",
+    "theme_asset": "lumasela-n01-navigation-panel.webp",
+    "theme_bytes": 62966,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/guide-step-02-personalize.svg",
+    "source_sha256": "77e161d7d0eb7cc2e9eee0c9d83c85b34c6bc0c2fdd2032ca3817772fa507503",
+    "theme_asset": "lumasela-guide-step-02-personalize.svg",
+    "theme_bytes": 639,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/guide-step-01-select.svg",
+    "source_sha256": "3544aee661ecccaab0e2780bb48940937ada24a9d967abb0fe21dca857e149ff",
+    "theme_asset": "lumasela-guide-step-01-select.svg",
+    "theme_bytes": 648,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/faq-hero.png",
+    "source_sha256": "943870a421b3a4e1c92814e5fa080455acd3aef0f5bdd4f312b786cf998699e9",
+    "theme_asset": "lumasela-faq-hero.webp",
+    "theme_bytes": 56146,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/order-tracking-hero.png",
+    "source_sha256": "e52f8c6cd99cadd1d96636503c7793e4ea4bcffee7150016c5baebfa92dc564e",
+    "theme_asset": "lumasela-order-tracking-hero.webp",
+    "theme_bytes": 23168,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/help-overview.svg",
+    "source_sha256": "4d83c21fcf9ed5bc5cc6c0e42697f89f899d1d51ca7dce48cd7866103d7d5110",
+    "theme_asset": "lumasela-help-overview.svg",
+    "theme_bytes": 603,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/contact-hero.png",
+    "source_sha256": "49661f9189d0f064a82442b8004bb2fbcd348371679a6979a468f0bac0974b0e",
+    "theme_asset": "lumasela-contact-hero.webp",
+    "theme_bytes": 64288,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/customize-guide-hero.png",
+    "source_sha256": "5a0dfc10208cf7227b2016ca36d4f59b7d6a8da261dd357ed8b00255ae28577a",
+    "theme_asset": "lumasela-customize-guide-hero.webp",
+    "theme_bytes": 64046,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/empty-bag.svg",
+    "source_sha256": "e4b72e8c2eda163a36a585d10321c3dcd2f1b3ac4f61b862545ea0b5b82bdde6",
+    "theme_asset": "lumasela-empty-bag.svg",
+    "theme_bytes": 566,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/images/guide-step-03-review.svg",
+    "source_sha256": "280596ebc1a31f12eb2ba898fecc59a7b8c565b9e0def872943e5b60090da1b1",
+    "theme_asset": "lumasela-guide-step-03-review.svg",
+    "theme_bytes": 580,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/guide.svg",
+    "source_sha256": "dd505cad6ebdf2e45f9c50daaff8aec710c36e26111379b053804a77accc13cb",
+    "theme_asset": "lumasela-icon-guide.svg",
+    "theme_bytes": 288,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/zoom-in.svg",
+    "source_sha256": "52cb13828598d1625015b8d75d7b7751ea16343b24171497235e181fab3609b3",
+    "theme_asset": "lumasela-icon-zoom-in.svg",
+    "theme_bytes": 265,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/bag.svg",
+    "source_sha256": "2e83ba33118eb71337aa0765d1b2b17bf4a31cbf41646a061c2935a0d6faa63d",
+    "theme_asset": "lumasela-icon-bag.svg",
+    "theme_bytes": 261,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/minus.svg",
+    "source_sha256": "d89022666abcbe9efda923e0cc523000668bf468aae2f4b8f733b5188d554644",
+    "theme_asset": "lumasela-icon-minus.svg",
+    "theme_bytes": 228,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/arrow-up-right.svg",
+    "source_sha256": "b43cb6201959dd5eb27689ab8e3dbd6140aa81703d980c341d2fa39d3478633d",
+    "theme_asset": "lumasela-icon-arrow-up-right.svg",
+    "theme_bytes": 231,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/play.svg",
+    "source_sha256": "0c194125a815a2cecbcfa0595ca4225cf66c7b9c36744ffa48753d9e5a3e35d5",
+    "theme_asset": "lumasela-icon-play.svg",
+    "theme_bytes": 252,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/remove.svg",
+    "source_sha256": "22ea756dba44c032f0749fc6ae5a59ab109611f3b864cd5c47e52aaff0e458c5",
+    "theme_asset": "lumasela-icon-remove.svg",
+    "theme_bytes": 253,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/size.svg",
+    "source_sha256": "e2768365e28990b59b9c711b79f44c93204db667d35185538b00dddb0c607d6f",
+    "theme_asset": "lumasela-icon-size.svg",
+    "theme_bytes": 268,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/color.svg",
+    "source_sha256": "c1e12bc0c1481fd778fc78ad418b53d5893a38bba4d0f50c84935e99849fab7e",
+    "theme_asset": "lumasela-icon-color.svg",
+    "theme_bytes": 286,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/location.svg",
+    "source_sha256": "eaed1fa409bd179e6a99aa4d3d3ce35adaff8c67e2f0fd2293a20ce54c1155b0",
+    "theme_asset": "lumasela-icon-location.svg",
+    "theme_bytes": 293,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/lock.svg",
+    "source_sha256": "f2e7892422d68431eb6a01435713f929f9a74bcfdf140468b7296cace7ed26b4",
+    "theme_asset": "lumasela-icon-lock.svg",
+    "theme_bytes": 310,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/reset.svg",
+    "source_sha256": "2bbd2567d1fe42e3a0e6aa9fead3b0bd4dad70c185246f59ea66b8f878c90273",
+    "theme_asset": "lumasela-icon-reset.svg",
+    "theme_bytes": 231,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/case-type.svg",
+    "source_sha256": "cf06b5494e8f331d9feba46ceee6efcf38567350b4aa4250a80c2aa4824c8a84",
+    "theme_asset": "lumasela-icon-case-type.svg",
+    "theme_bytes": 300,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/check.svg",
+    "source_sha256": "c5b1184586a8dd52199083936322c1602e85dca28ae8708a49c8a3b80e7f1c89",
+    "theme_asset": "lumasela-icon-check.svg",
+    "theme_bytes": 220,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/expand.svg",
+    "source_sha256": "f62f1c0cbbd75bf146fa8473206cc475a4ebade5df9aba38a17a56f903743483",
+    "theme_asset": "lumasela-icon-expand.svg",
+    "theme_bytes": 241,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/menu.svg",
+    "source_sha256": "09aa46ff3a9d770a81f3a73c3df2d428ea0233b5d73e06d1aecba91a23c01858",
+    "theme_asset": "lumasela-icon-menu.svg",
+    "theme_bytes": 226,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/swipe.svg",
+    "source_sha256": "18027b9020a31d31f8bb3306a121408e5f2e72862ccb52c4c00672d24f42442d",
+    "theme_asset": "lumasela-icon-swipe.svg",
+    "theme_bytes": 258,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/position.svg",
+    "source_sha256": "5686375e3c42abd641fa108bfefaf026911e356b023deebd8f988b406599ca26",
+    "theme_asset": "lumasela-icon-position.svg",
+    "theme_bytes": 275,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/arrow-right.svg",
+    "source_sha256": "b8efda609eaaf1dcbb6203e98c01dc737352895e86a902f9820b9316b7cf82e7",
+    "theme_asset": "lumasela-icon-arrow-right.svg",
+    "theme_bytes": 235,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/pause.svg",
+    "source_sha256": "43960c4f2cba9338c635c7743f0b0e88be3c9e63a2d97a0d8ae53f72e6b9b42e",
+    "theme_asset": "lumasela-icon-pause.svg",
+    "theme_bytes": 248,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/mail.svg",
+    "source_sha256": "6a85e50de13b30527d20c728b2114f1495375e6bd7d6938074ff602861c93d11",
+    "theme_asset": "lumasela-icon-mail.svg",
+    "theme_bytes": 266,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/loading.svg",
+    "source_sha256": "2cc549efc664f7e36f6718d154cddfc41aee051e50ee3b742787632955dad96f",
+    "theme_asset": "lumasela-icon-loading.svg",
+    "theme_bytes": 225,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/chevron-right.svg",
+    "source_sha256": "2d3ac6735afbbb381ac67767a1132eccc28152ce79c7594f36079be40703d470",
+    "theme_asset": "lumasela-icon-chevron-right.svg",
+    "theme_bytes": 214,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/arrow-left.svg",
+    "source_sha256": "ff03f4bd6f95e7bdaa760244d446b30ce8f8be089c7df67fdd33833194a149c1",
+    "theme_asset": "lumasela-icon-arrow-left.svg",
+    "theme_bytes": 228,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/compare.svg",
+    "source_sha256": "577768a43e417180c7a57ca4d5c7a500dd922112cb4d005e1b5c527ab6ca6245",
+    "theme_asset": "lumasela-icon-compare.svg",
+    "theme_bytes": 288,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/font.svg",
+    "source_sha256": "af59d9382d8c2ff5641361b150f0e2cc0c71c166e2bf0cef32b983dfc465387a",
+    "theme_asset": "lumasela-icon-font.svg",
+    "theme_bytes": 244,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/edit.svg",
+    "source_sha256": "e2f7bd416d2e5ed8a87c02ca4d771ba0a02589ef98ca3c4c2c57a5022ac7fa7c",
+    "theme_asset": "lumasela-icon-edit.svg",
+    "theme_bytes": 279,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/info.svg",
+    "source_sha256": "e46d217c99e2870408001556eda0eddf601043f3576a245646920187f6eca811",
+    "theme_asset": "lumasela-icon-info.svg",
+    "theme_bytes": 311,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/message.svg",
+    "source_sha256": "7afa989470e49771beffe2f8d047db1bc2009f5dc7e639da0e79c4d388a19244",
+    "theme_asset": "lumasela-icon-message.svg",
+    "theme_bytes": 290,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/chevron-left.svg",
+    "source_sha256": "1c5fc8044d5bc69f87d072720a64d3a06ac4ba333b3b51fbbd0c7308cb4a742b",
+    "theme_asset": "lumasela-icon-chevron-left.svg",
+    "theme_bytes": 215,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/warning.svg",
+    "source_sha256": "bd8a1f1726edb905e928f9399bdd0b6db48c2c2ed801827aa40e6ee0e4fd3379",
+    "theme_asset": "lumasela-icon-warning.svg",
+    "theme_bytes": 320,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/document.svg",
+    "source_sha256": "8069bb8cbfff35fc782fbc49b7ff747eae1f17924043572ec66be036d3a99ee2",
+    "theme_asset": "lumasela-icon-document.svg",
+    "theme_bytes": 258,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/help.svg",
+    "source_sha256": "59566353a9bb54c49c74a47553960f93aa3aba81c0751f32042f54cd3b80a5c3",
+    "theme_asset": "lumasela-icon-help.svg",
+    "theme_bytes": 343,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/phone.svg",
+    "source_sha256": "5b1cf619b53fb693951b3c4e0a622418f72ad0f9d263ec3c2cc8360b8679347a",
+    "theme_asset": "lumasela-icon-phone.svg",
+    "theme_bytes": 275,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/order.svg",
+    "source_sha256": "ec1c53835b6f64cefcab6d4351ffe33a31bb5c634960f7d1b5e77b226310990c",
+    "theme_asset": "lumasela-icon-order.svg",
+    "theme_bytes": 276,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/chevron-down.svg",
+    "source_sha256": "ab934c48618fa286832a4e99333e38624fd2638e95b63d6b983cb8423fffb4aa",
+    "theme_asset": "lumasela-icon-chevron-down.svg",
+    "theme_bytes": 217,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/chevron-up.svg",
+    "source_sha256": "6bf4866b51b54ec941bb037b056a78fcd3724b200277df63163cc4a927a82617",
+    "theme_asset": "lumasela-icon-chevron-up.svg",
+    "theme_bytes": 218,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/zoom-out.svg",
+    "source_sha256": "b34e53665b97a14be169389374088d9f1294af529435b6012ce7bcccc17afeae",
+    "theme_asset": "lumasela-icon-zoom-out.svg",
+    "theme_bytes": 258,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/close.svg",
+    "source_sha256": "d1d3fc61543609870bec2bbea346d712b5f7d51fa2ed100e36a08c2b591a2e3d",
+    "theme_asset": "lumasela-icon-close.svg",
+    "theme_bytes": 225,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  },
+  {
+    "package": "Lumasela_Support_Pages_Icons.zip",
+    "source_entry": "support-assets/icons/plus.svg",
+    "source_sha256": "5ad2a3d9c36e236c7d83b6f615b1f9f142aa08d7d384ed125085827cdd743ffe",
+    "theme_asset": "lumasela-icon-plus.svg",
+    "theme_bytes": 236,
+    "status": "owner-supplied concept; product and claim accuracy pending review"
+  }
+]

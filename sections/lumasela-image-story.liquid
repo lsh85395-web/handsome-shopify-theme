@@ -1,0 +1,101 @@
+{%- liquid
+  assign fallback_file = blank
+  case section.settings.fallback_asset
+    when 'h03'
+      assign fallback_file = 'lumasela-h03-clear-philosophy.webp'
+    when 'h07'
+      assign fallback_file = 'lumasela-h07-customization-intro.webp'
+    when 'h08'
+      assign fallback_file = 'lumasela-h08-clear-edge-detail.webp'
+    when 'h09'
+      assign fallback_file = 'lumasela-h09-lifestyle-walk.webp'
+    when 'h10'
+      assign fallback_file = 'lumasela-h10-lifestyle-home.webp'
+    when 'h11'
+      assign fallback_file = 'lumasela-h11-brand-story.webp'
+    when 'p07'
+      assign fallback_file = 'lumasela-p07-signature-section.webp'
+    when 'p08'
+      assign fallback_file = 'lumasela-p08-hotspot-camera.webp'
+    when 'p09'
+      assign fallback_file = 'lumasela-p09-hotspot-button.webp'
+    when 'p10'
+      assign fallback_file = 'lumasela-p10-hotspot-corner.webp'
+    when 'p11'
+      assign fallback_file = 'lumasela-p11-step-select.webp'
+    when 'p12'
+      assign fallback_file = 'lumasela-p12-step-personalize.webp'
+    when 'p13'
+      assign fallback_file = 'lumasela-p13-step-confirm.webp'
+    when 'p14'
+      assign fallback_file = 'lumasela-p14-lifestyle-work.webp'
+    when 'p15'
+      assign fallback_file = 'lumasela-p15-lifestyle-weekend.webp'
+    when 'guide'
+      assign fallback_file = 'lumasela-customize-guide-hero.webp'
+    when 'faq'
+      assign fallback_file = 'lumasela-faq-hero.webp'
+    when 'tracking'
+      assign fallback_file = 'lumasela-order-tracking-hero.webp'
+    when 'contact'
+      assign fallback_file = 'lumasela-contact-hero.webp'
+  endcase
+-%}
+<section id="{{ section.settings.anchor | default: section.id | escape }}" class="lumasela-image-story color-{{ section.settings.color_scheme }} lumasela-image-story--{{ section.settings.media_position }}" style="--story-space: {{ section.settings.section_spacing }}px">
+  <div class="page-width lumasela-image-story__inner">
+    <div class="lumasela-image-story__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1800 | image_tag: widths: '480,750,1000,1400,1800', sizes: '(min-width: 750px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image_alt }}
+      {%- elsif fallback_file != blank -%}
+        <img src="{{ fallback_file | asset_url }}" width="1536" height="1024" loading="lazy" alt="{{ section.settings.image_alt | escape }}">
+      {%- endif -%}
+    </div>
+    <div class="lumasela-image-story__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="lumasela-image-story__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      {%- if section.settings.body != blank -%}<div class="rte">{{ section.settings.body }}</div>{%- endif -%}
+      {%- if section.settings.link != blank and section.settings.link_label != blank -%}<a class="lumasela-image-story__link" href="{{ section.settings.link }}">{{ section.settings.link_label | escape }} <span aria-hidden="true">→</span></a>{%- endif -%}
+    </div>
+  </div>
+</section>
+<style>
+  #shopify-section-{{ section.id }} .lumasela-image-story {padding-block: var(--story-space); background: rgb(var(--color-background)); color: rgb(var(--color-foreground));}
+  #shopify-section-{{ section.id }} .lumasela-image-story__inner {display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(3rem, 6vw, 11rem); align-items: center;}
+  #shopify-section-{{ section.id }} .lumasela-image-story--right .lumasela-image-story__media {order: 2;}
+  #shopify-section-{{ section.id }} .lumasela-image-story__media img {display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;}
+  #shopify-section-{{ section.id }} .lumasela-image-story__copy {max-width: 62rem;}
+  #shopify-section-{{ section.id }} .lumasela-image-story__eyebrow {font-size: 1.2rem; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; margin: 0 0 1.6rem;}
+  #shopify-section-{{ section.id }} .lumasela-image-story h2 {font-size: clamp(3.4rem, 4vw, 6.4rem); line-height: 1.05; letter-spacing: -.04em; margin: 0 0 2rem;}
+  #shopify-section-{{ section.id }} .lumasela-image-story .rte {font-size: clamp(1.6rem, 1.3vw, 2rem); line-height: 1.55;}
+  #shopify-section-{{ section.id }} .lumasela-image-story__link {display: inline-block; margin-top: 2.4rem; color: inherit; text-underline-offset: .5rem; font-weight: 700;}
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .lumasela-image-story {padding-block: min(var(--story-space), 5.6rem);}
+    #shopify-section-{{ section.id }} .lumasela-image-story__inner {grid-template-columns: 1fr; gap: 2.8rem;}
+    #shopify-section-{{ section.id }} .lumasela-image-story--right .lumasela-image-story__media {order: 0;}
+    #shopify-section-{{ section.id }} .lumasela-image-story__media img {aspect-ratio: 4 / 3;}
+  }
+</style>
+{% schema %}
+{
+  "name": "Lumasela image story",
+  "settings": [
+    {"type":"text","id":"anchor","label":"Section anchor"},
+    {"type":"image_picker","id":"image","label":"Override image"},
+    {"type":"select","id":"fallback_asset","label":"Supplied image","options":[
+      {"value":"h03","label":"H03 Clear philosophy"},{"value":"h07","label":"H07 Customisation introduction"},{"value":"h08","label":"H08 Clear edge detail"},{"value":"h09","label":"H09 Lifestyle walk"},{"value":"h10","label":"H10 Lifestyle home"},{"value":"h11","label":"H11 Brand story"},
+      {"value":"p07","label":"P07 Signature section"},{"value":"p08","label":"P08 Camera detail"},{"value":"p09","label":"P09 Button detail"},{"value":"p10","label":"P10 Corner detail"},{"value":"p11","label":"P11 Choose"},{"value":"p12","label":"P12 Personalise"},{"value":"p13","label":"P13 Review"},{"value":"p14","label":"P14 Lifestyle work"},{"value":"p15","label":"P15 Lifestyle weekend"},
+      {"value":"guide","label":"Guide page"},{"value":"faq","label":"FAQ page"},{"value":"tracking","label":"Tracking page"},{"value":"contact","label":"Contact page"}
+    ],"default":"h03"},
+    {"type":"text","id":"image_alt","label":"Image alternative text","default":"Lumasela concept artwork"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow"},
+    {"type":"text","id":"heading","label":"Heading","default":"A personal detail"},
+    {"type":"richtext","id":"body","label":"Body","default":"<p>Explore the idea behind your design.</p>"},
+    {"type":"text","id":"link_label","label":"Link label"},
+    {"type":"url","id":"link","label":"Link"},
+    {"type":"select","id":"media_position","label":"Image position on desktop","options":[{"value":"left","label":"Left"},{"value":"right","label":"Right"}],"default":"left"},
+    {"type":"color_scheme","id":"color_scheme","label":"Color scheme","default":"scheme-1"},
+    {"type":"range","id":"section_spacing","label":"Vertical spacing","min":32,"max":120,"step":8,"unit":"px","default":80}
+  ],
+  "presets":[{"name":"Lumasela image story"}]
+}
+{% endschema %}
