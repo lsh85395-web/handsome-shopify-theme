@@ -1,0 +1,42 @@
+/* Official Google Fonts source binaries, self-hosted under SIL OFL 1.1.
+   Full, unchanged license texts live in assets/licenses/. */
+@font-face{font-family:'Manrope';src:url('manrope-variable.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}
+@font-face{font-family:'Cormorant Garamond';src:url('cormorant-garamond-italic-variable.ttf') format('truetype');font-style:italic;font-weight:300 700;font-display:swap}
+:root{--font-ui:'Manrope',Arial,'PingFang SC','Microsoft YaHei',sans-serif;--font-brand:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+body,body.home-page,body.product-page{font-family:var(--font-ui);font-weight:400}
+/* Only interface text inherits Manrope. Signature classes remain unchanged. */
+.site-menu-links a>span,.font-grid button small{font-family:var(--font-ui)}
+.site-menu-open,.site-menu-close,.site-nav-cta,.site-footer-links,.home-button,.home-text-link,.home-font-caption,.home-step-tab,.choice-grid button,.product-primary,.product-choice legend,.name-field label,.font-grid button small{font-weight:500}
+.home-page h1,.home-page h2,.product-heading h1,.product-story h2,.product-details h2,.dialog-heading h2,.summary-name{font-weight:500}
+.home-hero-copy h1{letter-spacing:-.045em}
+.home-page h2{letter-spacing:-.035em}
+.product-heading h1{letter-spacing:-.04em}
+.home-page em,.product-story h2 em,.dialog-heading h2 em{font-family:inherit;font-style:normal;font-weight:inherit}
+/* Cormorant is reserved for short brand phrases, never controls or product names. */
+.home-hero-copy h1 em,.home-hero-note em,.home-closing h2 em,.home-life-photo figcaption>span+span,.product-subtitle,.product-story h2 em{font-family:var(--font-brand);font-style:italic;font-weight:500;letter-spacing:-.025em;font-synthesis:none}
+.home-hero-copy h1 em{font-size:1.12em}
+.home-hero-note em{font-size:31px}
+.product-subtitle{font-size:25px;line-height:1.3}
+.product-subtitle em{font-family:inherit;font-style:inherit;font-weight:inherit}
+.home-font-caption{font-size:10px}
+.product-choice legend,.name-field label{font-size:12px}
+.font-grid button small{font-size:10px;line-height:1.35}
+.product-faq p,.design-summary{font-size:12px}
+/* Preserve the existing price typography and all numeric values. */
+.product-price,[data-mobile-price],.summary-total strong{font-family:Arial,sans-serif;font-weight:400}
+@media(max-width:760px){.font-grid button small{font-size:9px}.product-choice legend,.name-field label{font-size:12px}.product-subtitle{font-size:24px}.design-summary{font-size:11px}}
+@media(max-width:620px){.home-hero-copy h1{letter-spacing:-.045em}.home-hero-copy h1 em{letter-spacing:-.025em}.home-hero-note em{font-size:28px}.home-font-caption{font-size:10px}}
+@media(max-width:365px){.font-grid button small{font-size:8px}.home-step-tab{font-size:9px}}
+/* Keep the light visual character without undersized functional text. */
+.site-nav-cta,.site-footer-links{font-size:12px}
+.home-font-caption,.font-grid button small{font-size:11px}
+.home-hero-subtitle{font-size:14px}
+.home-faq-list details p,.home-step-panel p,.product-story-copy>p:not(.product-eyebrow),.product-faq p{font-size:13px}
+.choice-grid button{font-size:13px}
+.placement-grid button{font-size:12px}
+.product-primary{font-size:13px!important}
+.model-grid button small{font-size:10px}
+.field-note,.gallery-disclaimer,.gallery-small-note,.design-disclosure,.selected-value,.name-field label span{font-size:11px}
+@media(max-width:760px){.choice-grid button{font-size:12px}.placement-grid button{font-size:11px}.font-grid button small{font-size:10px}.product-primary,.mobile-review .product-primary{font-size:12px!important}.design-summary{font-size:12px}.product-faq summary{font-size:13px}}
+@media(max-width:620px){.home-hero-subtitle{font-size:13px}.home-font-caption{font-size:11px}.home-step-tab{font-size:11px;white-space:normal}.home-step-panel p{font-size:12px}.home-faq-list summary{font-size:13px}.home-faq-list details p{font-size:13px}.home-how-copy>.home-text-link{font-size:12px}}
+@media(max-width:365px){.font-grid button small{font-size:9px}.home-step-tab{font-size:10px}.placement-grid button{font-size:10px}.size-grid strong{font-size:10px}}

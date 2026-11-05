@@ -1,0 +1,113 @@
+/* Load after shared.css, page CSS and typography.css.
+   Action-only polish: existing text, typography and form/link semantics stay intact. */
+:is(.home-button, .product-primary):not(.summary-edit),
+:is(.home-text-link, .product-text-link, .summary-edit) {
+  border-radius: 999px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: translate .22s ease, scale .16s ease, box-shadow .25s ease,
+    border-color .22s ease, background-color .22s ease;
+}
+/* Reset legacy interaction transforms only on controls which have no layout transform.
+   In particular, never reset .home-text-link's mobile centering transform. */
+:is(.home-button, .product-primary),
+:is(.home-button, .product-primary):hover,
+:is(.home-button, .product-primary):active { transform: none; }
+
+:is(.home-button, .product-primary):not(.summary-edit) {
+  border: 1px solid #ffffffc9;
+  color: #29394b !important;
+  background: radial-gradient(ellipse at var(--action-light-x, 50%) 0%, #ffffff68, transparent 62%),
+    linear-gradient(105deg, #edc5c8 5%, #e4d3df 44%, #c9ddf0 94%);
+  box-shadow: inset 0 3px 9px 3px #ffffffc9,
+    inset 0 -4px 9px 1px #ffffff70, 0 6px 15px #38577614;
+}
+:is(.home-text-link, .product-text-link, .summary-edit) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 17px;
+  border: 1px solid #778f9e;
+  color: #344d5f !important;
+  background: #ffffff08;
+  box-shadow: none;
+  text-decoration: none;
+}
+.product-text-link { gap: 12px; }
+/* Retain the summary button's original 52px touch target and full width. */
+.product-primary.summary-edit { min-height: 52px; background: #ffffff08; }
+/* Prevent the legacy widening-gap hover from shifting adjacent actions. */
+.home-text-link, .home-text-link:hover { gap: 15px; }
+/* This more specific page rule originally removes all horizontal padding. */
+.home-life .home-section-heading > .home-text-link { padding: 9px 17px; }
+
+:is(.home-button, .product-primary, .home-text-link, .product-text-link):focus-visible {
+  outline: 3px solid #395c87;
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(.home-button, .product-primary, .home-text-link, .product-text-link):not(:disabled):not([aria-disabled="true"]):hover {
+    translate: 0 -2px;
+  }
+  :is(.home-button, .product-primary):not(.summary-edit):not(:disabled):not([aria-disabled="true"]):hover {
+    box-shadow: inset 0 3px 9px 3px #ffffffe0,
+      inset 0 -4px 9px 1px #ffffff88, 0 9px 22px #314e7126;
+  }
+  :is(.home-text-link, .product-text-link, .summary-edit):not(:disabled):not([aria-disabled="true"]):hover {
+    background: #ffffff50;
+    border-color: #526c7e;
+  }
+}
+:is(.home-button, .product-primary, .home-text-link, .product-text-link):not(:disabled):not([aria-disabled="true"]):active {
+  translate: 0 1px;
+  scale: .985;
+  transition-duration: 90ms;
+}
+:is(.home-button, .product-primary):not(.summary-edit):not(:disabled):not([aria-disabled="true"]):active {
+  box-shadow: inset 0 2px 8px #7987a345, inset 0 -2px 5px #ffffff85, 0 2px 5px #253e5814;
+}
+:is(.home-text-link, .product-text-link, .summary-edit):not(:disabled):not([aria-disabled="true"]):active { background: #ffffff80; }
+:is(.home-button, .product-primary, .home-text-link, .product-text-link):is(:disabled, [aria-disabled="true"]) {
+  opacity: .5;
+  cursor: not-allowed;
+  translate: none;
+  scale: none;
+  box-shadow: none;
+}
+/* New outlined secondary adds width: let the hero pair wrap naturally, never overflow.
+   Header, floating review bar, and all utility/option controls keep existing geometry. */
+.home-hero-actions { flex-wrap: wrap; gap: 14px 20px; }
+@media (max-width: 850px) {
+  .home-text-link, .home-text-link:hover { gap: 10px; }
+}
+@media (max-width: 620px) {
+  .home-hero-actions { gap: 12px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.home-button, .product-primary, .home-text-link, .product-text-link) {
+    transition: none !important;
+    animation: none !important;
+    translate: none !important;
+    scale: none !important;
+  }
+}
+@media (forced-colors: active) {
+  :is(.home-button, .product-primary, .home-text-link, .product-text-link) {
+    color: ButtonText !important;
+    background: ButtonFace;
+    border-color: ButtonText;
+    box-shadow: none;
+  }
+  :is(.home-button, .product-primary, .home-text-link, .product-text-link):focus-visible { outline-color: Highlight; }
+  :is(.home-button, .product-primary, .home-text-link, .product-text-link):is(:disabled, [aria-disabled="true"]) {
+    color: GrayText !important;
+    border-color: GrayText;
+    opacity: 1;
+  }
+}
+/* The outlined mobile step action is taller than the old text link.
+   Keep a 6px gap from the step caption without changing the stage geometry. */
+@media (max-width: 620px) {
+  .home-how-copy > .home-text-link { bottom: -414px; }
+}

@@ -1,0 +1,13 @@
+Manrope variable normal, version 4.505
+Original, unmodified file: manrope-variable.ttf
+Source: https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf
+License source: https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt
+Included license: manrope-OFL.txt
+
+Cormorant Garamond variable italic, version 4.001
+Original, unmodified file: cormorant-garamond-italic-variable.ttf
+Source: https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/CormorantGaramond-Italic%5Bwght%5D.ttf
+License source: https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt
+Included license: cormorantgaramond-OFL.txt
+
+Downloaded 5 November 2026. Both families are used under SIL Open Font License 1.1.

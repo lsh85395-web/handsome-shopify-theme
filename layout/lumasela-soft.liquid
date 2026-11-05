@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8fbfc">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% if settings.favicon != blank %}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">{% else %}<link rel="icon" type="image/png" href="{{ 'lumasela-logo-symbol.png' | asset_url }}">{% endif %}
+  <title>{{ page_title | escape }}{% unless page_title contains 'Lumasela' %} – Lumasela{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  {% render 'meta-tags' %}
+  {{ content_for_header }}
+  {{ 'manrope-variable.ttf' | asset_url | preload_tag: as: 'font', type: 'font/ttf', crossorigin: 'anonymous' }}
+  {{ 'lumasela-soft-shared.css' | asset_url | stylesheet_tag }}
+  {% if template.name == 'index' %}{{ 'lumasela-soft-home.css' | asset_url | stylesheet_tag }}{% elsif template.name == 'product' %}{{ 'lumasela-soft-product.css' | asset_url | stylesheet_tag }}{% endif %}
+  {{ 'lumasela-soft-typography.css' | asset_url | stylesheet_tag }}
+  {{ 'lumasela-soft-actions.css' | asset_url | stylesheet_tag }}
+  {% if template.name == 'index' %}
+    {{ 'lumasela-soft-cafe-hero.css' | asset_url | stylesheet_tag }}
+    {{ 'lumasela-soft-home-completion.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'lumasela-soft-home-completion.js' | asset_url }}" defer></script>
+  {% endif %}
+  <script src="{{ 'lumasela-soft-navigation.js' | asset_url }}" defer></script>
+  <script src="{{ 'lumasela-soft-actions.js' | asset_url }}" defer></script>
+</head>
+<body class="{% if template.name == 'index' %}home-page{% else %}product-page{% endif %}">
+  {% if template.name == 'index' %}<div class="home-announcement" role="note">{{ 'lumasela_soft.shell.announcement' | t }}</div>{% endif %}
+  <div data-site-header>{% render 'lumasela-soft-header' %}</div>
+  <main id="main" data-template="{{ template.name }}">{{ content_for_layout }}</main>
+  <div data-site-footer>{% render 'lumasela-soft-footer' %}</div>
+</body>
+</html>

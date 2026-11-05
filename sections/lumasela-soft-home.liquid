@@ -1,0 +1,199 @@
+
+    <section class="home-hero home-hero-cafe" aria-labelledby="home-hero-title">
+      <div class="home-cafe-canvas">
+      <div class="home-cafe-photo">
+        <picture>
+        <source media="(max-width: 1100px)" srcset="{{ 'lumasela-city-cafe-mobile-v2.webp' | asset_url }}">
+        <img src="{{ 'lumasela-city-cafe-panoramic-v2.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t131' | t }}" width="2172" height="724" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="home-hero-inner home-container">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow"><span></span> {{ 'lumasela_soft.home.t000' | t }}</p>
+          <h1 id="home-hero-title">{{ 'lumasela_soft.home.t001' | t }}<br><em>{{ 'lumasela_soft.home.t002' | t }}</em></h1>
+          <p class="home-hero-subtitle">{{ 'lumasela_soft.home.t003' | t }}</p>
+          <div class="home-hero-actions">
+            <a class="home-button" href="{{ section.settings.product.url | default: '/products/signature-clear' }}">{{ 'lumasela_soft.home.t004' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+<section class="hc-philosophy home-container hc-section" id="philosophy" aria-labelledby="hc-philosophy-title">
+  <figure class="hc-philosophy-visual">
+    <img src="{{ 'lumasela-h03-clear-philosophy.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t132' | t }}" width="1536" height="1024" loading="lazy" decoding="async">
+    <figcaption class="hc-image-note">{{ 'lumasela_soft.home.t005' | t }}</figcaption>
+  </figure>
+  <div class="hc-philosophy-copy">
+    <p class="home-eyebrow">{{ 'lumasela_soft.home.t006' | t }}</p>
+    <h2 id="hc-philosophy-title">{{ 'lumasela_soft.home.t007' | t }}<br><em>{{ 'lumasela_soft.home.t008' | t }}</em></h2>
+    <p class="hc-body">{{ 'lumasela_soft.home.t009' | t }}</p>
+    <div class="hc-philosophy-points">
+      <div><span class="hc-index">{{ 'lumasela_soft.home.t010' | t }}</span><p><strong>{{ 'lumasela_soft.home.t011' | t }}</strong><span>{{ 'lumasela_soft.home.t012' | t }}</span></p></div>
+      <div><span class="hc-index">{{ 'lumasela_soft.home.t013' | t }}</span><p><strong>{{ 'lumasela_soft.home.t014' | t }}</strong><span>{{ 'lumasela_soft.home.t015' | t }}</span></p></div>
+    </div>
+    <a class="home-text-link hc-link" href="#styles">{{ 'lumasela_soft.home.t016' | t }} <svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+  </div>
+</section>
+
+    <section class="home-styles home-container" id="styles" aria-labelledby="home-styles-title">
+      <div class="home-section-heading home-styles-heading">
+        <h2 id="home-styles-title">{{ 'lumasela_soft.home.t017' | t }} <em>{{ 'lumasela_soft.home.t018' | t }}</em></h2>
+      </div>
+      <div class="home-font-grid">
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=allura" aria-label="{{ 'lumasela_soft.home.t133' | t }}"><span class="home-font-example home-font-allura">{{ 'lumasela_soft.home.t019' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t020' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=dancing-script" aria-label="{{ 'lumasela_soft.home.t134' | t }}"><span class="home-font-example home-font-dancing">{{ 'lumasela_soft.home.t021' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t022' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=great-vibes" aria-label="{{ 'lumasela_soft.home.t135' | t }}"><span class="home-font-example home-font-great">{{ 'lumasela_soft.home.t023' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t024' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=sacramento" aria-label="{{ 'lumasela_soft.home.t136' | t }}"><span class="home-font-example home-font-sacramento">{{ 'lumasela_soft.home.t025' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t026' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=kaushan-script" aria-label="{{ 'lumasela_soft.home.t137' | t }}"><span class="home-font-example home-font-kaushan">{{ 'lumasela_soft.home.t027' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t028' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+        <a class="home-font-choice" href="{{ section.settings.product.url | default: '/products/signature-clear' }}?style=knewave" aria-label="{{ 'lumasela_soft.home.t138' | t }}"><span class="home-font-example home-font-knewave">{{ 'lumasela_soft.home.t029' | t }}</span><span class="home-font-caption">{{ 'lumasela_soft.home.t030' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span></a>
+      </div>
+    </section>
+
+<section class="hc-inspiration hc-builder home-container hc-section" id="how-it-works" aria-labelledby="hc-inspiration-title" data-hc-inspiration="">
+  <span class="hc-anchor-alias" id="signature-inspiration" aria-hidden="true"></span>
+  <div class="hc-inspiration-inner">
+    <div class="hc-builder-heading">
+      <p class="home-eyebrow">{{ 'lumasela_soft.home.t031' | t }}</p>
+      <h2 id="hc-inspiration-title">{{ 'lumasela_soft.home.t032' | t }}<br><em>{{ 'lumasela_soft.home.t033' | t }}</em></h2>
+      <ol class="hc-builder-steps" aria-label="{{ 'lumasela_soft.home.t139' | t }}">
+        <li><span aria-hidden="true">{{ 'lumasela_soft.home.t034' | t }}</span>{{ 'lumasela_soft.home.t035' | t }}</li>
+        <li><span aria-hidden="true">{{ 'lumasela_soft.home.t036' | t }}</span>{{ 'lumasela_soft.home.t037' | t }}</li>
+        <li><span aria-hidden="true">{{ 'lumasela_soft.home.t038' | t }}</span>{{ 'lumasela_soft.home.t039' | t }}</li>
+      </ol>
+    </div>
+    <figure class="hc-inspiration-visual" id="hc-inspiration-preview" aria-describedby="hc-inspiration-status hc-inspiration-disclosure">
+      <div class="hc-inspiration-orbit" aria-hidden="true"></div>
+      <span class="hc-stage-note" aria-hidden="true">{{ 'lumasela_soft.home.t040' | t }}</span>
+      <div class="hc-preview-phone" data-hc-phone="" data-hc-position="bottom-center">
+        <img src="{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t140' | t }}" width="1254" height="1254" loading="lazy" decoding="async">
+        <span class="hc-preview-signature" data-hc-signature="" aria-hidden="true">{{ 'lumasela_soft.home.t041' | t }}</span>
+      </div>
+      <figcaption class="hc-inspiration-caption"><span id="hc-inspiration-status" data-hc-status="" role="status" aria-live="polite" aria-atomic="true">{{ 'lumasela_soft.home.t042' | t }}</span><span id="hc-inspiration-disclosure">{{ 'lumasela_soft.home.t043' | t }}</span></figcaption>
+    </figure>
+    <div class="hc-builder-choices">
+      <div class="hc-controls" data-hc-controls="" hidden="">
+        <fieldset class="hc-control-group hc-font-group">
+          <legend>{{ 'lumasela_soft.home.t044' | t }}</legend>
+          <label class="hc-sr-only" for="hc-font-choice">{{ 'lumasela_soft.home.t045' | t }}</label>
+          <select id="hc-font-choice" class="hc-font-select" data-hc-font="" aria-controls="hc-inspiration-preview">
+            <option value="allura">{{ 'lumasela_soft.home.t046' | t }}</option><option value="dancing-script">{{ 'lumasela_soft.home.t047' | t }}</option><option value="great-vibes">{{ 'lumasela_soft.home.t048' | t }}</option><option value="sacramento">{{ 'lumasela_soft.home.t049' | t }}</option><option value="kaushan-script">{{ 'lumasela_soft.home.t050' | t }}</option><option value="knewave">{{ 'lumasela_soft.home.t051' | t }}</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="hc-control-group">
+          <legend>{{ 'lumasela_soft.home.t052' | t }} <span data-hc-color-label="">{{ 'lumasela_soft.home.t053' | t }}</span></legend>
+          <div class="hc-color-options">
+            <button type="button" class="hc-color-choice" data-hc-color="#ffffff" data-hc-label="White" aria-pressed="false" aria-controls="hc-inspiration-preview"><span class="hc-swatch hc-swatch-white" aria-hidden="true"></span><span>{{ 'lumasela_soft.home.t054' | t }}</span></button>
+            <button type="button" class="hc-color-choice" data-hc-color="#111111" data-hc-label="Black" aria-pressed="false" aria-controls="hc-inspiration-preview"><span class="hc-swatch hc-swatch-black" aria-hidden="true"></span><span>{{ 'lumasela_soft.home.t055' | t }}</span></button>
+            <button type="button" class="hc-color-choice" data-hc-color="#3e5d8d" data-hc-label="Blue" aria-pressed="true" aria-controls="hc-inspiration-preview"><span class="hc-swatch hc-swatch-blue" aria-hidden="true"></span><span>{{ 'lumasela_soft.home.t056' | t }}</span></button>
+            <button type="button" class="hc-color-choice" data-hc-color="#a63b32" data-hc-label="Coral" aria-pressed="false" aria-controls="hc-inspiration-preview"><span class="hc-swatch hc-swatch-coral" aria-hidden="true"></span><span>{{ 'lumasela_soft.home.t057' | t }}</span></button>
+          </div>
+        </fieldset>
+        <fieldset class="hc-control-group">
+          <legend>{{ 'lumasela_soft.home.t058' | t }}</legend>
+          <div class="hc-placement-options">
+            <button type="button" class="hc-placement-choice" data-hc-placement="bottom-center" data-hc-label="Bottom center" aria-pressed="true" aria-controls="hc-inspiration-preview"><svg class="hc-placement-icon" viewBox="0 0 24 32" fill="none" aria-hidden="true" focusable="false"><rect x="3.5" y="1.5" width="17" height="29" rx="4"></rect><path class="hc-placement-mark" d="M8 25h8"></path></svg><span>{{ 'lumasela_soft.home.t059' | t }}</span></button>
+            <button type="button" class="hc-placement-choice" data-hc-placement="below-logo" data-hc-label="Below logo" aria-pressed="false" aria-controls="hc-inspiration-preview"><svg class="hc-placement-icon" viewBox="0 0 24 32" fill="none" aria-hidden="true" focusable="false"><rect x="3.5" y="1.5" width="17" height="29" rx="4"></rect><path class="hc-placement-mark" d="M8 21h8"></path></svg><span>{{ 'lumasela_soft.home.t060' | t }}</span></button>
+            <button type="button" class="hc-placement-choice" data-hc-placement="bottom-right-vertical" data-hc-label="Right vertical" aria-pressed="false" aria-controls="hc-inspiration-preview"><svg class="hc-placement-icon" viewBox="0 0 24 32" fill="none" aria-hidden="true" focusable="false"><rect x="3.5" y="1.5" width="17" height="29" rx="4"></rect><path class="hc-placement-mark" d="M16 26V18"></path></svg><span>{{ 'lumasela_soft.home.t061' | t }}</span></button>
+            <button type="button" class="hc-placement-choice" data-hc-placement="bottom-right-diagonal" data-hc-label="Right diagonal" aria-pressed="false" aria-controls="hc-inspiration-preview"><svg class="hc-placement-icon" viewBox="0 0 24 32" fill="none" aria-hidden="true" focusable="false"><rect x="3.5" y="1.5" width="17" height="29" rx="4"></rect><path class="hc-placement-mark" d="m10 27 7-5"></path></svg><span>{{ 'lumasela_soft.home.t062' | t }}</span></button>
+          </div>
+        </fieldset>
+      </div>
+      <a class="home-button hc-builder-cta" href="{{ section.settings.product.url | default: '/products/signature-clear' }}">{{ 'lumasela_soft.home.t063' | t }} <svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+      <p class="hc-control-note">{{ 'lumasela_soft.home.t064' | t }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="hc-design-details home-container hc-section" id="design-details" aria-labelledby="hc-details-title">
+  <div class="hc-details-heading">
+    <div><p class="home-eyebrow">{{ 'lumasela_soft.home.t065' | t }}</p><h2 id="hc-details-title">{{ 'lumasela_soft.home.t066' | t }} <em>{{ 'lumasela_soft.home.t067' | t }}</em></h2></div>
+    <p class="hc-body">{{ 'lumasela_soft.home.t068' | t }}<br>{{ 'lumasela_soft.home.t069' | t }}</p>
+  </div>
+  <div class="hc-details-grid">
+    <article class="hc-detail-card">
+      <div class="hc-detail-art hc-detail-art-clear" aria-hidden="true">
+        <svg viewBox="0 0 350 240" fill="none" focusable="false"><rect class="hc-diagram-shadow" x="116" y="42" width="116" height="180" rx="24" transform="rotate(-12 174 132)"></rect><rect class="hc-diagram-base" x="112" y="26" width="116" height="186" rx="24" transform="rotate(-12 170 119)"></rect><rect class="hc-diagram-line" x="120" y="34" width="100" height="170" rx="19" transform="rotate(-12 170 119)"></rect><rect class="hc-diagram-camera" x="123" y="45" width="41" height="37" rx="10" transform="rotate(-12 143 63)"></rect><circle class="hc-diagram-lens" cx="134" cy="56" r="5"></circle><circle class="hc-diagram-lens" cx="150" cy="68" r="5"></circle><path class="hc-diagram-guide" d="m212 82 61-15h23M107 176l-45 17H46"></path><circle class="hc-diagram-dot" cx="212" cy="82" r="3"></circle><circle class="hc-diagram-dot" cx="107" cy="176" r="3"></circle></svg>
+        <span class="hc-art-label">{{ 'lumasela_soft.home.t070' | t }}</span>
+      </div>
+      <div class="hc-detail-copy"><h3>{{ 'lumasela_soft.home.t071' | t }}</h3><p>{{ 'lumasela_soft.home.t072' | t }}</p></div>
+    </article>
+    <article class="hc-detail-card">
+      <div class="hc-detail-art hc-detail-art-lettering" aria-hidden="true"><span class="hc-detail-word">{{ 'lumasela_soft.home.t073' | t }}</span><span class="hc-lettering-baseline"></span><span class="hc-art-label">{{ 'lumasela_soft.home.t074' | t }}</span></div>
+      <div class="hc-detail-copy"><h3>{{ 'lumasela_soft.home.t075' | t }}</h3><p>{{ 'lumasela_soft.home.t076' | t }}</p></div>
+    </article>
+    <article class="hc-detail-card">
+      <div class="hc-detail-art hc-detail-art-placement" aria-hidden="true">
+        <svg viewBox="0 0 350 240" fill="none" focusable="false"><rect class="hc-diagram-base" x="122" y="24" width="106" height="184" rx="22"></rect><rect class="hc-diagram-line" x="129" y="31" width="92" height="170" rx="17"></rect><rect class="hc-diagram-camera" x="137" y="40" width="39" height="34" rx="9"></rect><circle class="hc-diagram-lens" cx="149" cy="50" r="4"></circle><circle class="hc-diagram-lens" cx="163" cy="63" r="4"></circle><path class="hc-diagram-dash" d="M175 89v104M135 171h80"></path><rect class="hc-diagram-highlight" x="148" y="162" width="54" height="19" rx="6"></rect><path class="hc-diagram-guide" d="M209 171h58M175 208v15"></path><circle class="hc-diagram-dot" cx="209" cy="171" r="3"></circle></svg>
+        <span class="hc-diagram-signature">{{ 'lumasela_soft.home.t077' | t }}</span><span class="hc-art-label">{{ 'lumasela_soft.home.t078' | t }}</span>
+      </div>
+      <div class="hc-detail-copy"><h3>{{ 'lumasela_soft.home.t079' | t }}</h3><p>{{ 'lumasela_soft.home.t080' | t }}</p></div>
+    </article>
+  </div>
+  <p class="hc-details-disclosure">{{ 'lumasela_soft.home.t081' | t }}</p>
+</section>
+
+    <section class="home-life home-container" id="everyday" aria-labelledby="home-life-title">
+      <div class="home-section-heading">
+        <div><p class="home-eyebrow">{{ 'lumasela_soft.home.t082' | t }}</p><h2 id="home-life-title">{{ 'lumasela_soft.home.t083' | t }} <em>{{ 'lumasela_soft.home.t084' | t }}</em></h2></div>
+        <a class="home-text-link" href="{{ section.settings.product.url | default: '/products/signature-clear' }}">{{ 'lumasela_soft.home.t085' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+      </div>
+      <div class="home-life-grid">
+        <figure class="home-life-photo home-life-large"><img src="{{ 'lumasela-h09-lifestyle-walk.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t141' | t }}" width="1200" height="800" loading="lazy"><figcaption><span>{{ 'lumasela_soft.home.t086' | t }}</span><span>{{ 'lumasela_soft.home.t087' | t }}</span></figcaption></figure>
+        <figure class="home-life-photo home-life-small"><img src="{{ 'lumasela-h10-lifestyle-home.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t142' | t }}" width="1200" height="800" loading="lazy"><figcaption><span>{{ 'lumasela_soft.home.t088' | t }}</span></figcaption></figure>
+        <figure class="home-life-photo home-life-small"><img src="{{ 'lumasela-p14-lifestyle-work.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t143' | t }}" width="1200" height="800" loading="lazy"><figcaption><span>{{ 'lumasela_soft.home.t089' | t }}</span></figcaption></figure>
+      </div>
+    </section>
+
+<section class="hc-story home-container hc-section" id="story" aria-labelledby="hc-story-title">
+  <div class="hc-story-inner">
+    <figure class="hc-story-visual">
+      <img src="{{ 'lumasela-h11-brand-story.webp' | asset_url }}" alt="{{ 'lumasela_soft.home.t144' | t }}" width="1536" height="1024" loading="lazy" decoding="async">
+      <figcaption class="hc-image-note">{{ 'lumasela_soft.home.t090' | t }}</figcaption>
+    </figure>
+    <div class="hc-story-copy">
+      <p class="home-eyebrow">{{ 'lumasela_soft.home.t091' | t }} <span class="hc-proposal-divider" aria-hidden="true">{{ 'lumasela_soft.home.t092' | t }}</span> {{ 'lumasela_soft.home.t093' | t }}</p>
+      <h2 id="hc-story-title">{{ 'lumasela_soft.home.t094' | t }}<br><em>{{ 'lumasela_soft.home.t095' | t }}</em></h2>
+      <p class="hc-body">{{ 'lumasela_soft.home.t096' | t }}</p>
+      <p class="hc-body hc-story-second">{{ 'lumasela_soft.home.t097' | t }}</p>
+      <details class="hc-full-story">
+        <summary class="home-text-link hc-story-toggle"><span class="hc-story-read">{{ 'lumasela_soft.home.t098' | t }}</span><span class="hc-story-close">{{ 'lumasela_soft.home.t099' | t }}</span><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div class="hc-full-story-copy">
+          <p class="hc-story-proposal-note">{{ 'lumasela_soft.home.t100' | t }}</p>
+          <h3>{{ 'lumasela_soft.home.t101' | t }}</h3>
+          <p>{{ 'lumasela_soft.home.t102' | t }}</p>
+          <p>{{ 'lumasela_soft.home.t103' | t }}</p>
+          <p>{{ 'lumasela_soft.home.t104' | t }}</p>
+          <p>{{ 'lumasela_soft.home.t105' | t }}</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+    <section class="home-faq home-container" id="faq" aria-labelledby="home-faq-title">
+      <div class="home-faq-heading"><p class="home-eyebrow">{{ 'lumasela_soft.home.t106' | t }}</p><h2 id="home-faq-title">{{ 'lumasela_soft.home.t107' | t }} <em>{{ 'lumasela_soft.home.t108' | t }}</em></h2></div>
+      <div class="home-faq-list">
+        <details><summary>{{ 'lumasela_soft.home.t109' | t }}<span aria-hidden="true">{{ 'lumasela_soft.home.t110' | t }}</span></summary><p>{{ 'lumasela_soft.home.t111' | t }}</p></details>
+        <details><summary>{{ 'lumasela_soft.home.t112' | t }}<span aria-hidden="true">{{ 'lumasela_soft.home.t113' | t }}</span></summary><p>{{ 'lumasela_soft.home.t114' | t }}</p></details>
+        <details><summary>{{ 'lumasela_soft.home.t115' | t }}<span aria-hidden="true">{{ 'lumasela_soft.home.t116' | t }}</span></summary><p>{{ 'lumasela_soft.home.t117' | t }}</p></details>
+        <details><summary>{{ 'lumasela_soft.home.t118' | t }}<span aria-hidden="true">{{ 'lumasela_soft.home.t119' | t }}</span></summary><p>{{ 'lumasela_soft.home.t120' | t }}</p></details>
+        <details><summary>{{ 'lumasela_soft.home.t121' | t }}<span aria-hidden="true">{{ 'lumasela_soft.home.t122' | t }}</span></summary><p>{{ 'lumasela_soft.home.t123' | t }} <a href="https://lumasela.com/pages/contact-us" target="_blank" rel="noopener">{{ 'lumasela_soft.home.t124' | t }}</a> {{ 'lumasela_soft.home.t125' | t }}</p></details>
+      </div>
+    </section>
+
+    <section class="home-closing home-container" aria-labelledby="home-closing-title">
+      <div class="home-closing-glass" aria-hidden="true"></div>
+      <p class="home-eyebrow">{{ 'lumasela_soft.home.t126' | t }}</p>
+      <h2 id="home-closing-title">{{ 'lumasela_soft.home.t127' | t }} <em>{{ 'lumasela_soft.home.t128' | t }}</em></h2>
+      <a class="home-button" href="{{ section.settings.product.url | default: '/products/signature-clear' }}">{{ 'lumasela_soft.home.t129' | t }} <span aria-hidden="true"><svg class="home-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4.5 15.5 15.5 4.5M5 4.5h10.5V15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+      <span class="home-closing-signature home-font-allura" aria-hidden="true">{{ 'lumasela_soft.home.t130' | t }}</span>
+    </section>
+  
+{% schema %}
+{"name":"Lumasela soft home","settings":[{"type":"product","id":"product","label":"Featured product"}],"presets":[{"name":"Lumasela soft home"}]}
+{% endschema %}

@@ -1,0 +1,52 @@
+/* A single continuous photographic layer spans every pixel of the hero.
+   Desktop/mobile art direction provides real image headroom, not a blank strip. */
+.home-announcement { position: relative; z-index: 90; height: 28px; display: flex; align-items: center; justify-content: center; background: #f8fbfc; color: #4b626c; font-size: 9px; letter-spacing: .14em; border-bottom: 1px solid #e2eaed; }
+.home-page .site-capsule { top: 42px; width: min(1120px, calc(100% - 64px)); height: 58px; padding-inline: 22px; }
+.home-page .site-brand { width: 148px; }
+.home-page .site-nav-cta { min-width: 44px; }
+.home-hero-cafe { padding: 0; background: #edf4f6; }
+.home-cafe-canvas { position: relative; width: 100%; height: clamp(580px, 33.333vw, 880px); margin: 0; overflow: hidden; border-radius: 0; isolation: isolate; }
+.home-hero-cafe .home-cafe-photo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; overflow: hidden; }
+.home-hero-cafe .home-cafe-photo picture { display: block; width: 100%; height: 100%; }
+.home-hero-cafe .home-cafe-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 70% top; }
+.home-hero-cafe .home-cafe-photo::after { content: none; }
+.home-hero-cafe .home-hero-inner { display: flex; align-items: center; width: min(1240px, calc(100% - 112px)); height: 100%; min-height: 0; padding-top: 72px; }
+.home-hero-cafe .home-hero-copy { width: 49%; padding: 0; }
+.home-hero-cafe .home-hero-subtitle,.home-hero-cafe .home-eyebrow { color: #40545d; }
+.home-hero-cafe .home-hero-copy h1 em { color: #3f636d; }
+@media (max-width: 1100px) {
+  .home-cafe-canvas { height: 900px; }
+  .home-hero-cafe .home-hero-inner { display: block; width: calc(100% - 40px); padding-top: 118px; }
+  .home-hero-cafe .home-hero-copy { width: 100%; padding: 0; text-align: center; }
+  .home-hero-cafe .home-hero-actions { justify-content: center; }
+  .home-hero-cafe .home-cafe-photo img { object-position: 75% center; }
+}
+@media (max-width: 700px) {
+  .home-page .site-capsule { top: 40px; width: calc(100% - 36px); height: 54px; padding-inline: 14px; gap: 8px; }
+  .home-page .site-brand { width: 128px; }
+}
+@media (max-width: 620px) {
+  .home-cafe-canvas { height: 800px; }
+  .home-hero-cafe .home-hero-inner { padding-top: 106px; }
+  .home-hero-cafe .home-cafe-photo img { object-position: 75% center; }
+}
+@media (max-width: 380px) {
+  .home-cafe-canvas { height: 760px; }
+}
+/* A transparent highlight, never an opaque panel, preserves the continuous
+   photograph behind small-screen type while quieting the window reflections. */
+@media (max-width: 1100px) {
+  .home-hero-cafe .home-cafe-photo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, #ffffff20 0%, #ffffff70 28%, #ffffff40 43%, #ffffff00 57%); }
+}
+/* Revision 9: small requested size refinements only. The navigation offset
+   follows the taller information strip, preserving its gap above the photo. */
+.home-announcement { height: 36px; }
+.home-page .site-capsule { top: 50px; }
+.home-hero-cafe .home-hero-copy h1 { font-size: clamp(58px, 6.05vw, 86px); }
+.home-hero-cafe .home-hero-subtitle { font-size: 15px; }
+.home-hero-cafe .home-button { min-height: 56px; padding-inline: 31px; font-size: 14px; }
+@media (min-width: 1500px) { .home-hero-cafe .home-hero-copy h1 { font-size: 92px; } }
+@media (max-width: 1100px) { .home-hero-cafe .home-hero-copy h1 { font-size: 70px; } }
+@media (max-width: 850px) { .home-hero-cafe .home-hero-copy h1 { font-size: 57px; } .home-hero-cafe .home-button { min-height: 52px; padding-inline: 26px; font-size: 13px; } }
+@media (max-width: 700px) { .home-page .site-capsule { top: 48px; } }
+@media (max-width: 620px) { .home-hero-cafe .home-hero-copy h1 { font-size: clamp(47px, 12.1vw, 69px); } .home-hero-cafe .home-hero-subtitle { font-size: 14px; } }

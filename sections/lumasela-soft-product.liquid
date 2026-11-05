@@ -1,0 +1,216 @@
+<script src="{{ 'lumasela-soft-product.js' | asset_url }}" defer></script>
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'LumaselaSoftProductForm-' | append: section.id
+-%}
+<section id="lumasela-product-main" class="product-shell" data-lumasela-product data-product-id="{{ product.id }}">
+<script type="application/json" data-product-config>
+{
+  "productId": {{ product.id | json }},
+  "title": {{ product.title | json | replace: '<', '\u003c' }},
+  "locale": {{ request.locale.iso_code | json }},
+  "currency": {{ cart.currency.iso_code | default: localization.country.currency.iso_code | json }},
+  "defaultName": {{ section.settings.default_name | json | replace: '<', '\u003c' }},
+  "selectedVariantId": {{ selected_variant.id | json }},
+  "cartAddUrl": {{ routes.cart_add_url | append: '.js' | json }},
+  "options": [{% for option in product.options_with_values %}{"name":{{ option.name | json | replace: '<', '\u003c' }},"values":{{ option.values | map: 'name' | json | replace: '<', '\u003c' }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "variants": [{% for variant in product.variants %}{"id":{{ variant.id | json }},"title":{{ variant.title | json | replace: '<', '\u003c' }},"options":{{ variant.options | json | replace: '<', '\u003c' }},"price":{{ variant.price | json }},"available":{{ variant.available | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "phoneImages": {"black":{{ 'lumasela-preview-phone-black-base.webp' | asset_url | json }},"silver":{{ 'lumasela-preview-phone-silver-base.webp' | asset_url | json }},"ice-blue":{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url | json }},"burgundy":{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url | json }},"midnight-blue":{{ 'lumasela-preview-phone-midnight-blue-base.webp' | asset_url | json }},"orange":{{ 'lumasela-preview-phone-orange-base.webp' | asset_url | json }}},
+  "assets": {"lumasela-p02-gallery-clear-overview.webp":{{ 'lumasela-p02-gallery-clear-overview.webp' | asset_url | json }},"lumasela-p03-gallery-signature-closeup.webp":{{ 'lumasela-p03-gallery-signature-closeup.webp' | asset_url | json }},"lumasela-p04-gallery-camera-overview.webp":{{ 'lumasela-p04-gallery-camera-overview.webp' | asset_url | json }},"lumasela-p05-gallery-customization.webp":{{ 'lumasela-p05-gallery-customization.webp' | asset_url | json }},"lumasela-p06-gallery-everyday.webp":{{ 'lumasela-p06-gallery-everyday.webp' | asset_url | json }}},
+  "strings": {"breadcrumb":{{ 'lumasela_soft.product.breadcrumb' | t | json | replace: '<', '\u003c' }},
+"home":{{ 'lumasela_soft.product.home' | t | json | replace: '<', '\u003c' }},
+"gallery":{{ 'lumasela_soft.product.gallery' | t | json | replace: '<', '\u003c' }},
+"gallery_keyboard":{{ 'lumasela_soft.product.gallery_keyboard' | t | json | replace: '<', '\u003c' }},
+"live_preview":{{ 'lumasela_soft.product.live_preview' | t | json | replace: '<', '\u003c' }},
+"enlarge":{{ 'lumasela_soft.product.enlarge' | t | json | replace: '<', '\u003c' }},
+"initial_image":{{ 'lumasela_soft.product.initial_image' | t | json | replace: '<', '\u003c' }},
+"previous":{{ 'lumasela_soft.product.previous' | t | json | replace: '<', '\u003c' }},
+"next":{{ 'lumasela_soft.product.next' | t | json | replace: '<', '\u003c' }},
+"live_caption":{{ 'lumasela_soft.product.live_caption' | t | json | replace: '<', '\u003c' }},
+"live_note":{{ 'lumasela_soft.product.live_note' | t | json | replace: '<', '\u003c' }},
+"choose_gallery":{{ 'lumasela_soft.product.choose_gallery' | t | json | replace: '<', '\u003c' }},
+"gallery_thumbnails":{{ 'lumasela_soft.product.gallery_thumbnails' | t | json | replace: '<', '\u003c' }},
+"compare":{{ 'lumasela_soft.product.compare' | t | json | replace: '<', '\u003c' }},
+"visual_reference":{{ 'lumasela_soft.product.visual_reference' | t | json | replace: '<', '\u003c' }},
+"without_signature":{{ 'lumasela_soft.product.without_signature' | t | json | replace: '<', '\u003c' }},
+"your_signature":{{ 'lumasela_soft.product.your_signature' | t | json | replace: '<', '\u003c' }},
+"compare_range":{{ 'lumasela_soft.product.compare_range' | t | json | replace: '<', '\u003c' }},
+"initial_comparison":{{ 'lumasela_soft.product.initial_comparison' | t | json | replace: '<', '\u003c' }},
+"placement_note":{{ 'lumasela_soft.product.placement_note' | t | json | replace: '<', '\u003c' }},
+"eyebrow":{{ 'lumasela_soft.product.eyebrow' | t | json | replace: '<', '\u003c' }},
+"subtitle_html":{{ 'lumasela_soft.product.subtitle_html' | t | json | replace: '<', '\u003c' }},
+"loading_price":{{ 'lumasela_soft.product.loading_price' | t | json | replace: '<', '\u003c' }},
+"your_case":{{ 'lumasela_soft.product.your_case' | t | json | replace: '<', '\u003c' }},
+"phone_colour":{{ 'lumasela_soft.product.phone_colour' | t | json | replace: '<', '\u003c' }},
+"silver":{{ 'lumasela_soft.product.silver' | t | json | replace: '<', '\u003c' }},
+"phone_note":{{ 'lumasela_soft.product.phone_note' | t | json | replace: '<', '\u003c' }},
+"name":{{ 'lumasela_soft.product.name' | t | json | replace: '<', '\u003c' }},
+"signature_style":{{ 'lumasela_soft.product.signature_style' | t | json | replace: '<', '\u003c' }},
+"placement":{{ 'lumasela_soft.product.placement' | t | json | replace: '<', '\u003c' }},
+"size":{{ 'lumasela_soft.product.size' | t | json | replace: '<', '\u003c' }},
+"signature_colour":{{ 'lumasela_soft.product.signature_colour' | t | json | replace: '<', '\u003c' }},
+"white":{{ 'lumasela_soft.product.white' | t | json | replace: '<', '\u003c' }},
+"your_design":{{ 'lumasela_soft.product.your_design' | t | json | replace: '<', '\u003c' }},
+"decrease":{{ 'lumasela_soft.product.decrease' | t | json | replace: '<', '\u003c' }},
+"quantity":{{ 'lumasela_soft.product.quantity' | t | json | replace: '<', '\u003c' }},
+"increase":{{ 'lumasela_soft.product.increase' | t | json | replace: '<', '\u003c' }},
+"review":{{ 'lumasela_soft.product.review' | t | json | replace: '<', '\u003c' }},
+"review_note":{{ 'lumasela_soft.product.review_note' | t | json | replace: '<', '\u003c' }},
+"story_alt":{{ 'lumasela_soft.product.story_alt' | t | json | replace: '<', '\u003c' }},
+"story_eyebrow":{{ 'lumasela_soft.product.story_eyebrow' | t | json | replace: '<', '\u003c' }},
+"story_title_html":{{ 'lumasela_soft.product.story_title_html' | t | json | replace: '<', '\u003c' }},
+"story_text":{{ 'lumasela_soft.product.story_text' | t | json | replace: '<', '\u003c' }},
+"personalise":{{ 'lumasela_soft.product.personalise' | t | json | replace: '<', '\u003c' }},
+"about_preview":{{ 'lumasela_soft.product.about_preview' | t | json | replace: '<', '\u003c' }},
+"details_eyebrow":{{ 'lumasela_soft.product.details_eyebrow' | t | json | replace: '<', '\u003c' }},
+"before_decide":{{ 'lumasela_soft.product.before_decide' | t | json | replace: '<', '\u003c' }},
+"preview_question":{{ 'lumasela_soft.product.preview_question' | t | json | replace: '<', '\u003c' }},
+"preview_answer":{{ 'lumasela_soft.product.preview_answer' | t | json | replace: '<', '\u003c' }},
+"model_question":{{ 'lumasela_soft.product.model_question' | t | json | replace: '<', '\u003c' }},
+"model_answer":{{ 'lumasela_soft.product.model_answer' | t | json | replace: '<', '\u003c' }},
+"order_question":{{ 'lumasela_soft.product.order_question' | t | json | replace: '<', '\u003c' }},
+"order_answer":{{ 'lumasela_soft.product.order_answer' | t | json | replace: '<', '\u003c' }},
+"preview":{{ 'lumasela_soft.product.preview' | t | json | replace: '<', '\u003c' }},
+"closer_look":{{ 'lumasela_soft.product.closer_look' | t | json | replace: '<', '\u003c' }},
+"close_zoom":{{ 'lumasela_soft.product.close_zoom' | t | json | replace: '<', '\u003c' }},
+"zoom_note":{{ 'lumasela_soft.product.zoom_note' | t | json | replace: '<', '\u003c' }},
+"made_personal":{{ 'lumasela_soft.product.made_personal' | t | json | replace: '<', '\u003c' }},
+"summary_title_html":{{ 'lumasela_soft.product.summary_title_html' | t | json | replace: '<', '\u003c' }},
+"close_summary":{{ 'lumasela_soft.product.close_summary' | t | json | replace: '<', '\u003c' }},
+"design_total":{{ 'lumasela_soft.product.design_total' | t | json | replace: '<', '\u003c' }},
+"summary_note":{{ 'lumasela_soft.product.summary_note' | t | json | replace: '<', '\u003c' }},
+"keep_designing":{{ 'lumasela_soft.product.keep_designing' | t | json | replace: '<', '\u003c' }},
+"noscript":{{ 'lumasela_soft.product.noscript' | t | json | replace: '<', '\u003c' }},
+"add_to_cart":{{ 'lumasela_soft.product.add_to_cart' | t | json | replace: '<', '\u003c' }},
+"added":{{ 'lumasela_soft.product.added' | t | json | replace: '<', '\u003c' }},
+"view_cart":{{ 'lumasela_soft.product.view_cart' | t | json | replace: '<', '\u003c' }},
+"product_details":{{ 'lumasela_soft.product.product_details' | t | json | replace: '<', '\u003c' }},
+"saved_notice":{{ 'lumasela_soft.product.saved_notice' | t | json | replace: '<', '\u003c' }},
+"restore_design":{{ 'lumasela_soft.product.restore_design' | t | json | replace: '<', '\u003c' }},
+"start_fresh":{{ 'lumasela_soft.product.start_fresh' | t | json | replace: '<', '\u003c' }},
+"concept_note":{{ 'lumasela_soft.product.concept_note' | t | json | replace: '<', '\u003c' }},
+"black":{{ 'lumasela_soft.product.black' | t | json | replace: '<', '\u003c' }},
+"ice_blue":{{ 'lumasela_soft.product.ice_blue' | t | json | replace: '<', '\u003c' }},
+"burgundy":{{ 'lumasela_soft.product.burgundy' | t | json | replace: '<', '\u003c' }},
+"midnight_blue":{{ 'lumasela_soft.product.midnight_blue' | t | json | replace: '<', '\u003c' }},
+"orange":{{ 'lumasela_soft.product.orange' | t | json | replace: '<', '\u003c' }},
+"blue":{{ 'lumasela_soft.product.blue' | t | json | replace: '<', '\u003c' }},
+"coral":{{ 'lumasela_soft.product.coral' | t | json | replace: '<', '\u003c' }},
+"bottom_vertical":{{ 'lumasela_soft.product.bottom_vertical' | t | json | replace: '<', '\u003c' }},
+"bottom_center":{{ 'lumasela_soft.product.bottom_center' | t | json | replace: '<', '\u003c' }},
+"below_logo":{{ 'lumasela_soft.product.below_logo' | t | json | replace: '<', '\u003c' }},
+"bottom_diagonal":{{ 'lumasela_soft.product.bottom_diagonal' | t | json | replace: '<', '\u003c' }},
+"small":{{ 'lumasela_soft.product.small' | t | json | replace: '<', '\u003c' }},
+"medium":{{ 'lumasela_soft.product.medium' | t | json | replace: '<', '\u003c' }},
+"large":{{ 'lumasela_soft.product.large' | t | json | replace: '<', '\u003c' }},
+"clear_overview":{{ 'lumasela_soft.product.clear_overview' | t | json | replace: '<', '\u003c' }},
+"clear_eyebrow":{{ 'lumasela_soft.product.clear_eyebrow' | t | json | replace: '<', '\u003c' }},
+"clear_caption":{{ 'lumasela_soft.product.clear_caption' | t | json | replace: '<', '\u003c' }},
+"clear_alt":{{ 'lumasela_soft.product.clear_alt' | t | json | replace: '<', '\u003c' }},
+"signature_detail":{{ 'lumasela_soft.product.signature_detail' | t | json | replace: '<', '\u003c' }},
+"signature_eyebrow":{{ 'lumasela_soft.product.signature_eyebrow' | t | json | replace: '<', '\u003c' }},
+"signature_caption":{{ 'lumasela_soft.product.signature_caption' | t | json | replace: '<', '\u003c' }},
+"signature_alt":{{ 'lumasela_soft.product.signature_alt' | t | json | replace: '<', '\u003c' }},
+"camera_detail":{{ 'lumasela_soft.product.camera_detail' | t | json | replace: '<', '\u003c' }},
+"camera_eyebrow":{{ 'lumasela_soft.product.camera_eyebrow' | t | json | replace: '<', '\u003c' }},
+"camera_caption":{{ 'lumasela_soft.product.camera_caption' | t | json | replace: '<', '\u003c' }},
+"camera_alt":{{ 'lumasela_soft.product.camera_alt' | t | json | replace: '<', '\u003c' }},
+"personalisation":{{ 'lumasela_soft.product.personalisation' | t | json | replace: '<', '\u003c' }},
+"personalisation_eyebrow":{{ 'lumasela_soft.product.personalisation_eyebrow' | t | json | replace: '<', '\u003c' }},
+"personalisation_caption":{{ 'lumasela_soft.product.personalisation_caption' | t | json | replace: '<', '\u003c' }},
+"personalisation_alt":{{ 'lumasela_soft.product.personalisation_alt' | t | json | replace: '<', '\u003c' }},
+"everyday":{{ 'lumasela_soft.product.everyday' | t | json | replace: '<', '\u003c' }},
+"everyday_eyebrow":{{ 'lumasela_soft.product.everyday_eyebrow' | t | json | replace: '<', '\u003c' }},
+"everyday_caption":{{ 'lumasela_soft.product.everyday_caption' | t | json | replace: '<', '\u003c' }},
+"everyday_alt":{{ 'lumasela_soft.product.everyday_alt' | t | json | replace: '<', '\u003c' }},
+"styling_reference":{{ 'lumasela_soft.product.styling_reference' | t | json | replace: '<', '\u003c' }},
+"name_required":{{ 'lumasela_soft.product.name_required' | t | json | replace: '<', '\u003c' }},
+"name_error":{{ 'lumasela_soft.product.name_error' | t | json | replace: '<', '\u003c' }},
+"quantity_error":{{ 'lumasela_soft.product.quantity_error' | t | json | replace: '<', '\u003c' }},
+"product_unavailable":{{ 'lumasela_soft.product.product_unavailable' | t | json | replace: '<', '\u003c' }},
+"in_stock":{{ 'lumasela_soft.product.in_stock' | t | json | replace: '<', '\u003c' }},
+"sold_out":{{ 'lumasela_soft.product.sold_out' | t | json | replace: '<', '\u003c' }},
+"unavailable":{{ 'lumasela_soft.product.unavailable' | t | json | replace: '<', '\u003c' }},
+"price_unavailable":{{ 'lumasela_soft.product.price_unavailable' | t | json | replace: '<', '\u003c' }},
+"preview_only":{{ 'lumasela_soft.product.preview_only' | t | json | replace: '<', '\u003c' }},
+"adding":{{ 'lumasela_soft.product.adding' | t | json | replace: '<', '\u003c' }},
+"phone_visualization":{{ 'lumasela_soft.product.phone_visualization' | t | json | replace: '<', '\u003c' }},
+"font":{{ 'lumasela_soft.product.font' | t | json | replace: '<', '\u003c' }},
+"signature_size":{{ 'lumasela_soft.product.signature_size' | t | json | replace: '<', '\u003c' }},
+"unit_price":{{ 'lumasela_soft.product.unit_price' | t | json | replace: '<', '\u003c' }},
+"availability":{{ 'lumasela_soft.product.availability' | t | json | replace: '<', '\u003c' }},
+"quantity_price":{{ 'lumasela_soft.product.quantity_price' | t | json | replace: '<', '\u003c' }},
+"cart_error":{{ 'lumasela_soft.product.cart_error' | t | json | replace: '<', '\u003c' }},
+"cart_uncertain":{{ 'lumasela_soft.product.cart_uncertain' | t | json | replace: '<', '\u003c' }},
+"view_image":{{ 'lumasela_soft.product.view_image' | t | json | replace: '<', '\u003c' }},
+"comparison_percent":{{ 'lumasela_soft.product.comparison_percent' | t | json | replace: '<', '\u003c' }},
+"live_image":{{ 'lumasela_soft.product.live_image' | t | json | replace: '<', '\u003c' }},
+"zoom_image":{{ 'lumasela_soft.product.zoom_image' | t | json | replace: '<', '\u003c' }}}
+}
+</script>
+
+    <nav class="product-breadcrumb" aria-label="{{ 'lumasela_soft.product.breadcrumb' | t | escape }}"><a href="{{ routes.root_url }}">{{ 'lumasela_soft.product.home' | t }}</a><span aria-hidden="true">/</span><span>{{ product.title | escape }}</span></nav>
+    <div class="product-layout" id="customise">
+      <section class="product-gallery" aria-label="{{ 'lumasela_soft.product.gallery' | t | escape }}" data-product-gallery>
+        <div class="gallery-stage is-live" data-gallery-stage tabindex="0" aria-label="{{ 'lumasela_soft.product.gallery_keyboard' | t | escape }}">
+          <div class="gallery-top"><span data-gallery-label>{{ 'lumasela_soft.product.live_preview' | t }}</span><button type="button" class="round-control" data-zoom aria-label="{{ 'lumasela_soft.product.enlarge' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg></button></div>
+          <div class="gallery-art" data-gallery-art>
+            <img data-gallery-image src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.initial_image' | t | escape }}" width="1254" height="1254" fetchpriority="high">
+            <div class="signature-safe-zone"><span class="live-signature font-allura" data-signature-live>{{ section.settings.default_name | escape }}</span></div>
+            <div class="gallery-before" data-gallery-before hidden aria-hidden="true"><img src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="" width="1254" height="1254" data-before-image></div>
+            <div class="comparison-divider" data-comparison-divider hidden aria-hidden="true"><span><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 8-4 4 4 4m6-8 4 4-4 4"/></svg></span></div>
+          </div>
+          <button type="button" class="gallery-arrow gallery-arrow-prev" data-gallery-previous aria-label="{{ 'lumasela_soft.product.previous' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+          <button type="button" class="gallery-arrow gallery-arrow-next" data-gallery-next aria-label="{{ 'lumasela_soft.product.next' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+          <div class="gallery-bottom"><span data-gallery-caption>{{ 'lumasela_soft.product.live_caption' | t }}</span><span data-gallery-count>01 / 06</span></div>
+        </div>
+        <div class="gallery-toolbar"><div class="live-indicator"><i aria-hidden="true"></i><span data-live-label>{{ 'lumasela_soft.product.live_note' | t }}</span></div><div class="gallery-dots" data-gallery-dots aria-label="{{ 'lumasela_soft.product.choose_gallery' | t | escape }}"></div></div>
+        <div class="gallery-thumbs" data-gallery-thumbs aria-label="{{ 'lumasela_soft.product.gallery_thumbnails' | t | escape }}"></div>
+        <div class="gallery-compare-row"><button type="button" class="text-control" data-compare-toggle aria-pressed="false" aria-controls="comparison-control-{{ section.id }}"><svg class="product-icon compare-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4a8 8 0 0 0 0 16Z" fill="currentColor"/></svg> {{ 'lumasela_soft.product.compare' | t }}</button><span class="gallery-small-note">{{ 'lumasela_soft.product.visual_reference' | t }}</span></div>
+        <div id="comparison-control-{{ section.id }}" class="comparison-control" data-comparison-control hidden><div><span>{{ 'lumasela_soft.product.without_signature' | t }}</span><span>{{ 'lumasela_soft.product.your_signature' | t }}</span></div><input type="range" min="0" max="100" value="50" aria-label="{{ 'lumasela_soft.product.compare_range' | t | escape }}" aria-valuetext="{{ 'lumasela_soft.product.initial_comparison' | t | escape }}" data-compare-range></div>
+        <p class="gallery-disclaimer">{{ 'lumasela_soft.product.placement_note' | t }}</p>
+      </section>
+      <section class="product-info" aria-labelledby="product-title">
+        <div class="product-heading"><p class="product-eyebrow">{{ 'lumasela_soft.product.eyebrow' | t }}</p><h1 id="product-title">{{ product.title | escape }}</h1><p class="product-subtitle">{{ 'lumasela_soft.product.subtitle_html' | t }}</p><div class="product-price-row"><span class="product-price" data-product-price>{{ selected_variant.price | money_with_currency }}</span><span class="availability" data-availability role="status"></span></div></div>
+        {% if product.tags contains 'demo-product' %}<p class="product-concept-note">{{ 'lumasela_soft.product.concept_note' | t }}</p>{% endif %}
+        {% form 'product', product, id: product_form_id, class: 'soft-design-form', novalidate: 'novalidate' %}
+<input type="hidden" name="id" value="{{ selected_variant.id }}" data-variant-id disabled>
+<input type="hidden" name="properties[Font]" data-property-font>
+<input type="hidden" name="properties[Signature colour]" data-property-color>
+<input type="hidden" name="properties[Signature size]" data-property-size>
+<input type="hidden" name="properties[Placement]" data-property-position>
+<input type="hidden" name="properties[Phone preview colour (visualization only)]" data-property-phone>
+<div class="saved-design-notice" data-saved-notice hidden><p>{{ 'lumasela_soft.product.saved_notice' | t }}</p><button type="button" class="text-control" data-restore-design>{{ 'lumasela_soft.product.restore_design' | t }}</button><button type="button" class="text-control" data-dismiss-saved>{{ 'lumasela_soft.product.start_fresh' | t }}</button></div>
+          <section class="option-section"><h2 class="option-section-title"><span>01</span>{{ 'lumasela_soft.product.your_case' | t }}</h2>
+            {% for option in product.options_with_values %}
+            <fieldset class="product-choice{% if forloop.index == 3 %} case-color-choice{% endif %}"><legend>{{ option.name | escape }}</legend><div class="choice-grid {% if forloop.index == 1 %}case-grid{% elsif forloop.index == 2 %}model-grid{% else %}clear-grid{% endif %}" data-variant-options data-option-index="{{ forloop.index0 }}"></div></fieldset>
+            {% endfor %}
+            <fieldset class="product-choice"><legend>{{ 'lumasela_soft.product.phone_colour' | t }} <span class="selected-value" data-phone-color-label>{{ 'lumasela_soft.product.silver' | t }}</span></legend><div class="swatch-options" data-phone-colors></div><p class="field-note">{{ 'lumasela_soft.product.phone_note' | t }}</p></fieldset>
+          </section>
+          <section class="option-section signature-options" id="personalise"><h2 class="option-section-title"><span>02</span>{{ 'lumasela_soft.product.your_signature' | t }}</h2>
+            <div class="name-field"><label for="signature-name-{{ section.id }}">{{ 'lumasela_soft.product.name' | t }} <span data-name-count>4 / 20</span></label><input id="signature-name-{{ section.id }}" name="properties[Name]" type="text" value="{{ section.settings.default_name | escape }}" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="name-error-{{ section.id }}" data-name><p class="field-error" id="name-error-{{ section.id }}" data-name-error hidden></p></div>
+            <fieldset class="product-choice font-choice"><legend>{{ 'lumasela_soft.product.signature_style' | t }}</legend><div class="font-grid" data-font-options></div></fieldset>
+            <fieldset class="product-choice"><legend>{{ 'lumasela_soft.product.placement' | t }}</legend><div class="choice-grid placement-grid" data-position-options></div></fieldset>
+            <fieldset class="product-choice"><legend>{{ 'lumasela_soft.product.size' | t }}</legend><div class="choice-grid size-grid" data-size-options></div></fieldset>
+            <fieldset class="product-choice"><legend>{{ 'lumasela_soft.product.signature_colour' | t }} <span class="selected-value" data-text-color-label>{{ 'lumasela_soft.product.white' | t }}</span></legend><div class="swatch-options" data-text-colors></div></fieldset>
+          </section>
+          <section class="review-section"><div class="review-heading"><span>{{ 'lumasela_soft.product.your_design' | t }}</span><strong data-selection-summary>{{ product.title | escape }}</strong></div><div class="review-actions"><div class="quantity-control"><button type="button" data-quantity-minus aria-label="{{ 'lumasela_soft.product.decrease' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h12"/></svg></button><input type="number" inputmode="numeric" min="1" max="99" step="1" value="1" aria-label="{{ 'lumasela_soft.product.quantity' | t | escape }}" name="quantity" data-quantity><button type="button" data-quantity-plus aria-label="{{ 'lumasela_soft.product.increase' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg></button></div><button type="submit" class="product-primary" data-review disabled>{{ 'lumasela_soft.product.review' | t }} <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></button></div><p class="design-disclosure">{{ 'lumasela_soft.product.review_note' | t }}</p><p class="field-error" data-product-error role="alert" hidden></p></section>
+        {% endform %}
+      </section>
+    </div>
+    <section class="product-story" aria-labelledby="story-title"><div class="product-story-image"><img src="{{ 'lumasela-p03-gallery-signature-closeup.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.story_alt' | t | escape }}" loading="lazy" width="1024" height="1024"></div><div class="product-story-copy"><p class="product-eyebrow">{{ 'lumasela_soft.product.story_eyebrow' | t }}</p><h2 id="story-title">{{ 'lumasela_soft.product.story_title_html' | t }}</h2><p>{{ 'lumasela_soft.product.story_text' | t }}</p><a class="product-text-link" href="#personalise">{{ 'lumasela_soft.product.personalise' | t }} <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></a></div></section>
+    <section class="product-details" aria-label="{{ 'lumasela_soft.product.about_preview' | t | escape }}"><div><p class="product-eyebrow">{{ 'lumasela_soft.product.details_eyebrow' | t }}</p><h2>{{ 'lumasela_soft.product.before_decide' | t }}</h2></div><div class="product-faq"><details open><summary>{{ 'lumasela_soft.product.product_details' | t }}</summary><div class="product-description rte">{{ product.description }}</div></details><details><summary>{{ 'lumasela_soft.product.preview_question' | t }}</summary><p>{{ 'lumasela_soft.product.preview_answer' | t }}</p></details><details><summary>{{ 'lumasela_soft.product.model_question' | t }}</summary><p>{{ 'lumasela_soft.product.model_answer' | t }}</p></details><details><summary>{{ 'lumasela_soft.product.order_question' | t }}</summary><p>{{ 'lumasela_soft.product.order_answer' | t }}</p></details></div></section>
+    <div class="mobile-review" data-mobile-review><div><span data-mobile-price>{{ product.title | escape }}</span><small data-mobile-status>{{ 'lumasela_soft.product.preview' | t }}</small></div><button type="button" class="product-primary" data-mobile-review-button disabled>{{ 'lumasela_soft.product.review' | t }} <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></button></div>
+    <dialog class="product-dialog zoom-dialog" data-zoom-dialog aria-labelledby="zoom-title"><div class="dialog-heading"><h2 id="zoom-title">{{ 'lumasela_soft.product.closer_look' | t }}</h2><button type="button" class="round-control dialog-close" data-close-dialog aria-label="{{ 'lumasela_soft.product.close_zoom' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div data-zoom-content></div><p class="dialog-note">{{ 'lumasela_soft.product.zoom_note' | t }}</p></dialog>
+    <dialog class="product-dialog review-dialog" data-review-dialog aria-labelledby="review-title"><div class="dialog-heading"><div><p class="product-eyebrow">{{ 'lumasela_soft.product.made_personal' | t }}</p><h2 id="review-title">{{ 'lumasela_soft.product.summary_title_html' | t }}</h2></div><button type="button" class="round-control dialog-close" data-close-dialog aria-label="{{ 'lumasela_soft.product.close_summary' | t | escape }}"><svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="review-dialog-layout"><div class="summary-preview" data-summary-preview></div><div><h3 class="summary-name" data-summary-name>{{ section.settings.default_name | escape }}</h3><dl class="design-summary" data-design-summary></dl></div></div><div class="summary-total"><span>{{ 'lumasela_soft.product.design_total' | t }} <small data-summary-quantity></small></span><strong data-summary-total></strong></div><p class="summary-disclosure">{{ 'lumasela_soft.product.summary_note' | t }}</p><button type="button" class="product-primary summary-add" data-add-to-cart disabled>{{ 'lumasela_soft.product.add_to_cart' | t }}</button><p class="field-error" data-cart-error role="alert" hidden></p><a class="cart-check-link" href="{{ routes.cart_url }}" data-cart-check hidden>{{ 'lumasela_soft.product.view_cart' | t }}</a><p class="cart-success" data-cart-success role="status" hidden>{{ 'lumasela_soft.product.added' | t }} <a href="{{ routes.cart_url }}">{{ 'lumasela_soft.product.view_cart' | t }}</a></p><button type="button" class="product-primary summary-edit" data-close-dialog>{{ 'lumasela_soft.product.keep_designing' | t }} <svg class="product-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></button></dialog>
+    <noscript><p class="product-error">{{ 'lumasela_soft.product.noscript' | t }}</p></noscript>
+  </section>
+{% schema %}
+{
+  "name": "Lumasela soft product",
+  "settings": [
+    {"type":"text","id":"default_name","label":"Initial preview name","default":"Aina"}
+  ],
+  "presets": [{"name":"Lumasela soft product"}]
+}
+{% endschema %}
