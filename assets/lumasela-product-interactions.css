@@ -17,7 +17,7 @@
 .lumasela-preview-product .product-thumbs button { flex: 0 0 70px; }
 .lumasela-preview-product .product-thumbs img { width: 100%; }
 @media(max-width: 749px) {
-  .lumasela-preview-product { padding-bottom: 75px; }
+  body:has([data-lumasela-product]) { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   .lumasela-preview-product .product-main { padding-top: 22px; }
   .lumasela-preview-product .product-thumbs { order: 2; max-height: none; overflow-x: auto; flex-direction: row; padding-bottom: 8px; scroll-snap-type: x mandatory; }
   .lumasela-preview-product .product-thumbs button { flex-basis: 68px; scroll-snap-align: start; }
