@@ -3,8 +3,8 @@
     "hero_product": {
       "type": "lumasela-hero",
       "settings": {
-        "fallback_visual": "malaysia",
-        "image_alt_text": "A woman holding a clear personalized phone case in a Kuala Lumpur café",
+        "fallback_visual": "supplied_hero",
+        "image_alt_text": "Silver concept phone in a transparent case with an Aina signature",
         "eyebrow": "CLEAR CASE · PERSONAL SIGNATURE",
         "heading": "A clear case. A signature that is yours.",
         "heading_tag": "h1",
@@ -15,8 +15,22 @@
         "secondary_link": "#signature-styles",
         "height": "viewport",
         "content_position": "left",
-        "text_tone": "light",
-        "overlay_opacity": 70
+        "text_tone": "dark",
+        "overlay_opacity": 0
+      }
+    },
+    "clear_philosophy": {
+      "type": "lumasela-image-story",
+      "settings": {
+        "anchor": "lumasela-clear-philosophy",
+        "fallback_asset": "h03",
+        "image_alt": "Silver concept phone visible through a transparent case",
+        "eyebrow": "THE CLEAR IDEA",
+        "heading": "Your phone, still yours.",
+        "body": "<p>A transparent case keeps the phone visible. Add a personal signature when you are ready to make it yours.</p>",
+        "media_position": "left",
+        "color_scheme": "scheme-1",
+        "section_spacing": 80
       }
     },
     "category_rail": {
@@ -110,5 +124,5 @@
       "settings": {"aria_label": "Shopping information", "color_scheme": "scheme-2"}
     }
   },
-  "order": ["hero_product", "category_rail", "signature_styles", "customizer", "featured", "media_grid", "detail", "vision", "hero_gift", "trust"]
+  "order": ["hero_product", "clear_philosophy", "category_rail", "signature_styles", "customizer", "featured", "media_grid", "detail", "vision", "hero_gift", "trust"]
 }
