@@ -178,11 +178,12 @@
       node.textContent = state.name;
       node.className = `live-signature font-${state.style}`;
       node.style.color = state.textColor;
-      node.style.setProperty('--signature-rotation', state.position === 'bottom-right-vertical' ? '-90deg' : state.position === 'bottom-right-diagonal' ? '-22deg' : '0deg');
+      node.closest('.signature-safe-zone').dataset.position = state.position;
+      node.style.setProperty('--signature-rotation', state.position === 'bottom-right-vertical' ? '-90deg' : state.position === 'bottom-right-diagonal' ? '-45deg' : '0deg');
     });
   }
   function fitSignature() {
-    const rotation = state.position === 'bottom-right-vertical' ? -90 : state.position === 'bottom-right-diagonal' ? -22 : 0;
+    const rotation = state.position === 'bottom-right-vertical' ? -90 : state.position === 'bottom-right-diagonal' ? -45 : 0;
     const angle = Math.abs(rotation) * Math.PI / 180;
     const mm = sizes.find(item => item[0] === state.size)[2];
     $$('[data-signature-live]').forEach(node => {
@@ -201,7 +202,10 @@
       let x = width*.5, y = height*.98-shownHeight/2;
       if (state.position === 'bottom-right-vertical') x = width*.97-shownWidth/2;
       else if (state.position === 'below-logo') y = height*.46+shownHeight/2;
-      else if (state.position === 'bottom-right-diagonal') { x = width*.985-shownWidth/2; y = height*.96-shownHeight/2; }
+      else if (state.position === 'bottom-right-diagonal') {
+        const inset = width*.04;
+        x = width-inset-shownWidth/2; y = height-inset-shownHeight/2;
+      }
       node.style.left = `${x}px`; node.style.top = `${y}px`; node.style.setProperty('--signature-fit',scale.toFixed(4));
     });
     $$('[data-font-sample]').forEach(node => {
