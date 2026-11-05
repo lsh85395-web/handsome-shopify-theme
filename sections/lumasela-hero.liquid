@@ -151,6 +151,17 @@
     color: var(--lumasela-ink, #181a1a);
     text-shadow: none;
   }
+  @media screen and (max-width: 749px) {
+    .lumasela-hero.lumasela-hero--primary.lumasela-hero--ink .lumasela-kicker {
+      display: inline-block;
+      max-width: 100%;
+      padding: .6rem .9rem;
+      border-radius: .3rem;
+      background: rgba(243, 240, 232, .96);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

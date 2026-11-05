@@ -30,7 +30,8 @@ Prepared 2026-11-05 from branch `codex/lumasela-asset-integration-20261105`, bas
 - No verified device-specific product close-ups exist. Accurate hotspots are not fabricated. Existing detail configurations are preserved disabled.
 - Supplied artwork is concept imagery, not evidence of SKU fit, case construction, durability, magnetic compatibility or manufacturing capability.
 - H04–H07/H09/H10/H12 have naming or product-review concerns and are not newly shown. The original brand narrative is preserved rather than replaced with the preview proposal.
-- Font license evidence, physical print area, supported manufacturing characters, shipping and refund details still need verification. Existing controls are not proof of production readiness.
+- Font license evidence, physical print area and supported manufacturing characters still need verification. Existing controls are not proof of production readiness.
+- Shopify policy audit returns only Privacy Policy. Shipping, Refund and Terms policy records are absent, with no valid alternative pages in the existing page/menu inventory. The native footer correctly preserves the available privacy link; no policy text or empty destination is invented.
 - Mobile bar hiding when the purchase button is onscreen was not silently adopted. It remains visible unless editing; review is needed before any additional visibility optimization.
 
 ## Verification and limits
@@ -38,7 +39,7 @@ Prepared 2026-11-05 from branch `codex/lumasela-asset-integration-20261105`, bas
 - Official Shopify Theme Check validates the complete changed theme-file set using bundled fallback schema/docs because the environment cannot write its normal cache directory.
 - Navigation: 12 simulated DOM checks passed. Homepage: 11 simulated DOM checks passed.
 - Product: 11 simulated DOM regression groups passed, including full session restore, variant and property integrity, gallery/zoom, repeated phone-colour changes and invalid submissions. Reproducible test: `NODE_PATH=<directory containing liquidjs and jsdom> node scripts/test-product-interactions.cjs`. Final upload/read-back results are recorded in the deployment entry.
-- This execution environment cannot launch Chromium (socket restriction and an independent mount failure). Independent browser review found 500px signature-rail overflow and low-contrast hero secondary text; scoped fixes were prepared for retest. No real-phone, cross-browser, payment or end-to-end order test is claimed.
+- This execution environment cannot launch Chromium (socket restriction and an independent mount failure). Independent browser review found 500px signature-rail overflow and low-contrast hero secondary text. Retest confirmed both fixes; a small eyebrow readability correction is being reviewed where type crosses the dark camera artwork. No real-phone, cross-browser, payment or end-to-end order test is claimed.
 - Actual QA storefront HTTP checks passed for home, product, guide, FAQ, tracking, contact and cart: all seven HTTP 200, expected QA theme ID/unpublished role, no Liquid errors. All 35 discovered Lumasela resources returned HTTP 200 with nonempty bodies. The native contact form was inspected but not submitted.
 - Actual product HTML confirms the original /cart/add form, six personalization properties, six gallery thumbnails, six fonts, four placements, 18 variants and zero available variants.
 - No real test order, notification, payment or contact submission was made.
