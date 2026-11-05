@@ -40,6 +40,24 @@
     const field = one(selector);
     if (field) field.value = value;
   };
+  let compareMode = false;
+  const compareToggle = one('[data-gallery-compare-toggle]');
+  const beforeOverlay = one('[data-gallery-before]');
+  const updateComparison = () => {
+    const visible = compareMode && previewWrap?.classList.contains('is-personalisation-preview');
+    if (beforeOverlay) beforeOverlay.hidden = !visible;
+    const control = one('[data-gallery-compare-control]');
+    if (control) control.hidden = !visible;
+    const beforeImage = one('[data-gallery-before-image]');
+    if (beforeImage && previewThumb) beforeImage.src = previewThumb.dataset.gallerySrc;
+    if (compareToggle) {
+      compareToggle.setAttribute('aria-pressed', String(compareMode));
+      compareToggle.textContent = compareMode ? compareToggle.dataset.labelHide : compareToggle.dataset.labelShow;
+    }
+  };
+  one('[data-gallery-compare-range]')?.addEventListener('input', (event) => {
+    if (beforeOverlay) beforeOverlay.style.clipPath = `inset(0 ${100 - Number(event.target.value)}% 0 0)`;
+  });
   const selectGallery = (button) => {
     if (!button || !galleryMain) return;
     all('[data-gallery-src]').forEach((item) => { item.classList.toggle('is-active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
@@ -53,10 +71,16 @@
       dot.classList.toggle('is-active', dotIndex === index);
       dot.setAttribute('aria-pressed', String(dotIndex === index));
     });
+    updateComparison();
   };
   one('[data-product-gallery]')?.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-gallery-src]');
     if (button) selectGallery(button);
+  });
+  compareToggle?.addEventListener('click', () => {
+    compareMode = !compareMode;
+    selectGallery(previewThumb);
+    updateComparison();
   });
   const galleryButtons = all('[data-gallery-src]');
   const moveGallery = (direction) => {
@@ -135,7 +159,6 @@
       node.style.setProperty('--signature-fit', Math.max(.001, scale).toFixed(4));
     });
   };
-  one('.lumasela-comparison-disclosure')?.addEventListener('toggle', () => requestAnimationFrame(fitSignature));
   const syncName = () => {
     if (!nameInput) return;
     const limited = [...nameInput.value].slice(0, 20).join('');

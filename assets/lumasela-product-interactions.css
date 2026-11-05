@@ -75,14 +75,6 @@ body:has([data-lumasela-product]) .lumasela-navigation{background:transparent;he
 .lumasela-preview-product .phone-tone-grid small{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .lumasela-preview-product .tone-dot{height:28px;width:28px;margin:0;outline:1px solid #ddd}
 .lumasela-preview-product .phone-tone-grid button.is-active .tone-dot{outline:1.5px solid #222}
-.lumasela-comparison-disclosure{margin:24px 0;font-size:11px;color:#6f655b}
-.lumasela-comparison-disclosure>summary{cursor:pointer;width:fit-content;padding:5px 0;border-bottom:1px solid #b3aaa0}
-.lumasela-preview-product .product-compare{border:0;padding:20px 0 0;margin:0}
-.lumasela-preview-product .product-step-heading h2{font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0}
-.lumasela-preview-product .product-step-heading .eyebrow{display:none}
-.lumasela-preview-product .compare-grid figure{border-radius:7px;overflow:hidden}
-.lumasela-preview-product .compare-grid figcaption{font-size:10px;padding:10px}
-.lumasela-preview-product .compare-grid figcaption strong{font-weight:500}
 .lumasela-preview-product .product-purchase-row{padding-top:0;border:0;grid-template-columns:110px minmax(0,1fr);gap:8px}
 .lumasela-preview-product .quantity-control{grid-template-columns:32px minmax(0,1fr) 32px;border:1px solid #dedbd5;border-radius:7px;overflow:hidden;font-size:12px}
 .lumasela-preview-product .add-button{padding:17px 20px;border-radius:7px;background:#292926;border-color:#292926;font:400 12px Arial,sans-serif;min-height:52px;letter-spacing:0}
@@ -180,3 +172,13 @@ body:has([data-lumasela-product]) .lumasela-navigation{background:transparent;he
 .lumasela-mobile-review a{display:inline-flex;align-items:center;gap:8px}
 .lumasela-mobile-review a svg{flex:none}
 #MainContent:has([data-lumasela-product]) .lumasela-home-steps .lumasela-text-link svg{display:inline-block;vertical-align:middle;margin-left:6px}
+
+.lumasela-gallery-before{position:absolute;inset:0;z-index:3;clip-path:inset(0 50% 0 0);background:#f4f3ef;pointer-events:none}
+.lumasela-gallery-before img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.lumasela-gallery-before>span{position:absolute;bottom:3%;left:8%;font-size:10px;color:#555}
+.lumasela-gallery-tools,.lumasela-gallery-compare-control{grid-column:2;min-width:0}
+.lumasela-gallery-tools{display:flex;align-items:center;margin:-4px 0 0}
+.lumasela-gallery-tools button{border:0;border-bottom:1px solid #b3aaa0;padding:5px 0;color:#6f655b;font-size:11px;background:none;cursor:pointer}
+.lumasela-gallery-compare-control label{font-size:11px;color:#666}
+.lumasela-gallery-compare-control input{display:block;width:100%;height:28px;accent-color:#7c766a}
+@media(max-width:760px){.lumasela-gallery-tools{margin:18px 0 14px}.lumasela-gallery-compare-control{margin-bottom:14px}}

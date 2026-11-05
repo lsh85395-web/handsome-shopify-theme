@@ -27,6 +27,7 @@
         <div class="lumasela-gallery-art">
         <img data-gallery-main src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="1024" height="1024" fetchpriority="high">
         {%- if concept_product -%}<div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>{%- endif -%}
+        {%- if concept_product -%}<div class="lumasela-gallery-before" data-gallery-before hidden aria-hidden="true"><img data-gallery-before-image src="{{ preview_main_image }}" alt="" width="1024" height="1024"><span>{{ 'lumasela_product.before' | t }}</span></div>{%- endif -%}
         </div>
         <div class="lumasela-gallery-bottom"><span>{{ 'lumasela_product.gallery_caption' | t }}</span><span data-gallery-count></span></div>
         <button class="lumasela-gallery-arrow lumasela-gallery-arrow--previous" type="button" data-gallery-previous aria-label="{{ 'lumasela_product.previous_image' | t }}">‹</button>
@@ -49,6 +50,10 @@
         {%- endif -%}
       </div>
       <div class="lumasela-gallery-status"><span class="lumasela-live-dot"></span><span>{{ 'lumasela_product.live_note' | t }}</span><div data-gallery-dots class="lumasela-gallery-dots" aria-label="{{ 'lumasela_product.images' | t }}"></div></div>
+      {%- if concept_product -%}
+        <div class="lumasela-gallery-tools"><button type="button" data-gallery-compare-toggle aria-pressed="false" aria-controls="LumaselaGalleryCompare-{{ section.id }}" data-label-show="{{ 'lumasela_product.compare_design' | t }}" data-label-hide="{{ 'lumasela_product.hide_comparison' | t }}">{{ 'lumasela_product.compare_design' | t }}</button></div>
+        <div class="lumasela-gallery-compare-control" id="LumaselaGalleryCompare-{{ section.id }}" data-gallery-compare-control hidden><label for="LumaselaGalleryCompareRange-{{ section.id }}">{{ 'lumasela_product.drag_comparison' | t }}</label><input id="LumaselaGalleryCompareRange-{{ section.id }}" type="range" min="0" max="100" value="50" data-gallery-compare-range></div>
+      {%- endif -%}
       {%- if concept_product -%}<p class="lumasela-gallery-note">{{ 'lumasela_product.concept_note' | t }}</p>{%- endif -%}
       <dialog class="lumasela-gallery-dialog" data-gallery-dialog aria-label="{{ 'lumasela_product.zoom' | t }}">
         <button type="button" data-gallery-close aria-label="{{ 'lumasela_product.close' | t }}">×</button>

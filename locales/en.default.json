@@ -564,7 +564,7 @@
     "close": "Close image",
     "price_pending": "Price to be confirmed",
     "review": "Review your design",
-    "demo_note": "This is a demo product. Its inventory is zero and it is not available to order. Product fit, materials and production details still need verification.",
+    "demo_note": "This product is marked as a demo. Product fit, materials and production details have not been verified.",
     "name_required": "Enter a name or initials before adding this design to your bag.",
     "preview_note": "Illustrative preview only. The phone colour does not change the selected product variant.",
     "saved_options": "Some saved product options have changed. Review the available options before continuing.",
@@ -587,6 +587,9 @@
     "review_design": "Review your design",
     "phone_colour": "Preview phone colour",
     "design_signature": "Design your signature",
-    "compare_design": "Compare before & after"
+    "compare_design": "Compare before & after",
+    "before": "Before",
+    "hide_comparison": "Hide before & after",
+    "drag_comparison": "Drag to compare before and after"
   }
 }
