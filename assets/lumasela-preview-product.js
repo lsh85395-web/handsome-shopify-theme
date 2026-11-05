@@ -215,9 +215,15 @@
       const price = one('[data-product-price]'); if (price) price.textContent = variant.dataset.price;
       const mobilePrice = one('[data-mobile-price]'); if (mobilePrice) mobilePrice.textContent = variant.dataset.price;
       if (showVariantImage && variant.dataset.image && galleryMain && root.dataset.conceptProduct !== 'true') {
-        galleryMain.src = variant.dataset.image;
+        const matchingImage = galleryButtons.find((item) => item.dataset.gallerySrc.split('?')[0] === variant.dataset.image.split('?')[0]);
+        if (matchingImage) selectGallery(matchingImage);
+        else {
+          galleryMain.src = variant.dataset.image;
+          all('[data-gallery-src], [data-gallery-dot]').forEach((item) => { item.classList.remove('is-active'); item.setAttribute('aria-pressed', 'false'); });
+          const count = one('[data-gallery-count]');
+          if (count) count.textContent = '';
+        }
         previewWrap?.classList.remove('is-personalisation-preview');
-        all('[data-gallery-src]').forEach((item) => { const selectedImage = item.dataset.gallerySrc === variant.dataset.image; item.classList.toggle('is-active', selectedImage); item.setAttribute('aria-pressed', String(selectedImage)); });
       }
     }
     return { variant, available };

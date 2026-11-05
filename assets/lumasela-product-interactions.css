@@ -14,7 +14,7 @@ body:has([data-lumasela-product]) .lumasela-navigation{background:transparent;he
 .lumasela-gallery-top,.lumasela-gallery-bottom{position:absolute;left:22px;right:22px;display:flex;align-items:center;justify-content:space-between;z-index:4;gap:12px;color:#79756d}
 .lumasela-gallery-top{top:19px;font-size:9px;letter-spacing:1.7px;text-transform:uppercase}
 .lumasela-gallery-bottom{bottom:23px;font-size:10px}
-.lumasela-gallery-zoom{position:static;flex:0 0 36px;width:36px;height:36px;min-height:36px;border:1px solid #dad8d0;border-radius:50%;background:#ffffff99;color:#79756d;padding:0;font-size:23px;line-height:1;cursor:pointer}
+.lumasela-gallery-zoom{display:grid;place-items:center;position:static;flex:0 0 36px;width:36px;height:36px;min-height:36px;border:1px solid #dad8d0;border-radius:50%;background:#ffffff99;color:#79756d;padding:0;font-size:23px;line-height:1;cursor:pointer}
 .lumasela-gallery-arrow{position:absolute;top:49%;z-index:4;width:28px;min-height:38px;background:#ffffffb8;border:0;border-radius:20px;font-size:25px;line-height:1;padding:0;opacity:0;transition:opacity .2s;cursor:pointer}
 .lumasela-gallery-arrow--previous{left:10px}.lumasela-gallery-arrow--next{right:10px}
 .product-gallery-main:hover .lumasela-gallery-arrow,.product-gallery-main:focus-within .lumasela-gallery-arrow{opacity:1}
@@ -54,8 +54,8 @@ body:has([data-lumasela-product]) .lumasela-navigation{background:transparent;he
 .lumasela-preview-product .inline-choice legend{font-size:11px;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;margin-bottom:12px;width:100%}
 .lumasela-preview-product .inline-choice legend>[data-phone-colour-label]{float:right;font-size:10px;color:#999}
 .lumasela-preview-product .signature-style-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.lumasela-preview-product .signature-style-grid button{border:1px solid #e8e5df;border-radius:7px;min-height:62px;padding:8px;gap:5px;color:#222;background:#fff}
-.lumasela-preview-product .signature-style-grid button>span{font-size:24px;line-height:1.1}
+.lumasela-preview-product .signature-style-grid button{min-width:0;border:1px solid #e8e5df;border-radius:7px;min-height:62px;padding:8px;gap:5px;color:#222;background:#fff}
+.lumasela-preview-product .signature-style-grid button>span{font-size:24px;line-height:1.1;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lumasela-preview-product .signature-style-grid button>small{font:8px Arial,sans-serif;text-transform:none;letter-spacing:0;color:#999}
 .lumasela-preview-product .signature-style-grid button.is-active,.lumasela-preview-product .placement-grid button.is-active,.lumasela-preview-product .signature-size-grid button.is-active{border-color:#262626;background:#f4f2ee;color:#222;box-shadow:none}
 .lumasela-preview-product .placement-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}

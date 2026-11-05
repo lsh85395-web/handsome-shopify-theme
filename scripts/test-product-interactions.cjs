@@ -100,6 +100,49 @@ const check = (label, fn) => { fn(); console.log(`PASS ${label}`); };
     const bad = open('{'); assert.equal(bad.q('[data-inline-name-input]').value, 'Aina'); bad.dom.window.close();
     const stale = open(JSON.stringify({ version: 1, name: 'Saved', variants: ['Removed material'], quantity: '-2' })); assert.equal(stale.q('[data-product-error]').hidden, false); assert.equal(stale.q('[data-qty-input]').value, '1'); stale.dom.window.close();
   });
+  a.dom.window.close(); a = open();
+  check('gallery arrows and dots stay in sync and wrap', () => {
+    assert.equal(a.all('[data-gallery-dot]').length, 6);
+    assert.equal(a.q('[data-gallery-count]').textContent, '01 / 06');
+    click('[data-gallery-previous]'); assert.equal(a.q('[data-gallery-count]').textContent, '06 / 06');
+    click('[data-gallery-next]'); assert.equal(a.q('[data-gallery-count]').textContent, '01 / 06');
+    click('[data-gallery-dot="3"]'); assert.equal(a.q('[data-gallery-count]').textContent, '04 / 06');
+    assert.equal(a.q('[data-gallery-dot="3"]').getAttribute('aria-pressed'), 'true');
+    assert.equal(a.all('[data-gallery-dot][aria-pressed="true"]').length, 1);
+  });
+  check('gallery keyboard and horizontal swipe navigate; vertical and short gestures do not', () => {
+    const wrap = a.q('[data-gallery-main-wrap]');
+    wrap.dispatchEvent(new a.w.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    assert.equal(a.q('[data-gallery-count]').textContent, '05 / 06');
+    const gesture = (dx,dy) => {
+      const start = new a.w.Event('touchstart'); Object.defineProperty(start, 'touches', { value: [{ clientX: 100, clientY: 100 }] }); wrap.dispatchEvent(start);
+      const end = new a.w.Event('touchend'); Object.defineProperty(end, 'changedTouches', { value: [{ clientX: 100 + dx, clientY: 100 + dy }] }); wrap.dispatchEvent(end);
+    };
+    gesture(-60, 5); assert.equal(a.q('[data-gallery-count]').textContent, '06 / 06');
+    gesture(60, 5); assert.equal(a.q('[data-gallery-count]').textContent, '05 / 06');
+    gesture(5, 60); gesture(20, 0); assert.equal(a.q('[data-gallery-count]').textContent, '05 / 06');
+  });
+  check('configuration summary uses selected real options', () => {
+    assert.equal(a.q('[data-configuration-summary]').textContent, 'Hard PC · iPhone 17');
+    click('[data-option-value="iPhone Air"]');
+    assert.equal(a.q('[data-configuration-summary]').textContent, 'Hard PC · iPhone Air');
+  });
+  check('comparison refits immediately on opening', () => {
+    const details = a.q('.lumasela-comparison-disclosure');
+    const zone = details.querySelector('.signature-safe-zone');
+    const text = zone.querySelector('[data-signature-live]');
+    Object.defineProperty(zone, 'clientWidth', { get: () => details.open ? 100 : 0 });
+    Object.defineProperty(zone, 'clientHeight', { get: () => details.open ? 160 : 0 });
+    Object.defineProperty(text, 'offsetWidth', { get: () => 250 });
+    Object.defineProperty(text, 'offsetHeight', { get: () => 25 });
+    name('abcdefghijklmnopqrst');
+    assert.equal(text.style.getPropertyValue('--signature-fit'), '1');
+    details.open = true; details.dispatchEvent(new a.w.Event('toggle'));
+    assert.equal(text.style.getPropertyValue('--signature-fit'), '0.2941');
+    name('abcdefghijklmnopqrst');
+    assert.notEqual(text.style.getPropertyValue('--signature-fit'), '1');
+    console.log('Verified fit after open and edit =', text.style.getPropertyValue('--signature-fit'));
+  });
   a.dom.window.close();
   console.log('DOM regression complete. Visual geometry, native browser validation, and Escape dialog behavior require browser QA.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

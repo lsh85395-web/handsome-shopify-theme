@@ -23,7 +23,7 @@
   <div class="product-main page-width" data-product-main>
     <div class="product-gallery" data-product-gallery>
       <div class="product-gallery-main{% if concept_product %} is-personalisation-preview{% endif %}" data-gallery-main-wrap tabindex="0" aria-label="{{ 'lumasela_product.images' | t }}">
-        <div class="lumasela-gallery-top"><span>{% if concept_product %}{{ 'lumasela_product.live_personalisation' | t }}{% else %}{{ 'lumasela_product.images' | t }}{% endif %}</span><button class="lumasela-gallery-zoom" type="button" data-gallery-zoom aria-label="{{ 'lumasela_product.zoom' | t }}">↗</button></div>
+        <div class="lumasela-gallery-top"><span>{% if concept_product %}{{ 'lumasela_product.live_personalisation' | t }}{% else %}{{ 'lumasela_product.images' | t }}{% endif %}</span><button class="lumasela-gallery-zoom" type="button" data-gallery-zoom aria-label="{{ 'lumasela_product.zoom' | t }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18 18 6M7 6h11v11"/></svg></button></div>
         <div class="lumasela-gallery-art">
         <img data-gallery-main src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="1024" height="1024" fetchpriority="high">
         {%- if concept_product -%}<div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>{%- endif -%}
