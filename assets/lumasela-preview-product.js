@@ -46,11 +46,54 @@
     galleryMain.src = button.dataset.gallerySrc;
     galleryMain.alt = button.dataset.galleryAlt || button.querySelector('img')?.alt || '';
     previewWrap?.classList.toggle('is-personalisation-preview', button === previewThumb);
+    const index = all('[data-gallery-src]').indexOf(button);
+    const count = one('[data-gallery-count]');
+    if (count) count.textContent = `${String(index + 1).padStart(2, '0')} / ${String(all('[data-gallery-src]').length).padStart(2, '0')}`;
+    all('[data-gallery-dot]').forEach((dot, dotIndex) => {
+      dot.classList.toggle('is-active', dotIndex === index);
+      dot.setAttribute('aria-pressed', String(dotIndex === index));
+    });
   };
   one('[data-product-gallery]')?.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-gallery-src]');
     if (button) selectGallery(button);
   });
+  const galleryButtons = all('[data-gallery-src]');
+  const moveGallery = (direction) => {
+    const index = Math.max(0, galleryButtons.findIndex((button) => button.classList.contains('is-active')));
+    selectGallery(galleryButtons[(index + direction + galleryButtons.length) % galleryButtons.length]);
+  };
+  const dots = one('[data-gallery-dots]');
+  galleryButtons.forEach((button, index) => {
+    if (!dots) return;
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.dataset.galleryDot = String(index);
+    dot.setAttribute('aria-label', button.querySelector('span')?.textContent || button.querySelector('img')?.alt || String(index + 1));
+    dot.addEventListener('click', () => selectGallery(button));
+    dots.append(dot);
+  });
+  one('[data-gallery-previous]')?.addEventListener('click', () => moveGallery(-1));
+  one('[data-gallery-next]')?.addEventListener('click', () => moveGallery(1));
+  previewWrap?.addEventListener('keydown', (event) => {
+    if (event.target !== previewWrap || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    moveGallery(event.key === 'ArrowLeft' ? -1 : 1);
+  });
+  let touchStart;
+  previewWrap?.addEventListener('touchstart', (event) => {
+    const touch = event.touches[0];
+    touchStart = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }, { passive: true });
+  previewWrap?.addEventListener('touchend', (event) => {
+    const touch = event.changedTouches[0];
+    if (!touch || !touchStart) return;
+    const dx = touch.clientX - touchStart.x;
+    const dy = touch.clientY - touchStart.y;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) moveGallery(dx < 0 ? 1 : -1);
+    touchStart = null;
+  }, { passive: true });
+  if (galleryButtons.length) selectGallery(galleryButtons[0]);
   const showPreview = () => { if (previewThumb && !previewThumb.classList.contains('is-active')) selectGallery(previewThumb); };
   const fitSignature = () => {
     const position = active(one('[data-inline-position-options]'))?.dataset.position || 'bottom-center';
@@ -92,6 +135,7 @@
       node.style.setProperty('--signature-fit', Math.max(.001, scale).toFixed(4));
     });
   };
+  one('.lumasela-comparison-disclosure')?.addEventListener('toggle', () => requestAnimationFrame(fitSignature));
   const syncName = () => {
     if (!nameInput) return;
     const limited = [...nameInput.value].slice(0, 20).join('');
@@ -160,6 +204,8 @@
   const updateVariant = (showVariantImage = false) => {
     const selected = all('[data-variant-option]').map((group) => active(group)?.dataset.optionValue || '');
     const variant = all('[data-variant-data] option').find((item) => selected.every((value, index) => item.dataset[`option${index + 1}`] === value));
+    const summary = one('[data-configuration-summary]');
+    if (summary) summary.textContent = selected.filter(Boolean).join(' · ');
     const input = one('[data-variant-id]');
     const button = one('[data-add-to-cart]');
     if (input) input.value = variant?.value || '';

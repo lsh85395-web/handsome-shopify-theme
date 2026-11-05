@@ -19,28 +19,36 @@
       <nav aria-label="Product sections"><a href="#overview">Overview</a><a href="#personalise">Personalise</a><a href="#details">Details</a></nav>
     </div>
   </div>
+  <nav class="lumasela-product-breadcrumb" aria-label="{{ 'lumasela_product.breadcrumb' | t }}"><a href="{{ routes.all_products_collection_url }}">{{ 'lumasela_product.cases' | t }}</a><span aria-hidden="true">/</span><span>{{ product.title | default: section.settings.demo_title | escape }}</span></nav>
   <div class="product-main page-width" data-product-main>
     <div class="product-gallery" data-product-gallery>
-      <div class="product-gallery-main{% if concept_product %} is-personalisation-preview{% endif %}" data-gallery-main-wrap>
-        {%- if concept_product -%}<span class="demo-chip">{{ 'lumasela_product.concept' | t }}</span>{%- endif -%}
+      <div class="product-gallery-main{% if concept_product %} is-personalisation-preview{% endif %}" data-gallery-main-wrap tabindex="0" aria-label="{{ 'lumasela_product.images' | t }}">
+        <div class="lumasela-gallery-top"><span>{% if concept_product %}{{ 'lumasela_product.live_personalisation' | t }}{% else %}{{ 'lumasela_product.images' | t }}{% endif %}</span><button class="lumasela-gallery-zoom" type="button" data-gallery-zoom aria-label="{{ 'lumasela_product.zoom' | t }}">↗</button></div>
+        <div class="lumasela-gallery-art">
         <img data-gallery-main src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="1024" height="1024" fetchpriority="high">
         {%- if concept_product -%}<div class="signature-safe-zone"><span class="product-inline-signature signature-allura position-bottom-center signature-size-medium" data-signature-live data-signature-positioned aria-live="polite">Aina</span></div>{%- endif -%}
-        <button class="lumasela-gallery-zoom" type="button" data-gallery-zoom aria-label="{{ 'lumasela_product.zoom' | t }}">{{ 'lumasela_product.zoom' | t }} ↗</button>
+        </div>
+        <div class="lumasela-gallery-bottom"><span>{{ 'lumasela_product.gallery_caption' | t }}</span><span data-gallery-count></span></div>
+        <button class="lumasela-gallery-arrow lumasela-gallery-arrow--previous" type="button" data-gallery-previous aria-label="{{ 'lumasela_product.previous_image' | t }}">‹</button>
+        <button class="lumasela-gallery-arrow lumasela-gallery-arrow--next" type="button" data-gallery-next aria-label="{{ 'lumasela_product.next_image' | t }}">›</button>
       </div>
       <div class="product-thumbs" aria-label="{{ 'lumasela_product.images' | t }}">
-        <button type="button" class="is-active" aria-pressed="true" data-gallery-src="{{ preview_main_image }}" {% if concept_product %}data-personalisation-preview{% endif %}><img src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="120" height="120"></button>
+        <button type="button" class="is-active" aria-pressed="true" data-gallery-src="{{ preview_main_image }}" {% if concept_product %}data-personalisation-preview{% endif %}><img src="{{ preview_main_image }}" alt="{{ product.featured_media.alt | default: product.title | escape }}" width="120" height="120"><span>{{ 'lumasela_product.your_design' | t }}</span></button>
         {%- for media in product.media -%}
           {%- unless media.id == product.featured_media.id -%}
-            <button type="button" aria-pressed="false" data-gallery-src="{{ media.preview_image | image_url: width: 1600 }}" data-gallery-alt="{{ media.alt | default: product.title | escape }}"><img src="{{ media.preview_image | image_url: width: 160 }}" alt="{{ media.alt | default: product.title | escape }}" width="120" height="120" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-gallery-src="{{ media.preview_image | image_url: width: 1600 }}" data-gallery-alt="{{ media.alt | default: product.title | escape }}"><img src="{{ media.preview_image | image_url: width: 160 }}" alt="{{ media.alt | default: product.title | escape }}" width="120" height="120" loading="lazy"><span>{{ 'lumasela_product.product_image' | t: number: forloop.index }}</span></button>
           {%- endunless -%}
         {%- endfor -%}
         {%- if concept_product -%}
           {%- assign concept_assets = 'lumasela-p02-gallery-clear-overview.webp,lumasela-p03-gallery-signature-closeup.webp,lumasela-p04-gallery-camera-overview.webp,lumasela-p05-gallery-customization.webp,lumasela-p06-gallery-everyday.webp' | split: ',' -%}
+          {%- assign concept_labels = 'overview,signature_detail,case_detail,customisation,everyday' | split: ',' -%}
           {%- for asset in concept_assets -%}
-            <button type="button" aria-pressed="false" data-gallery-src="{{ asset | asset_url }}" data-gallery-alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}"><img src="{{ asset | asset_url }}" alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}" width="120" height="120" loading="lazy"></button>
+            {%- assign label_key = concept_labels[forloop.index0] | prepend: 'lumasela_product.' -%}
+            <button type="button" aria-pressed="false" data-gallery-src="{{ asset | asset_url }}" data-gallery-alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}"><img src="{{ asset | asset_url }}" alt="{{ 'lumasela_product.concept_image' | t: number: forloop.index }}" width="120" height="120" loading="lazy"><span>{{ label_key | t }}</span></button>
           {%- endfor -%}
         {%- endif -%}
       </div>
+      <div class="lumasela-gallery-status"><span class="lumasela-live-dot"></span><span>{{ 'lumasela_product.live_note' | t }}</span><div data-gallery-dots class="lumasela-gallery-dots" aria-label="{{ 'lumasela_product.images' | t }}"></div></div>
       {%- if concept_product -%}<p class="lumasela-gallery-note">{{ 'lumasela_product.concept_note' | t }}</p>{%- endif -%}
       <dialog class="lumasela-gallery-dialog" data-gallery-dialog aria-label="{{ 'lumasela_product.zoom' | t }}">
         <button type="button" data-gallery-close aria-label="{{ 'lumasela_product.close' | t }}">×</button>
@@ -50,6 +58,7 @@
     <div class="product-info">
       <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
       <h1>{{ product.title | default: section.settings.demo_title | escape }}</h1>
+      {%- if section.settings.subtitle != blank -%}<p class="lumasela-product-subtitle">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
       <p class="product-price" data-product-price>{%- if product != blank -%}{{ selected_variant.price | money_with_currency }}{%- else -%}{{ 'lumasela_product.price_pending' | t }}{%- endif -%}</p>
       <p class="product-lead">{{ section.settings.intro | escape }}</p>
       {%- if product != blank -%}
@@ -60,8 +69,9 @@
             {%- endfor -%}
           </select>
           <input type="hidden" name="id" value="{{ selected_variant.id }}" data-variant-id>
+          <h2 class="lumasela-form-step"><span>01</span>{{ 'lumasela_product.choose_appearance' | t }}</h2>
           {%- for option in product.options_with_values -%}
-            <fieldset class="product-option" data-variant-option data-option-position="{{ option.position }}">
+            <fieldset class="product-option" data-variant-option data-option-position="{{ option.position }}"{% if option.name == 'Phone Model' %} data-model-options{% endif %}>
               <legend>{{ option.name | escape }}</legend>
               <div class="option-buttons">
                 {%- for value in option.values -%}
@@ -71,8 +81,10 @@
             </fieldset>
           {%- endfor -%}
           {%- if product.options_with_values.size == 0 -%}<p>Product options will appear here when they are configured in Shopify.</p>{%- endif -%}
+          <div class="lumasela-configuration-summary"><span>{{ 'lumasela_product.selected_configuration' | t }}</span><strong data-configuration-summary>{{ selected_variant.title | escape }}</strong></div>
           {% render 'lumasela-preview-personalisation', demo: false %}
           <p class="lumasela-product-error" data-product-error role="alert" hidden></p>
+          <h2 class="lumasela-form-step lumasela-review-step"><span>03</span>{{ 'lumasela_product.review_design' | t }}</h2>
           <div class="product-purchase-row">
             <div class="quantity-control" data-quantity-control><button type="button" aria-label="Decrease quantity" data-qty-minus>−</button><input type="number" name="quantity" min="1" value="1" aria-label="Quantity" data-qty-input><button type="button" aria-label="Increase quantity" data-qty-plus>+</button></div>
             <button class="button button-dark add-button" type="submit" data-add-to-cart data-label-add="{{ 'products.product.add_to_cart' | t }}" data-label-sold-out="{{ 'products.product.sold_out' | t }}" data-label-unavailable="{{ 'products.product.unavailable' | t }}" {% unless selected_variant.available %}disabled{% endunless %}>{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</button>
@@ -99,7 +111,8 @@
   "name": "Lumasela product studio",
   "settings": [
     {"type":"text","id":"demo_title","label":"Preview title when no product is assigned","default":"Signature Clear"},
-    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PERSONALISED CLEAR CASE"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"MADE PERSONAL. KEPT SIMPLE."},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"A little more you."},
     {"type":"textarea","id":"intro","label":"Introduction","default":"A clear case with your chosen name set in a quiet, considered typographic style."},
     {"type":"richtext","id":"demo_details","label":"Preview details","default":"<p>Visual concept. Confirm materials and compatible devices before accepting orders.</p>"},
     {"type":"textarea","id":"shipping_note","label":"Shipping and returns note","default":"Review the current shipping and refund policies before ordering."}

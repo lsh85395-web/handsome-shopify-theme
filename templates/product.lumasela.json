@@ -2,7 +2,10 @@
   "sections": {
     "main": {
       "type": "lumasela-preview-product",
-      "settings": {}
+      "settings": {
+        "eyebrow": "MADE PERSONAL. KEPT SIMPLE.",
+        "subtitle": "A little more you."
+      }
     },
     "features": {
       "type": "lumasela-feature-specs",

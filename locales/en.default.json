@@ -567,6 +567,26 @@
     "demo_note": "This is a demo product. Its inventory is zero and it is not available to order. Product fit, materials and production details still need verification.",
     "name_required": "Enter a name or initials before adding this design to your bag.",
     "preview_note": "Illustrative preview only. The phone colour does not change the selected product variant.",
-    "saved_options": "Some saved product options have changed. Review the available options before continuing."
+    "saved_options": "Some saved product options have changed. Review the available options before continuing.",
+    "breadcrumb": "Breadcrumb",
+    "cases": "Cases",
+    "live_personalisation": "Live personalisation",
+    "gallery_caption": "Your name. Your everyday.",
+    "previous_image": "Previous image",
+    "next_image": "Next image",
+    "your_design": "Your design",
+    "product_image": "Product image {{ number }}",
+    "overview": "Overview",
+    "signature_detail": "Signature detail",
+    "case_detail": "Case detail",
+    "customisation": "Customisation",
+    "everyday": "Everyday",
+    "live_note": "Your design, updated as you type",
+    "choose_appearance": "Choose your appearance",
+    "selected_configuration": "Your selection",
+    "review_design": "Review your design",
+    "phone_colour": "Preview phone colour",
+    "design_signature": "Design your signature",
+    "compare_design": "Compare before & after"
   }
 }
