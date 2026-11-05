@@ -132,3 +132,6 @@ body.product-page{background:radial-gradient(ellipse at 5% 12%,#eaf5f9 0,transpa
 }
 .product-shell--refined .product-preview-guidance{margin-top:25px}
 .product-shell--refined .product-preview-guidance>h3{margin:0 0 3px;font-size:13px;line-height:1.6;font-weight:500;letter-spacing:.01em;color:#7c929c}
+
+/* Bring the 45-degree layout toward the lower-right edge; preserve font size and angle. */
+.signature-safe-zone[data-position="bottom-right-diagonal"]{left:33.5%;top:31.5%}
