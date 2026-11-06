@@ -111,3 +111,35 @@
 @media (max-width: 620px) {
   .home-how-copy > .home-text-link { bottom: -414px; }
 }
+
+@media (forced-colors: none) {
+  .product-shell .product-primary.design-preview-button {
+    color: #344d5f !important;
+    background: #ffffffb8 !important;
+    border: 1px solid #9eb5c0;
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .product-shell .product-primary.design-preview-button:not(:disabled):not([aria-disabled="true"]):is(:hover, :active) {
+    background: #f3f8fa !important;
+    border-color: #698998;
+  }
+  .product-shell .product-primary:is([data-purchase-intent], [data-add-to-cart], [data-checkout-submit]):is(:disabled, [aria-disabled="true"]) {
+    color: #626970 !important;
+    background: #e4e6e8 !important;
+    border: 1px solid #c6cbd0;
+    opacity: 1;
+    box-shadow: none !important;
+    filter: none !important;
+    cursor: not-allowed;
+  }
+}
+.product-shell .product-primary.design-preview-button::before,
+.product-shell .product-primary.design-preview-button::after,
+.product-shell .product-primary:is([data-purchase-intent], [data-add-to-cart], [data-checkout-submit]):is(:disabled, [aria-disabled="true"])::before,
+.product-shell .product-primary:is([data-purchase-intent], [data-add-to-cart], [data-checkout-submit]):is(:disabled, [aria-disabled="true"])::after {
+  content: none !important;
+  display: none !important;
+}

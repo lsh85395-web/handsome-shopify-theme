@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "LUMASELA / FAQ",
         "heading": "Questions, answered clearly.",
-        "introduction": "<p>Product choices, customization and order help, with the details that still need confirmation made clear.</p>"
+        "introduction": "<p>Product choices, customization and order help, and help choosing your design.</p>"
       },
       "blocks": {
         "models": {
@@ -65,7 +65,7 @@
           "type": "question",
           "settings": {
             "heading": "Where can I confirm production and delivery details?",
-            "text": "<p>Read the current shipping information and any delivery information shown at checkout. If the production time, destination or delivery timing you need is not stated, <a href=\"/pages/contact-us\">contact us</a> before ordering. No delivery date is promised by this preview.</p>"
+            "text": "<p>Read the current shipping information and any delivery information shown at checkout. If the production time, destination or delivery timing you need is not stated, <a href=\"/pages/contact-us\">contact us</a> before ordering. </p>"
           }
         },
         "tracking": {
@@ -85,7 +85,7 @@
           "type": "question",
           "settings": {
             "heading": "Where can I check return eligibility?",
-            "text": "<p>Review the store\u2019s published refund policy before ordering. If it does not answer your question about a personalized item, contact us for clarification. This guide does not add or change return conditions.</p>"
+            "text": "<p>Review the store\u2019s published refund policy before ordering. If it does not answer your question about a personalized item, contact us for clarification. </p>"
           }
         },
         "help": {

@@ -11,8 +11,8 @@
     "trust": {
       "type": "lumasela-trust-strip",
       "blocks": {
-        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
-        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
+        "currency": {"type": "item", "settings": {"icon": "currency", "title": "Prices in MYR", "text": "Product prices display in Malaysian ringgit."}},
+        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Checkout", "text": "Review your order at checkout."}},
         "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
         "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
       },

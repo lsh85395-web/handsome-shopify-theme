@@ -48,7 +48,26 @@ body.product-page{background:radial-gradient(ellipse at 5% 12%,#eaf5f9 0,transpa
 .phone-thumb-art{position:relative;width:100%;height:100%}
 .gallery-stage:not(.is-live) .gallery-art>.phone-render-plane{inset:0;width:100%;height:100%}
 .gallery-stage:not(.is-live) .gallery-art>.phone-render-plane>img{object-fit:cover;mix-blend-mode:normal}
-@media(min-width:901px) and (max-height:900px){.product-gallery{position:static}}
+@media(min-width:761px){
+  .product-layout>.product-gallery{position:sticky;align-self:start}
+  .product-gallery>.gallery-stage{width:100%;max-height:clamp(240px,calc(100svh - 420px),700px)}
+  .product-gallery>.gallery-stage.is-live>.gallery-art{max-width:clamp(216px,calc(90svh - 378px),630px)}
+  .product-shell .product-gallery>.gallery-toolbar{margin:4px 5px}
+  .product-shell .product-gallery>.gallery-thumbs{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .product-shell .product-gallery>.gallery-thumbs button{height:56px;aspect-ratio:auto}
+  .product-shell .product-gallery>.gallery-thumbs button img{object-fit:contain}
+  .product-shell .product-gallery>.gallery-compare-row{margin-top:6px}
+  .product-shell--refined .product-gallery>.gallery-preview-options{margin-top:10px;padding:12px 16px}
+  .product-shell--refined .product-gallery .gallery-phone-choice legend{margin-bottom:8px}
+  .product-shell--refined .product-gallery .gallery-phone-choice .field-note{margin-top:6px}
+  .product-gallery:has(>.comparison-control:not([hidden]))>.gallery-stage{max-height:clamp(180px,calc(100svh - 490px),630px)}
+  .product-gallery:has(>.comparison-control:not([hidden]))>.gallery-stage.is-live>.gallery-art{max-width:clamp(162px,calc(90svh - 441px),567px)}
+}
+
+.design-preview-action{margin-top:28px}
+.design-preview-action>.design-preview-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px}
+.product-shell .gallery-toolbar{justify-content:flex-end}
+.product-shell .gallery-top:has(>button:only-child){justify-content:flex-end}
 
 /* Keep the vertical signature close to the right case edge without changing its size. */
 .signature-safe-zone[data-position="bottom-right-vertical"]{left:34%}

@@ -241,8 +241,6 @@
     $('[data-gallery-stage]').classList.toggle('is-live',live);
     $('[data-gallery-label]').textContent = item.eyebrow;
     $('[data-gallery-caption]').textContent = item.caption;
-    $('[data-gallery-count]').textContent = `${String(state.gallery+1).padStart(2,'0')} / 06`;
-    $('[data-live-label]').textContent = live ? t('live_note') : t('styling_reference');
     $$('[data-gallery-index]').forEach(node => {
       const selected = Number(node.dataset.galleryIndex) === state.gallery;
       node.classList.toggle('is-active',selected); node.setAttribute('aria-pressed',String(selected));

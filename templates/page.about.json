@@ -8,7 +8,7 @@
         "eyebrow": "ABOUT LUMASELA",
         "heading": "A clearer way to carry something personal.",
         "heading_tag": "h1",
-        "body": "<p>Lumasela is a Malaysia-focused phone case concept built around clear design and personal signatures.</p>",
+        "body": "<p>A clear canvas. A personal signature. Lumasela brings a little more of you to an everyday essential.</p>",
         "primary_label": "Explore the collection",
         "primary_link": "shopify://collections/phone-cases",
         "secondary_label": "Contact us",
@@ -25,7 +25,7 @@
         "fallback_visual": "vision",
         "eyebrow": "OUR POINT OF VIEW",
         "heading": "Keep the phone visible. Add one detail that is yours.",
-        "body": "<p>We start with the familiar object already in your hand and create space for one personal mark. Final product materials, compatibility and production details must always come from verified product data.</p>",
+        "body": "<p>A familiar colour. A favourite word. A name in a style that feels like your own. Make space for a small detail that is unmistakably you.</p>",
         "button_label": "Create a signature",
         "button_link": "shopify://collections/phone-cases",
         "media_position": "right",
@@ -37,16 +37,16 @@
       "blocks": {
         "clear": {"type": "feature", "settings": {"title": "Clear by design", "text": "<p>Simple visual choices and product information that is easy to review.</p>"}},
         "personal": {"type": "feature", "settings": {"title": "Personal by choice", "text": "<p>Signature options that customers can preview before adding to cart.</p>"}},
-        "honest": {"type": "feature", "settings": {"title": "Verified before launch", "text": "<p>No material, performance or delivery claim should be published without confirmation.</p>"}}
+        "honest": {"type": "feature", "settings": {"title": "A considered choice", "text": "<p>Choose your phone model and review your design before ordering.</p>"}}
       },
       "block_order": ["clear", "personal", "honest"],
-      "settings": {"eyebrow": "HOW WE WORK", "heading": "Simple choices. Clear information.", "text": "<p>The storefront is designed to stay useful as real products, policies and imagery are added in Shopify.</p>", "color_scheme": "scheme-2"}
+      "settings": {"eyebrow": "HOW WE WORK", "heading": "Simple choices. Clear information.", "text": "<p>Explore the options, find your style and review the details at your own pace.</p>", "color_scheme": "scheme-2"}
     },
     "trust": {
       "type": "lumasela-trust-strip",
       "blocks": {
-        "currency": {"type": "item", "settings": {"icon": "currency", "title": "MYR storefront", "text": "Product prices display in Malaysian ringgit."}},
-        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Shopify checkout", "text": "Checkout is handled through Shopify."}},
+        "currency": {"type": "item", "settings": {"icon": "currency", "title": "Prices in MYR", "text": "Product prices display in Malaysian ringgit."}},
+        "checkout": {"type": "item", "settings": {"icon": "lock", "title": "Checkout", "text": "Review your order at checkout."}},
         "compatibility": {"type": "item", "settings": {"icon": "check", "title": "Compatibility first", "text": "Review your exact device option before ordering."}},
         "support": {"type": "item", "settings": {"icon": "chat", "title": "Need help?", "text": "Contact us before ordering if you are unsure."}}
       },
