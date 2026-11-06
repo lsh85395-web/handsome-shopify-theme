@@ -1,0 +1,29 @@
+{% doc %}
+  Outputs verified complete product photo sets for the case gallery.
+  @param {section} section - The product section containing case gallery blocks.
+{% enddoc %}
+[
+{%- assign emitted_gallery = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'case_gallery' and block.settings.media_verified -%}
+    {%- assign image_count = 0 -%}
+    {%- for image_index in (1..8) -%}
+      {%- assign image_key = 'image_' | append: image_index -%}
+      {%- if block.settings[image_key] != blank -%}
+        {%- assign image_count = image_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if image_count == 8 -%}
+      {%- if emitted_gallery -%},{%- endif -%}
+      {%- assign emitted_gallery = true -%}
+      {"caseType":{{ block.settings.case_type | json | replace: '<', '\u003c' }},"phoneModel":{{ block.settings.phone_model | strip | json | replace: '<', '\u003c' }},"verified":true,"images":[
+      {%- for image_index in (1..8) -%}
+        {%- assign image_key = 'image_' | append: image_index -%}
+        {%- assign gallery_image = block.settings[image_key] -%}
+        {"src":{{ gallery_image | image_url: width: 1600 | json }},"alt":{{ gallery_image.alt | default: block.settings.case_type | json | replace: '<', '\u003c' }},"focalPoint":{{ gallery_image.presentation.focal_point | default: '50% 50%' | json }}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+      ]}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+]

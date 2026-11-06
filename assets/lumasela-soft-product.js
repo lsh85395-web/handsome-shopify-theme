@@ -27,7 +27,7 @@
   const textColors = [ ['#ffffff',t('white')], ['#111111',t('black')], ['#3e5d8d',t('blue')], ['#a63b32',t('coral')] ];
   const positions = [ ['bottom-right-vertical',t('bottom_vertical')], ['bottom-center',t('bottom_center')], ['below-logo',t('below_logo')], ['bottom-right-diagonal',t('bottom_diagonal')] ];
   const sizes = [ ['small',t('small'),35], ['medium',t('medium'),50], ['large',t('large'),65] ];
-  const gallery = [
+  const fallbackGallery = [
     { label: t('your_design'), eyebrow: t('live_preview'), caption: t('live_caption'), src: '', alt: '' },
     { label: t('clear_overview'), eyebrow: t('clear_eyebrow'), caption: t('clear_caption'), src: config.assets['lumasela-p02-gallery-clear-overview.webp'], alt: t('clear_alt') },
     { label: t('signature_detail'), eyebrow: t('signature_eyebrow'), caption: t('signature_caption'), src: config.assets['lumasela-p03-gallery-signature-closeup.webp'], alt: t('signature_alt') },
@@ -35,6 +35,8 @@
     { label: t('personalisation'), eyebrow: t('personalisation_eyebrow'), caption: t('personalisation_caption'), src: config.assets['lumasela-p05-gallery-customization.webp'], alt: t('personalisation_alt') },
     { label: t('everyday'), eyebrow: t('everyday_eyebrow'), caption: t('everyday_caption'), src: config.assets['lumasela-p06-gallery-everyday.webp'], alt: t('everyday_alt') }
   ];
+  let gallery = fallbackGallery;
+  let galleryKey = null;
   const initialVariant = config.variants.find(item => String(item.id) === String(config.selectedVariantId)) || config.variants[0];
   const defaults = { version:2, name:[...String(config.defaultName || '')].slice(0,20).join(''), quantity:1, options:initialVariant?.options.slice() || [], phoneColor:'silver', style:'allura', position:'bottom-center', size:'medium', textColor:'#ffffff', gallery:0, compare:false, comparison:50 };
   let state = { ...defaults };
@@ -60,7 +62,7 @@
     if (Array.isArray(saved.options) && productData.variants.some(item => item.options.length === saved.options.length && item.options.every((value, index) => value === saved.options[index]))) state.options = saved.options.slice();
     const allowed = { style: fonts, phoneColor: phoneColors, position: positions, size: sizes, textColor: textColors };
     for (const [key, values] of Object.entries(allowed)) if (values.some(item => item[0] === saved[key])) state[key] = saved[key];
-    if (Number.isInteger(saved.gallery) && saved.gallery >= 0 && saved.gallery < gallery.length) state.gallery = saved.gallery;
+    if (Number.isInteger(saved.gallery) && saved.gallery >= 0 && saved.gallery <= 8) state.gallery = saved.gallery;
     if (typeof saved.compare === 'boolean') state.compare = saved.compare;
     if (Number.isFinite(saved.comparison)) state.comparison = Math.min(100, Math.max(0,saved.comparison));
   }
@@ -118,16 +120,67 @@
     const node = button(value,'','size'); const title = document.createElement('strong'); title.textContent = label;
     const caption = document.createElement('small'); caption.textContent = `${mm} mm`; node.append(title,caption); $('[data-size-options]').append(node);
   });
-  gallery.forEach((item,index) => {
-    const thumb = document.createElement('button'); thumb.type = 'button'; thumb.dataset.galleryIndex = index; thumb.title = item.label; thumb.setAttribute('aria-label',item.label);
-    const img = document.createElement('img'); img.src = index === 0 ? phoneImage() : item.src; img.alt = ''; img.width = 100; img.height = 100; img.loading = 'lazy';
-    if (index === 0) {
-      const art = document.createElement('div'); art.className = 'phone-thumb-art';
-      const plane = document.createElement('div'); plane.className = 'phone-render-plane'; plane.append(img); art.append(plane); thumb.append(art);
-    } else thumb.append(img);
-    $('[data-gallery-thumbs]').append(thumb);
-    const dot = document.createElement('button'); dot.type = 'button'; dot.dataset.galleryIndex = index; dot.setAttribute('aria-label',t('view_image', {label:item.label})); $('[data-gallery-dots]').append(dot);
-  });
+  function buildGalleryControls() {
+    $('[data-gallery-thumbs]').replaceChildren();
+    $('[data-gallery-dots]').replaceChildren();
+    gallery.forEach((item,index) => {
+      const thumb = document.createElement('button'); thumb.type = 'button'; thumb.dataset.galleryIndex = index; thumb.title = item.label; thumb.setAttribute('aria-label',item.label);
+      const img = document.createElement('img'); img.src = index === 0 ? phoneImage() : item.src; img.alt = ''; img.width = 100; img.height = 100; img.loading = 'lazy';
+      if (index === 0) {
+        const art = document.createElement('div'); art.className = 'phone-thumb-art';
+        const plane = document.createElement('div'); plane.className = 'phone-render-plane'; plane.append(img); art.append(plane); thumb.append(art);
+      } else thumb.append(img);
+      $('[data-gallery-thumbs]').append(thumb);
+      const dot = document.createElement('button'); dot.type = 'button'; dot.dataset.galleryIndex = index; dot.setAttribute('aria-label',t('view_image', {label:item.label})); $('[data-gallery-dots]').append(dot);
+    });
+  }
+  function syncCaseGallery() {
+    const sets = Array.isArray(config.caseGalleries) ? config.caseGalleries : [];
+    const candidates = sets.filter(set => set.verified === true && set.caseType === state.options[0] &&
+      Array.isArray(set.images) && set.images.length === 8 && set.images.every(image => typeof image.src === 'string' && /^(https?:)?\/\//.test(image.src)));
+    const selected = candidates.find(set => set.phoneModel && set.phoneModel === state.options[1]) || candidates.find(set => !set.phoneModel);
+    const key = selected ? `${selected.caseType}|${selected.phoneModel || ''}|${selected.images.map(image => image.src).join('|')}` : 'shared';
+    if (key === galleryKey) return;
+    const hadGallery = galleryKey !== null;
+    galleryKey = key;
+    $('.product-gallery').classList.toggle('has-case-gallery',Boolean(selected));
+    gallery = selected ? [fallbackGallery[0], ...selected.images.map(image => ({
+      label:image.alt || selected.caseType,
+      eyebrow:selected.caseType,
+      caption:image.alt || '',
+      src:image.src,
+      alt:image.alt || selected.caseType,
+      focalPoint:image.focalPoint || '50% 50%',
+      casePhoto:true
+    }))] : fallbackGallery;
+    if (hadGallery || state.gallery >= gallery.length) state.gallery = 0;
+    buildGalleryControls();
+  }
+  function updateCaseCards() {
+    $$('[data-case-card]').forEach(card => {
+      const value = card.dataset.caseValue;
+      const options = state.options.slice(); options[0] = value;
+      const candidate = productData.variants.find(item => item.options.every((option, index) => option === options[index]));
+      const selected = state.options[0] === value;
+      const status = candidate ? candidate.available ? t('in_stock') : t('sold_out') : t('unavailable');
+      card.classList.toggle('is-selected', selected);
+      const price = card.querySelector('[data-case-price]');
+      const availability = card.querySelector('[data-case-availability]');
+      const model = card.querySelector('[data-case-model]');
+      const select = card.querySelector('[data-case-select]');
+      if (price) price.textContent = candidate ? formatMoney(candidate.price) : t('price_unavailable');
+      if (availability) availability.textContent = status;
+      if (model) model.textContent = state.options[1] ? t('case_model_template', {model:state.options[1]}) : t('case_select_model');
+      if (select) {
+        select.disabled = !candidate || submitting;
+        select.setAttribute('aria-pressed', String(selected));
+        select.setAttribute('aria-label', `${t('case_choose_template', {case_type:value})}, ${status}`);
+        select.textContent = selected ? t('case_selected') : t('case_choose_template', {case_type:value});
+      }
+    });
+    const announcement = $('[data-case-announcement]');
+    if (announcement?.textContent) announcement.textContent = t('case_selected_announcement', {case_type:state.options[0] || '', model:state.options[1] || ''});
+  }
   function buildVariantOptions() {
     $$('[data-variant-options]').forEach(container => {
       const index = Number(container.dataset.optionIndex);
@@ -142,6 +195,7 @@
   }
   function updateVariant() {
     variant = productData.variants.find(item => item.options.every((value, index) => value === state.options[index])) || null;
+    updateCaseCards();
     const available = Boolean(variant?.available);
     const availabilityText = variant ? available ? t('in_stock') : t('sold_out') : t('unavailable');
     $('[data-product-price]').textContent = variant ? formatMoney(variant.price) : t('price_unavailable');
@@ -233,12 +287,15 @@
     $('[data-compare-toggle]').setAttribute('aria-pressed',String(state.compare));
   }
   function updateGallery() {
+    syncCaseGallery();
     updatePhonePreviewGeometry();
     const item = gallery[state.gallery], live = state.gallery === 0;
     const img = $('[data-gallery-image]'); const src = live ? phoneImage() : item.src;
     if (img.getAttribute('src') !== src) img.src = src;
     img.alt = live ? t('live_image', {color:labelFor(phoneColors,state.phoneColor), font:labelFor(fonts,state.style)}) : item.alt;
     $('[data-gallery-stage]').classList.toggle('is-live',live);
+    $('[data-gallery-stage]').classList.toggle('is-case-photo',Boolean(item.casePhoto));
+    img.style.objectPosition = live ? '' : item.focalPoint || '50% 50%';
     $('[data-gallery-label]').textContent = item.eyebrow;
     $('[data-gallery-caption]').textContent = item.caption;
     $$('[data-gallery-index]').forEach(node => {
@@ -271,8 +328,14 @@
   root.addEventListener('click', event => {
     const choice = event.target.closest('[data-choice]');
     if (choice && root.contains(choice)) change(choice.dataset.choice,choice.dataset.value);
+    const caseSelect = event.target.closest('[data-case-select]');
+    if (caseSelect && root.contains(caseSelect) && !caseSelect.disabled && !submitting && productData.options[0]?.values.includes(caseSelect.dataset.caseValue)) {
+      change('option0',caseSelect.dataset.caseValue);
+      const announcement = $('[data-case-announcement]');
+      if (announcement) announcement.textContent = t('case_selected_announcement', {case_type:caseSelect.dataset.caseValue, model:state.options[1] || ''});
+    }
     const galleryButton = event.target.closest('[data-gallery-index]');
-    if (galleryButton) { state.gallery = Number(galleryButton.dataset.galleryIndex); updateGallery(); save(); }
+    if (galleryButton && root.contains(galleryButton)) { state.gallery = Math.max(0,Math.min(gallery.length-1,Number(galleryButton.dataset.galleryIndex)||0)); updateGallery(); save(); }
   });
   const moveGallery = direction => { state.gallery = (state.gallery + direction + gallery.length) % gallery.length; updateGallery(); save(); };
   $('[data-gallery-previous]').addEventListener('click',() => moveGallery(-1));
@@ -325,7 +388,9 @@
     const art = document.createElement('div'); art.className = `zoom-art${live ? ' is-live' : ''}`;
     const plane = live ? document.createElement('div') : art;
     if (live) { plane.className = 'phone-render-plane'; art.append(plane); }
-    const img = document.createElement('img'); img.src = live ? phoneImage() : gallery[state.gallery].src; img.alt = live ? t('zoom_image', {color:labelFor(phoneColors,state.phoneColor)}) : gallery[state.gallery].alt; img.width = 1254; img.height = 1254; plane.append(img);
+    const img = document.createElement('img'); img.src = live ? phoneImage() : gallery[state.gallery].src; img.alt = live ? t('zoom_image', {color:labelFor(phoneColors,state.phoneColor)}) : gallery[state.gallery].alt; img.width = 1254; img.height = 1254;
+    if (!live && gallery[state.gallery].casePhoto) { img.style.objectFit = 'contain'; img.style.objectPosition = gallery[state.gallery].focalPoint; }
+    plane.append(img);
     if (live) { const zone = document.createElement('div'); zone.className = 'signature-safe-zone'; const signature = document.createElement('span'); signature.dataset.signatureLive = ''; zone.append(signature); plane.append(zone); paintSignatures(art); }
     if (live && !liveOnly && state.compare) {
       const before = document.createElement('div'); before.className = 'gallery-before'; before.setAttribute('aria-hidden','true');

@@ -21,9 +21,10 @@
   "cartAddUrl": {{ routes.cart_add_url | append: '.js' | json }},
   "options": [{% for option in product.options_with_values %}{"name":{{ option.name | json | replace: '<', '\u003c' }},"values":{{ option.values | map: 'name' | json | replace: '<', '\u003c' }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
   "variants": [{% for variant in product.variants %}{"id":{{ variant.id | json }},"title":{{ variant.title | json | replace: '<', '\u003c' }},"options":{{ variant.options | json | replace: '<', '\u003c' }},"price":{{ variant.price | json }},"available":{{ variant.available | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "caseGalleries": {% render 'lumasela-case-gallery-config', section: section %},
   "phoneImages": {"black":{{ 'lumasela-preview-phone-black-base.webp' | asset_url | json }},"silver":{{ 'lumasela-preview-phone-silver-base.webp' | asset_url | json }},"ice-blue":{{ 'lumasela-preview-phone-ice-blue-base.webp' | asset_url | json }},"burgundy":{{ 'lumasela-preview-phone-burgundy-base.webp' | asset_url | json }},"midnight-blue":{{ 'lumasela-preview-phone-midnight-blue-base.webp' | asset_url | json }},"orange":{{ 'lumasela-preview-phone-orange-base.webp' | asset_url | json }}},
   "assets": {"lumasela-p02-gallery-clear-overview.webp":{{ 'lumasela-p02-gallery-clear-overview.webp' | asset_url | json }},"lumasela-p03-gallery-signature-closeup.webp":{{ 'lumasela-p03-gallery-signature-closeup.webp' | asset_url | json }},"lumasela-p04-gallery-camera-overview.webp":{{ 'lumasela-p04-gallery-camera-overview.webp' | asset_url | json }},"lumasela-p05-gallery-customization.webp":{{ 'lumasela-p05-gallery-customization.webp' | asset_url | json }},"lumasela-p06-gallery-everyday.webp":{{ 'lumasela-p06-gallery-everyday.webp' | asset_url | json }}},
-  "strings": {"add_to_bag":{{ 'lumasela_soft.product.add_to_bag' | t | json | replace: '<', '\u003c' }},"buy_now":{{ 'lumasela_soft.product.buy_now' | t | json | replace: '<', '\u003c' }},"confirm_add":{{ 'lumasela_soft.product.confirm_add' | t | json | replace: '<', '\u003c' }},"confirm_checkout":{{ 'lumasela_soft.product.confirm_checkout' | t | json | replace: '<', '\u003c' }},"purchase_review_note":{{ 'lumasela_soft.product.purchase_review_note' | t | json | replace: '<', '\u003c' }},"purchase_added":{{ 'lumasela_soft.product.purchase_added' | t | json | replace: '<', '\u003c' }},"purchase_available":{{ 'lumasela_soft.product.purchase_available' | t | json | replace: '<', '\u003c' }},"purchase_sold_out":{{ 'lumasela_soft.product.purchase_sold_out' | t | json | replace: '<', '\u003c' }},"purchase_unavailable":{{ 'lumasela_soft.product.purchase_unavailable' | t | json | replace: '<', '\u003c' }},"summary_bag_intent":{{ 'lumasela_soft.product.summary_bag_intent' | t | json | replace: '<', '\u003c' }},"summary_checkout_intent":{{ 'lumasela_soft.product.summary_checkout_intent' | t | json | replace: '<', '\u003c' }},"continue_checkout":{{ 'lumasela_soft.product.continue_checkout' | t | json | replace: '<', '\u003c' }},"added_to_bag":{{ 'lumasela_soft.product.added_to_bag' | t | json | replace: '<', '\u003c' }},"checkout_ready":{{ 'lumasela_soft.product.checkout_ready' | t | json | replace: '<', '\u003c' }},"breadcrumb":{{ 'lumasela_soft.product.breadcrumb' | t | json | replace: '<', '\u003c' }},
+  "strings": {"case_choose_template":{{ 'lumasela_soft.product.case_choose_template' | t | json | replace: '<', '\u003c' }},"case_selected":{{ 'lumasela_soft.product.case_selected' | t | json | replace: '<', '\u003c' }},"case_model_template":{{ 'lumasela_soft.product.case_model_template' | t | json | replace: '<', '\u003c' }},"case_select_model":{{ 'lumasela_soft.product.case_select_model' | t | json | replace: '<', '\u003c' }},"case_selected_announcement":{{ 'lumasela_soft.product.case_selected_announcement' | t | json | replace: '<', '\u003c' }},"add_to_bag":{{ 'lumasela_soft.product.add_to_bag' | t | json | replace: '<', '\u003c' }},"buy_now":{{ 'lumasela_soft.product.buy_now' | t | json | replace: '<', '\u003c' }},"confirm_add":{{ 'lumasela_soft.product.confirm_add' | t | json | replace: '<', '\u003c' }},"confirm_checkout":{{ 'lumasela_soft.product.confirm_checkout' | t | json | replace: '<', '\u003c' }},"purchase_review_note":{{ 'lumasela_soft.product.purchase_review_note' | t | json | replace: '<', '\u003c' }},"purchase_added":{{ 'lumasela_soft.product.purchase_added' | t | json | replace: '<', '\u003c' }},"purchase_available":{{ 'lumasela_soft.product.purchase_available' | t | json | replace: '<', '\u003c' }},"purchase_sold_out":{{ 'lumasela_soft.product.purchase_sold_out' | t | json | replace: '<', '\u003c' }},"purchase_unavailable":{{ 'lumasela_soft.product.purchase_unavailable' | t | json | replace: '<', '\u003c' }},"summary_bag_intent":{{ 'lumasela_soft.product.summary_bag_intent' | t | json | replace: '<', '\u003c' }},"summary_checkout_intent":{{ 'lumasela_soft.product.summary_checkout_intent' | t | json | replace: '<', '\u003c' }},"continue_checkout":{{ 'lumasela_soft.product.continue_checkout' | t | json | replace: '<', '\u003c' }},"added_to_bag":{{ 'lumasela_soft.product.added_to_bag' | t | json | replace: '<', '\u003c' }},"checkout_ready":{{ 'lumasela_soft.product.checkout_ready' | t | json | replace: '<', '\u003c' }},"breadcrumb":{{ 'lumasela_soft.product.breadcrumb' | t | json | replace: '<', '\u003c' }},
 "home":{{ 'lumasela_soft.product.home' | t | json | replace: '<', '\u003c' }},
 "gallery":{{ 'lumasela_soft.product.gallery' | t | json | replace: '<', '\u003c' }},
 "gallery_keyboard":{{ 'lumasela_soft.product.gallery_keyboard' | t | json | replace: '<', '\u003c' }},
@@ -218,34 +219,34 @@
 <div class="ls-story" data-ls-story>
 <nav class="ls-nav" aria-label="{{ 'lumasela_soft.product.story_nav' | t | escape }}">
 <a href="#ls-clear-{{ section.id }}">{{ 'lumasela_soft.product.nav_clear' | t }}</a>
-<a href="#ls-signature-{{ section.id }}">{{ 'lumasela_soft.product.nav_signature' | t }}</a>
+<a href="#ls-cases-{{ section.id }}">{{ 'lumasela_soft.product.nav_cases' | t }}</a>
 <a href="#ls-details-{{ section.id }}">{{ 'lumasela_soft.product.nav_details' | t }}</a>
-<a href="#ls-steps-{{ section.id }}">{{ 'lumasela_soft.product.nav_steps' | t }}</a>
 <a href="#ls-life-{{ section.id }}">{{ 'lumasela_soft.product.nav_life' | t }}</a>
 <a href="#ls-faq-{{ section.id }}">{{ 'lumasela_soft.product.nav_faq' | t }}</a>
 </nav>
 <section class="ls-section ls-split" id="ls-clear-{{ section.id }}">
 <div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.clear_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.clear_heading' | t }}</h2><p>{{ 'lumasela_soft.product.clear_body' | t }}</p></div>
 <figure class="ls-image"><img class="" src="{{ 'lumasela-p02-gallery-clear-overview.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.clear_story_alt' | t | escape }}" width="1024" height="1024" loading="lazy"></figure></section>
-<section class="ls-section ls-split ls-sample" id="ls-signature-{{ section.id }}"><div class="ls-sample-art"><img class="" src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.sample_alt' | t | escape }}" width="1024" height="1024" loading="lazy"><span class="ls-sample-name font-allura" data-ls-sample-name data-placement="bottom">{{ 'lumasela_soft.product.sample_name' | t }}</span></div><div>
-<div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.sample_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.sample_heading' | t }}</h2><p>{{ 'lumasela_soft.product.sample_body' | t }}</p></div>
-<p class="ls-note" id="ls-sample-note-{{ section.id }}">{{ 'lumasela_soft.product.sample_note' | t }}</p><div class="ls-sample-controls" aria-describedby="ls-sample-note-{{ section.id }}">
-<fieldset><legend>{{ 'lumasela_soft.product.sample_font' | t }}</legend><div class="ls-options">
-<button type="button" data-ls-sample="font" data-ls-value="allura" aria-pressed="true" disabled>{{ 'lumasela_soft.product.sample_allura' | t }}</button>
-<button type="button" data-ls-sample="font" data-ls-value="sacramento" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_sacramento' | t }}</button>
-<button type="button" data-ls-sample="font" data-ls-value="knewave" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_knewave' | t }}</button>
-</div></fieldset>
-<fieldset><legend>{{ 'lumasela_soft.product.sample_ink' | t }}</legend><div class="ls-options">
-<button type="button" data-ls-sample="ink" data-ls-value="#ffffff" aria-pressed="true" disabled>{{ 'lumasela_soft.product.sample_white' | t }}</button>
-<button type="button" data-ls-sample="ink" data-ls-value="#3e5d8d" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_blue' | t }}</button>
-<button type="button" data-ls-sample="ink" data-ls-value="#111111" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_black' | t }}</button>
-</div></fieldset>
-<fieldset><legend>{{ 'lumasela_soft.product.sample_position' | t }}</legend><div class="ls-options">
-<button type="button" data-ls-sample="placement" data-ls-value="bottom" aria-pressed="true" disabled>{{ 'lumasela_soft.product.sample_bottom' | t }}</button>
-<button type="button" data-ls-sample="placement" data-ls-value="vertical" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_vertical' | t }}</button>
-<button type="button" data-ls-sample="placement" data-ls-value="middle" aria-pressed="false" disabled>{{ 'lumasela_soft.product.sample_middle' | t }}</button>
-</div></fieldset>
-</div></div></section>
+<section class="ls-section ls-cases" id="ls-cases-{{ section.id }}" aria-labelledby="ls-cases-heading-{{ section.id }}">
+<div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.cases_kicker' | t }}</p><h2 id="ls-cases-heading-{{ section.id }}">{{ 'lumasela_soft.product.cases_heading' | t }}</h2><p>{{ 'lumasela_soft.product.cases_body' | t }}</p></div>
+{% assign case_option = product.options_with_values | first %}
+<div class="ls-case-grid">
+{% for case_value in case_option.values %}
+{% assign case_type = case_value.name | default: case_value %}
+<article class="ls-case-card" data-case-card data-case-value="{{ case_type | escape }}">
+<h3>{{ case_type | escape }}</h3>
+<p class="ls-case-model" data-case-model>{{ 'lumasela_soft.product.case_select_model' | t }}</p>
+<dl class="ls-case-facts">
+<div><dt>{{ 'lumasela_soft.product.unit_price' | t }}</dt><dd data-case-price>{{ 'lumasela_soft.product.case_price_pending' | t }}</dd></div>
+<div><dt>{{ 'lumasela_soft.product.availability' | t }}</dt><dd data-case-availability>{{ 'lumasela_soft.product.case_availability_pending' | t }}</dd></div>
+</dl>
+<button type="button" class="ls-case-select" data-case-select data-case-value="{{ case_type | escape }}" aria-pressed="false" disabled>{{ 'lumasela_soft.product.case_choose' | t: case_type: case_type | escape }}</button>
+</article>
+{% endfor %}
+</div>
+<p class="ls-case-continue"><a href="#personalise" data-ls-return>{{ 'lumasela_soft.product.case_continue' | t }} <span aria-hidden="true">↑</span></a></p>
+<p class="ls-visually-hidden" data-case-announcement role="status" aria-atomic="true"></p>
+</section>
 <section class="ls-section" id="ls-details-{{ section.id }}">
 <div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.detail_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.detail_heading' | t }}</h2><p>{{ 'lumasela_soft.product.detail_body' | t }}</p></div>
 <div class="ls-detail-layout"><div class="ls-hotspot-art"><img class="" src="{{ 'lumasela-preview-phone-silver-base.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.detail_alt' | t | escape }}" width="1024" height="1024" loading="lazy">
@@ -257,17 +258,6 @@
 <article id="ls-detail-1-{{ section.id }}" data-ls-detail="1"><h3>{{ 'lumasela_soft.product.detail_side' | t }}</h3><p>{{ 'lumasela_soft.product.detail_side_body' | t }}</p></article>
 <article id="ls-detail-2-{{ section.id }}" data-ls-detail="2"><h3>{{ 'lumasela_soft.product.detail_base' | t }}</h3><p>{{ 'lumasela_soft.product.detail_base_body' | t }}</p></article>
 </div></div></section>
-<section class="ls-section" id="ls-steps-{{ section.id }}">
-<div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.steps_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.steps_heading' | t }}</h2><p>{{ 'lumasela_soft.product.steps_body' | t }}</p></div>
-<div class="ls-step-tabs" data-ls-tablist aria-label="{{ 'lumasela_soft.product.steps_label' | t | escape }}">
-<button type="button" id="ls-tab-0-{{ section.id }}" data-ls-tab="0" aria-controls="ls-step-0-{{ section.id }}" disabled>{{ 'lumasela_soft.product.step_1' | t }}</button>
-<button type="button" id="ls-tab-1-{{ section.id }}" data-ls-tab="1" aria-controls="ls-step-1-{{ section.id }}" disabled>{{ 'lumasela_soft.product.step_2' | t }}</button>
-<button type="button" id="ls-tab-2-{{ section.id }}" data-ls-tab="2" aria-controls="ls-step-2-{{ section.id }}" disabled>{{ 'lumasela_soft.product.step_3' | t }}</button>
-</div><div class="ls-step-layout"><div>
-<article id="ls-step-0-{{ section.id }}" data-ls-step="0" aria-labelledby="ls-tab-0-{{ section.id }}"><h3>{{ 'lumasela_soft.product.step_1_title' | t }}</h3><p>{{ 'lumasela_soft.product.step_1_body' | t }}</p></article>
-<article id="ls-step-1-{{ section.id }}" data-ls-step="1" aria-labelledby="ls-tab-1-{{ section.id }}"><h3>{{ 'lumasela_soft.product.step_2_title' | t }}</h3><p>{{ 'lumasela_soft.product.step_2_body' | t }}</p></article>
-<article id="ls-step-2-{{ section.id }}" data-ls-step="2" aria-labelledby="ls-tab-2-{{ section.id }}"><h3>{{ 'lumasela_soft.product.step_3_title' | t }}</h3><p>{{ 'lumasela_soft.product.step_3_body' | t }}</p></article>
-<button type="button" class="ls-text-button" data-ls-step-next disabled>{{ 'lumasela_soft.product.step_next' | t }} <span aria-hidden="true">→</span></button></div><div class="ls-image"><img class="" src="{{ 'lumasela-p05-gallery-customization.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.step_image_alt' | t | escape }}" width="1024" height="1024" loading="lazy"></div></div></section>
 <section class="ls-section" id="ls-life-{{ section.id }}"><div class="ls-life-heading"><div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.life_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.life_heading' | t }}</h2></div><div class="ls-arrows"><button type="button" data-ls-scroll="-1" aria-label="{{ 'lumasela_soft.product.life_prev' | t | escape }}" aria-controls="ls-life-track-{{ section.id }}" disabled>←</button><button type="button" data-ls-scroll="1" aria-label="{{ 'lumasela_soft.product.life_next' | t | escape }}" aria-controls="ls-life-track-{{ section.id }}" disabled>→</button></div></div><div class="ls-life-track" id="ls-life-track-{{ section.id }}" data-ls-life-track tabindex="0" role="region" aria-label="{{ 'lumasela_soft.product.life_label' | t | escape }}">
 <figure><img class="" src="{{ 'lumasela-p06-gallery-everyday.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.life_alt_1' | t | escape }}" width="1024" height="1024" loading="lazy"><figcaption>{{ 'lumasela_soft.product.life_1' | t }}</figcaption></figure>
 <figure><img class="" src="{{ 'lumasela-p14-lifestyle-work.webp' | asset_url }}" alt="{{ 'lumasela_soft.product.life_alt_2' | t | escape }}" width="1024" height="1024" loading="lazy"><figcaption>{{ 'lumasela_soft.product.life_2' | t }}</figcaption></figure>
@@ -276,8 +266,10 @@
 <section class="ls-section ls-faq" id="ls-faq-{{ section.id }}">
 <div class="ls-heading"><p class="ls-kicker">{{ 'lumasela_soft.product.faq_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.faq_heading' | t }}</h2><p>{{ 'lumasela_soft.product.faq_body' | t }}</p></div>
 <div class="ls-faq-items">
+<details><summary>{{ 'lumasela_soft.product.faq_delivery_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_delivery_a' | t }}</p>{% if shop.shipping_policy.url != blank %}<p><a href="{{ shop.shipping_policy.url }}">{{ 'lumasela_soft.product.faq_shipping_policy' | t }}</a></p>{% endif %}</details>
+<details><summary>{{ 'lumasela_soft.product.faq_returns_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_returns_a' | t }}</p>{% if shop.refund_policy.url != blank %}<p><a href="{{ shop.refund_policy.url }}">{{ 'lumasela_soft.product.faq_refund_policy' | t }}</a></p>{% endif %}</details>
+<details><summary>{{ 'lumasela_soft.product.faq_care_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_care_a' | t }} <a href="mailto:info.lumasela@gmail.com">{{ 'lumasela_soft.product.care_email' | t }}</a>.</p></details>
 <details><summary>{{ 'lumasela_soft.product.faq_preview_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_preview_a' | t }}</p></details>
-<details><summary>{{ 'lumasela_soft.product.faq_sample_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_sample_a' | t }}</p></details>
 <details><summary>{{ 'lumasela_soft.product.faq_order_q' | t }}</summary><p>{{ 'lumasela_soft.product.faq_order_a' | t }}</p></details>
 </div><details class="ls-original product-description-disclosure"><summary>{{ 'lumasela_soft.product.faq_original' | t }}</summary><div class="product-description rte">{{ displayed_description }}</div></details></section>
 <section class="ls-section ls-closing"><p class="ls-kicker">{{ 'lumasela_soft.product.closing_kicker' | t }}</p><h2>{{ 'lumasela_soft.product.closing_heading' | t }}</h2><p>{{ 'lumasela_soft.product.closing_body' | t }}</p><a class="product-primary" href="#personalise" data-ls-return>{{ 'lumasela_soft.product.closing_action' | t }} <span aria-hidden="true">↑</span></a></section></div>
@@ -290,8 +282,99 @@
 {
   "name": "Lumasela soft product",
   "settings": [
-    {"type":"text","id":"default_name","label":"Initial preview name","default":"Aina"}
+    {
+      "type": "text",
+      "id": "default_name",
+      "label": "Initial preview name",
+      "default": "Aina"
+    }
   ],
-  "presets": [{"name":"Lumasela soft product"}]
+  "presets": [
+    {
+      "name": "Lumasela soft product"
+    }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "case_gallery",
+      "name": "Verified case photo set",
+      "settings": [
+        {
+          "type": "select",
+          "id": "case_type",
+          "label": "Case type",
+          "options": [
+            {
+              "value": "Hard PC",
+              "label": "Hard PC"
+            },
+            {
+              "value": "Soft TPU",
+              "label": "Soft TPU"
+            },
+            {
+              "value": "Magnetic",
+              "label": "Magnetic"
+            }
+          ],
+          "default": "Hard PC"
+        },
+        {
+          "type": "text",
+          "id": "phone_model",
+          "label": "Phone model",
+          "info": "Match the Shopify option exactly. Leave blank only if every photo applies to all offered models."
+        },
+        {
+          "type": "checkbox",
+          "id": "media_verified",
+          "label": "Photos checked against the product",
+          "default": false,
+          "info": "Enable only after checking the device, case details and included items. All eight images are required."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Main product photo"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Secondary photo 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Secondary photo 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Secondary photo 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_5",
+          "label": "Secondary photo 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_6",
+          "label": "Secondary photo 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_7",
+          "label": "Secondary photo 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_8",
+          "label": "Secondary photo 7"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

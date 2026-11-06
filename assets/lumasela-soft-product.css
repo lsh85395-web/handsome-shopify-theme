@@ -164,3 +164,7 @@ body.product-page{background:radial-gradient(ellipse at 5% 12%,#eaf5f9 0,transpa
 
 /* Readable font labels and preview disclosure on small screens. */
 @media(max-width:760px){.product-shell .font-grid button{height:92px}.product-shell .font-grid button small{font-size:12px;line-height:1.35;white-space:normal;text-align:center}.product-shell .gallery-disclaimer{font-size:12.5px;line-height:1.7}}
+
+.product-shell .product-gallery.has-case-gallery .gallery-thumbs{display:flex;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px;scroll-snap-type:x proximity}
+.product-shell .product-gallery.has-case-gallery .gallery-thumbs button{flex:0 0 max(60px,calc((100% - 45px)/6));scroll-snap-align:start}
+.product-shell .gallery-stage.is-case-photo .phone-render-plane>img{object-fit:contain}
